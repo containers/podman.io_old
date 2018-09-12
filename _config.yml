@@ -1,0 +1,17 @@
+theme: jekyll-theme-hacker
+
+baseurl: /podman.io
+
+plugins:
+  - jemoji
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-avatar
+  - jekyll-mentions
+  - jekyll-sitemap
+
+readme_index:
+  enabled: true
+  remove_originals: false
+
+excerpt_separator: "<!--readmore-->"
