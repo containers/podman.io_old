@@ -12,7 +12,7 @@ Welcome to the site for <a href="https://github.com/containers/libpod">podman</a
 
 <section class="posts">
   {% for post in site.posts %}
-    <p><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url | prepend: site.baseurl | prepend: site_url }}" title="{{ post.title }}">{{ post.title }}</a></p>
+    <p><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></p>
     <p>{{ post.excerpt }}</p><hr>
   {% endfor %}
 </section>

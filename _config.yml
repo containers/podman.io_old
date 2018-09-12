@@ -1,7 +1,5 @@
 theme: jekyll-theme-hacker
 
-baseurl: /podman.io
-
 plugins:
   - jemoji
   - jekyll-feed
