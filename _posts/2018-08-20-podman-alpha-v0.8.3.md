@@ -6,7 +6,7 @@ categories: [releases]
 tags: community, open source, podman
 ---
 
-![podman logo](../images/podman.svg)
+<img src="https://podman.io/images/podman.svg" alt="podman logo">
 
 # Podman release 0.8.3
 Our release this week was very smooth. It seems like between CI infrastructure stability, last minute pull requests, and sometimes just plain bad luck, something always gives us trouble on Friday’s. The Fedora packages are created and I see that they are getting their karma and working through the process already.

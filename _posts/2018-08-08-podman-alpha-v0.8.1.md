@@ -6,7 +6,7 @@ categories: [releases]
 tags: community, open source, podman
 ---
 
-![podman logo](../images/podman.svg)
+<img src="https://podman.io/images/podman.svg" alt="podman logo">
 
 # Podman release 0.8.1
 Our latest podman release turned out to be a lot of internal plumbing. We had more than 50 commits but most were tweaks that most users would not notice. So I don’t have a singular, hot feature to point you at.
