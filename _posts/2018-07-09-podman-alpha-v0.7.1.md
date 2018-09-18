@@ -1,13 +1,12 @@
 ---
 title: Podman Alpha version 0.7.1 Release Announcement
-author: bbaude 
-date: 2018-07-09 00:00:00 UTC
+layout: default
+author: bbaude
 categories: [releases]
 tags: community, open source, podman
-comments: false
-published: true
 ---
-<img src="../images/podman.png" alt="podman logo">
+
+![podman logo](../images/podman.svg)
 
 # Podman release 0.7.1
 Last week was a busy holiday week here in the United States, but we still managed a nice release full of interesting merges.

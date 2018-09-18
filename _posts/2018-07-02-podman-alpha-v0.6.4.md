@@ -1,13 +1,12 @@
 ---
 title: Podman Alpha version 0.6.4 Release Announcement
+layout: default
 author: bbaude
-date: 2018-07-02 00:00:00 UTC
 categories: [releases]
 tags: community, open source, podman
-comments: false
-published: true
 ---
-<img src="../images/podman.png" alt="podman logo">
+
+![podman logo](../images/podman.svg)
 
 # Podman release 0.6.4
 This afternoon we were able to overcome some last minute bugs and release a new Podman. The packages are building in Fedora and will work their way through Fedora’s bodhi system. For giggles, I looked at the number of individual contributors this week and was glad to see the number at 10.

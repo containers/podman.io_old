@@ -1,12 +1,12 @@
 ---
-layout: post
-title: Python3 support for Podman 
+title: Python3 support for Podman
+layout: default
 author: Jhon Honce
-date: 2018-08-15 00:00:00 UTC
 categories: [blogs]
 tags: atomic, podman, containers
 ---
-![podman logo](../images/podman.png)
+
+![podman logo](../images/podman.svg)
 
 ## to the rescue…
 
@@ -55,7 +55,7 @@ with podman.Client() as client:
     for c in client.containers.list():
 
 	 # A bit of sugar, convert any podman-formatted timestamp to
-        #   a python datetime 
+        #   a python datetime
         created_at = podman.datetime_parse(c.createdat)
 
         if created_at > midnight:
@@ -146,4 +146,3 @@ Better yet if you’d like to help contribute to Podman or this Python module, p
 
 [https://github.com/containers/libpod](https://github.com/containers/libpod)
 [https://github.com/containers/libpod/tree/master/contrib/python](https://github.com/containers/libpod/tree/master/contrib/python)
-

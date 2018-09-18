@@ -1,13 +1,12 @@
 ---
 title: Podman Alpha version 0.6.1 Release Announcement
-author: bbaude 
-date: 2018-06-04 00:00:00 UTC
+layout: default
+author: bbaude
 categories: [releases]
 tags: community, open source, podman
-comments: false
-published: true
 ---
-<img src="../images/podman.png" alt="podman logo">
+
+![podman logo](../images/podman.svg)
 
 # Podman release 0.6.1
 

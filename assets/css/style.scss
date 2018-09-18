@@ -1,0 +1,53 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+a.buttons {
+	-webkit-font-smoothing: antialiased;
+	background: none;
+	font-weight: bold;
+	text-shadow: none;
+	padding: 2px 2px 2px 12px;
+	height: 2em;
+}
+
+a {
+	color: #333333;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.header {
+	font-weight: normal;
+}
+
+header li {
+	background: #88309f;
+	-webkit-box-shadow: inset 0px 1px 1px 0 #88309f;
+  box-shadow: inset 0px 1px 1px 0 #88309f;
+}
+
+header li:hover {
+	background: #77107d;
+}
+
+header li a {
+	color: #000000;
+	text-decoration: none;
+}
+
+a.buttons:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto\9;
+}

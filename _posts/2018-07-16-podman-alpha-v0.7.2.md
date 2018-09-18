@@ -1,13 +1,12 @@
 ---
 title: Podman Alpha version 0.7.2 Release Announcement
-author: bbaude 
-date: 2018-07-16 00:00:00 UTC
+layout: default
+author: bbaude
 categories: [releases]
 tags: community, open source, podman
-comments: false
-published: true
 ---
-<img src="../images/podman.png" alt="podman logo">
+
+![podman logo](../images/podman.svg)
 
 # Podman release 0.7.2
 As most weeks are, this was fast and furious. You will see hand fulls of significant features below that have been added to podman this week. All of it is awesome work from the core team and its contributors. There were also two interesting features that users will be interested in: the ability to create a container with multiple networks and the podman remote client.

@@ -1,13 +1,12 @@
 ---
 title: Podman Alpha version 0.8.1 Release Announcement
-author: bbaude 
-date: 2018-08-08 00:00:00 UTC
+layout: default
+author: bbaude
 categories: [releases]
 tags: community, open source, podman
-comments: false
-published: true
 ---
-<img src="../images/podman.png" alt="podman logo">
+
+![podman logo](../images/podman.svg)
 
 # Podman release 0.8.1
 Our latest podman release turned out to be a lot of internal plumbing. We had more than 50 commits but most were tweaks that most users would not notice. So I don’t have a singular, hot feature to point you at.

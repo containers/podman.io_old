@@ -1,13 +1,12 @@
 ---
 title: Podman Alpha version 0.8.3 Release Announcement
-author: bbaude 
-date: 2018-08-20 00:00:00 UTC
+layout: default
+author: bbaude
 categories: [releases]
 tags: community, open source, podman
-comments: false
-published: true
 ---
-<img src="../images/podman.png" alt="podman logo">
+
+![podman logo](../images/podman.svg)
 
 # Podman release 0.8.3
 Our release this week was very smooth. It seems like between CI infrastructure stability, last minute pull requests, and sometimes just plain bad luck, something always gives us trouble on Friday’s. The Fedora packages are created and I see that they are getting their karma and working through the process already.
