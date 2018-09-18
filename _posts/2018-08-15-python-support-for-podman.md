@@ -3,7 +3,7 @@ title: Python3 support for Podman
 layout: default
 author: Jhon Honce
 categories: [blogs]
-tags: atomic, podman, containers
+tags: podman, containers
 ---
 
 ![podman logo](../images/podman.svg)
