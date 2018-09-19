@@ -6,7 +6,7 @@ categories: [blogs]
 tags: podman, containers
 ---
 
-![podman logo](../images/podman.svg)
+![podman logo](https://podman.io/images/podman.svg)
 
 ## to the rescue…
 

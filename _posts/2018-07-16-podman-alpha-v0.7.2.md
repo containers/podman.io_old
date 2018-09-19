@@ -6,7 +6,7 @@ categories: [releases]
 tags: community, open source, podman
 ---
 
-![podman logo](../images/podman.svg)
+<img src="https://podman.io/images/podman.svg" alt="podman logo">
 
 # Podman release 0.7.2
 As most weeks are, this was fast and furious. You will see hand fulls of significant features below that have been added to podman this week. All of it is awesome work from the core team and its contributors. There were also two interesting features that users will be interested in: the ability to create a container with multiple networks and the podman remote client.

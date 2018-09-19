@@ -6,7 +6,7 @@ categories: [releases]
 tags: community, open source, podman
 ---
 
-![podman logo](../images/podman.svg)
+<img src="https://podman.io/images/podman.svg" alt="podman logo">
 
 # Podman release 0.6.1
 
