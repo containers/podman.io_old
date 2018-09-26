@@ -1,5 +1,5 @@
 ---
-title: Cool thing&#58; Pushing content directly to Docker Daemon...
+title: Cool thing&#58; Pulling content directly to Docker Daemon...
 layout: default
 author: Dan Walsh
 categories: [blogs]
@@ -8,7 +8,7 @@ tags: podman, containers
 
 ![podman logo](https://podman.io/images/podman.svg)
 
-# Pushing content directly to Docker Daemon...
+# Pulling content directly to Docker Daemon...
 ## By Dan Walsh @rhatdan
 
 ## Cool things you can do with Podman.
