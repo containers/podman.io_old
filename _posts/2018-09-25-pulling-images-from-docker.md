@@ -1,5 +1,5 @@
 ---
-title: Cool thing: Pushing content directly to Docker Daemon...
+title: Cool thing&#58; Pushing content directly to Docker Daemon...
 layout: default
 author: Dan Walsh
 categories: [blogs]
