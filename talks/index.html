@@ -1,0 +1,16 @@
+---
+layout: default
+title: Podman Talks
+---
+
+<img src="../images/podman.svg" alt="Podman logo">
+
+<h1>{{ page.title }}</h1>
+
+<section class="posts">
+  {% for post in site.categories.talks %}
+    <p><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> by {{ post.author }}</p>
+    <p>{{ post.excerpt }}</p>
+    <a href="{{post.url}}"> Read More </a><hr>
+  {% endfor %}
+</section>
