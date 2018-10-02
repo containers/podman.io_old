@@ -22,7 +22,7 @@ tags: <your tags here>
 <yourtext in markdown format goes here, check out other blog posts if you're unsure how to proceed>
 ```
 
-Please pay attention to the `categories: [blogs]` section. Currently, there are 3 categories available: `[blogs]`, `[releases]`, and `[new]`.
+Please pay attention to the `categories: [blogs]` section. Currently, there are 4 categories available: `[blogs]`, `[releases]`, `[talks]` and `[new]`.
 
 **NOTE:** If you want to add a ':' (colon) to your title, you will need to instead use `&#58;`, otherwise the post will not be displayed on the index page.  For example:
 
