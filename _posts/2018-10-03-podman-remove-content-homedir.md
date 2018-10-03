@@ -15,6 +15,7 @@ tags: podman, containers
 
 When running `[Podman](https://podman.io)` as root, the default location for storage is /var/lib/containers/storage.  Of course, users cannot use this directory when running as non root, so Podman creates the storage by default in $HOME/.local/share/containers.
 
+<!--readmore-->
 When Podman creates this storage it is running inside of a user namespace and is allowed to create UIDs and GIDs based off the UID ranges stored in /etc/subuid and the GIDs listed in /etc/subgid.
 
 For example my account has UID and GID ranges 100000 through 165535 reserved for it, as well as my UID and primary GID, 3267.

@@ -17,6 +17,7 @@ I recently received a bug report about some huge container images not working co
 
 I explained to him that the Docker image and container database are separate from the Podman image and container database.  I told him he would have to pull the images into Podman.  Then I decided to try a cool feature of Podman, where I could pull images directly out of the Docker daemon.
 
+<!--readmore-->
 ### First I look for the Centos Image inside of Docker.
 ```
 # docker images | grep centos
