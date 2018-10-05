@@ -6,7 +6,12 @@ categories: [blogs]
 tags: podman, containers, openstack
 ---
 
-I wrote a blog post about how we manage podman containers with SystemD in
+![podman logo](https://podman.io/images/podman.svg)
+
+# Manage Podman containers with SystemD
+## By Emilien Macchi @EmilienM
+
+I wrote a blog post about how we manage Podman containers with SystemD in
 OpenStack TripleO.
 
 [Read More](http://my1.fr/blog/openstack-containerization-with-podman-part-2-operations/)

@@ -6,6 +6,12 @@ categories: [blogs]
 tags: podman, containers, openstack
 ---
 
+![podman logo](https://podman.io/images/podman.svg)
+
+# Deploy OpenStack TripleO Undercloud Podman containers
+## By Emilien Macchi @EmilienM
+
+
 I wrote a blog post about how we deploy OpenStack TripleO Undercloud with
 Podman containers.
 
