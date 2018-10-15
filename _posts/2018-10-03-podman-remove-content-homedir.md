@@ -1,15 +1,16 @@
 ---
 title: Why can’t I delete storage files created by non-root podman?
 layout: default
-author: Dan Walsh
+author: dwalsh
 categories: [blogs]
 tags: podman, containers
 ---
 
 ![podman logo](https://podman.io/images/podman.svg)
 
+{% assign author = site.authors[page.author] %}
 # Why can’t I delete storage files created by non-root Podman?
-## By Dan Walsh @rhatdan
+## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }}) [Twitter](https://twitter.com/{{ author.twitter }})
 
 ## Cool things you can do with Podman
 
