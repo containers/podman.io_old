@@ -1,15 +1,16 @@
 ---
 title: Python3 support for Podman
 layout: default
-author: Jhon Honce
+author: jwhonce
 categories: [blogs]
 tags: podman, containers
 ---
 
 ![podman logo](https://podman.io/images/podman.svg)
 
+{% assign author = site.authors[page.author] %}
 # Python3 support for Podman
-## By Jhon Honce
+## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }}) [Twitter](https://twitter.com/{{ author.twitter }})
 
 You’ve learned of Podman and all it’s coolness for running OCI-based containers, but you need a solution that is repeatable and scripted. Rather than just executing Podman commands, you want a stable API to call into and not need to screen scrape the output.
 

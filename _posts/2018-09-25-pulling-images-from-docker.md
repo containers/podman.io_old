@@ -1,15 +1,16 @@
 ---
 title: Cool thing&#58; Pulling content directly from the Docker Daemon...
 layout: default
-author: Dan Walsh
+author: dwalsh
 categories: [blogs]
 tags: podman, containers
 ---
 
 ![podman logo](https://podman.io/images/podman.svg)
 
+{% assign author = site.authors[page.author] %}
 # Pulling content directly from the Docker Daemon...
-## By Dan Walsh @rhatdan
+## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }}) [Twitter](https://twitter.com/{{ author.twitter }})
 
 ## Cool things you can do with Podman.
 

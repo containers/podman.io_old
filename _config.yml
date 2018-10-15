@@ -1,3 +1,4 @@
+url: https:/podman.io
 theme: jekyll-theme-dinky
 
 plugins:
@@ -13,3 +14,45 @@ readme_index:
   remove_originals: false
 
 excerpt_separator: "<!--readmore-->"
+
+authors:
+  dwalsh:
+    name: Dan Walsh
+    display_name: Dan Walsh
+    gravatar: 75d88487c07b14b6c7aa0599fce600bf
+    email: dwalsh@redhat.com
+    web: https://people.redhat.com/dwalsh/
+    twitter: rhatdan
+    github: rhatdan
+  emacchi:
+    name: Emilien Macchi
+    display_name: Emilien Macchi 
+    gravatar:
+    email:
+    web: https://redhat.com
+    twitter: EmilienMacchi
+    github: EmilienM
+  ipbabble:
+    name: William Henry
+    display_name: ipbabble
+    gravatar:
+    email: whenry@redhat.com
+    web: https://redhat.com
+    twitter: ipbabble
+    github: ipbabble
+  jwhonce:
+    name: Jhon Honce
+    display_name: Jhon Honce
+    gravatar:
+    email: jhonce@redhat.com
+    web: https://redhat.com
+    twitter: jwhonce
+    github: jwhonce
+  tsweeney:
+    name: Tom Sweeney
+    display_name: Tom Sweeney
+    gravatar: c69c8419c8e4d1bbedc7874281453781
+    email: tsweeney@redhat.com
+    web: https://redhat.com
+    twitter: TSweeneyRedHat
+    github: TomSweeneyRedhat
