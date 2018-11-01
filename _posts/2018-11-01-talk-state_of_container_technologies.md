@@ -14,4 +14,4 @@ tags: podman, containers
 
 At the "LISA18" conference on October 29-31, 2018 in Nashville, TN, USA, Dan Walsh gave a talk on the State of Container Technologies in the Operating System.
 
-The slides in PDF format are [here](https://podman.io/slides/2018-10-31-state_of_container_technologies_in_the_operating_system.pdf).
+The slides in PDF format are [here](https://podman.io/slides/2018-11-01-state_of_container_technologies_in_the_operating_system.pdf).
