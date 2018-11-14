@@ -16,6 +16,13 @@ readme_index:
 excerpt_separator: "<!--readmore-->"
 
 authors:
+  baude:
+    name: Brent Baude
+    display_name: Brent Baude
+    email: bbaude@redhat.com
+    web: https://people.redhat.com/baude/
+    twitter: bbaude
+    github: baude
   dwalsh:
     name: Dan Walsh
     display_name: Dan Walsh
@@ -26,7 +33,7 @@ authors:
     github: rhatdan
   emacchi:
     name: Emilien Macchi
-    display_name: Emilien Macchi 
+    display_name: Emilien Macchi
     gravatar:
     email:
     web: https://redhat.com
