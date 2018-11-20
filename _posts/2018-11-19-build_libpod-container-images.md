@@ -22,6 +22,7 @@ the RPM package because it will make the upgrade process easier down the road.
 
 To solve this problem, I have created a series of container images for CentOS7, Fedora 28, and Fedora 29 that are capable of building a development Podman RPM and associated packages.
 
+<!--readmore-->
 #### A bit about the images themselves
 The image that can used to build the RPMs is called *quay.io/libpod/build_libpod*.  You simply
 alter the tag to build for the various distributions.  The *latest* tag will build CentOS7
