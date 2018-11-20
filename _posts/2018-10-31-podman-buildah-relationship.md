@@ -18,6 +18,7 @@ Enter Buildah.  Buildah allows you to have a Kubernetes cluster without any Dock
 
 This is where Podman steps in.  Podman allows you to do all of the Docker commands without the daemon dependency.  With Podman you can run, build (it calls Buildah under the covers for this), modify and troubleshoot containers in your Kubernetes cluster.  With the two projects together, you have a well rounded solution for your OCI container image and container needs.
 
+<!--readmore-->
 Buildah and Podman are two complementary Open-source projects that are available on
 most Linux platforms and both projects reside at [GitHub.com](https://github.com)
 with Buildah [here](https://github.com/containers/buildah) and Podman [here](https://github.com/containers/libpod).  Both Buildah and Podman are command line tools that work on OCI images and containers.  The two projects are related, but differ in their specialization.
