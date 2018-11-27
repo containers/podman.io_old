@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+{% feed_meta %}
+
 {% seo %}
     <link rel="shortcut icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
@@ -31,6 +33,7 @@
 
         {% if site.github.is_project_page %}
           <p class="header">This project is maintained by the <a class="header name" href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a> organization.</p>
+           <p class="header">Subscribe to the <a href="https://podman.io/feed.xml">blog feed</a>.</p>
         {% endif %}
 
         {% if site.github.is_user_page %}
