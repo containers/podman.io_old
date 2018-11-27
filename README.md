@@ -42,7 +42,7 @@ tags: <your tags here>
 <yourtext in markdown format goes here, check out other blog posts if you're unsure how to proceed>
 ```
 
-Please pay attention to the `categories: [blogs]` section. Currently, there are 4 categories available: `[blogs]`, `[releases]`, `[talks]` and `[new]`.
+Please pay attention to the **`categories: [blogs]`** section. Currently, there are 4 categories available: `[blogs]`, `[releases]`, `[talks]` and `[new]`.
 
 **NOTE:** If you want to add a ':' (colon) to your title, you will need to instead use `&#58;`, otherwise the post will not be displayed on the index page.  For example:
 
@@ -55,3 +55,11 @@ use:
 
 title: My first blog post&#58; Can you believe it?
 ```
+
+Finally if your blog is more than a paragraph or two long, please add this tag after the first or second paragraph:
+
+```
+<!--readmore-->
+```
+This will provide a preview on the blogs index page and the reader can read that first bit and then decide if they want to go in for a deeper dive.
+
