@@ -26,7 +26,7 @@ To mimic the Atomic CLI project, we added a sub-command called `podman container
 Lets consider an example.  I have a simple container image based on mariab that I use for my Podman development.  The image is made like so:
 
 ```
-ROM docker.io/library/mariadb:latest
+FROM docker.io/library/mariadb:latest
 LABEL RUN="podman run --name some-mariadb -P -e MYSQL_ROOT_PASSWORD=x -dt IMAGE"
 RUN echo "bind-address = 0.0.0.0" >> /etc/mysql/my.cnf
 ```
