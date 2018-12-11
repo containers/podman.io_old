@@ -55,6 +55,14 @@ authors:
     web: https://redhat.com
     twitter: jwhonce
     github: jwhonce
+  mheon:
+    name: Matthew Heon
+    display_name: Matt Heon
+    gravatar:
+    email: mheon@redhat.com
+    web: https://redhat.com
+    twitter:
+    github: mheon
   tsweeney:
     name: Tom Sweeney
     display_name: Tom Sweeney
