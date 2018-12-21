@@ -62,7 +62,7 @@ a single integer which is is incremented after each request.
 
 The following starts my test container:
 ```shell
-$ podman run --security-opt="seccomp=unconfined" --tmpfs /tmp --name podman-criu-test -d docker://docker.io/yovfiatbeb/podman-criu-test
+# podman run --security-opt="seccomp=unconfined" --tmpfs /tmp --name podman-criu-test -d docker://docker.io/yovfiatbeb/podman-criu-test
 ```
 
 As I am running my tests on a RHEL7 system I have to add
@@ -82,7 +82,7 @@ $ curl 10.22.0.53:8080/examples/servlets/servlet/HelloWorldExample
 
 I can now checkpoint the container:
 ```shell
-$ podman container checkpoint podman-criu-test
+# podman container checkpoint podman-criu-test
 ```
 
 Now the container is no longer running and could be restored. If I would
@@ -92,7 +92,7 @@ system before restoring the container. Once the system is up again I can
 restore the container:
 
 ```shell
-$ podman container restore --keep podman-criu-test
+# podman container restore --keep podman-criu-test
 ```
 
 Using `curl` to make requests to the container the result will now **not** start at
