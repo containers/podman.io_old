@@ -63,6 +63,13 @@ authors:
     web: https://redhat.com
     twitter:
     github: mheon
+  tristanC:
+    name: Tristan de Cacqueray
+    display_name: tristanC
+    gravatar:
+    email: tdecacqu@redhat.com
+    twitter:
+    gitub: TristanCacqueray
   tsweeney:
     name: Tom Sweeney
     display_name: Tom Sweeney
