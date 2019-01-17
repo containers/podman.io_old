@@ -177,9 +177,7 @@ $ python -m varlink.cli --bridge "ssh <podman-machine>" call io.podman.Ping {}
 }
 ~~~
 
-### Using varlink with python programmatically
-
-#### Example
+### Python Client Example
 
 `podmanclient.py`:
 ~~~python
@@ -200,6 +198,15 @@ with varlink.Client.new_with_bridge(["ssh", "<podman-machine>"]) as client:
         except varlink.error.VarlinkError as e:
             print(e.error(), e.parameters())
             print(e.as_dict())
+~~~
+
+To find out more about the Podman varlink interface read the [io.podman.varlink](https://github.com/containers/libpod/blob/master/cmd/podman/varlink/io.podman.varlink) file or
+the rendered [API.md](https://github.com/containers/libpod/blob/master/API.md).
+
+Or you can inspect, what methods your Podman version on `<podman-machine>` provides:
+
+~~~bash
+$ python -m varlink.cli --bridge "ssh <podman-machine>" help io.podman
 ~~~
 
 ## Go
@@ -241,7 +248,16 @@ Error: Call failed with error: io.podman.ErrorOccurred
 }
 ~~~
 
-#### Example
+To find out more about the Podman varlink interface read the [io.podman.varlink](https://github.com/containers/libpod/blob/master/cmd/podman/varlink/io.podman.varlink) file or
+the rendered [API.md](https://github.com/containers/libpod/blob/master/API.md).
+
+Or you can inspect, what methods your Podman version on `<podman-machine>` provides:
+
+~~~bash
+$ varlink --bridge "ssh <podman-machine>" help io.podman
+~~~
+
+### Go Client Example
 
 Either clone this [repository](https://github.com/haraldh/podmangoexampleclient) or:
 
@@ -439,7 +455,16 @@ Error: Call failed with error: io.podman.ErrorOccurred
 }
 ~~~
 
-### Create a rust application
+To find out more about the Podman varlink interface read the [io.podman.varlink](https://github.com/containers/libpod/blob/master/cmd/podman/varlink/io.podman.varlink) file or
+the rendered [API.md](https://github.com/containers/libpod/blob/master/API.md).
+
+Or you can inspect, what methods your Podman version on `<podman-machine>` provides:
+
+~~~bash
+$ varlink --bridge "ssh <podman-machine>" help io.podman
+~~~
+
+### Rust Client Example
 
 Either clone this [repository](https://github.com/haraldh/podmanrs) or:
 
