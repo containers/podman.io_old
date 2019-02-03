@@ -9,7 +9,7 @@ tags: boot2podman
 
 {% assign author = site.authors[page.author] %}
 #  Podman Machine and Boot2podman
-## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }}) [Twitter](https://twitter.com/{{ author.twitter }})
+## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }})
 
 By using `podman-machine` and indirectly `boot2podman`, it is easy to get started with podman even if your local host does not support it...
 
