@@ -23,6 +23,11 @@ authors:
     web: https://people.redhat.com/baude/
     twitter: bbaude
     github: baude
+  cevich:
+    name: Chris Evich
+    display_name: Chris Evich
+    email: cevich@redhat.com
+    github: cevich
   dwalsh:
     name: Dan Walsh
     display_name: Dan Walsh
