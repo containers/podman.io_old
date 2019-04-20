@@ -1,0 +1,55 @@
+<head>
+<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+
+<img src="images/podman.svg" alt="podman logo">
+
+<h2>What is Podman?  Simply put: `alias docker=podman`</h2>
+
+Podman is an open-source project that is available on most Linux platforms and resides on <a href="https://github.com/containers/libpod">GitHub</a>.  Podman is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on your Linux System.  Podman provides a Docker-compatible command line front end that can simply alias the Docker cli, `alias docker=podman`.
+<br><br>
+Containers under the control of Podman can either be run by root or by a non-privileged user.  Podman manages the entire container ecosystem which includes pods, containers, container images, and container volumes using the <a href="https://github.com/containers/libpod">libpod</a> library.  Podman specializes in all of the commands and functions that help you to maintain and modify OCI container images, such as pulling and tagging.  It allows you to create, run, and maintain those containers created from those images in a production environment.
+
+<h3>Overview and scope</h3>
+
+At a high level, the scope of libpod and Podman is the following:
+
+<ul>
+<li>Support multiple image formats including the OCI and Docker image formats.</li>
+<li>Support for multiple means to securely download images including trust & image verification.</li>
+<li>Container image management (managing image layers, overlay filesystems, etc).</li>
+<li>Full management of container lifecycle.</li>
+<li>Support for pods to manage groups of containers together.</li>
+<li>Resource isolation of containers and pods.</li>
+</ul>
+
+<h3>Roadmap</h3>
+<ul>
+<li>Allow the Podman CLI to use a Varlink backend to connect to remote Podman instances from Mac and Windows.</li>
+<li>Integrate libpod into CRI-O to replace its existing container management backend.</li>
+<li>Further work on the podman pod command.</li>
+<li>Further improvements on rootless containers.</li>
+</ul>
+
+<h3>Out of scope</h3>
+<ul>
+<li>Specializing in signing and pushing images to various storage backends.
+  See [Skopeo](https://github.com/containers/skopeo/) for those tasks.</li>
+<li>Container runtimes daemons for working with the Kubernetes CRI interface.
+  [CRI-O](https://github.com/kubernetes-sigs/cri-o) specializes in that.</li>
+<li>Supporting `docker-compose`.  We believe that Kubernetes is the defacto
+  standard for composing Pods and for orchestrating containers, making
+  Kubernetes YAML a defacto standard file format. Hence, Podman allows the
+  creation and execution of Pods from a Kubernetes YAML file (see
+  [podman-play-kube](https://github.com/containers/libpod/blob/master/docs/podman-play-kube.1.md)).
+  Podman can also generate Kubernetes YAML based on a container or Pod (see
+  [podman-generate-kube](https://github.com/containers/libpod/blob/master/docs/podman-generate-kube.1.md)),
+  which allows for an easy transition from a local development environment
+  to a production Kubernetes cluster.</li>
+</ul>
+
+<h3>Builds</h3>
+
+This project tests all builds against each supported version of Fedora, the latest released version of Red Hat Enterprise Linux, and the latest Ubuntu Long Term Support release. The community has also reported success with other Linux flavors.
+
+<h4>Last Update: Friday April 19, 2019</h4>
