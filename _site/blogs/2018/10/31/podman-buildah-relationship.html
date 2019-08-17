@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="podman.io" />
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Buildah and Podman Relationship | podman.io</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Buildah and Podman Relationship" />
+<meta name="author" content="tsweeney" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Buildah and Podman Relationship By Tom Sweeney GitHub Twitter Kubernetes installations can be complex with multiple runtime dependencies and runtime engines. CRI-O was created to provide a lightweight runtime for Kubernetes which adds an abstraction layer between the cluster and the runtime that allows for various OCI runtime technologies. However you still have the problem of daemon dependencies in your cluster for builds - I.e. if you are using the cluster for builds you still need a Docker daemon. Enter Buildah. Buildah allows you to have a Kubernetes cluster without any Docker daemon for both runtime and builds. Excellent. But what if things go wrong? What if you want to do troubleshooting or debugging of containers in your cluster? Buildah isn’t really built for that, what you need is a client tool for working with containers and the one that comes to mind is Docker CLI - but then you’re back to using the daemon. This is where Podman steps in. Podman allows you to do all of the Docker commands without the daemon dependency. With Podman you can run, build (it calls Buildah under the covers for this), modify and troubleshoot containers in your Kubernetes cluster. With the two projects together, you have a well rounded solution for your OCI container image and container needs." />
+<meta property="og:description" content="Buildah and Podman Relationship By Tom Sweeney GitHub Twitter Kubernetes installations can be complex with multiple runtime dependencies and runtime engines. CRI-O was created to provide a lightweight runtime for Kubernetes which adds an abstraction layer between the cluster and the runtime that allows for various OCI runtime technologies. However you still have the problem of daemon dependencies in your cluster for builds - I.e. if you are using the cluster for builds you still need a Docker daemon. Enter Buildah. Buildah allows you to have a Kubernetes cluster without any Docker daemon for both runtime and builds. Excellent. But what if things go wrong? What if you want to do troubleshooting or debugging of containers in your cluster? Buildah isn’t really built for that, what you need is a client tool for working with containers and the one that comes to mind is Docker CLI - but then you’re back to using the daemon. This is where Podman steps in. Podman allows you to do all of the Docker commands without the daemon dependency. With Podman you can run, build (it calls Buildah under the covers for this), modify and troubleshoot containers in your Kubernetes cluster. With the two projects together, you have a well rounded solution for your OCI container image and container needs." />
+<link rel="canonical" href="http://0.0.0.0:4000/blogs/2018/10/31/podman-buildah-relationship.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/blogs/2018/10/31/podman-buildah-relationship.html" />
+<meta property="og:site_name" content="podman.io" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-31T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"tsweeney"},"description":"Buildah and Podman Relationship By Tom Sweeney GitHub Twitter Kubernetes installations can be complex with multiple runtime dependencies and runtime engines. CRI-O was created to provide a lightweight runtime for Kubernetes which adds an abstraction layer between the cluster and the runtime that allows for various OCI runtime technologies. However you still have the problem of daemon dependencies in your cluster for builds - I.e. if you are using the cluster for builds you still need a Docker daemon. Enter Buildah. Buildah allows you to have a Kubernetes cluster without any Docker daemon for both runtime and builds. Excellent. But what if things go wrong? What if you want to do troubleshooting or debugging of containers in your cluster? Buildah isn’t really built for that, what you need is a client tool for working with containers and the one that comes to mind is Docker CLI - but then you’re back to using the daemon. This is where Podman steps in. Podman allows you to do all of the Docker commands without the daemon dependency. With Podman you can run, build (it calls Buildah under the covers for this), modify and troubleshoot containers in your Kubernetes cluster. With the two projects together, you have a well rounded solution for your OCI container image and container needs.","@type":"BlogPosting","url":"http://0.0.0.0:4000/blogs/2018/10/31/podman-buildah-relationship.html","headline":"Buildah and Podman Relationship","dateModified":"2018-10-31T00:00:00-05:00","datePublished":"2018-10-31T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blogs/2018/10/31/podman-buildah-relationship.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a5ad4b5b78f492f24c1321a74efdbcc0f20fd4cd">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header"><a href="">Podman</a></h1>
+        <p class="header">Manage pods, containers, and container images.</p>
+
+        <ul>
+          <li><a class="buttons" href="/getting-started">Get Started</a>
+          <li><a class="buttons" href="/community">Join Community</a>
+          <li><a class="buttons" href="/blogs">Blog</a>
+          <li><a class="buttons" href="/releases">Releases</a>
+          <li><a class="buttons" href="/talks">Talks</a>
+          <li><a class="buttons github" href="https://github.com/containers/libpod">View Code</a>
+          <li><a class="buttons github" href="https://github.com/jberkus/podman.io">Edit Website</a>
+        </ul>
+
+        
+          <p class="header">This project is maintained by the <a class="header name" href="https://github.com/jberkus">jberkus</a> organization.</p>
+
+        <p class="header">Subscribe to the <a href="https://podman.io/feed.xml">blog feed</a>.</p>
+        
+
+        
+      </header>
+
+      <section>
+        <p><img src="https://podman.io/images/podman.svg" alt="podman logo" />
+<img src="https://buildah.io/images/buildah.png" alt="buildah logo" /></p>
+
+<h1 id="buildah-and-podman-relationship">Buildah and Podman Relationship</h1>
+<h2 id="by-tom-sweeney-github-twitter">By Tom Sweeney <a href="https://github.com/TomSweeneyRedhat">GitHub</a> <a href="https://twitter.com/TSweeneyRedHat">Twitter</a></h2>
+
+<p>Kubernetes installations can be complex with multiple runtime dependencies and runtime engines.  <a href="http://cri-o.io/">CRI-O</a> was created to provide a lightweight runtime for Kubernetes which adds an abstraction layer between the cluster and the runtime that allows for various OCI runtime technologies.  However you still have the problem of daemon dependencies in your cluster for builds - I.e. if you are using the cluster for builds you still need a Docker daemon.</p>
+
+<p>Enter Buildah.  Buildah allows you to have a Kubernetes cluster without any Docker daemon for both runtime and builds.  Excellent. But what if things go wrong? What if you want to do troubleshooting or debugging of containers in your cluster?  Buildah isn’t really built for that, what you need is a client tool for working with containers and the one that comes to mind is Docker CLI - but then you’re back to using the daemon.</p>
+
+<p>This is where Podman steps in.  Podman allows you to do all of the Docker commands without the daemon dependency.  With Podman you can run, build (it calls Buildah under the covers for this), modify and troubleshoot containers in your Kubernetes cluster.  With the two projects together, you have a well rounded solution for your OCI container image and container needs.</p>
+
+<!--readmore-->
+<p>Buildah and Podman are two complementary Open-source projects that are available on
+most Linux platforms and both projects reside at <a href="https://github.com">GitHub.com</a>
+with Buildah <a href="https://github.com/containers/buildah">here</a> and Podman <a href="https://github.com/containers/libpod">here</a>.  Both Buildah and Podman are command line tools that work on OCI images and containers.  The two projects are related, but differ in their specialization.</p>
+
+<p>Buildah specializes in building OCI images.  Buildah’s commands replicate all
+of the commands that are found in a Dockerfile. Buildah’s goal is also to provide a lower level coreutils interface to build container images, allowing people to build containers without requiring a Dockerfile.  Buildah’s other goal is to allow you to use other scripting languages to build container images without requiring a daemon.</p>
+
+<p>Podman specializes in all of the commands and functions that help you to maintain and modify those OCI container images, such as pulling and tagging.  It also allows you to create, run, and maintain those containers. If you can do a command in the Docker CLI, you can do the same command in the Podman CLI.  In fact you can just alias ‘podman’ for ‘docker’ on your machine and you can then build, create and maintain container images and containers without a daemon being present, just as you always have.</p>
+
+<p>Although Podman uses Buildah’s build functionality under the covers to create a container image, the two projects have differences.  The major difference between Podman and Buildah is their concept of a container. Podman allows users to create <code class="highlighter-rouge">traditional containers</code> and the intent of these containers is to be controlled through the entirety of a container life cycle (pause, checkpoint/restore, etc).  While Buildah containers are really created just to allow content to be added to the container <em>image</em>.  Each project has a separate internal representation of a container that is not shared.  Because of this you cannot see Podman containers from within Buildah or vice versa. However the internal representation of a container image is the same between Buildah and Podman.  Given this, any container image that has been created, pulled or modified by one can be seen and used by the other.</p>
+
+<p>Some of the commands between the two projects overlap significantly but in some cases have slightly different behaviors.  The following table illustrates the commands with some overlap between the projects.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Command</th>
+      <th style="text-align: left">Podman Behavior</th>
+      <th style="text-align: left">Buildah Behavior</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">build</td>
+      <td style="text-align: left">Calls <code class="highlighter-rouge">buildah bud</code></td>
+      <td style="text-align: left">Provides the build-using-dockerfile (bud) command that emulates Docker’s build command.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">commit</td>
+      <td style="text-align: left">Commits a Podman container into a container image.  Does not work on a Buildah container. Once committed the resulting image can be used by either Podman or Buildah.</td>
+      <td style="text-align: left">Commits a Buildah container into a container image. Does not work on a Podman container. Once committed, the resulting image can be used by either Buildah or Podman.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">mount</td>
+      <td style="text-align: left">Mounts a Podman container.  Does not work on a Buildah container.</td>
+      <td style="text-align: left">Mounts a Buildah container. Does not work on a Podman container.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">pull and push</td>
+      <td style="text-align: left">Pull or push an image from a container  image registry. Functionally the same as Buildah.</td>
+      <td style="text-align: left">Pull or push an image from a container  image registry. Functionally the same as Podman.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">run</td>
+      <td style="text-align: left">Run a process in a new container in the same manner as <code class="highlighter-rouge">docker run</code>.</td>
+      <td style="text-align: left">Runs the container in the same way as the RUN command in a Dockerfile.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">rm</td>
+      <td style="text-align: left">Removes a Podman container.  Does not work on a Buildah container.</td>
+      <td style="text-align: left">Removes a Buildah container. Does not work on a Podman container.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">rmi, images, tag</td>
+      <td style="text-align: left">Equivalent on both projects.</td>
+      <td style="text-align: left">Equivalent on both projects.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">containers and ps</td>
+      <td style="text-align: left"><code class="highlighter-rouge">ps</code> is used to list Podman containers.  The <code class="highlighter-rouge">containers</code> command does not exist.</td>
+      <td style="text-align: left">containers is used to list Buildah containers.  The <code class="highlighter-rouge">ps</code> command does not exist.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A quick and easy way to summarize the difference between the two projects is the <code class="highlighter-rouge">buildah run</code> command emulates the RUN command in a Dockerfile while the <code class="highlighter-rouge">podman run</code> command emulates the <code class="highlighter-rouge">docker run</code> command in functionality.</p>
+
+<p>Buildah is an efficient way to create OCI images while Podman allows you to manage and maintain those images and containers in a production environment using familiar container cli commands.  Together they form a strong foundation to support your OCI container image and container needs. Best yet, they are both Open-source projects and you are more than welcome to contribute to either or both projects.  Hope to see you there!</p>
+
+      </section>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

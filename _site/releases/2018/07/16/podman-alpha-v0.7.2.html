@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="podman.io" />
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Podman Alpha version 0.7.2 Release Announcement | podman.io</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Podman Alpha version 0.7.2 Release Announcement" />
+<meta name="author" content="bbaude" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Podman release 0.7.2 As most weeks are, this was fast and furious. You will see hand fulls of significant features below that have been added to podman this week. All of it is awesome work from the core team and its contributors. There were also two interesting features that users will be interested in: the ability to create a container with multiple networks and the podman remote client." />
+<meta property="og:description" content="Podman release 0.7.2 As most weeks are, this was fast and furious. You will see hand fulls of significant features below that have been added to podman this week. All of it is awesome work from the core team and its contributors. There were also two interesting features that users will be interested in: the ability to create a container with multiple networks and the podman remote client." />
+<link rel="canonical" href="http://0.0.0.0:4000/releases/2018/07/16/podman-alpha-v0.7.2.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/releases/2018/07/16/podman-alpha-v0.7.2.html" />
+<meta property="og:site_name" content="podman.io" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-07-16T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"bbaude"},"description":"Podman release 0.7.2 As most weeks are, this was fast and furious. You will see hand fulls of significant features below that have been added to podman this week. All of it is awesome work from the core team and its contributors. There were also two interesting features that users will be interested in: the ability to create a container with multiple networks and the podman remote client.","@type":"BlogPosting","url":"http://0.0.0.0:4000/releases/2018/07/16/podman-alpha-v0.7.2.html","headline":"Podman Alpha version 0.7.2 Release Announcement","dateModified":"2018-07-16T00:00:00-05:00","datePublished":"2018-07-16T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/releases/2018/07/16/podman-alpha-v0.7.2.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a5ad4b5b78f492f24c1321a74efdbcc0f20fd4cd">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header"><a href="">Podman</a></h1>
+        <p class="header">Manage pods, containers, and container images.</p>
+
+        <ul>
+          <li><a class="buttons" href="/getting-started">Get Started</a>
+          <li><a class="buttons" href="/community">Join Community</a>
+          <li><a class="buttons" href="/blogs">Blog</a>
+          <li><a class="buttons" href="/releases">Releases</a>
+          <li><a class="buttons" href="/talks">Talks</a>
+          <li><a class="buttons github" href="https://github.com/containers/libpod">View Code</a>
+          <li><a class="buttons github" href="https://github.com/jberkus/podman.io">Edit Website</a>
+        </ul>
+
+        
+          <p class="header">This project is maintained by the <a class="header name" href="https://github.com/jberkus">jberkus</a> organization.</p>
+
+        <p class="header">Subscribe to the <a href="https://podman.io/feed.xml">blog feed</a>.</p>
+        
+
+        
+      </header>
+
+      <section>
+        <p><img src="https://podman.io/images/podman.svg" alt="podman logo" /></p>
+
+<h1 id="podman-release-072">Podman release 0.7.2</h1>
+<p>As most weeks are, this was fast and furious. You will see hand fulls of significant features below that have been added to podman this week. All of it is awesome work from the core team and its contributors. There were also two interesting features that users will be interested in: the ability to create a container with multiple networks and the podman remote client.</p>
+
+<!--readmore-->
+<p>We have heard from users that they wish to be able to create containers with multiple networks. This can now be done with a combination of CNI configurations and podman. The easiest approach is to take the default podman configuration file <code class="highlighter-rouge">/etc/cni/net.d/87-podman-bridge.conflist</code> and duplicate it. Within the file, change the:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* network name
+* bridge device (cni0 -&gt; cni1)
+* subnet
+</code></pre></div></div>
+
+<p>Then run podman like:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ podman run -it --network=podman,podman2 fedora:28 /bin/bash
+</code></pre></div></div>
+<p>Jhon Honce and I have also been working on a remote client for podman, called pypodman. It is written in Python and allows users to have a podman-like front-end that accesses an actual podman backend on another node. It relies heavily on ssh and we recommend the use of ssh keys to simplify things.</p>
+
+<p>Our vision is this could eventually become useful for those using Macs or Windows as a development environment. Look for more official blogs and write-ups specifically on this.</p>
+
+<p>This is also the release where we start introducing pod concepts. We now have minimal support for pods. Try <code class="highlighter-rouge">podman pod — help</code> for further information.</p>
+
+<h1 id="other-significant-features-include-but-are-not-limited-to">Other significant features include but are not limited to:</h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* More unit tests for the varlink python client
+* Correction behavior for podman stats
+* Add — volumes-from to podman run and create
+* Fix a small regression in our opt handling
+* Add a default AppArmor profile
+* Fix path for rootless containers
+* Varlink API fixes in how we start start and attach to containers
+* Podman ps now reports containers as ‘dead’ instead of ‘unknown’
+* Correct behavior in podman rmi on how to handle parent image deletions
+* Logged output now goes to syslog as well as STDERR
+* When pulling an image by SHA1, we now set the name and tag correctly.
+* Better recording of exit codes for container exits
+</code></pre></div></div>
+
+      </section>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="podman.io" />
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Podman v1.5.0 Released | podman.io</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Podman v1.5.0 Released" />
+<meta name="author" content="mheon" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Podman Release 1.5.0 Podman has gone 1.5! Podman 1.5.0 has been released! We’ve made major improvements to podman exec, podman generate kube, and rootless containers in this release. Stability has also been a focus, and we’ve fixed over 30 bugs and several performance issues. The new 1.5.0 release is available for Fedora and Ubuntu right now!" />
+<meta property="og:description" content="Podman Release 1.5.0 Podman has gone 1.5! Podman 1.5.0 has been released! We’ve made major improvements to podman exec, podman generate kube, and rootless containers in this release. Stability has also been a focus, and we’ve fixed over 30 bugs and several performance issues. The new 1.5.0 release is available for Fedora and Ubuntu right now!" />
+<link rel="canonical" href="http://0.0.0.0:4000/releases/2019/08/14/podman-release-v1.5.0.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/releases/2019/08/14/podman-release-v1.5.0.html" />
+<meta property="og:site_name" content="podman.io" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-08-14T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"mheon"},"description":"Podman Release 1.5.0 Podman has gone 1.5! Podman 1.5.0 has been released! We’ve made major improvements to podman exec, podman generate kube, and rootless containers in this release. Stability has also been a focus, and we’ve fixed over 30 bugs and several performance issues. The new 1.5.0 release is available for Fedora and Ubuntu right now!","@type":"BlogPosting","url":"http://0.0.0.0:4000/releases/2019/08/14/podman-release-v1.5.0.html","headline":"Podman v1.5.0 Released","dateModified":"2019-08-14T00:00:00-05:00","datePublished":"2019-08-14T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/releases/2019/08/14/podman-release-v1.5.0.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a5ad4b5b78f492f24c1321a74efdbcc0f20fd4cd">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header"><a href="">Podman</a></h1>
+        <p class="header">Manage pods, containers, and container images.</p>
+
+        <ul>
+          <li><a class="buttons" href="/getting-started">Get Started</a>
+          <li><a class="buttons" href="/community">Join Community</a>
+          <li><a class="buttons" href="/blogs">Blog</a>
+          <li><a class="buttons" href="/releases">Releases</a>
+          <li><a class="buttons" href="/talks">Talks</a>
+          <li><a class="buttons github" href="https://github.com/containers/libpod">View Code</a>
+          <li><a class="buttons github" href="https://github.com/jberkus/podman.io">Edit Website</a>
+        </ul>
+
+        
+          <p class="header">This project is maintained by the <a class="header name" href="https://github.com/jberkus">jberkus</a> organization.</p>
+
+        <p class="header">Subscribe to the <a href="https://podman.io/feed.xml">blog feed</a>.</p>
+        
+
+        
+      </header>
+
+      <section>
+        <h1 id="podman-release-150">Podman Release 1.5.0</h1>
+
+<p><img src="https://podman.io/images/podman.svg" alt="podman logo" /></p>
+
+<h2 id="podman-has-gone-15">Podman has gone 1.5!</h2>
+
+<p>Podman 1.5.0 has been released! We’ve made major improvements to <code class="highlighter-rouge">podman exec</code>, <code class="highlighter-rouge">podman generate kube</code>, and rootless containers in this release. Stability has also been a focus, and we’ve fixed over 30 bugs and several performance issues. The new 1.5.0 release is available for Fedora and Ubuntu right now!</p>
+
+<!--readmore-->
+
+<p>With this new release, Podman has picked up a number of improvements to core container functionality. The <code class="highlighter-rouge">podman exec</code> command has been completely reworked, including improved handling for attaching to containers. Expect to see more work on <code class="highlighter-rouge">exec</code> in future releases. CGroups have also seen major work, with support for CGroup namespaces via the <code class="highlighter-rouge">--cgroupns</code> flag to <code class="highlighter-rouge">podman create</code> and <code class="highlighter-rouge">podman run</code>, and support for CGroups v2 when using the <code class="highlighter-rouge">crun</code> OCI runtime - more details <a href="https://www.scrivano.org/2019/05/12/rootless-resources-management-with-podman-on-fedora-30/">here</a>. The <code class="highlighter-rouge">podman generate kube</code> command has also been improved and now includes volumes mounted into containers. Finally, we’ve addressed several memory leaks and other performance issues, and Podman should be much more responsive on systems under high load.</p>
+
+<p>Rootless containers have also been improved, featuring improved handling for privileged containers and the ability to use container health checks. Podman now has experimental support for running rootless containers with a single UID and GID using the new <code class="highlighter-rouge">ignore_chown_errors</code> storage option. This allows Podman to be run without the <code class="highlighter-rouge">newuidmap</code> and <code class="highlighter-rouge">newgidmap</code> binaries, and removes the need for any elevated privileges to start rootless containers. This approach is more limited (but more secure) than normal rootless containers.</p>
+
+<p>As always, please visit our release notes on <a href="https://github.com/containers/libpod/blob/master/RELEASE_NOTES.md">GitHub</a> to see the full changelog.</p>
+
+<p>You can find instructions for installing Podman <a href="https://github.com/containers/libpod/blob/master/install.md">here</a>.</p>
+
+      </section>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

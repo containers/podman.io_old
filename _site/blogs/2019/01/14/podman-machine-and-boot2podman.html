@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="podman.io" />
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Podman Machine and Boot2podman | podman.io</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Podman Machine and Boot2podman" />
+<meta name="author" content="afbjorklund" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Podman Machine and Boot2podman By Anders Björklund GitHub By using podman-machine and indirectly boot2podman, it is easy to get started with podman even if your local host does not support it… It will start a virtual machine, with everything to run containers. This includes podman and buildah, and remote access over varlink." />
+<meta property="og:description" content="Podman Machine and Boot2podman By Anders Björklund GitHub By using podman-machine and indirectly boot2podman, it is easy to get started with podman even if your local host does not support it… It will start a virtual machine, with everything to run containers. This includes podman and buildah, and remote access over varlink." />
+<link rel="canonical" href="http://0.0.0.0:4000/blogs/2019/01/14/podman-machine-and-boot2podman.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/blogs/2019/01/14/podman-machine-and-boot2podman.html" />
+<meta property="og:site_name" content="podman.io" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-14T00:00:00-06:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"afbjorklund"},"description":"Podman Machine and Boot2podman By Anders Björklund GitHub By using podman-machine and indirectly boot2podman, it is easy to get started with podman even if your local host does not support it… It will start a virtual machine, with everything to run containers. This includes podman and buildah, and remote access over varlink.","@type":"BlogPosting","url":"http://0.0.0.0:4000/blogs/2019/01/14/podman-machine-and-boot2podman.html","headline":"Podman Machine and Boot2podman","dateModified":"2019-01-14T00:00:00-06:00","datePublished":"2019-01-14T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blogs/2019/01/14/podman-machine-and-boot2podman.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a5ad4b5b78f492f24c1321a74efdbcc0f20fd4cd">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header"><a href="">Podman</a></h1>
+        <p class="header">Manage pods, containers, and container images.</p>
+
+        <ul>
+          <li><a class="buttons" href="/getting-started">Get Started</a>
+          <li><a class="buttons" href="/community">Join Community</a>
+          <li><a class="buttons" href="/blogs">Blog</a>
+          <li><a class="buttons" href="/releases">Releases</a>
+          <li><a class="buttons" href="/talks">Talks</a>
+          <li><a class="buttons github" href="https://github.com/containers/libpod">View Code</a>
+          <li><a class="buttons github" href="https://github.com/jberkus/podman.io">Edit Website</a>
+        </ul>
+
+        
+          <p class="header">This project is maintained by the <a class="header name" href="https://github.com/jberkus">jberkus</a> organization.</p>
+
+        <p class="header">Subscribe to the <a href="https://podman.io/feed.xml">blog feed</a>.</p>
+        
+
+        
+      </header>
+
+      <section>
+        <p><img src="https://raw.githubusercontent.com/boot2podman/boot2podman/master/logo.png" alt="boot2podman logo" /></p>
+
+<h1 id="podman-machine-and-boot2podman">Podman Machine and Boot2podman</h1>
+<h2 id="by-anders-björklund-github">By Anders Björklund <a href="https://github.com/afbjorklund">GitHub</a></h2>
+
+<p>By using <code class="highlighter-rouge">podman-machine</code> and indirectly <code class="highlighter-rouge">boot2podman</code>, it is easy to get started with podman even if your local host does not support it…</p>
+
+<p>It will start a virtual machine, with everything to run containers. This includes <code class="highlighter-rouge">podman</code> and <code class="highlighter-rouge">buildah</code>, and remote access over <code class="highlighter-rouge">varlink</code>.</p>
+
+<!--readmore-->
+
+<p>The command-line tool <code class="highlighter-rouge">podman-machine</code> is a simple way to create virtual machines running <code class="highlighter-rouge">boot2podman.iso</code>.
+It will create a “machine” with Linux prepared for running Linux containers, with <a href="https://podman.io">Podman</a> and <a href="https://buildah.io">Buildah</a> (and their dependencies) pre-installed.</p>
+
+<p>This way any client will be able to run containers, even though not possible on their operating system.
+Whether their Linux distribution is too old or too unprivileged, or if they are running Windows or OS X operating systems without native Linux support.</p>
+
+<h2 id="podman-machine">Podman Machine</h2>
+
+<p>Machine lets you create servers with Podman, then configures the Podman clients.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> podman-machine create box
+<span class="gp">$</span> podman-machine ssh box
+<span class="go">
+</span><span class="gp">tc@box:~$</span> <span class="nb">sudo </span>podman
+</code></pre></div></div>
+
+<p>Will automatically download the latest version of the ISO, if not available in the cache.</p>
+
+<p><em>See:</em> <a href="https://github.com/boot2podman/machine">https://github.com/boot2podman/machine</a></p>
+
+<h2 id="boot2podman-iso">Boot2Podman ISO</h2>
+
+<p>Boot2podman is a lightweight Linux distribution made specifically to run Linux containers.</p>
+
+<ul>
+  <li>Tiny Core Linux 9.x (x86_64)</li>
+  <li>Buildah / Varlink / Podman</li>
+</ul>
+
+<p>The distribution runs entirely from RAM, while persisting the containers and ssh keys.</p>
+
+<p><em>See:</em> <a href="https://github.com/boot2podman/boot2podman">https://github.com/boot2podman/boot2podman</a></p>
+
+<h2 id="remote-access">Remote Access</h2>
+
+<p>It is possible to use the <code class="highlighter-rouge">pypodman</code> commmand-line tool, to control podman remotely:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> <span class="nb">eval</span> <span class="k">$(</span>podman-machine env box<span class="k">)</span>
+<span class="gp">$</span> pypodman version
+</code></pre></div></div>
+
+<p><a href="https://github.com/containers/python-podman">https://github.com/containers/python-podman</a></p>
+
+<p>Or alternatively to use the <code class="highlighter-rouge">varlink-go</code> command-line tool, to access the podman API:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> <span class="nb">eval</span> <span class="k">$(</span>podman-machine env box <span class="nt">--varlink</span><span class="k">)</span>
+<span class="gp">$</span> varlink-go call io.podman.GetVersion
+</code></pre></div></div>
+<p><a href="https://github.com/boot2podman/varlink-go">https://github.com/boot2podman/varlink-go</a></p>
+
+<p>Both methods use SSH, in order to access the podman varlink socket of the VM.</p>
+
+<p>The SSH keys and other configuration is automatically created with the machine.</p>
+
+<h2 id="tiny-core">Tiny Core</h2>
+
+<p>The regular <code class="highlighter-rouge">boot2podman.iso</code> is based on <a href="http://tinycorelinux.net/">Tiny Core Linux</a>:</p>
+
+<p><a href="https://github.com/boot2podman/boot2podman/releases">https://github.com/boot2podman/boot2podman/releases</a></p>
+
+<p>This is a minimal system, that runs entirely from RAM and uses <code class="highlighter-rouge">init(1)</code>.</p>
+
+<p>The package manager uses TCZ packages, handled by the <code class="highlighter-rouge">tce-load</code> program.</p>
+
+<p><em>See:</em> <a href="https://en.wikipedia.org/wiki/Tiny_Core_Linux">https://en.wikipedia.org/wiki/Tiny_Core_Linux</a></p>
+
+<h2 id="fedora">Fedora</h2>
+
+<p>There is also an alternative version, based on <a href="https://getfedora.org/">Fedora Linux</a>:</p>
+
+<p><a href="https://github.com/boot2podman/boot2podman-fedora-iso/releases">https://github.com/boot2podman/boot2podman-fedora-iso/releases</a></p>
+
+<p>This is a full system, that boots a regular image and uses <code class="highlighter-rouge">systemd(1)</code>.</p>
+
+<p>The package manager uses RPM packages, handled by the <code class="highlighter-rouge">dnf</code> program.</p>
+
+<p><em>See:</em> <a href="https://en.wikipedia.org/wiki/Fedora_(operating_system)">https://en.wikipedia.org/wiki/Fedora_(operating_system)</a></p>
+
+<p>Both versions will do the same thing, in that they will both offer the Podman varlink socket.</p>
+
+<p>The Podman Machine can set up virtual machines for either, by using the “url” parameters.</p>
+
+<hr />
+
+<p>For more posts about boot2podman, see: <a href="https://boot2podman.github.io/">https://boot2podman.github.io/</a></p>
+
+      </section>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

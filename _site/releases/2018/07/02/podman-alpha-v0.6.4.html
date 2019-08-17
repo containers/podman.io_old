@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="podman.io" />
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Podman Alpha version 0.6.4 Release Announcement | podman.io</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Podman Alpha version 0.6.4 Release Announcement" />
+<meta name="author" content="bbaude" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Podman release 0.6.4 This afternoon we were able to overcome some last minute bugs and release a new Podman. The packages are building in Fedora and will work their way through Fedora’s bodhi system. For giggles, I looked at the number of individual contributors this week and was glad to see the number at 10. Mainly bugfixes this week, one big one was that we do a better job cleaning up containers that run in the back ground." />
+<meta property="og:description" content="Podman release 0.6.4 This afternoon we were able to overcome some last minute bugs and release a new Podman. The packages are building in Fedora and will work their way through Fedora’s bodhi system. For giggles, I looked at the number of individual contributors this week and was glad to see the number at 10. Mainly bugfixes this week, one big one was that we do a better job cleaning up containers that run in the back ground." />
+<link rel="canonical" href="http://0.0.0.0:4000/releases/2018/07/02/podman-alpha-v0.6.4.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/releases/2018/07/02/podman-alpha-v0.6.4.html" />
+<meta property="og:site_name" content="podman.io" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-07-02T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"bbaude"},"description":"Podman release 0.6.4 This afternoon we were able to overcome some last minute bugs and release a new Podman. The packages are building in Fedora and will work their way through Fedora’s bodhi system. For giggles, I looked at the number of individual contributors this week and was glad to see the number at 10. Mainly bugfixes this week, one big one was that we do a better job cleaning up containers that run in the back ground.","@type":"BlogPosting","url":"http://0.0.0.0:4000/releases/2018/07/02/podman-alpha-v0.6.4.html","headline":"Podman Alpha version 0.6.4 Release Announcement","dateModified":"2018-07-02T00:00:00-05:00","datePublished":"2018-07-02T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/releases/2018/07/02/podman-alpha-v0.6.4.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a5ad4b5b78f492f24c1321a74efdbcc0f20fd4cd">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header"><a href="">Podman</a></h1>
+        <p class="header">Manage pods, containers, and container images.</p>
+
+        <ul>
+          <li><a class="buttons" href="/getting-started">Get Started</a>
+          <li><a class="buttons" href="/community">Join Community</a>
+          <li><a class="buttons" href="/blogs">Blog</a>
+          <li><a class="buttons" href="/releases">Releases</a>
+          <li><a class="buttons" href="/talks">Talks</a>
+          <li><a class="buttons github" href="https://github.com/containers/libpod">View Code</a>
+          <li><a class="buttons github" href="https://github.com/jberkus/podman.io">Edit Website</a>
+        </ul>
+
+        
+          <p class="header">This project is maintained by the <a class="header name" href="https://github.com/jberkus">jberkus</a> organization.</p>
+
+        <p class="header">Subscribe to the <a href="https://podman.io/feed.xml">blog feed</a>.</p>
+        
+
+        
+      </header>
+
+      <section>
+        <p><img src="https://podman.io/images/podman.svg" alt="podman logo" /></p>
+
+<h1 id="podman-release-064">Podman release 0.6.4</h1>
+<p>This afternoon we were able to overcome some last minute bugs and release a new Podman. The packages are building in Fedora and will work their way through Fedora’s bodhi system. For giggles, I looked at the number of individual contributors this week and was glad to see the number at 10.</p>
+
+<p>Mainly bugfixes this week, one big one was that we do a better job cleaning up containers that run in the back ground.
+<!--readmore--></p>
+
+<p><strong>podman container cleanup</strong> was added to cleanup mountpoint, cgroups and network configuration when containers exit. When a container is run in background mode (-d), the podman command exits, but <strong>conmon</strong> continues to run and monitor the container, when the container exits, conmon executes podman container cleanup to cleanup the container.</p>
+
+<p>There were a number of bug fixes and a lot of vendoring new code — Golang speak for updating the code we depend on from other projects. Interesting things are in store for podman in the upcoming weeks. Stay tuned!</p>
+
+<p>I missed writing this blog the last couple of weeks, and wanted to point out a huge new feature from the <strong>buildah project</strong>. <strong>podman build</strong> now supports layering. As you may know podman build by default only adds one layer when processing a Dockerfile. This is different the <strong>docker build</strong>. Docker defaults to layering each line in the Dockerfile, which makes the creation of an application easier, since docker build jumps to the first line changed in the Dockerfile since the privious build. Podman build on the other hand starts at the beginning, which works better in using a Dockerfile in a build system. With the introducion of the — layers flag, you can now get the same behaviour in podman build that you have in docker build, incremental changes to the Dockerfile will start the build at the change point rather then in the begining. There is even a environment variable BUILDAH_LAYERS which can be set to default to the layers method.</p>
+
+<h2 id="notable-features-include">Notable features include:</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* Continued work on podman remote client. A mock up of a podman remote client went into the contrib/ section of our repository. This is not ready for anyone but Jhon Honce as the primary contributor to the python library code.
+* Continued work on running podman without requiring you to be root. Guiseppe Scrivano made a bunch of commits related to rootless containers.
+* added podman-image and podman-container man page links
+* fixed a fatal error where when a container disappeared during podman ps.
+* added an authfile option to podman search to deal with private registries.
+* fixed a bug related to container startup and attached mode.
+* building podman with varlink support is now optionional.
+</code></pre></div></div>
+
+      </section>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

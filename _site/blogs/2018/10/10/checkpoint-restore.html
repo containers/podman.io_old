@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="podman.io" />
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Adding checkpoint/restore support to Podman | podman.io</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Adding checkpoint/restore support to Podman" />
+<meta name="author" content="Adrian Reber" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Adding checkpoint/restore support to Podman By Adrian Reber With the help of Checkpoint/Restore In Userspace (CRIU) I was able to add initial checkpoint/restore support to Podman. Using checkpoint/restore it is now possible to resume a container after a reboot at exactly the same point in time it was checkpointed." />
+<meta property="og:description" content="Adding checkpoint/restore support to Podman By Adrian Reber With the help of Checkpoint/Restore In Userspace (CRIU) I was able to add initial checkpoint/restore support to Podman. Using checkpoint/restore it is now possible to resume a container after a reboot at exactly the same point in time it was checkpointed." />
+<link rel="canonical" href="http://0.0.0.0:4000/blogs/2018/10/10/checkpoint-restore.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/blogs/2018/10/10/checkpoint-restore.html" />
+<meta property="og:site_name" content="podman.io" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-10T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Adrian Reber"},"description":"Adding checkpoint/restore support to Podman By Adrian Reber With the help of Checkpoint/Restore In Userspace (CRIU) I was able to add initial checkpoint/restore support to Podman. Using checkpoint/restore it is now possible to resume a container after a reboot at exactly the same point in time it was checkpointed.","@type":"BlogPosting","url":"http://0.0.0.0:4000/blogs/2018/10/10/checkpoint-restore.html","headline":"Adding checkpoint/restore support to Podman","dateModified":"2018-10-10T00:00:00-05:00","datePublished":"2018-10-10T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blogs/2018/10/10/checkpoint-restore.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a5ad4b5b78f492f24c1321a74efdbcc0f20fd4cd">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header"><a href="">Podman</a></h1>
+        <p class="header">Manage pods, containers, and container images.</p>
+
+        <ul>
+          <li><a class="buttons" href="/getting-started">Get Started</a>
+          <li><a class="buttons" href="/community">Join Community</a>
+          <li><a class="buttons" href="/blogs">Blog</a>
+          <li><a class="buttons" href="/releases">Releases</a>
+          <li><a class="buttons" href="/talks">Talks</a>
+          <li><a class="buttons github" href="https://github.com/containers/libpod">View Code</a>
+          <li><a class="buttons github" href="https://github.com/jberkus/podman.io">Edit Website</a>
+        </ul>
+
+        
+          <p class="header">This project is maintained by the <a class="header name" href="https://github.com/jberkus">jberkus</a> organization.</p>
+
+        <p class="header">Subscribe to the <a href="https://podman.io/feed.xml">blog feed</a>.</p>
+        
+
+        
+      </header>
+
+      <section>
+        <p><img src="https://podman.io/images/podman.svg" alt="podman logo" /></p>
+
+<h1 id="adding-checkpointrestore-support-to-podman">Adding checkpoint/restore support to Podman</h1>
+<h2 id="by-adrian-reber">By Adrian Reber</h2>
+
+<p>With the help of <a href="https://criu.org">Checkpoint/Restore In Userspace (CRIU)</a> I
+was able to add initial checkpoint/restore support to Podman. Using
+checkpoint/restore it is now possible to resume a container after a reboot at
+exactly the same point in time it was checkpointed.</p>
+
+<!--readmore-->
+
+<p>In January 2018 I started to think about bringing checkpoint/restore support to
+Podman. After a few initial discussions I started to actually look at the
+necessary code changes. As Podman uses
+<a href="https://github.com/opencontainers/runc">runc</a> to run containers the initial
+support for checkpointing containers was implemented pretty fast. Restoring was
+a bit more complicated as it required additional changes to
+<a href="https://github.com/kubernetes-sigs/cri-o/pull/1427">conmon</a>.</p>
+
+<p>At that point I was able to checkpoint and restore a simple container.</p>
+
+<p>To make checkpointing and restoring containers actually useful the restored
+container needs to have the same IP address as the checkpointed container. That
+was the point where the implementation got a bit complicated.</p>
+
+<p>Although having worked on and with different container runtime’s
+checkpoint/restore support I never had a closer look at the networking setup.
+It always worked. With Podman it did not at the beginning. The biggest
+difference is, as far as I understand it right now, is that Podman uses
+<a href="https://github.com/containernetworking/cni">Container Network Interface (CNI)</a>
+to configure the container’s network. CNI creates a network namespace and after
+configuring it tells <code class="highlighter-rouge">runc</code> to use that network namespace for the container.</p>
+
+<p>The difference with this setup is that other container runtimes did not really
+care about the actual name of the network namespace and CRIU just created on
+restore a <strong>new</strong> network namespace with the same properties as during checkpoint.
+So a new network namespace was created. For Podman this needs to be different.
+CRIU needs to ignore/skip the network namespace and to handle this correctly I
+had to adapt runc
+(<a href="https://github.com/opencontainers/runc/pull/1849">Add support to checkpoint and restore into external network namespaces</a>)
+as well as CRIU
+(<a href="https://github.com/checkpoint-restore/criu/commit/a8a3eb902305f0af603afa4c95b1b632fe7bd149">criu: add support for external net namespaces </a>).</p>
+
+<p>So after spending time on <code class="highlighter-rouge">runc</code> and CRIU I was able to return to Podman and
+implement the <a href="https://github.com/containers/libpod/pull/469">necessary changes</a>
+which have been merged into Podman at the beginning of October 2018.</p>
+
+<p>With all the background information out of the way, now finally some examples
+how checkpoint/restore can be used in Podman. In my example I am using a
+container running <a href="http://tomcat.apache.org/">Apache Tomcat</a> with a slightly
+modified HelloWorldExample.  The HelloWorldExample has been modified to return
+a single integer which is is incremented after each request.</p>
+
+<p>The following starts my test container:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># podman run --security-opt="seccomp=unconfined" --tmpfs /tmp --name podman-criu-test -d docker://docker.io/yovfiatbeb/podman-criu-test</span>
+</code></pre></div></div>
+
+<p>As I am running my tests on a RHEL7 system I have to add
+<code class="highlighter-rouge">--security-opt="seccomp=unconfined"</code> because CRIU cannot correctly handle
+<code class="highlighter-rouge">seccomp</code> on RHEL7. The option <code class="highlighter-rouge">--tmpfs /tmp</code> is necessary as <code class="highlighter-rouge">tomcat</code> creates
+temporary files in <code class="highlighter-rouge">/tmp</code> which are only correctly restored by CRIU if <code class="highlighter-rouge">/tmp</code>
+is a <code class="highlighter-rouge">tmpfs</code>.</p>
+
+<p>Once the container is up and running I can use <code class="highlighter-rouge">curl</code> to make requests to <code class="highlighter-rouge">tomcat</code>:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl 10.22.0.53:8080/examples/servlets/servlet/HelloWorldExample
+1
+<span class="nv">$ </span>curl 10.22.0.53:8080/examples/servlets/servlet/HelloWorldExample
+2
+</code></pre></div></div>
+
+<p>I can now checkpoint the container:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># podman container checkpoint podman-criu-test</span>
+</code></pre></div></div>
+
+<p>Now the container is no longer running and could be restored. If I would
+restore the container now the result would basically be the same as pausing and
+unpausing the container. To make checkpointing useful I am now rebooting the
+system before restoring the container. Once the system is up again I can
+restore the container:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># podman container restore --keep podman-criu-test</span>
+</code></pre></div></div>
+
+<p>Using <code class="highlighter-rouge">curl</code> to make requests to the container the result will now <strong>not</strong> start at
+‘1’ again, but continue at the previous value:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl 10.22.0.53:8080/examples/servlets/servlet/HelloWorldExample
+3
+<span class="nv">$ </span>curl 10.22.0.53:8080/examples/servlets/servlet/HelloWorldExample
+4
+<span class="nv">$ </span>curl 10.22.0.53:8080/examples/servlets/servlet/HelloWorldExample
+5
+</code></pre></div></div>
+
+<p>As I have been using the <code class="highlighter-rouge">--keep</code> flag during restore, Podman has not deleted
+the checkpoint after the restore, which would be the normal operation. If I
+reboot the system again I can restore the container again:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>podman container restore <span class="nt">--keep</span> podman-criu-test
+</code></pre></div></div>
+<p>And now the result from <code class="highlighter-rouge">curl</code> is the same as before:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl 10.22.0.53:8080/examples/servlets/servlet/HelloWorldExample
+3
+<span class="nv">$ </span>curl 10.22.0.53:8080/examples/servlets/servlet/HelloWorldExample
+4
+<span class="nv">$ </span>curl 10.22.0.53:8080/examples/servlets/servlet/HelloWorldExample
+5
+</code></pre></div></div>
+
+<p>So right now checkpointing and restoring can be used as either a stateful
+pause/unpause between reboots or as way to go back in time of the container’s
+life.</p>
+
+<p>I recorded all those steps in the demo below:</p>
+
+<p><a href="https://asciinema.org/a/FsTbx9mZkzeuhCM2pFOr1tujM" target="_blank"><img src="https://asciinema.org/a/FsTbx9mZkzeuhCM2pFOr1tujM.png" width="650" /></a></p>
+
+<p>The checkpoint/restore support in Podman is still very new and requires a git
+checkout of CRIU using the <code class="highlighter-rouge">criu-dev</code> branch to work right now. The necessary
+CRIU changes will be in the upcoming CRIU 3.11 release. <code class="highlighter-rouge">runc</code> and <code class="highlighter-rouge">conmon</code>
+also need to be new enough for checkpoint/restore to work.</p>
+
+<p>Currently only checkpoint/restore on the same system is supported, but to
+make this feature really interesting it would be nice to be able to
+migrate containers. To make container migration easy I want to offer
+the possibility to easily export the checkpoint and appropriate container
+state from one Podman instance to another Podman instance to be able to
+restore the checkpointed container.</p>
+
+      </section>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

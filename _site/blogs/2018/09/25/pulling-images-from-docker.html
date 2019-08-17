@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="podman.io" />
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Cool thing: Pulling content directly from the Docker Daemon… | podman.io</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Cool thing: Pulling content directly from the Docker Daemon…" />
+<meta name="author" content="dwalsh" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Pulling content directly from the Docker Daemon… By Dan Walsh GitHub Twitter Cool things you can do with Podman. I recently received a bug report about some huge container images not working correctly in Docker. So I suggested to the reporter that they try them with Podman. He responded that he saw the images with docker images, but did not see them with podman images. I explained to him that the Docker image and container database are separate from the Podman image and container database. I told him he would have to pull the images into Podman. Then I decided to try a cool feature of Podman, where I could pull images directly out of the Docker daemon." />
+<meta property="og:description" content="Pulling content directly from the Docker Daemon… By Dan Walsh GitHub Twitter Cool things you can do with Podman. I recently received a bug report about some huge container images not working correctly in Docker. So I suggested to the reporter that they try them with Podman. He responded that he saw the images with docker images, but did not see them with podman images. I explained to him that the Docker image and container database are separate from the Podman image and container database. I told him he would have to pull the images into Podman. Then I decided to try a cool feature of Podman, where I could pull images directly out of the Docker daemon." />
+<link rel="canonical" href="http://0.0.0.0:4000/blogs/2018/09/25/pulling-images-from-docker.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/blogs/2018/09/25/pulling-images-from-docker.html" />
+<meta property="og:site_name" content="podman.io" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-09-25T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"dwalsh"},"description":"Pulling content directly from the Docker Daemon… By Dan Walsh GitHub Twitter Cool things you can do with Podman. I recently received a bug report about some huge container images not working correctly in Docker. So I suggested to the reporter that they try them with Podman. He responded that he saw the images with docker images, but did not see them with podman images. I explained to him that the Docker image and container database are separate from the Podman image and container database. I told him he would have to pull the images into Podman. Then I decided to try a cool feature of Podman, where I could pull images directly out of the Docker daemon.","@type":"BlogPosting","url":"http://0.0.0.0:4000/blogs/2018/09/25/pulling-images-from-docker.html","headline":"Cool thing: Pulling content directly from the Docker Daemon…","dateModified":"2018-09-25T00:00:00-05:00","datePublished":"2018-09-25T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blogs/2018/09/25/pulling-images-from-docker.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a5ad4b5b78f492f24c1321a74efdbcc0f20fd4cd">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header"><a href="">Podman</a></h1>
+        <p class="header">Manage pods, containers, and container images.</p>
+
+        <ul>
+          <li><a class="buttons" href="/getting-started">Get Started</a>
+          <li><a class="buttons" href="/community">Join Community</a>
+          <li><a class="buttons" href="/blogs">Blog</a>
+          <li><a class="buttons" href="/releases">Releases</a>
+          <li><a class="buttons" href="/talks">Talks</a>
+          <li><a class="buttons github" href="https://github.com/containers/libpod">View Code</a>
+          <li><a class="buttons github" href="https://github.com/jberkus/podman.io">Edit Website</a>
+        </ul>
+
+        
+          <p class="header">This project is maintained by the <a class="header name" href="https://github.com/jberkus">jberkus</a> organization.</p>
+
+        <p class="header">Subscribe to the <a href="https://podman.io/feed.xml">blog feed</a>.</p>
+        
+
+        
+      </header>
+
+      <section>
+        <p><img src="https://podman.io/images/podman.svg" alt="podman logo" /></p>
+
+<h1 id="pulling-content-directly-from-the-docker-daemon">Pulling content directly from the Docker Daemon…</h1>
+<h2 id="by-dan-walsh-github-twitter">By Dan Walsh <a href="https://github.com/rhatdan">GitHub</a> <a href="https://twitter.com/rhatdan">Twitter</a></h2>
+
+<h2 id="cool-things-you-can-do-with-podman">Cool things you can do with Podman.</h2>
+
+<p>I recently received a bug report about some huge container images not working correctly in Docker.  So I suggested to the reporter that they try them with Podman.  He responded that he saw the images with docker images, but did not see them with podman images.</p>
+
+<p>I explained to him that the Docker image and container database are separate from the Podman image and container database.  I told him he would have to pull the images into Podman.  Then I decided to try a cool feature of Podman, where I could pull images directly out of the Docker daemon.</p>
+
+<!--readmore-->
+<h3 id="first-i-look-for-the-centos-image-inside-of-docker">First I look for the Centos Image inside of Docker.</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># docker images | grep centos
+docker.io/centos                  	7               	49f7960eb7e4    	2 months ago    	200 MB
+</code></pre></div></div>
+<p>Podman has the ability through its use of containers/image to pull images using many different transports other than just pulling from Container Registries.  It supports pulling directly from the Docker daemon, using the docker-daemon transport.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># podman pull docker-daemon:docker.io/centos:7
+Getting image source signatures
+Copying blob sha256:bcc97fbfc9e1a709f0eb78c1da59caeb65f43dc32cd5deeb12b8c1784e5b8237
+ 198.59 MB / 198.59 MB [====================================================] 1s
+Copying config sha256:49f7960eb7e4cb46f1a02c1f8174c6fac07ebf1eb6d8deffbcb5c695f1c9edd5
+ 2.15 KB / 2.15 KB [========================================================] 0s
+Writing manifest to image destination
+Storing signatures
+49f7960eb7e4cb46f1a02c1f8174c6fac07ebf1eb6d8deffbcb5c695f1c9edd5
+</code></pre></div></div>
+
+<p>Now you have the Centos 7 image in Podman containers/storage datastore.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#podman images | grep centos
+docker.io/library/centos        	7    	49f7960eb7e4   2 months ago   .com208MB
+</code></pre></div></div>
+<p>Now you can start using the image with Podman, Buildah and CRI-O.
+You can even create new images and push them back into the Docker daemon.</p>
+
+<h3 id="try-it-out">Try it out…</h3>
+
+
+      </section>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

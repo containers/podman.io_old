@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="podman.io" />
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Programmatic remote access to Podman via the varlink protocol | podman.io</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Programmatic remote access to Podman via the varlink protocol" />
+<meta name="author" content="haraldh" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Programmatic remote access to Podman via the varlink protocol By Harald Hoyer GitHub Twitter This guide shows how to access Podman remotely via the varlink interface with CLI tools and programmatically with python, go and rust. This should work on Linux, MacOS and Windows 10. The compatibility matrix shows which feature is supported on which OS in which language. Note: replace &lt;podman-machine&gt; in this guide with the IP or hostname of your Podman machine" />
+<meta property="og:description" content="Programmatic remote access to Podman via the varlink protocol By Harald Hoyer GitHub Twitter This guide shows how to access Podman remotely via the varlink interface with CLI tools and programmatically with python, go and rust. This should work on Linux, MacOS and Windows 10. The compatibility matrix shows which feature is supported on which OS in which language. Note: replace &lt;podman-machine&gt; in this guide with the IP or hostname of your Podman machine" />
+<link rel="canonical" href="http://0.0.0.0:4000/blogs/2019/01/16/podman-varlink.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/blogs/2019/01/16/podman-varlink.html" />
+<meta property="og:site_name" content="podman.io" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-16T00:00:00-06:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"haraldh"},"description":"Programmatic remote access to Podman via the varlink protocol By Harald Hoyer GitHub Twitter This guide shows how to access Podman remotely via the varlink interface with CLI tools and programmatically with python, go and rust. This should work on Linux, MacOS and Windows 10. The compatibility matrix shows which feature is supported on which OS in which language. Note: replace &lt;podman-machine&gt; in this guide with the IP or hostname of your Podman machine","@type":"BlogPosting","url":"http://0.0.0.0:4000/blogs/2019/01/16/podman-varlink.html","headline":"Programmatic remote access to Podman via the varlink protocol","dateModified":"2019-01-16T00:00:00-06:00","datePublished":"2019-01-16T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blogs/2019/01/16/podman-varlink.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a5ad4b5b78f492f24c1321a74efdbcc0f20fd4cd">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header"><a href="">Podman</a></h1>
+        <p class="header">Manage pods, containers, and container images.</p>
+
+        <ul>
+          <li><a class="buttons" href="/getting-started">Get Started</a>
+          <li><a class="buttons" href="/community">Join Community</a>
+          <li><a class="buttons" href="/blogs">Blog</a>
+          <li><a class="buttons" href="/releases">Releases</a>
+          <li><a class="buttons" href="/talks">Talks</a>
+          <li><a class="buttons github" href="https://github.com/containers/libpod">View Code</a>
+          <li><a class="buttons github" href="https://github.com/jberkus/podman.io">Edit Website</a>
+        </ul>
+
+        
+          <p class="header">This project is maintained by the <a class="header name" href="https://github.com/jberkus">jberkus</a> organization.</p>
+
+        <p class="header">Subscribe to the <a href="https://podman.io/feed.xml">blog feed</a>.</p>
+        
+
+        
+      </header>
+
+      <section>
+        <p><img src="https://podman.io/images/podman.svg" alt="podman logo" /></p>
+
+<h1 id="programmatic-remote-access-to-podman-via-the-varlink-protocol">Programmatic remote access to Podman via the varlink protocol</h1>
+<h2 id="by-harald-hoyer-github-twitter">By Harald Hoyer <a href="https://github.com/haraldh">GitHub</a> <a href="https://twitter.com/haraldhoyer">Twitter</a></h2>
+
+<p>This guide shows how to access Podman remotely via the <a href="https://varlink.org">varlink interface</a>
+with CLI tools and programmatically with python, go and rust.</p>
+
+<p>This should work on Linux, MacOS and Windows 10.</p>
+
+<p>The <a href="https://varlink.org/Language-Bindings">compatibility matrix</a> shows which feature is supported on which OS in which language.</p>
+
+<blockquote>
+  <p>Note: replace <code class="highlighter-rouge">&lt;podman-machine&gt;</code> in this guide with the IP or hostname of your
+Podman machine</p>
+</blockquote>
+
+<!--readmore-->
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<h3 id="windows-ssh">Windows ssh</h3>
+<p>If you are on a windows client machine, install the OpenSSH Client built by Microsoft in a cmd.exe in 
+admin mode:</p>
+
+<pre><code class="language-cmd">&gt; dism /online /Add-Capability /CapabilityName:OpenSSH.Client~~~~0.0.1.0
+</code></pre>
+
+<p>Close cmd.exe window.</p>
+
+<blockquote>
+  <p>Note: Works also with other ssh clients, e.g. ssh from <a href="https://gitforwindows.org/">Git Bash</a>.</p>
+</blockquote>
+
+<h3 id="generate-ssh-keys">Generate ssh keys</h3>
+
+<p>If you don’t want to type your password all the time, or not use an ssh agent, set an empty password.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh-keygen <span class="nt">-f</span> ~/.ssh/podmanuser
+</code></pre></div></div>
+
+<h2 id="set-up-podman-on-the-fedorarhel-machine">Set up Podman on the Fedora/RHEL machine</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>yum install podman libvarlink-util
+<span class="nv">$ </span><span class="nb">sudo </span>groupadd podman
+</code></pre></div></div>
+
+<p>Copy <code class="highlighter-rouge">/lib/tmpfiles.d/podman.conf</code> to <code class="highlighter-rouge">/etc/tmpfiles.d/podman.conf</code>.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>cp /lib/tmpfiles.d/podman.conf /etc/tmpfiles.d/podman.conf
+</code></pre></div></div>
+
+<p>Edit <code class="highlighter-rouge">/etc/tmpfiles.d/podman.conf</code>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>d /run/podman 0750 root podman
+</code></pre></div></div>
+
+<p>Copy <code class="highlighter-rouge">/lib/systemd/system/io.podman.socket</code> to <code class="highlighter-rouge">/etc/systemd/system/io.podman.socket</code>.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>cp /lib/systemd/system/io.podman.socket /etc/systemd/system/io.podman.socket
+</code></pre></div></div>
+
+<p>Edit section <code class="highlighter-rouge">[Socket]</code> of <code class="highlighter-rouge">/etc/systemd/system/io.podman.socket</code>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Socket]
+ListenStream=/run/podman/io.podman
+SocketMode=0660
+SocketGroup=podman
+</code></pre></div></div>
+
+<p>Then activate the changes:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>systemctl daemon-reload
+<span class="nv">$ </span><span class="nb">sudo </span>systemd-tmpfiles <span class="nt">--create</span>
+<span class="nv">$ </span><span class="nb">sudo </span>systemctl <span class="nb">enable</span> <span class="nt">--now</span> io.podman.socket
+</code></pre></div></div>
+
+<p>The directory and socket now belongs to the podman group</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo ls</span> <span class="nt">-al</span> /run/podman
+drwxr-x---.  2 root podman   60 14. Jan 14:50 <span class="nb">.</span>
+drwxr-xr-x. 51 root root   1420 14. Jan 14:36 ..
+srw-rw----.  1 root podman    0 14. Jan 14:50 io.podman
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note: Wouldn’t it be nice, if there was a Podman group owning the socket already? ;-)</p>
+</blockquote>
+
+<p>Now we are adding a user <code class="highlighter-rouge">podmanuser</code> and set a password:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>useradd podmanuser <span class="nt">-G</span> podman
+<span class="nv">$ </span><span class="nb">sudo </span>passwd podmanuser
+</code></pre></div></div>
+
+<p>From your client machine do</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh-copy-id <span class="nt">-f</span> ~/.ssh/podmanuser podmanuser@&lt;podman-machine&gt;
+</code></pre></div></div>
+
+<h3 id="ssh-config">ssh config</h3>
+
+<p>Edit <code class="highlighter-rouge">.ssh/config</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Host &lt;podman-machine&gt;
+    RequestTTY no
+    IdentityFile ~/.ssh/podmanuser
+    User podmanuser
+    VisualHostKey no
+    RemoteCommand /usr/bin/varlink bridge --connect unix:/run/podman/io.podman
+    GSSAPIAuthentication no
+    ForwardX11 no
+</code></pre></div></div>
+
+<h3 id="optional-lock-down">Optional Lock Down</h3>
+
+<p>Log into <code class="highlighter-rouge">&lt;podman-machine&gt;</code></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh podmanuser@&lt;podman-machine&gt;
+</code></pre></div></div>
+
+<p>Now we lock down <code class="highlighter-rouge">podmanuser</code> to only be used with the varlink bridge from your client machine:</p>
+
+<p>Edit <code class="highlighter-rouge">.ssh/authorized-keys</code> so that the line begins with:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>command="/usr/bin/varlink bridge --connect unix:/run/podman/io.podman",no-agent-forwarding,no-port-forwarding,no-pty,no-user-rc,no-X11-forwarding ssh-rsa […]
+</code></pre></div></div>
+
+<p>Log out of <code class="highlighter-rouge">&lt;podman-machine&gt;</code></p>
+
+<h2 id="python">Python</h2>
+
+<h3 id="install-python">Install Python</h3>
+<p>https://www.python.org/downloads/</p>
+
+<h3 id="install-varlink-for-python">Install varlink for Python</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pip install <span class="nt">--user</span> <span class="s2">"varlink&gt;=30.0.2"</span>
+</code></pre></div></div>
+
+<h3 id="test-if-the-varlink-cli-module-works">Test if the varlink cli module works</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python <span class="nt">-m</span> varlink.cli <span class="nt">--help</span>
+usage: cli.py <span class="o">[</span><span class="nt">-h</span><span class="o">]</span> <span class="o">[</span><span class="nt">-r</span> RESOLVER] <span class="o">[</span><span class="nt">-A</span> ACTIVATE] <span class="o">[</span><span class="nt">-b</span> BRIDGE]
+              <span class="o">{</span>info,help,bridge,call<span class="o">}</span> ...
+…
+</code></pre></div></div>
+
+<h3 id="interfacing-podman-with-the-python-cli-module">Interfacing Podman with the python cli module</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python <span class="nt">-m</span> varlink.cli <span class="nt">--bridge</span> <span class="s2">"ssh &lt;podman-machine&gt;"</span> info
+info
+.1:1234
+Vendor: Atomic
+Product: podman
+Version: 0.10.1
+URL: https://github.com/containers/libpod
+Interfaces:
+   org.varlink.service
+   io.podman
+
+<span class="nv">$ </span>python <span class="nt">-m</span> varlink.cli <span class="nt">--bridge</span> <span class="s2">"ssh &lt;podman-machine&gt;"</span> call io.podman.Ping <span class="o">{}</span>
+<span class="o">{</span>
+  <span class="s2">"ping"</span>: <span class="o">{</span>
+    <span class="s2">"message"</span>: <span class="s2">"OK"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="python-client-example">Python Client Example</h3>
+
+<p><code class="highlighter-rouge">podmanclient.py</code>:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">varlink</span>
+
+<span class="k">with</span> <span class="n">varlink</span><span class="o">.</span><span class="n">Client</span><span class="o">.</span><span class="n">new_with_bridge</span><span class="p">([</span><span class="s">"ssh"</span><span class="p">,</span> <span class="s">"&lt;podman-machine&gt;"</span><span class="p">])</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">client</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"io.podman"</span><span class="p">)</span> <span class="k">as</span> <span class="n">podman</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">podman</span><span class="o">.</span><span class="n">Ping</span><span class="p">())</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">podman</span><span class="o">.</span><span class="n">GetInfo</span><span class="p">())</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">podman</span><span class="o">.</span><span class="n">GetVersion</span><span class="p">())</span>
+
+        <span class="n">info</span> <span class="o">=</span> <span class="n">podman</span><span class="o">.</span><span class="n">GetInfo</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Uptime:"</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s">"info"</span><span class="p">][</span><span class="s">"host"</span><span class="p">][</span><span class="s">"uptime"</span><span class="p">])</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Os:"</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s">"info"</span><span class="p">][</span><span class="s">"host"</span><span class="p">][</span><span class="s">"os"</span><span class="p">])</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">podman</span><span class="o">.</span><span class="n">MountContainer</span><span class="p">(</span><span class="s">"container-id"</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">varlink</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">VarlinkError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">error</span><span class="p">(),</span> <span class="n">e</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">as_dict</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>To find out more about the Podman varlink interface read the <a href="https://github.com/containers/libpod/blob/master/cmd/podman/varlink/io.podman.varlink">io.podman.varlink</a> file or
+the rendered <a href="https://github.com/containers/libpod/blob/master/API.md">API.md</a>.</p>
+
+<p>Or you can inspect, what methods your Podman version on <code class="highlighter-rouge">&lt;podman-machine&gt;</code> provides:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python <span class="nt">-m</span> varlink.cli <span class="nt">--bridge</span> <span class="s2">"ssh &lt;podman-machine&gt;"</span> <span class="nb">help </span>io.podman
+</code></pre></div></div>
+
+<h2 id="go">Go</h2>
+
+<h3 id="installation">Installation</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go get <span class="nt">-u</span> github.com/varlink/go/varlink
+<span class="nv">$ </span>go install github.com/varlink/go/cmd/varlink
+<span class="nv">$ </span>go install github.com/varlink/go/cmd/varlink-go-interface-generator
+</code></pre></div></div>
+
+<h3 id="running-the-varlink-cli-command">Running the varlink CLI command</h3>
+
+<p>The <code class="highlighter-rouge">varlink</code> CLI command in <code class="highlighter-rouge">$GOPATH/bin</code> should output:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>varlink <span class="nt">--bridge</span> <span class="s2">"ssh &lt;podman-machine&gt;"</span> info
+Vendor: Atomic
+Product: podman
+Version: 0.10.1
+URL: https://github.com/containers/libpod
+Interfaces:
+  org.varlink.service
+  io.podman
+
+
+<span class="nv">$ </span>varlink <span class="nt">--bridge</span> <span class="s2">"ssh &lt;podman-machine&gt;"</span> call io.podman.Ping
+<span class="o">{</span>
+  <span class="s2">"ping"</span>: <span class="o">{</span>
+    <span class="s2">"message"</span>: <span class="s2">"OK"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="nv">$ </span>varlink <span class="nt">--bridge</span> <span class="s2">"ssh &lt;podman-machine&gt;"</span> call io.podman.MountContainer <span class="s2">"{</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">container-id</span><span class="se">\"</span><span class="s2">}"</span>
+Error: Call failed with error: io.podman.ErrorOccurred
+<span class="o">{</span>
+  <span class="s2">"reason"</span>: <span class="s2">"no container with name or ID container-id found: no such container"</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>To find out more about the Podman varlink interface read the <a href="https://github.com/containers/libpod/blob/master/cmd/podman/varlink/io.podman.varlink">io.podman.varlink</a> file or
+the rendered <a href="https://github.com/containers/libpod/blob/master/API.md">API.md</a>.</p>
+
+<p>Or you can inspect, what methods your Podman version on <code class="highlighter-rouge">&lt;podman-machine&gt;</code> provides:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>varlink <span class="nt">--bridge</span> <span class="s2">"ssh &lt;podman-machine&gt;"</span> <span class="nb">help </span>io.podman
+</code></pre></div></div>
+
+<h3 id="go-client-example">Go Client Example</h3>
+
+<p>Either clone this <a href="https://github.com/haraldh/podmangoexampleclient">repository</a> or:</p>
+
+<p>Create a new go project.
+Create a sub directory <code class="highlighter-rouge">iopodman</code> in the project.</p>
+
+<p>Create the <code class="highlighter-rouge">io.podman.varlink</code> either from the podman github sources or dynamically with:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>varlink <span class="nt">--bridge</span> <span class="s2">"ssh &lt;podman-machine&gt;"</span> <span class="nb">help </span>io.podman <span class="o">&gt;</span> iopodman/io.podman.varlink
+</code></pre></div></div>
+
+<p>Create iopodman/generate.go:</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">iopodman</span><span class="x">
+
+</span><span class="c">//go:generate $GOPATH/bin/varlink-go-interface-generator io.podman.varlink</span><span class="x">
+</span></code></pre></div></div>
+
+<p>Run <code class="highlighter-rouge">go generate</code>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go generate ./...
+</code></pre></div></div>
+
+<p>Create your main.go:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+
+</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+	</span><span class="s">"flag"</span><span class="x">
+	</span><span class="s">"fmt"</span><span class="x">
+	</span><span class="s">"github.com/haraldh/podmangoexampleclient/iopodman"</span><span class="x">
+	</span><span class="s">"github.com/varlink/go/varlink"</span><span class="x">
+	</span><span class="s">"io"</span><span class="x">
+	</span><span class="s">"os"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">printError</span><span class="p">(</span><span class="n">methodname</span><span class="x"> </span><span class="kt">string</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="kt">error</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"Error calling %s: "</span><span class="p">,</span><span class="x"> </span><span class="n">methodname</span><span class="p">)</span><span class="x">
+	</span><span class="k">switch</span><span class="x"> </span><span class="n">e</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">err</span><span class="o">.</span><span class="p">(</span><span class="k">type</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="k">case</span><span class="x"> </span><span class="o">*</span><span class="n">iopodman</span><span class="o">.</span><span class="n">ImageNotFound</span><span class="o">:</span><span class="x">
+		</span><span class="c">//error ImageNotFound (name: string)</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"'%v' name='%s'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="o">.</span><span class="n">Name</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">case</span><span class="x"> </span><span class="o">*</span><span class="n">iopodman</span><span class="o">.</span><span class="n">ContainerNotFound</span><span class="o">:</span><span class="x">
+		</span><span class="c">//error ContainerNotFound (name: string)</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"'%v' name='%s'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="o">.</span><span class="n">Name</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">case</span><span class="x"> </span><span class="o">*</span><span class="n">iopodman</span><span class="o">.</span><span class="n">NoContainerRunning</span><span class="o">:</span><span class="x">
+		</span><span class="c">//error NoContainerRunning ()</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"'%v'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">case</span><span class="x"> </span><span class="o">*</span><span class="n">iopodman</span><span class="o">.</span><span class="n">PodNotFound</span><span class="o">:</span><span class="x">
+		</span><span class="c">//error PodNotFound (name: string)</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"'%v' name='%s'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="o">.</span><span class="n">Name</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">case</span><span class="x"> </span><span class="o">*</span><span class="n">iopodman</span><span class="o">.</span><span class="n">PodContainerError</span><span class="o">:</span><span class="x">
+		</span><span class="c">//error PodContainerError (podname: string, errors: []PodContainerErrorData)</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"'%v' podname='%s' errors='%v'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="o">.</span><span class="n">Podname</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="o">.</span><span class="n">Errors</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">case</span><span class="x"> </span><span class="o">*</span><span class="n">iopodman</span><span class="o">.</span><span class="n">NoContainersInPod</span><span class="o">:</span><span class="x">
+		</span><span class="c">//error NoContainersInPod (name: string)</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"'%v' name='%s'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="o">.</span><span class="n">Name</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">case</span><span class="x"> </span><span class="o">*</span><span class="n">iopodman</span><span class="o">.</span><span class="n">ErrorOccurred</span><span class="o">:</span><span class="x">
+		</span><span class="c">//error ErrorOccurred (reason: string)</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"'%v' reason='%s'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="o">.</span><span class="n">Reason</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">case</span><span class="x"> </span><span class="o">*</span><span class="n">iopodman</span><span class="o">.</span><span class="n">RuntimeError</span><span class="o">:</span><span class="x">
+		</span><span class="c">//error RuntimeError (reason: string)</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"'%v' reason='%s'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="o">.</span><span class="n">Reason</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">case</span><span class="x"> </span><span class="o">*</span><span class="n">varlink</span><span class="o">.</span><span class="n">InvalidParameter</span><span class="o">:</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"'%v' parameter='%s'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="o">.</span><span class="n">Parameter</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">case</span><span class="x"> </span><span class="o">*</span><span class="n">varlink</span><span class="o">.</span><span class="n">MethodNotFound</span><span class="o">:</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"'%v' method='%s'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="o">.</span><span class="n">Method</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">case</span><span class="x"> </span><span class="o">*</span><span class="n">varlink</span><span class="o">.</span><span class="n">MethodNotImplemented</span><span class="o">:</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"'%v' method='%s'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="o">.</span><span class="n">Method</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">case</span><span class="x"> </span><span class="o">*</span><span class="n">varlink</span><span class="o">.</span><span class="n">InterfaceNotFound</span><span class="o">:</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"'%v' interface='%s'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="o">.</span><span class="n">Interface</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">case</span><span class="x"> </span><span class="o">*</span><span class="n">varlink</span><span class="o">.</span><span class="n">Error</span><span class="o">:</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"'%v' parameters='%v'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="o">.</span><span class="n">Parameters</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">default</span><span class="o">:</span><span class="x">
+		</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">==</span><span class="x"> </span><span class="n">io</span><span class="o">.</span><span class="n">EOF</span><span class="x"> </span><span class="p">{</span><span class="x">
+			</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"Connection closed</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="p">)</span><span class="x">
+		</span><span class="p">}</span><span class="x"> </span><span class="k">else</span><span class="x"> </span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">==</span><span class="x"> </span><span class="n">io</span><span class="o">.</span><span class="n">ErrUnexpectedEOF</span><span class="x"> </span><span class="p">{</span><span class="x">
+			</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"Connection aborted</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="p">)</span><span class="x">
+		</span><span class="p">}</span><span class="x"> </span><span class="k">else</span><span class="x"> </span><span class="p">{</span><span class="x">
+			</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"%T - '%v'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="p">)</span><span class="x">
+		</span><span class="p">}</span><span class="x">
+	</span><span class="p">}</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="k">var</span><span class="x"> </span><span class="n">c</span><span class="x"> </span><span class="o">*</span><span class="n">varlink</span><span class="o">.</span><span class="n">Connection</span><span class="x">
+	</span><span class="k">var</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="kt">error</span><span class="x">
+
+    </span><span class="n">c</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">varlink</span><span class="o">.</span><span class="n">NewBridge</span><span class="p">(</span><span class="s">"ssh &lt;podman-machine&gt;"</span><span class="p">)</span><span class="x">
+	</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">Stderr</span><span class="p">,</span><span class="x"> </span><span class="s">"Error connecting: %T - '%v'</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="p">)</span><span class="x">
+		</span><span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="x">
+	</span><span class="p">}</span><span class="x">
+
+	</span><span class="c">// Be nice and cleanup</span><span class="x">
+	</span><span class="k">defer</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span><span class="x">
+
+	</span><span class="n">info</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">iopodman</span><span class="o">.</span><span class="n">GetInfo</span><span class="p">()</span><span class="o">.</span><span class="n">Call</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+		</span><span class="n">printError</span><span class="p">(</span><span class="s">"GetInfo()"</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="p">)</span><span class="x">
+		</span><span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="x">
+	</span><span class="p">}</span><span class="x">
+
+	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Info: %+v</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">info</span><span class="p">)</span><span class="x">
+
+	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Podman Version: %+v</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">info</span><span class="o">.</span><span class="n">Podman</span><span class="o">.</span><span class="n">Podman_version</span><span class="p">)</span><span class="x">
+
+	</span><span class="n">containers</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">iopodman</span><span class="o">.</span><span class="n">ListContainers</span><span class="p">()</span><span class="o">.</span><span class="n">Call</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="x">
+
+	</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+		</span><span class="n">printError</span><span class="p">(</span><span class="s">"ListContainers()"</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="p">)</span><span class="x">
+		</span><span class="n">os</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="x">
+	</span><span class="p">}</span><span class="x">
+
+	</span><span class="k">for</span><span class="x"> </span><span class="n">container</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">range</span><span class="x"> </span><span class="n">containers</span><span class="x"> </span><span class="p">{</span><span class="x">
+		</span><span class="nb">print</span><span class="p">(</span><span class="n">container</span><span class="p">)</span><span class="x">
+	</span><span class="p">}</span><span class="x">
+
+	</span><span class="n">mount</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">iopodman</span><span class="o">.</span><span class="n">MountContainer</span><span class="p">()</span><span class="o">.</span><span class="n">Call</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="x"> </span><span class="s">"foo"</span><span class="p">)</span><span class="x">
+	</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+		</span><span class="n">printError</span><span class="p">(</span><span class="s">"MountContainer()"</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="p">)</span><span class="x">
+	</span><span class="p">}</span><span class="x"> </span><span class="k">else</span><span class="x"> </span><span class="p">{</span><span class="x">
+		</span><span class="nb">print</span><span class="p">(</span><span class="n">mount</span><span class="p">)</span><span class="x">
+	</span><span class="p">}</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<h2 id="rust">Rust</h2>
+
+<h3 id="install-the-rust-toolchain">Install the rust toolchain</h3>
+
+<h4 id="windows">Windows</h4>
+<p>First install the C++ part of https://visualstudio.microsoft.com/downloads/</p>
+
+<h4 id="all">All</h4>
+<p>https://rustup.rs/</p>
+
+<h3 id="install-varlink-cli">Install varlink-cli</h3>
+
+<h4 id="for-non-linux-systems">For non-Linux systems:</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>cargo install varlink-cli
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note: Ensure that $HOME/.cargo/bin is in your PATH or copy $HOME/.cargo/bin/varlink
+in one of your path directories</p>
+</blockquote>
+
+<h4 id="for-linux-systems">For Linux systems:</h4>
+
+<p>You can also use <code class="highlighter-rouge">varlink</code> util from <a href="https://github.com/varlink/libvarlink">libvarlink</a>
+or install <code class="highlighter-rouge">libvarlink-util</code> on Fedora/RHEL machines.</p>
+
+<h3 id="running-the-varlink-cli-command-1">Running the varlink CLI command</h3>
+
+<p>The <code class="highlighter-rouge">varlink</code> CLI command in <code class="highlighter-rouge">~/.cargo/bin</code> should output:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>varlink <span class="nt">--bridge</span> <span class="s2">"ssh &lt;podman-machine&gt;"</span> info
+Vendor: Atomic
+Product: podman
+Version: 0.10.1
+URL: https://github.com/containers/libpod
+Interfaces:
+  org.varlink.service
+  io.podman
+
+
+<span class="nv">$ </span>varlink <span class="nt">--bridge</span> <span class="s2">"ssh &lt;podman-machine&gt;"</span> call io.podman.Ping
+<span class="o">{</span>
+  <span class="s2">"ping"</span>: <span class="o">{</span>
+    <span class="s2">"message"</span>: <span class="s2">"OK"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="nv">$ </span>varlink <span class="nt">--bridge</span> <span class="s2">"ssh &lt;podman-machine&gt;"</span> call io.podman.MountContainer <span class="s2">"{</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">container-id</span><span class="se">\"</span><span class="s2">}"</span>
+Error: Call failed with error: io.podman.ErrorOccurred
+<span class="o">{</span>
+  <span class="s2">"reason"</span>: <span class="s2">"no container with name or ID container-id found: no such container"</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>To find out more about the Podman varlink interface read the <a href="https://github.com/containers/libpod/blob/master/cmd/podman/varlink/io.podman.varlink">io.podman.varlink</a> file or
+the rendered <a href="https://github.com/containers/libpod/blob/master/API.md">API.md</a>.</p>
+
+<p>Or you can inspect, what methods your Podman version on <code class="highlighter-rouge">&lt;podman-machine&gt;</code> provides:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>varlink <span class="nt">--bridge</span> <span class="s2">"ssh &lt;podman-machine&gt;"</span> <span class="nb">help </span>io.podman
+</code></pre></div></div>
+
+<h3 id="rust-client-example">Rust Client Example</h3>
+
+<p>Either clone this <a href="https://github.com/haraldh/podmanrs">repository</a> or:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>cargo new <span class="nt">--bin</span> podmanrs
+<span class="nv">$ </span><span class="nb">cd </span>podmanrs
+</code></pre></div></div>
+
+<p>Download the varlink interface from the running Podman varlink service:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>varlink <span class="nt">--bridge</span> <span class="s2">"ssh &lt;podman-machine&gt;"</span> <span class="nb">help </span>io.podman <span class="o">&gt;</span> src/io.podman.varlink
+</code></pre></div></div>
+
+<p>create <code class="highlighter-rouge">build.rs</code>:</p>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">extern</span> <span class="n">crate</span> <span class="n">varlink_generator</span><span class="p">;</span>
+
+<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+   <span class="nn">varlink_generator</span><span class="p">::</span><span class="nf">cargo_build_tosource</span><span class="p">(</span><span class="s">"src/io.podman.varlink"</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>create <code class="highlighter-rouge">Cargo.toml</code>:</p>
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[package]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"podmanrs"</span>
+<span class="py">version</span> <span class="p">=</span> <span class="s">"0.1.0"</span>
+<span class="py">authors</span> <span class="p">=</span> <span class="p">[</span><span class="s">"Harald Hoyer &lt;harald@redhat.com&gt;"</span><span class="p">]</span>
+<span class="py">build</span> <span class="p">=</span> <span class="s">"build.rs"</span>
+<span class="py">edition</span> <span class="p">=</span> <span class="s">"2018"</span>
+
+<span class="nn">[dependencies]</span>
+<span class="py">varlink</span> <span class="p">=</span> <span class="s">"7"</span>
+<span class="py">serde</span> <span class="p">=</span> <span class="s">"1"</span>
+<span class="py">serde_derive</span> <span class="p">=</span> <span class="s">"1"</span>
+<span class="py">serde_json</span> <span class="p">=</span> <span class="s">"1"</span>
+<span class="py">chainerror</span> <span class="p">=</span> <span class="s">"0.4"</span>
+
+
+<span class="nn">[build-dependencies]</span>
+<span class="py">varlink_generator</span> <span class="p">=</span> <span class="s">"7"</span>
+</code></pre></div></div>
+
+<p>create <code class="highlighter-rouge">src/main.rs</code>:</p>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">mod</span> <span class="n">io_podman</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nn">crate</span><span class="p">::</span><span class="nn">io_podman</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">varlink</span><span class="p">::</span><span class="n">Connection</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">result</span><span class="p">::</span><span class="n">Result</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="nn">error</span><span class="p">::</span><span class="n">Error</span><span class="p">;</span>
+
+<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="n">Result</span><span class="o">&lt;</span><span class="p">(),</span> <span class="nb">Box</span><span class="o">&lt;</span><span class="n">Error</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">connection</span> <span class="o">=</span> <span class="nn">Connection</span><span class="p">::</span><span class="nf">with_bridge</span><span class="p">(</span>
+        <span class="s">"ssh &lt;podman-machine&gt;"</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">?</span><span class="p">;</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">podman</span> <span class="o">=</span> <span class="nn">VarlinkClient</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">connection</span><span class="nf">.clone</span><span class="p">());</span>
+    <span class="k">let</span> <span class="n">reply</span> <span class="o">=</span> <span class="n">podman</span><span class="nf">.ping</span><span class="p">()</span><span class="nf">.call</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"Ping() replied with '{}'"</span><span class="p">,</span> <span class="n">reply</span><span class="py">.ping.message</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">reply</span> <span class="o">=</span> <span class="n">podman</span><span class="nf">.get_info</span><span class="p">()</span><span class="nf">.call</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"Hostname: {}"</span><span class="p">,</span> <span class="n">reply</span><span class="py">.info.host.hostname</span><span class="p">);</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"Info: {:#?}"</span><span class="p">,</span> <span class="n">reply</span><span class="py">.info</span><span class="p">);</span>
+    <span class="nf">Ok</span><span class="p">(())</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now run it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>cargo run
+</code></pre></div></div>
+
+      </section>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

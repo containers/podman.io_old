@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="podman.io" />
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>CI, and CI, and CI, oh my! &amp;lpar;then more CI&amp;rpar; | podman.io</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="CI, and CI, and CI, oh my! &amp;lpar;then more CI&amp;rpar;" />
+<meta name="author" content="cevich" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="CI, and CI, and CI, oh my! (then more CI) By Chris Evich GitHub I wanted to write a detailed post about the CI setup we use for exercising proposed changes to libpod (podman repo).  Unfortunately this topic (and automation in general) is so big, most readers would end up on the floor, sound asleep, in a puddle of their own drool.  Instead, I will keep your fidget-spinner twirling, by jumping around several topics." />
+<meta property="og:description" content="CI, and CI, and CI, oh my! (then more CI) By Chris Evich GitHub I wanted to write a detailed post about the CI setup we use for exercising proposed changes to libpod (podman repo).  Unfortunately this topic (and automation in general) is so big, most readers would end up on the floor, sound asleep, in a puddle of their own drool.  Instead, I will keep your fidget-spinner twirling, by jumping around several topics." />
+<link rel="canonical" href="http://0.0.0.0:4000/blogs/2019/03/18/CI3.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/blogs/2019/03/18/CI3.html" />
+<meta property="og:site_name" content="podman.io" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-03-18T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"cevich"},"description":"CI, and CI, and CI, oh my! (then more CI) By Chris Evich GitHub I wanted to write a detailed post about the CI setup we use for exercising proposed changes to libpod (podman repo).  Unfortunately this topic (and automation in general) is so big, most readers would end up on the floor, sound asleep, in a puddle of their own drool.  Instead, I will keep your fidget-spinner twirling, by jumping around several topics.","@type":"BlogPosting","url":"http://0.0.0.0:4000/blogs/2019/03/18/CI3.html","headline":"CI, and CI, and CI, oh my! &amp;lpar;then more CI&amp;rpar;","dateModified":"2019-03-18T00:00:00-05:00","datePublished":"2019-03-18T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blogs/2019/03/18/CI3.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a5ad4b5b78f492f24c1321a74efdbcc0f20fd4cd">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header"><a href="">Podman</a></h1>
+        <p class="header">Manage pods, containers, and container images.</p>
+
+        <ul>
+          <li><a class="buttons" href="/getting-started">Get Started</a>
+          <li><a class="buttons" href="/community">Join Community</a>
+          <li><a class="buttons" href="/blogs">Blog</a>
+          <li><a class="buttons" href="/releases">Releases</a>
+          <li><a class="buttons" href="/talks">Talks</a>
+          <li><a class="buttons github" href="https://github.com/containers/libpod">View Code</a>
+          <li><a class="buttons github" href="https://github.com/jberkus/podman.io">Edit Website</a>
+        </ul>
+
+        
+          <p class="header">This project is maintained by the <a class="header name" href="https://github.com/jberkus">jberkus</a> organization.</p>
+
+        <p class="header">Subscribe to the <a href="https://podman.io/feed.xml">blog feed</a>.</p>
+        
+
+        
+      </header>
+
+      <section>
+        <p><img src="https://podman.io/images/podman.svg" alt="podman logo" /></p>
+
+<h1 id="ci-and-ci-and-ci-oh-my-then-more-ci">CI, and CI, and CI, oh my! (then more CI)</h1>
+<h2 id="by-chris-evich-github">By Chris Evich <a href="https://github.com/cevich">GitHub</a></h2>
+
+<p>I wanted to write a detailed post about the CI setup we use for exercising proposed
+changes to <a href="https://github.com/containers/libpod">libpod (podman repo)</a>.  Unfortunately
+this topic (and automation in general)
+is so big, most readers would end up on the floor, sound asleep, in a puddle of their
+own drool.  Instead, I will keep your fidget-spinner twirling, by jumping around
+several topics.</p>
+
+<!--readmore-->
+
+<p>Starting with an overview on why we chose to use <a href="https://cirrus-ci.org/">Cirrus CI</a>, I’ll
+provide a short 3-step
+walk-through of how it works, along with lots of links.  Then, we’ll go into more detail
+regarding VM Image orchestration, before connecting that back to our Cirrus-CI
+configuration.</p>
+
+<h3 id="why-cirrus-ci">Why Cirrus-CI</h3>
+
+<p>I once said “testing code is at least 10x harder than writing it”.  This is especially true when a
+software-engineer believes their code is “perfectly good” (meaning, tons of bugs).  At the same
+time, test automation is generally as reliable, as the inverse of its simplicity (especially when
+it’s never simple).  Which brings me back to around July/August of ‘18:</p>
+
+<p>The libpod project was considered by many to be “perfectly good”, but its  automation was definitely
+not simple.  At least one part or another constantly <a href="https://en.wiktionary.org/wiki/jacked_up#English">jacked-up</a>.
+At the time, automation was split
+across two totally different services, operating with incompatible yet duplicate configurations.
+The third service is a downstream consumer of libpod, but at the time was also under consideration
+to take over pull-request automation from the first two:</p>
+
+<ul>
+  <li>Travis
+    <ul>
+      <li>With <a href="https://lists.ubuntu.com/archives/ubuntu-announce/2014-April/000182.html">Ubuntu Trusty only a few years old</a>,
+we ran tests on a platform version nobody was using,
+with bleeding edge-code jammed on top.  Some OS-X tests ran, and we think at least one person
+looked at the results, some of the time, every once in a while.</li>
+      <li>Required a contrived containerized-environment to workaround host-side limitations.  Fixes for
+fake environments almost never improve reality.  e.g. impossible to test or fix AppArmor or
+SELinux problems from inside a container.</li>
+      <li>The tests did not represent reality.  Most people would never run container tools within a
+container, and certain security tools like SELinux and AppArmor would not be tested running
+inside this environment.</li>
+    </ul>
+  </li>
+  <li>PAPR
+    <ul>
+      <li>An internal “maintenance mode” service, meaning only bug-fixes, no new features. Supported by a
+single, talented engineer, from another group, perfectly happy to be working on something else.  </li>
+      <li>Fortunately it does have great support for running things on Atomic Host, which we still use to
+maintain our insanity…I mean, double-check some things.</li>
+      <li>The underlying infrastructure is unpredictably reliable. Mainly due to frequent
+<a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food">dog-food poisoning</a>.  </li>
+    </ul>
+  </li>
+  <li>OpenShift
+    <ul>
+      <li>An elegant, impressive piece of machinery, with tests so numerous that most other projects would
+have trouble calling up enough drool.</li>
+      <li>Fantastic at testing containers and at-scale orchestration.  However way too complex for our
+low-level, host-side poking of runtimes, and userspace.</li>
+      <li>Downstream from libpod by weeks or months depending on the platform, like RHEL for example.</li>
+      <li>Both Travis and PAPR already demonstrated the pain of testing host-side libraries/tools
+within a container, no further lessons or reruns required.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>As if this vegetarian sausage wasn’t already dripping with liquid goodness.  The smallest little
+network blip, and you have to re-run the entire suite again.  The importance of network speed and
+robustness can never be overstated.  So I set out on a mission against complexity, toward being
+able to reliably and frequently ruin engineer’s “perfectly good” code before it merges.</p>
+
+<h3 id="get-off-my-lawwwwwn">GET OFF MY LAWWWWWN!</h3>
+
+<p>The Cirrus CI killer feature.  You can selfishly
+<a href="https://cirrus-ci.org/guide/supported-computing-services/">bring your own cloud</a>
+and everything else to make
+it work, and not have to share with Billy Bob’s Used tire and doughnut shop.  You’re the master of
+the entire host and runtime environment, OS, kernel, packages, updates, everything!  Then, with
+<a href="https://github.com/marketplace/cirrus-ci">the Cirrus CI app</a>
+on your code repository, testing follows this simple automated sequence:</p>
+
+<ol>
+  <li>Create VMs (or containers) in your cloud, using your encrypted credentials.</li>
+  <li>Follow <a href="https://cirrus-ci.org/guide/writing-tasks/#script-instruction">instructions you’ve spelled out like B-A-S-H</a>.</li>
+  <li>Show green on exit(0) - the “pretty” engineer’s code is properly spoiled (i.e. functional).</li>
+</ol>
+
+<p>So
+<a href="https://cirrus-ci.org/#comparison-with-popular-ciaas">Cirrus CI gives all the power</a>
+for success, and/or blasting giant, perfectly round, holes in your own two feet!
+Our CI experience can be as simple or complex as we like, and reliability will match that of major
+cloud providers and the inverse of our cleverness. What could possibly go wrong? :D</p>
+
+<h3 id="vm-image-orchestration">VM Image Orchestration</h3>
+
+<p>Implementing the bowels of any CI/Automation stack usually begins with orchestrate the initial
+operating system state.  Therefor, for efficiency-sake, it’s handy to cache this work before,
+exercising project-code changes.  Otherwise, it’s a complete waste of (expensive) engineer-time
+to constantly install, update, and configure all aspects of the system during every test run.</p>
+
+<p>As
+<a href="https://cirrus-ci.org/guide/supported-computing-services/#custom-vm-images">recommended by Cirrus CI</a>
+, we utilize a tool by the inventors of Vagrant: <a href="https://www.packer.io/">Packer</a>.  I was able to
+make it do things in a matter of minutes, as packer is fairly brain-dead-simple.  It accepts a JSON
+file, which I have simplified as YAML for readability.  A simple (non-functional) example will
+demonstrate the basic ideas:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+
+<span class="na">variables</span><span class="pi">:</span> <span class="s"> # all up-front, no guessing allowed!</span>
+ <span class="s">   foo</span><span class="pi">:</span> <span class="s2">"</span><span class="s">bar"</span> <span class="c1"># simple</span>
+ <span class="s">   build_image_suffix</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-libpod-"</span><span class="c1"># from env. var</span>
+
+<span class="na">builders</span><span class="pi">:</span> <span class="s"> # Where to do stuff</span>
+
+ <span class="s">   - type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">googlecompute"</span> <span class="s">  # TONS of others supported too</span>
+ <span class="s">     image_name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">'</span>
+ <span class="s">     # ... more details ...</span>
+
+ <span class="s">   - type "googlecompute"</span>
+ <span class="s">     # ...other OSes...</span>
+
+<span class="na">provisioners</span><span class="pi">:</span> <span class="s"> # How to do stuff</span>
+
+    <span class="s">- type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">shell"</span>
+      <span class="na">script</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/path/to/_setup.sh"</span> <span class="s"> # macro looks up OS</span>
+
+<span class="na">post-processors</span><span class="pi">:</span> <span class="s"> # Where to stick stuff</span>
+    <span class="s">- - type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">googlecompute-export'</span>
+        <span class="na">paths</span><span class="pi">:</span> <span class="s">...</span> <span class="c1"># name of storage bucket where VM Image will rest.</span>
+</code></pre></div></div>
+
+<p>In English, the above translates to:</p>
+
+<ol>
+  <li>Using some provided variables like <code class="highlighter-rouge">foo</code>, but fill the variable <code class="highlighter-rouge">build_image_suffix</code>
+using the env. vars <code class="highlighter-rouge">$COMMIT_SHA</code></li>
+  <li>Spin up some VMs in GCE.</li>
+  <li>Upload and execute a shell script on each VM (in parallel).</li>
+  <li>Assuming success, store the resulting VM image into a storage bucket for
+later use as needed, or will expire and get automatically deleted after a time.</li>
+</ol>
+
+<p>Perhaps that’s over-simplifying things a little, but
+packer provides mostly <a href="https://www.packer.io/docs/provisioners/index.html">just the bear-necessities</a>
+(sorry, <a href="https://www.youtube.com/watch?v=08NlhjpVFsU">song is stuck in my head</a>). Roughly ten
+minutes after running a simple packer build command, the VMs are automatically torn down, and their disks
+saved.  At a time of our choosing, an image can be imported from the storage bucket,
+then a small PR tossed up to activate the images for Cirrus.</p>
+
+<h3 id="packer--cirrus-ci-connection">Packer → Cirrus-CI Connection</h3>
+
+<p>Next up the stack, we’ll dig into some basic details of the Cirrus CI system.  If you’ve used
+services like Travis before, this example .cirrus.yml file won’t be too surprising (simplified
+somewhat for example purposes):</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+
+<span class="c1"># Safely stored details about accessing our cloud</span>
+<span class="na">gcp_credentials</span><span class="pi">:</span> <span class="s">ENCRYPTED[blahblah]</span>
+
+<span class="na">env</span><span class="pi">:</span> <span class="s"> # environment and behavioral values for all tasks and scripts</span>
+ <span class="s">   # Where to clone the source code into</span>
+ <span class="s">   CIRRUS_WORKING_DIR</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/var/tmp/go/src/github.com/containers/libpod"</span>
+ <span class="s">   SCRIPT_BASE</span><span class="pi">:</span> <span class="s">./contrib/cirrus  # saves some typing (below)</span>
+
+<span class="na">testing_task</span><span class="pi">:</span> <span class="s"> # One particular set of things to do</span>
+
+ <span class="s">   gce_instance</span><span class="pi">:</span> <span class="s"> # What kind of VM to use</span>
+ <span class="s">       image_name</span><span class="pi">:</span> <span class="s"> # Same as image_name produced by packer (above)</span>
+
+ <span class="s">   script</span><span class="pi">:</span> <span class="s"> # Step by step</span>
+ <span class="s">       - $SCRIPT_BASE/setup_environment.sh   # does what it says</span>
+ <span class="s">       - $SCRIPT_BASE/unit_test.sh           # this too</span>
+ <span class="s">       - $SCRIPT_BASE/integration_test.sh    # and this</span>
+</code></pre></div></div>
+
+<p>With <a href="https://cirrus-ci.org/guide/quick-start/">Cirrus CI “installed”</a>
+on a GitHub repository, upon any pull
+request change, Cirrus CI will step
+in to kick things within GCE, then report back results in your pull request.</p>
+
+<p>However, we also need to test more than one OS.  This is easily accomplished in Cirrus CI, by
+using what they call a
+<a href="https://cirrus-ci.org/guide/writing-tasks/#matrix-modification">matrix modification</a>.
+Roughly translated into simple country-folk speak as: “<em>we done messed up our YAML parser
+to do more fancier things, and stuff</em>”.  Illustrated in part by looking at an
+excerpt from our
+<a href="https://github.com/containers/libpod/blob/master/.cirrus.yml">actual .cirrus.yml file</a>
+in the libpod repository:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">...cut...</span>
+
+<span class="na">testing_task</span><span class="pi">:</span>
+
+ <span class="s">  gce_instance</span><span class="pi">:</span>
+ <span class="s">       image_project</span><span class="pi">:</span> <span class="s2">"</span><span class="s">libpod-123456"</span>
+ <span class="s">       zone</span><span class="pi">:</span> <span class="s2">"</span><span class="s">us-central1-a"</span>
+ <span class="s">       cpu</span><span class="pi">:</span> <span class="s">2</span>
+ <span class="s">       memory</span><span class="pi">:</span> <span class="s2">"</span><span class="s">4Gb"</span>
+ <span class="s">       disk</span><span class="pi">:</span> <span class="s">200</span>
+ <span class="s">       matrix</span><span class="pi">:</span>
+ <span class="s">           image_name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ubuntu-18-libpod-a250386d"</span> <span class="c1"># &lt;-- name from packer</span>
+ <span class="s">           image_name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">fedora-28-libpod-a250386d"</span>
+ <span class="s">           image_name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">fedora-29-libpod-a250386d"</span>
+<span class="s">...cut...</span>
+</code></pre></div></div>
+
+<p>The above will automatically duplicate the <code class="highlighter-rouge">testing_task</code> three times, running a different VM image
+for each.  You can run a matrix across other items as well, like environment variables.  There are
+also options for filtering your matrix, and adding dependencies between tasks.  I’d spell those
+our for you, but it’s liable to suck the lubrication from your fidget-spinner.</p>
+
+<h3 id="good-looks-and-clean-presentation">Good looks and clean presentation</h3>
+
+<p>Another Cirrus CI feature we utilize, has to do with the way
+<a href="https://cirrus-ci.org/guide/writing-tasks/#script-instruction">the scripting</a> output is
+presented.  This
+includes what you don’t see, like extraneous buttons and widgets.  The way details are  presented
+can be critical for debugging.  Here’s how we leverage that simplicity:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">testing_task</span><span class="pi">:</span>
+
+ <span class="s">   ...cut...</span>
+
+ <span class="s">   setup_environment_script</span><span class="pi">:</span> <span class="s">$SCRIPT_BASE/setup_environment.sh</span>
+
+ <span class="s">   unit_test_script</span><span class="pi">:</span> <span class="s">$SCRIPT_BASE/unit_test.sh</span>
+ <span class="s">   integration_test_script</span><span class="pi">:</span> <span class="s">$SCRIPT_BASE/integration_test.sh</span>
+
+ <span class="s">   ...cut...</span>
+</code></pre></div></div>
+
+<p>It’s possible to have multiple scripts or commands per _script section.  Because we dedicate one
+per, the output is presented in bite-size pieces:</p>
+
+<p><img src="/images/cirrus-ci-task.png" alt="cirrus-ci example" /></p>
+
+<p>This makes it super easy to find what you’re looking for.  If the unit-tests fail with a complaint about
+some invalid environment variable.  It’s easier to drop down that box than to go scrolling through
+a giant
+<a href="https://en.wikipedia.org/wiki/Wikipedia:Wall_of_text">wall of text</a>
+(though that’s sometimes necessary also).  On the other hand, if the output
+was all jammed into a single _script block, tracking down problems might get too challenging
+for my old-fogy sensibilities.  Mind I’ve only celebrated my 38th birthday four times so far…and
+remember exactly zero of what happened those nights.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>There are many other details I could get into, but sadly, my coffee mug is empty and I can see that I
+forgot to wash it (again).  Nevertheless, if you need some simple nuts-and-bolts automation, I
+highly recommend <a href="https://cirrus-ci.org">Cirrus-CI</a>.   It’s (beer) free to use for open-source
+projects.  The
+<a href="https://cloud.google.com">Google Cloud Engine</a>
+is also pseudo-free for quite a while, since they give you a
+very generous, and substantial startup credit.</p>
+
+<p>Other than finding a new mug or my soap, if there are any burning questions here,
+or snide remarks there, please feel free to find me in #podman on Freenode (IRC).
+Unless the question is too-smart, I might even be able to answer it.  Until then,
+may your pretty code keep its bugs well hidden <em>and</em> out of sight.</p>
+
+      </section>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

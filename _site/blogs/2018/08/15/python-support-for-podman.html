@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="podman.io" />
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Python3 support for Podman | podman.io</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Python3 support for Podman" />
+<meta name="author" content="jwhonce" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Python3 support for Podman By Jhon Honce GitHub Twitter You’ve learned of Podman and all it’s coolness for running OCI-based containers, but you need a solution that is repeatable and scripted. Rather than just executing Podman commands, you want a stable API to call into and not need to screen scrape the output. We heard you and now provide a Python package, python3-podman. This package allows you to access the facilities of a Podman service with #nobigfatdaemons." />
+<meta property="og:description" content="Python3 support for Podman By Jhon Honce GitHub Twitter You’ve learned of Podman and all it’s coolness for running OCI-based containers, but you need a solution that is repeatable and scripted. Rather than just executing Podman commands, you want a stable API to call into and not need to screen scrape the output. We heard you and now provide a Python package, python3-podman. This package allows you to access the facilities of a Podman service with #nobigfatdaemons." />
+<link rel="canonical" href="http://0.0.0.0:4000/blogs/2018/08/15/python-support-for-podman.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/blogs/2018/08/15/python-support-for-podman.html" />
+<meta property="og:site_name" content="podman.io" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-08-15T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"jwhonce"},"description":"Python3 support for Podman By Jhon Honce GitHub Twitter You’ve learned of Podman and all it’s coolness for running OCI-based containers, but you need a solution that is repeatable and scripted. Rather than just executing Podman commands, you want a stable API to call into and not need to screen scrape the output. We heard you and now provide a Python package, python3-podman. This package allows you to access the facilities of a Podman service with #nobigfatdaemons.","@type":"BlogPosting","url":"http://0.0.0.0:4000/blogs/2018/08/15/python-support-for-podman.html","headline":"Python3 support for Podman","dateModified":"2018-08-15T00:00:00-05:00","datePublished":"2018-08-15T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blogs/2018/08/15/python-support-for-podman.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a5ad4b5b78f492f24c1321a74efdbcc0f20fd4cd">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header"><a href="">Podman</a></h1>
+        <p class="header">Manage pods, containers, and container images.</p>
+
+        <ul>
+          <li><a class="buttons" href="/getting-started">Get Started</a>
+          <li><a class="buttons" href="/community">Join Community</a>
+          <li><a class="buttons" href="/blogs">Blog</a>
+          <li><a class="buttons" href="/releases">Releases</a>
+          <li><a class="buttons" href="/talks">Talks</a>
+          <li><a class="buttons github" href="https://github.com/containers/libpod">View Code</a>
+          <li><a class="buttons github" href="https://github.com/jberkus/podman.io">Edit Website</a>
+        </ul>
+
+        
+          <p class="header">This project is maintained by the <a class="header name" href="https://github.com/jberkus">jberkus</a> organization.</p>
+
+        <p class="header">Subscribe to the <a href="https://podman.io/feed.xml">blog feed</a>.</p>
+        
+
+        
+      </header>
+
+      <section>
+        <p><img src="https://podman.io/images/podman.svg" alt="podman logo" /></p>
+
+<h1 id="python3-support-for-podman">Python3 support for Podman</h1>
+<h2 id="by-jhon-honce-github-twitter">By Jhon Honce <a href="https://github.com/jwhonce">GitHub</a> <a href="https://twitter.com/jwhonce">Twitter</a></h2>
+
+<p>You’ve learned of Podman and all it’s coolness for running OCI-based containers, but you need a solution that is repeatable and scripted. Rather than just executing Podman commands, you want a stable API to call into and not need to screen scrape the output.</p>
+
+<p>We heard you and now provide a Python package, python3-podman. This package allows you to access the facilities of a Podman service with #nobigfatdaemons.</p>
+
+<!--readmore-->
+<p>The python3-podman package containers a module that allows you to connect to a Podman socket activated systemd service on the same host or a remote host using a ssh tunnel. Using the python interface means you can run these commands from a MAC or Windows Box, as long as you have a Linux box with podman installed. We connect using <em>varlink</em> for the messaging protocol between client and service.</p>
+
+<p>For the environment, you will need:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* Linux host
+* podman package
+* enable the io.podman.socket systemd unit file by executing
+</code></pre></div></div>
+
+<p>systemctl enable –now io.podman.socket</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* Python3
+* The python3-podman rpm, or podman package from PyPi.
+</code></pre></div></div>
+
+<p><em>Note: Currently, there is a matching rpm for each version of podman. In time, after the API stabilizes that may no longer be true.</em></p>
+
+<h2 id="now-lets-start-coding">Now lets start coding:</h2>
+
+<p>Using your favorite code editor you can copy and paste the following Python program into a file named latest_containers.py. Don’t forget Python uses whitespace to signify end-of-line and code blocks when you paste. The below python code will show all of the containers created since midnight UTC when it is run. The code comments provide a running commentary on how the module works in context.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">#</span><span class="o">!</span>/usr/bin/env python3
+<span class="go">
+</span><span class="gp">#</span> Python standard date/time support
+<span class="go">from datetime import datetime, time, timezone
+
+</span><span class="gp">#</span> the module with all the goodness
+<span class="go">import podman
+
+midnight = datetime.combine(datetime.today(), time.min, tzinfo=timezone.utc)
+
+</span><span class="gp">#</span> Our client is a context manager to make resource clean up easy. No arguments implies
+<span class="gp">#</span>   connect to a <span class="nb">local </span>Podman service using the default interfaces.
+<span class="go">with podman.Client() as client:
+
+</span><span class="gp">    #</span> Retrieve all containers <span class="k">in </span>containers storage.  Each container is presented
+<span class="gp">    #</span>   as a Namespace and dict. You determine which is easiest <span class="k">for </span>you to use
+<span class="gp">    #</span>   <span class="k">for </span>your solution.
+<span class="go">    for c in client.containers.list():
+
+</span><span class="gp">	 #</span> A bit of sugar, convert any podman-formatted timestamp to
+<span class="gp">        #</span>   a python datetime
+<span class="go">        created_at = podman.datetime_parse(c.createdat)
+
+</span><span class="gp">        if created_at &gt;</span> midnight:
+<span class="go">
+</span><span class="gp">            #</span> Now the results. We provide datetime_format<span class="o">()</span> <span class="k">for </span>consistent
+<span class="gp">	     #</span>   iso format <span class="k">in </span>results <span class="k">if </span>you wish to use it.
+<span class="go">            print('ID: {}\n image: {}\n createdAt: {}'.format(
+c.id[:12], c.image[:33], podman.datetime_format(created_at)))
+</span></code></pre></div></div>
+
+<p>Once you have this code copied into the file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* chmod 755 latest_containers.py
+* podman run fedora sleep 300 &amp;
+* ./latest_containers.py
+</code></pre></div></div>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">ID: d7337530c6d1
+ image: registry.fedoraproject.org/fedora
+ createdAt: 2018–08–10T09:18:09.728858–07:00
+</span></code></pre></div></div>
+
+<p>You can watch the whole process [here](https://asciinema.org/a/mu8Knm5dj8mII19evrF9heNCF].</p>
+
+<p>The container object above supports the Namespace and dict protocols. This is our most used data structure providing you the ability to use the returned object in your code as you wish.</p>
+
+<p>Connecting to a remote host, requires only changing how you create the Client() in any script:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">With podman.Client(uri='unix:/run/user/17945/podman/io.podman',
+remote_uri='ssh://ruser@podman.example.com:22/run/podman/io.podman') as client:
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* uri provides the local side of the ssh tunnel
+* user is your username
+* remote_uri provides the details needed to connect to the remote host, plus the socket file for podman. A complete ssh uri is supported to allow configuration of ports etc.
+* ruser is the remote host username to be used for authentication
+* podman.example.com is the FQDN of the host you are running the podman service on
+* The port number of 22 is given above for completeness, that is the default and may be omitted.
+* An identity file may be provided via identity_file, otherwise the podman library will defer to ssh for authenticating.
+</code></pre></div></div>
+
+<p>All other function and method calls are the same whether they are remote or local. Note: all filesystem paths are resolved on the host running the podman service not the podman client.</p>
+
+<h2 id="but-wait-there-is-more">But wait there is more!</h2>
+
+<p>To iterate over all the images stored on the system, you only need to change containers to images like:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">for i in client.images.list():
+</span></code></pre></div></div>
+
+<p>To find podman system information, you need to use: <code class="highlighter-rouge">client.system.info()</code>. Or, <code class="highlighter-rouge">client.system.versions()</code> if you need to know the release of the podman service components.</p>
+
+<p>To determine if the podman service is available and working, <code class="highlighter-rouge">client.system.ping()</code> will return <code class="highlighter-rouge">True</code> if everything is working correctly.</p>
+
+<p>One of the most complex operations is creating a new container from an image, the workflow:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* Pull image from registry
+* Instantiate image object
+* Set container options
+* Create OCI container and object
+</code></pre></div></div>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">with podman.Client() as client:
+ ident = client.images.pull(name)
+ img = client.images.get(ident)
+opts = {
+ 'memory': '1G',
+ 'memory-reservation': '750M',
+ 'Memory-swap': '1.5G',
+ }
+ctnr = img.container(**opts)
+</span></code></pre></div></div>
+
+<p>Our calling pattern is “client.<model>.<method>(<options>)”, where the current models are:</options></method></model></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* Images
+* Containers
+* System
+</code></pre></div></div>
+
+<p>The Podman man pages provide details on the methods and options to be used for each.</p>
+
+<p>What’s been shown in this blog is how easy it is to use the Python module to do Podman commands from your Linux host. These bindings can be used on the same host that Podman is running on, or they could be used on a remote host. Although there is not a complete one to one correspondence between the Podman commands and the ones available via the Python bindings — yet, the end goal for this project is to get to that point. For instance the commands for interacting with pods are currently under development and when available, the Python module will be updated to allow access. In addition to that, there’s work underway to make this Python module available on MacOS and Windows via PyPi. When these ports go live, you will be able to interact with Podman service from any Linux, MacOS or Windows host.</p>
+
+<p>I hope you have found the information in this blog to be useful and gives you further insight into Podman and this Python module. If you have any questions a great place to ask them is the IRC channel <em>#podman</em> on <em>FREENODE</em>.</p>
+
+<p>Better yet if you’d like to help contribute to Podman or this Python module, please feel free to join us on GitHub!</p>
+
+<p><a href="https://github.com/containers/libpod">https://github.com/containers/libpod</a>
+<a href="https://github.com/containers/libpod/tree/master/contrib/python">https://github.com/containers/libpod/tree/master/contrib/python</a></p>
+
+      </section>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

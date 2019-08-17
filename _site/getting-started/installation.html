@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="podman.io" />
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Podman Installation | podman.io</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Podman Installation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Repository for podman.io website using GitHub Pages." />
+<meta property="og:description" content="Repository for podman.io website using GitHub Pages." />
+<link rel="canonical" href="http://0.0.0.0:4000/getting-started/installation.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/getting-started/installation.html" />
+<meta property="og:site_name" content="podman.io" />
+<script type="application/ld+json">
+{"description":"Repository for podman.io website using GitHub Pages.","@type":"WebPage","url":"http://0.0.0.0:4000/getting-started/installation.html","headline":"Podman Installation","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a5ad4b5b78f492f24c1321a74efdbcc0f20fd4cd">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header"><a href="">Podman</a></h1>
+        <p class="header">Manage pods, containers, and container images.</p>
+
+        <ul>
+          <li><a class="buttons" href="/getting-started">Get Started</a>
+          <li><a class="buttons" href="/community">Join Community</a>
+          <li><a class="buttons" href="/blogs">Blog</a>
+          <li><a class="buttons" href="/releases">Releases</a>
+          <li><a class="buttons" href="/talks">Talks</a>
+          <li><a class="buttons github" href="https://github.com/containers/libpod">View Code</a>
+          <li><a class="buttons github" href="https://github.com/jberkus/podman.io">Edit Website</a>
+        </ul>
+
+        
+          <p class="header">This project is maintained by the <a class="header name" href="https://github.com/jberkus">jberkus</a> organization.</p>
+
+        <p class="header">Subscribe to the <a href="https://podman.io/feed.xml">blog feed</a>.</p>
+        
+
+        
+      </header>
+
+      <section>
+        <h1 id="podman-installation-instructions">Podman Installation Instructions</h1>
+
+<h2 id="installing-packaged-versions-of-podman">Installing packaged versions of Podman</h2>
+
+<h4 id="arch-linux--manjaro-linux"><a href="https://www.archlinux.org">Arch Linux</a> &amp; <a href="https://manjaro.org">Manjaro Linux</a></h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>pacman <span class="nt">-S</span> podman
+</code></pre></div></div>
+
+<p>If you have problems when running Podman in rootless mode follow the instructions <a href="https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional)">here</a></p>
+
+<h4 id="fedora-centos"><a href="https://www.fedoraproject.org">Fedora</a>, <a href="https://www.centos.org">CentOS</a></h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nt">-y</span> install podman
+</code></pre></div></div>
+
+<h4 id="fedora-coreos-fedora-silverblue"><a href="https://coreos.fedoraproject.org">Fedora-CoreOS</a>, <a href="https://silverblue.fedoraproject.org">Fedora SilverBlue</a></h4>
+
+<p>Built-in, no need to install</p>
+
+<h4 id="gentoo"><a href="https://www.gentoo.org">Gentoo</a></h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>emerge app-emulation/libpod
+</code></pre></div></div>
+
+<h4 id="macos"><a href="https://www.apple.com/macos">MacOS</a></h4>
+
+<p>Using <a href="https://brew.sh/">Homebrew</a>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew cask install podman
+</code></pre></div></div>
+
+<h4 id="opensuse"><a href="https://www.opensuse.org">openSUSE</a></h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>zypper install podman
+</code></pre></div></div>
+
+<h4 id="opensuse-kubic"><a href="https://kubic.opensuse.org">openSUSE Kubic</a></h4>
+
+<p>Built-in, no need to install</p>
+
+<h4 id="rhel7"><a href="https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux">RHEL7</a></h4>
+
+<p>Subscribe, then enable Extras channel and install Podman.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>subscription-manager repos <span class="nt">--enable</span><span class="o">=</span>rhel-7-server-extras-rpms
+<span class="nb">sudo </span>yum <span class="nt">-y</span> install podman
+</code></pre></div></div>
+
+<h4 id="rhel8-beta"><a href="https://www.redhat.com/en/blog/powering-its-future-while-preserving-present-introducing-red-hat-enterprise-linux-8-beta?intcmp=701f2000001Cz6OAAS">RHEL8 Beta</a></h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum module <span class="nb">enable</span> <span class="nt">-y</span> container-tools:1.0
+<span class="nb">sudo </span>yum module install <span class="nt">-y</span> container-tools:1.0
+</code></pre></div></div>
+
+<h3 id="installing-development-versions-of-podman">Installing development versions of Podman</h3>
+
+<h4 id="ubuntu"><a href="https://www.ubuntu.com">Ubuntu</a></h4>
+
+<p>The latest builds are available in a PPA. Take note of the <a href="#build-and-run-dependencies">Build and Run Dependencies</a> listed below if you run into any issues.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update <span class="nt">-qq</span>
+<span class="nb">sudo </span>apt-get install <span class="nt">-qq</span> <span class="nt">-y</span> software-properties-common uidmap
+<span class="nb">sudo </span>add-apt-repository <span class="nt">-y</span> ppa:projectatomic/ppa
+<span class="nb">sudo </span>apt-get update <span class="nt">-qq</span>
+<span class="nb">sudo </span>apt-get <span class="nt">-qq</span> <span class="nt">-y</span> install podman
+</code></pre></div></div>
+
+<h4 id="fedora">Fedora</h4>
+
+<p>You can test the very latest Podman in Fedora’s <code class="highlighter-rouge">updates-testing</code>
+repository before it goes out to all Fedora users.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">sudo yum distro-sync --enablerepo=updates-testing podman
+</span></code></pre></div></div>
+
+<p>If you use a newer Podman package from Fedora’s <code class="highlighter-rouge">updates-testing</code>, we would
+appreciate your <code class="highlighter-rouge">+1</code> feedback in <a href="https://bodhi.fedoraproject.org/updates/?packages=podman">Bodhi, Fedora’s update management
+system</a>.</p>
+
+<h2 id="building-from-scratch">Building from scratch</h2>
+
+<h3 id="build-and-run-dependencies">Build and Run Dependencies</h3>
+
+<p><strong>Required</strong></p>
+
+<p>Fedora, CentOS, RHEL, and related distributions:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum install <span class="nt">-y</span> <span class="se">\</span>
+  atomic-registries <span class="se">\</span>
+  btrfs-progs-devel <span class="se">\</span>
+  containernetworking-cni <span class="se">\</span>
+  device-mapper-devel <span class="se">\</span>
+  git <span class="se">\</span>
+  glib2-devel <span class="se">\</span>
+  glibc-devel <span class="se">\</span>
+  glibc-static <span class="se">\</span>
+  go <span class="se">\</span>
+  golang-github-cpuguy83-go-md2man <span class="se">\</span>
+  gpgme-devel <span class="se">\</span>
+  iptables <span class="se">\</span>
+  libassuan-devel <span class="se">\</span>
+  libgpg-error-devel <span class="se">\</span>
+  libseccomp-devel <span class="se">\</span>
+  libselinux-devel <span class="se">\</span>
+  make <span class="se">\</span>
+  ostree-devel <span class="se">\</span>
+  pkgconfig <span class="se">\</span>
+  runc <span class="se">\</span>
+  containers-common
+</code></pre></div></div>
+
+<p>Debian, Ubuntu, and related distributions:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get install <span class="se">\</span>
+  btrfs-tools <span class="se">\</span>
+  git <span class="se">\</span>
+  golang-go <span class="se">\</span>
+  go-md2man <span class="se">\</span>
+  iptables <span class="se">\</span>
+  libassuan-dev <span class="se">\</span>
+  libc6-dev <span class="se">\</span>
+  libdevmapper-dev <span class="se">\</span>
+  libglib2.0-dev <span class="se">\</span>
+  libgpgme-dev <span class="se">\</span>
+  libgpg-error-dev <span class="se">\</span>
+  libostree-dev <span class="se">\</span>
+  libprotobuf-dev <span class="se">\</span>
+  libprotobuf-c0-dev <span class="se">\</span>
+  libseccomp-dev <span class="se">\</span>
+  libselinux1-dev <span class="se">\</span>
+  libsystemd-dev <span class="se">\</span>
+  pkg-config <span class="se">\</span>
+  runc <span class="se">\</span>
+  uidmap
+</code></pre></div></div>
+
+<p>On Manjaro (and maybe other Linux distributions):</p>
+
+<p>Make sure that the Linux kernel supports user namespaces:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; zgrep CONFIG_USER_NS /proc/config.gz
+CONFIG_USER_NS=y
+
+</code></pre></div></div>
+
+<p>If not, please update the kernel.
+For Manjaro Linux the instructions can be found here:
+https://wiki.manjaro.org/index.php/Manjaro_Kernels</p>
+
+<p>After that enable user namespaces:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo sysctl kernel.unprivileged_userns_clone=1
+</code></pre></div></div>
+
+<p>To enable the user namespaces permanently:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo 'kernel.unprivileged_userns_clone=1' &gt; /etc/sysctl.d/userns.conf
+</code></pre></div></div>
+
+<h3 id="building-missing-dependencies">Building missing dependencies</h3>
+
+<p>If any dependencies cannot be installed or are not sufficiently current, they have to be built from source.
+This will mainly affect Debian, Ubuntu, and related distributions, or RHEL where no subscription is active (e.g. Cloud VMs).</p>
+
+<h4 id="ostree">ostree</h4>
+
+<p>A copy of the development libraries for <code class="highlighter-rouge">ostree</code> is necessary, either in the form of the <code class="highlighter-rouge">libostree-dev</code> package
+from the <a href="https://launchpad.net/~alexlarsson/+archive/ubuntu/flatpak">flatpak</a> PPA,
+or built <a href="https://github.com/ostreedev/ostree/blob/master/docs/contributing-tutorial.md">from source</a>
+(see also <a href="https://ostree.readthedocs.io/en/latest/#building">here</a>). As of Ubuntu 18.04, <code class="highlighter-rouge">libostree-dev</code> is available in the main repositories,
+and the PPA is no longer required.</p>
+
+<p>To build, use the following (running <code class="highlighter-rouge">make</code> can take a while):</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/ostreedev/ostree ~/ostree
+<span class="nb">cd</span> ~/ostree
+git submodule update <span class="nt">--init</span>
+<span class="c"># for Fedora, CentOS, RHEL</span>
+<span class="nb">sudo </span>yum install <span class="nt">-y</span> automake bison e2fsprogs-devel fuse-devel libtool xz-devel zlib-devel
+<span class="c"># for Debian, Ubuntu etc.</span>
+<span class="nb">sudo </span>apt-get install <span class="nt">-y</span> automake bison e2fsprogs e2fslibs-dev fuse libfuse-dev libgpgme-dev liblzma-dev libtool zlib1g
+
+./autogen.sh <span class="nt">--prefix</span><span class="o">=</span>/usr <span class="nt">--libdir</span><span class="o">=</span>/usr/lib64 <span class="nt">--sysconfdir</span><span class="o">=</span>/etc
+<span class="c"># remove --nonet option due to https:/github.com/ostreedev/ostree/issues/1374</span>
+sed <span class="nt">-i</span> <span class="s1">'/.*--nonet.*/d'</span> ./Makefile-man.am
+make
+<span class="nb">sudo </span>make install
+</code></pre></div></div>
+
+<h4 id="golang">golang</h4>
+
+<p>Be careful to double-check that the version of golang is new enough (i.e. <code class="highlighter-rouge">go version</code>), version 1.10.x or higher is required.
+If needed, golang kits are available at https://golang.org/dl/. Alternatively, go can be built from source as follows
+(it’s helpful to leave the system-go installed, to avoid having to <a href="https://golang.org/doc/install/source">bootstrap go</a>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">GOPATH</span><span class="o">=</span>~/go
+git clone https://go.googlesource.com/go <span class="nv">$GOPATH</span>
+<span class="nb">cd</span> <span class="nv">$GOPATH</span>
+git checkout tags/go1.10.8  <span class="c"># optional</span>
+<span class="nb">cd </span>src
+./all.bash
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$GOPATH</span>/bin:<span class="nv">$PATH</span>
+</code></pre></div></div>
+
+<h4 id="conmon">conmon</h4>
+
+<p>The latest version of <code class="highlighter-rouge">conmon</code> is expected to be installed on the system. Conmon is used to monitor OCI Runtimes.
+To build from source, use the following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/containers/conmon
+<span class="nb">cd </span>conmon
+make
+<span class="nb">sudo </span>make podman
+</code></pre></div></div>
+
+<h4 id="runc">runc</h4>
+
+<p>The latest version of <code class="highlighter-rouge">runc</code> is expected to be installed on the system. It is picked up as the default runtime by Podman.
+Version 1.0.0-rc4 is the minimal requirement, which is available in Ubuntu 18.04 already.
+To double-check, <code class="highlighter-rouge">runc --version</code> should produce at least <code class="highlighter-rouge">spec: 1.0.1</code>, otherwise build your own:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/opencontainers/runc.git <span class="nv">$GOPATH</span>/src/github.com/opencontainers/runc
+<span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/opencontainers/runc
+make <span class="nv">BUILDTAGS</span><span class="o">=</span><span class="s2">"selinux seccomp"</span>
+<span class="nb">sudo </span>cp runc /usr/bin/runc
+</code></pre></div></div>
+
+<h4 id="cni-plugins">CNI plugins</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/containernetworking/plugins.git <span class="nv">$GOPATH</span>/src/github.com/containernetworking/plugins
+<span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/containernetworking/plugins
+./build_linux.sh
+<span class="nb">sudo </span>mkdir <span class="nt">-p</span> /usr/libexec/cni
+<span class="nb">sudo </span>cp bin/<span class="k">*</span> /usr/libexec/cni
+</code></pre></div></div>
+
+<h4 id="setup-cni-networking">Setup CNI networking</h4>
+
+<p>A proper description of setting up CNI networking is given in the <a href="cni/README.md"><code class="highlighter-rouge">cni</code> README</a>.</p>
+
+<p>Using the CNI plugins from above, a more basic network config is achieved with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>mkdir <span class="nt">-p</span> /etc/cni/net.d
+curl <span class="nt">-qsSL</span> https://raw.githubusercontent.com/containers/libpod/master/cni/87-podman-bridge.conflist | <span class="nb">sudo </span>tee /etc/cni/net.d/99-loopback.conf
+</code></pre></div></div>
+
+<h4 id="add-configuration">Add configuration</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>mkdir <span class="nt">-p</span> /etc/containers
+<span class="nb">sudo </span>curl https://raw.githubusercontent.com/projectatomic/registries/master/registries.fedora <span class="nt">-o</span> /etc/containers/registries.conf
+<span class="nb">sudo </span>curl https://raw.githubusercontent.com/containers/skopeo/master/default-policy.json <span class="nt">-o</span> /etc/containers/policy.json
+</code></pre></div></div>
+
+<h4 id="optional-packages">Optional packages</h4>
+
+<p>Fedora, CentOS, RHEL, and related distributions:</p>
+
+<p>(no optional packages)</p>
+
+<p>Debian, Ubuntu, and related distributions:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install <span class="nt">-y</span> <span class="se">\</span>
+  libapparmor-dev
+</code></pre></div></div>
+
+<h3 id="get-source-code">Get Source Code</h3>
+
+<p>As with other Go projects, Podman must be cloned into a directory structure like:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GOPATH
+└── src
+    └── github.com
+        └── containers
+            └── libpod
+</code></pre></div></div>
+
+<p>First, ensure that the go version that is found first on the $PATH (in case you built your own; see <a href="#golang">above</a>) is sufficiently recent -
+<code class="highlighter-rouge">go version</code> must be higher than 1.10.x). Then we can finally build Podman (assuming we already have a <code class="highlighter-rouge">$GOPATH</code> and the corresponding folder,
+<code class="highlighter-rouge">export GOPATH=~/go &amp;&amp; mkdir -p $GOPATH</code>):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/containers/libpod/ <span class="nv">$GOPATH</span>/src/github.com/containers/libpod
+<span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/containers/libpod
+make <span class="nv">BUILDTAGS</span><span class="o">=</span><span class="s2">"selinux seccomp"</span>
+<span class="nb">sudo </span>make install <span class="nv">PREFIX</span><span class="o">=</span>/usr
+</code></pre></div></div>
+
+<h4 id="build-tags">Build Tags</h4>
+
+<p>Otherwise, if you do not want to build Podman with seccomp or selinux support you can add <code class="highlighter-rouge">BUILDTAGS=""</code> when running make.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make <span class="nv">BUILDTAGS</span><span class="o">=</span><span class="s2">""</span>
+<span class="nb">sudo </span>make install
+</code></pre></div></div>
+
+<p>Podman supports optional build tags for compiling support of various features.
+To add build tags to the make option the <code class="highlighter-rouge">BUILDTAGS</code> variable must be set, for example:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make <span class="nv">BUILDTAGS</span><span class="o">=</span><span class="s1">'seccomp apparmor'</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Build Tag</th>
+      <th>Feature</th>
+      <th>Dependency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>apparmor</td>
+      <td>apparmor support</td>
+      <td>libapparmor</td>
+    </tr>
+    <tr>
+      <td>exclude_graphdriver_btrfs</td>
+      <td>exclude btrfs</td>
+      <td>libbtrfs</td>
+    </tr>
+    <tr>
+      <td>exclude_graphdriver_devicemapper</td>
+      <td>exclude device-mapper</td>
+      <td>libdm</td>
+    </tr>
+    <tr>
+      <td>libdm_no_deferred_remove</td>
+      <td>exclude deferred removal in libdm</td>
+      <td>libdm</td>
+    </tr>
+    <tr>
+      <td>ostree</td>
+      <td>ostree support (requires selinux)</td>
+      <td>ostree-1, libselinux</td>
+    </tr>
+    <tr>
+      <td>containers_image_ostree_stub</td>
+      <td>exclude ostree</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>seccomp</td>
+      <td>syscall filtering</td>
+      <td>libseccomp</td>
+    </tr>
+    <tr>
+      <td>selinux</td>
+      <td>selinux process and mount labeling</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>systemd</td>
+      <td>journald logging</td>
+      <td>libsystemd</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Note that Podman does not officially support device-mapper. Thus, the <code class="highlighter-rouge">exclude_graphdriver_devicemapper</code> tag is mandatory.</p>
+
+<h3 id="vendoring---dependency-management">Vendoring - Dependency Management</h3>
+
+<p>This project is using <a href="https://github.com/golang/go/wiki/Modules">go modules</a> for dependency management.  If the CI is complaining about a pull request leaving behind an unclean state, it is very likely right about it.  After changing dependencies, make sure to run <code class="highlighter-rouge">make vendor</code> to synchronize the code with the go module and repopulate the <code class="highlighter-rouge">./vendor</code> directory.</p>
+
+<h2 id="configuration-files">Configuration files</h2>
+
+<h3 id="registriesconf"><a href="https://src.fedoraproject.org/rpms/skopeo/blob/master/f/registries.conf">registries.conf</a></h3>
+
+<h4 id="man-page-registriesconf5">Man Page: <a href="https://github.com/containers/image/blob/master/docs/registries.conf.5.md">registries.conf.5</a></h4>
+
+<p><code class="highlighter-rouge">/etc/containers/registries.conf</code></p>
+
+<p>registries.conf is the configuration file which specifies which container registries should be consulted when completing image names which do not include a registry or domain portion.</p>
+
+<h4 id="example-from-the-fedora-containers-common-package">Example from the Fedora <code class="highlighter-rouge">containers-common</code> package</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat /etc/containers/registries.conf
+# This is a system-wide configuration file used to
+# keep track of registries for various container backends.
+# It adheres to TOML format and does not support recursive
+# lists of registries.
+
+# The default location for this configuration file is /etc/containers/registries.conf.
+
+# The only valid categories are: 'registries.search', 'registries.insecure',
+# and 'registries.block'.
+
+[registries.search]
+registries = ['docker.io', 'registry.fedoraproject.org', 'quay.io', 'registry.access.redhat.com', 'registry.centos.org']
+
+# If you need to access insecure registries, add the registry's fully-qualified name.
+# An insecure registry is one that does not have a valid SSL certificate or only does HTTP.
+[registries.insecure]
+registries = []
+
+
+# If you need to block pull access from a registry, uncomment the section below
+# and add the registries fully-qualified name.
+#
+[registries.block]
+registries = []
+</code></pre></div></div>
+
+<h3 id="mountsconf"><a href="https://src.fedoraproject.org/rpms/skopeo/blob/master/f/mounts.conf">mounts.conf</a></h3>
+
+<p><code class="highlighter-rouge">/usr/share/containers/mounts.conf</code> and optionally <code class="highlighter-rouge">/etc/containers/mounts.conf</code></p>
+
+<p>The mounts.conf files specify volume mount directories that are automatically mounted inside containers when executing the <code class="highlighter-rouge">podman run</code> or <code class="highlighter-rouge">podman build</code> commands.  Container process can then use this content.  The volume mount content does not get committed to the final image.</p>
+
+<p>Usually these directories are used for passing secrets or credentials required by the package software to access remote package repositories.</p>
+
+<p>For example, a mounts.conf with the line “<code class="highlighter-rouge">/usr/share/rhel/secrets:/run/secrets</code>”, the content of <code class="highlighter-rouge">/usr/share/rhel/secrets</code> directory is mounted on <code class="highlighter-rouge">/run/secrets</code> inside the container.  This mountpoint allows Red Hat Enterprise Linux subscriptions from the host to be used within the container.</p>
+
+<p>Note this is not a volume mount. The content of the volumes is copied into container storage, not bind mounted directly from the host.</p>
+
+<h4 id="example-from-the-fedora-containers-common-package-1">Example from the Fedora <code class="highlighter-rouge">containers-common</code> package:</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat /usr/share/containers/mounts.conf
+/usr/share/rhel/secrets:/run/secrets
+</code></pre></div></div>
+
+<h3 id="seccompjson"><a href="https://src.fedoraproject.org/rpms/skopeo/blob/master/f/seccomp.json">seccomp.json</a></h3>
+
+<p><code class="highlighter-rouge">/usr/share/containers/seccomp.json</code></p>
+
+<p>seccomp.json contains the whitelist of seccomp rules to be allowed inside of
+containers.  This file is usually provided by the containers-common package.</p>
+
+<p>The link above takes you to the seccomp.json</p>
+
+<h3 id="policyjson"><a href="https://github.com/containers/skopeo/blob/master/default-policy.json">policy.json</a></h3>
+
+<p><code class="highlighter-rouge">/etc/containers/policy.json</code></p>
+
+<h4 id="man-page-policyjson5">Man Page: <a href="https://github.com/containers/image/blob/master/docs/policy.json.md">policy.json.5</a></h4>
+
+<h4 id="example-from-the-fedora-containers-common-package-2">Example from the Fedora <code class="highlighter-rouge">containers-common</code> package:</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat /etc/containers/policy.json
+{
+    "default": [
+	{
+	    "type": "insecureAcceptAnything"
+	}
+    ],
+    "transports":
+	{
+	    "docker-daemon":
+		{
+		    "": [{"type":"insecureAcceptAnything"}]
+		}
+	}
+}
+</code></pre></div></div>
+
+      </section>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
