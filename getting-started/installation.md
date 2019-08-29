@@ -260,7 +260,7 @@ sudo cp bin/* /usr/libexec/cni
 
 #### Setup CNI networking
 
-A proper description of setting up CNI networking is given in the [`cni` README](cni/README.md).
+A proper description of setting up CNI networking is given in the [`cni` README](https://github.com/containers/libpod/blob/master/cni/README.md).
 
 Using the CNI plugins from above, a more basic network config is achieved with:
 
