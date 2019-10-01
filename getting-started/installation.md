@@ -142,7 +142,7 @@ sudo apt-get install \
   libgpg-error-dev \
   libostree-dev \
   libprotobuf-dev \
-  libprotobuf-c0-dev \
+  libprotobuf-c-dev \
   libseccomp-dev \
   libselinux1-dev \
   libsystemd-dev \
