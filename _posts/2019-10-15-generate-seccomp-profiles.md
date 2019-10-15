@@ -14,7 +14,7 @@ tags: containers, security, seccomp, oci, bpf, ebpf, tracing, syscall
 
 
 Containers run everywhere. They run in the cloud, they run on IoT devices, they run in small and in big companies and wherever they run, we want them to run as securely as possible. In this article, I describe the [Google Summer of Code](https://summerofcode.withgoogle.com/) project that [Divyansh Kamboj](https://twitter.com/weirdwiz_), [Dan Walsh](https://twitter.com/rhatdan) and [I](https://twitter.com/vlntnrthbrg) have been working on and how we improved the state of the art in securing containers, and how you can try it out.
-
+<!--readmore-->
 
 # Background
 
