@@ -1,0 +1,16 @@
+---
+title: PMM Server + podman: Running a Container Without root Privileges 
+layout: default
+author: tsweeney 
+categories: [blogs]
+tags: containers, images, docker, buildah, podman, oci
+---
+![podman logo](https://podman.io/images/podman.svg)
+
+{% assign author = site.authors[page.author] %}
+
+# PMM Server + podman: Running a Container Without root Privileges 
+## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }}) [Twitter](https://twitter.com/{{ author.twitter }})
+
+Ceri Williams talks about how the Percona Monitoring and Management (PMM) can be run in a container using Podman without root privileges [here](https://www.percona.com/blog/2019/10/22/pmm-server-podman-running-a-container-without-root-privileges/?utm_campaign=2019%20Blog%20Q4&utm_content=103803368&utm_medium=social&utm_source=twitter&hss_channel=tw-35373186).  In the post Ceri talks about how Percona was able to replace Docker with Podman and Buildah and are able to run containers more securely by doing so. 
+
