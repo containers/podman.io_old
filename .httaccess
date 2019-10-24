@@ -1,0 +1,6 @@
+rewrriteEngine On
+
+#If the host is "docs.podman.io"
+RewriteCond %{HTTP_HOST} ^docs.podman.io$ [NC]
+#Then rewrite any request to /folder
+RewriteRule ^((?!folder).*)$ /docs/$1 [NC,L]
