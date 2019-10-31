@@ -3,6 +3,8 @@ layout: default
 title: Getting Started with Podman
 ---
 
+![Podman logo](../images/podman.svg)
+
 # Basic Setup and Use of Podman
 Podman is a utility provided as part of the libpod library.  It can be used to create and maintain
 containers. The following tutorial will teach you how to set up Podman and perform some basic
