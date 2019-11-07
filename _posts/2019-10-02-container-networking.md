@@ -1,7 +1,7 @@
 ---
 title: Configuring container networking with Podman  
 layout: default
-author: bbaude
+author: baude
 categories: [blogs]
 tags: containers, images, docker, buildah, podman, oci, networking
 ---
