@@ -18,17 +18,24 @@ title: Podman
 
 <img src="images/podman.svg" alt="podman logo">
 
-<h3>Welcome to the website for the Pod Manager tool (<a href="https://github.com/containers/libpod">podman</a>). This site features announcements and news around Podman, and occasionally other <a href="https://github.com/containers/">container tooling</a> news.</h3>
+<h3>Welcome to the website for the Pod Manager tool (<a href="https://github.com/containers/libpod">podman</a>).
+  This site features announcements and news around Podman,
+  and occasionally other <a href="https://github.com/containers/">container tooling</a> news.</h3>
 
-<h3>What is Podman?  Podman is a daemonless container engine for developing, managing, and running OCI Containers on your Linux System.  Containers can either be run as root or in rootless mode.  Simply put: `alias docker=podman`.   More details <a href="whatis.html">here</a>.
+<h3>What is Podman?  Podman is a daemonless container engine for developing, managing,
+  and running OCI Containers on your Linux System.
+  Containers can either be run as root or in rootless mode.  Simply put: `alias docker=podman`.
+  More details <a href="whatis.html">here</a>.
 
 <h1>What's New!</h1>
 
 <section class="posts">
   {% for post in site.categories.new %}
-    <p><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></p>
+    <p><span>{{ post.date | date_to_string }}</span> »
+      <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></p>
     <p>{{ post.excerpt }}</p><hr>
   {% endfor %}
 </section>
 
-<h4>Now where is that Container Commandos <a href=https://github.com/mairin/coloringbook-container-commandos/blob/master/Web.pdf>Coloring Book</a>?</h4>
+<h4>Now where is that Container Commandos
+  <a href=https://github.com/mairin/coloringbook-container-commandos/blob/master/Web.pdf>Coloring Book</a>?</h4>
