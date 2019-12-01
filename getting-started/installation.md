@@ -353,7 +353,7 @@ This project is using [go modules](https://github.com/golang/go/wiki/Modules) fo
 
 ### [registries.conf](https://src.fedoraproject.org/rpms/skopeo/blob/master/f/registries.conf)
 
-#### Man Page: [registries.conf.5](https://github.com/containers/image/blob/master/docs/registries.conf.5.md)
+#### Man Page: [registries.conf.5](https://github.com/containers/image/blob/master/docs/containers-registries.conf.5.md)
 
 `/etc/containers/registries.conf`
 
@@ -421,7 +421,7 @@ The link above takes you to the seccomp.json
 
 `/etc/containers/policy.json`
 
-#### Man Page: [policy.json.5](https://github.com/containers/image/blob/master/docs/policy.json.md)
+#### Man Page: [policy.json.5](https://github.com/containers/image/blob/master/docs/containers-policy.json.5.md)
 
 
 #### Example from the Fedora `containers-common` package:
