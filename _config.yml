@@ -17,6 +17,17 @@ readme_index:
 excerpt_separator: "<!--readmore-->"
 
 authors:
+  adrianr:
+    name: Adrian Reber
+    display_name: Adrian Reber
+    email: areber@redhat.com
+    github: adrianreber
+    twitter: adrian__reber
+  afbjorklund:
+    name: Anders F Björklund
+    display_name: Anders Björklund
+    email: anders.f.bjorklund@gmail.com
+    github: afbjorklund
   baude:
     name: Brent Baude
     display_name: Brent Baude
@@ -45,6 +56,14 @@ authors:
     web: https://redhat.com
     twitter: EmilienMacchi
     github: EmilienM
+  haraldh:
+    name: Harald Hoyer
+    display_name: Harald Hoyer
+    gravatar: 3de14a8eee27f8bc4c58acf5409827df
+    email: harald@redhat.com
+    web: https://harald.hoyer.xyz
+    twitter: haraldhoyer
+    github: haraldh
   ipbabble:
     name: William Henry
     display_name: ipbabble
@@ -61,6 +80,13 @@ authors:
     web: https://redhat.com
     twitter: jwhonce
     github: jwhonce
+  kshirinkin:
+    name: Kirill Shirinkin
+    display_name: Kirill Shirinkin
+    email: kirill@mkdev.me
+    web: https://mkdev.me/en
+    twitter: Fodoj
+    github: Fodoj
   mheon:
     name: Matthew Heon
     display_name: Matt Heon
@@ -84,32 +110,6 @@ authors:
     web: https://redhat.com
     twitter: TSweeneyRedHat
     github: TomSweeneyRedhat
-  haraldh:
-    name: Harald Hoyer
-    display_name: Harald Hoyer
-    gravatar: 3de14a8eee27f8bc4c58acf5409827df
-    email: harald@redhat.com
-    web: https://harald.hoyer.xyz
-    twitter: haraldhoyer
-    github: haraldh
-  afbjorklund:
-    name: Anders F Björklund
-    display_name: Anders Björklund
-    email: anders.f.bjorklund@gmail.com
-    github: afbjorklund
-  kshirinkin:
-    name: Kirill Shirinkin
-    display_name: Kirill Shirinkin
-    email: kirill@mkdev.me
-    web: https://mkdev.me/en
-    twitter: Fodoj
-    github: Fodoj
-  adrianr:
-    name: Adrian Reber
-    display_name: Adrian Reber
-    email: areber@redhat.com
-    github: adrianreber
-    twitter: adrian__reber
   vrothberg:
     name: Valentin Rothberg
     display_name: Valentin Rothberg
