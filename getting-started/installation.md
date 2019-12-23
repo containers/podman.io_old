@@ -72,11 +72,10 @@ sudo yum module install -y container-tools:1.0
 The latest builds are available in a PPA. Take note of the [Build and Run Dependencies](#build-and-run-dependencies) listed below if you run into any issues.
 
 ```bash
-sudo apt-get update -qq
-sudo apt-get install -qq -y software-properties-common uidmap
-sudo add-apt-repository -y ppa:projectatomic/ppa
-sudo apt-get update -qq
-sudo apt-get -qq -y install podman
+sudo apt update
+sudo apt install software-properties-common uidmap
+sudo add-apt-repository ppa:projectatomic/ppa
+sudo apt install podman
 ```
 
 #### Fedora
