@@ -75,6 +75,7 @@ The latest builds are available in a PPA. Take note of the [Build and Run Depend
 sudo apt update
 sudo apt install software-properties-common uidmap
 sudo add-apt-repository ppa:projectatomic/ppa
+sudo apt update
 sudo apt install podman
 ```
 
