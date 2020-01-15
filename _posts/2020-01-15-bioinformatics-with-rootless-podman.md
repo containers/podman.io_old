@@ -32,3 +32,4 @@ https://developers.redhat.com/articles/getting-red-hat-developer-subscription-wh
 ..and download RedHat Enterprise 8.1
 
 <!--readmore-->
+
