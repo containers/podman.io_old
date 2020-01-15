@@ -13,16 +13,15 @@ tags: bioinformatics, rootless, podman
 
 ## TL;DR
 
-Over the last 10 years I've seen various things evolve in genomics where I work. From the initial dedicated server, to hpc environments 
+Over the last 10 years I've seen machines and workflows evolve where I work. From the initial dedicated server, to hpc environments 
 and now the latest instance, containers.
 
-From an admin point of view this is great - The initial servers had to be carefully built and maintained so that everything would work nicely
-together. Incompatible programs were run through a VM until such time as they could be folded in to the mix.
+From an admin point of view this is great - The initial servers had to be carefully built and maintained so that everything would work nicely together. Incompatible programs at that time were run through a VM until such time as they could be folded in to the mix.
 
 The HPC's had versioned software and environment modules and were built to load the relevant dependencies at run time..
 
 Now we are into a new era, containers - and not just any old containers, but containers that end users can build and run up fairly 
-quickly to perform what-if's, and move on quickly through iterations to that end.
+quickly to perform what-if's, and move on quickly through iterations until they perform the required functions.
 
 <!--readmore-->
 
