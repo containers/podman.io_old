@@ -23,12 +23,12 @@ The HPC's had versioned software and environment modules and were built to load 
 Now we are into a new era, containers - and not just any old containers, but containers that end users can build and run up fairly 
 quickly to perform what-if's, and move on quickly through iterations until they perform the required functions.
 
-<!--readmore-->
-
 Podman has developed very rapidly and is incredibly easy to use. You can use it in conjuction with quay.io or run it on a local machine.
-
-Once you get familiar with the commandline syntax, generating Containerfiles/Dockerfiles to add in additional software from EPEL, Cran etc.
 
 If you don't have a RedHat Developer Subscription now is an ideal time to get one: -
 
 https://developers.redhat.com/articles/getting-red-hat-developer-subscription-what-rhel-users-need-know/
+
+..and download RedHat Enterprise 8.1
+
+<!--readmore-->
