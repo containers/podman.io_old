@@ -179,3 +179,22 @@ CONTAINER ID  IMAGE                                       COMMAND  CREATED      
 a1fc64bd8e47  registry.access.redhat.com/ubi8/ubi:latest  bash     2 hours ago  Up 2 hours ago         zen_albattani
 [nbh23@colombo ~]$
 ```
+So we created a container to interact with, but how about creating a new image?
+I found that podman is very easy to interact with and created a Dockerfile. This is a list of commands in a text file that controls what gets installed.
+Create a new directory - in this case whatshap to put the Dockerfile in:-
+```
+[nbh23@colombo whatshap]$ cat Dockerfile
+FROM registry.access.redhat.com/ubi8/ubi
+RUN yum -y update \
+&& yum -y install python3 \
+&& yum -y install make \
+&& yum -y install gcc \
+&& yum -y install redhat-rpm-config \
+&& yum -y install zlib-devel \
+&& yum -y install bzip2-devel \
+&& yum -y install xz-devel \
+&& yum -y install python3-devel \
+&& yum clean all
+RUN pip3 install pysam && pip3 install whatshap
+```
+RUN pip3 install pysam && pip3 install whatshap
