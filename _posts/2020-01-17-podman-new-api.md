@@ -22,15 +22,15 @@ The new API is a simpler implementation based on HTTP/REST.  We provide two basi
 
 While these two endpoints work similarly, there are important and somewhat nuanced differences. The Docker API endpoint is useful for existing automation tied to that API and potentially tools like docker-compose.
 
-Example: 
+#### Example 
 
 If you wanted a list of images with the libpod endpoint, you would use the following endpoint:
 
-<endpoint_base_url>/libpod/images/json
+```<endpoint_base_url>/libpod/images/json```
 
 And if you wanted a list of images but in docker-compatibility,  you would use:
 
-<endpoint_base_url>/images/json
+```<endpoint_base_url>/images/json```
 
 In our proof of concepts, we have tested our endpoint with the [docker-py](https://docker-py.readthedocs.io/en/stable/) project.  There are of course subtle differences which we are still working on.  And there are compatibility endpoints that we can not support like `swarm` which Podman does not support.
 
