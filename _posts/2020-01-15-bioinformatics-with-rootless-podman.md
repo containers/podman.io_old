@@ -54,7 +54,7 @@ Red Hat Enterprise Linux release 8.1 (Ootpa)
 [root@f471459c7619 /]#
 
 ```
-Notice how the prompt changed from nbh23@colombo to root@f471459c7619 - the f471459c7619 is the part to remember as we can use this at a later date in this post to interact with it.
+Notice how the prompt changed from nbh23@colombo to root@f471459c7619 - the f471459c7619 is the part to remember, we'll interact with that later on in this post. It's a random allocation, so your instance will be different.
 
 The podman help menu's are excellent, podman -h gives you a list of subcommands, which you can then also query: -
 ```
@@ -181,7 +181,7 @@ a1fc64bd8e47  registry.access.redhat.com/ubi8/ubi:latest  bash     2 hours ago  
 ```
 So we created a container to interact with, but how about creating a new image?
 I found that podman is very easy to interact with and created a Dockerfile. This is a list of commands in a text file that controls what gets installed.
-Create a new directory - in this case whatshap to put the Dockerfile in:-
+Create a new directory - in this case whatshap, to put the Dockerfile in:-
 ```
 [nbh23@colombo whatshap]$ cat Dockerfile
 FROM registry.access.redhat.com/ubi8/ubi
@@ -197,4 +197,47 @@ RUN yum -y update \
 && yum clean all
 RUN pip3 install pysam && pip3 install whatshap
 ```
-RUN pip3 install pysam && pip3 install whatshap
+Then we build the container image - from within the whatshap directory run: -
+```
+podman build -t whatshap .
+```
+Notice the '.' at the end, that's important!
+
+You'll see the container image start to build, with notifications of where it's at. If all goes to plan you will then finally see notification that it's completed: -
+
+```
+STEP 4: COMMIT whatshap
+d523727fc6c297086e84e7ec99f62e8f5e6d093d9decb1b58ee8a4205d46b3dd
+```
+We can then check it works: -
+```
+[nbh23@colombo whatshap]$ podman run -it whatshap
+[root@ac05564bd51b /]# whatshap -h
+usage: whatshap [-h] [--version] [--debug]
+                {phase,stats,compare,hapcut2vcf,unphase,haplotag,genotype} ...
+
+positional arguments:
+  {phase,stats,compare,hapcut2vcf,unphase,haplotag,genotype}
+    phase               Phase variants in a VCF with the WhatsHap algorithm
+    stats               Print phasing statistics of a single VCF file
+    compare             Compare two or more phasings
+    hapcut2vcf          Convert hapCUT output format to VCF
+    unphase             Remove phasing information from a VCF file
+    haplotag            Tag reads by haplotype
+    genotype            Genotype variants
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --debug               Print debug messages
+[root@ac05564bd51b /]#
+```
+Which all looks good - we now have our container image and can re-run that to do our whatshap analysis.
+
+All well and good, but what happens about storage of that analysis?
+
+We can add that to our podman command, if we have a directory called data in /home we can map that as follows: -
+```
+podman run -v /home/nbh23/data:/home/nbh23:z -it whatshap
+```
+The nice thing is that the UID and GID for files created this way all match up. The trailing :z makes selinux happy :-)
