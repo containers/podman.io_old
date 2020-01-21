@@ -25,6 +25,10 @@ quickly to perform what-if's, and move on quickly through iterations until they 
 
 Podman has developed very rapidly and is incredibly easy to use. You can use it in conjuction with quay.io or run it on a local machine.
 
+I should add that Afrian Reber has also created a podman article using openhpc, well worth a read.https://youtu.be/TtHSNsbU24E
+
+https://podman.io/blogs/2019/09/26/podman-in-hpc.html
+
 If you don't have a RedHat Developer Subscription now is an ideal time to get one: -
 
 https://developers.redhat.com/articles/getting-red-hat-developer-subscription-what-rhel-users-need-know/
