@@ -25,7 +25,7 @@ quickly to perform what-if's, and move on quickly through iterations until they 
 
 Podman has developed very rapidly and is incredibly easy to use. You can use it in conjuction with quay.io or run it on a local machine.
 
-I should add that Afrian Reber has also created a podman article using openhpc, well worth a read.https://youtu.be/TtHSNsbU24E
+I should add that Adrian Reber has also created a podman article using openhpc, well worth a read.https://youtu.be/TtHSNsbU24E
 
 https://podman.io/blogs/2019/09/26/podman-in-hpc.html
 
