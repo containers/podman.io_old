@@ -241,3 +241,58 @@ We can add that to our podman command, if we have a directory called data in /ho
 podman run -v /home/nbh23/data:/home/nbh23:z -it whatshap
 ```
 The nice thing is that the UID and GID for files created this way all match up. The trailing :z makes selinux happy :-)
+```
+[nbh23@colombo whatshap]$ podman run -v /home/nbh23/data:/home/nbh23:z -it whatshap
+[root@fef561d523b8 /]# ls
+bin  boot  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[root@fef561d523b8 /]# cd /home
+[root@fef561d523b8 home]# ls
+nbh23
+[root@fef561d523b8 home]# cd nbh23
+[root@fef561d523b8 nbh23]# touch testfile
+[root@fef561d523b8 nbh23]# ls -la
+total 0
+drwxrwxr-x. 2 root root 22 Jan 21 09:09 .
+drwxr-xr-x. 3 root root 19 Jan 21 09:09 ..
+-rw-r--r--. 1 root root  0 Jan 21 09:09 testfile
+[root@fef561d523b8 nbh23]# exit
+[nbh23@colombo ~]$ ls
+Containers  data  Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+[nbh23@colombo ~]$ cd data
+[nbh23@colombo data]$ ls -la
+total 4
+drwxrwxr-x.  2 nbh23 nbh23   22 Jan 21 09:09 .
+drwx------. 17 nbh23 nbh23 4096 Jan 21 09:07 ..
+-rw-r--r--.  1 nbh23 nbh23    0 Jan 21 09:09 testfile
+[nbh23@colombo data]$
+```
+One of the things I discovered whilst creating a more complex container image was that you can start the existing image into a bash session, doing the manipulation that you require, and then use the podman commit command to write those changes.
+For example using our whatshap container image we can run it as follows: -
+```
+[nbh23@colombo data]$ podman run -it whatshap bash
+[root@73c4742e4724 /]#
+```
+We can then make our alterations, and from another session commit those changes: -
+```
+[nbh23@colombo ~]$ podman commit 73c4742e4724 whatshap-altered
+Getting image source signatures
+Copying blob c630f5c3e169 skipped: already exists
+Copying blob 4bd7408cc1c8 skipped: already exists
+Copying blob 1383f0e3c813 skipped: already exists
+Copying blob a2ff5e229058 skipped: already exists
+Copying blob b75bf3e68dab done
+Copying config 931b7f5302 done
+Writing manifest to image destination
+Storing signatures
+931b7f5302af9965bff14e460c19ff9e756d74095940c6d85e63f929006c35f0
+[nbh23@colombo ~]$
+```
+Then do podman image list to see what we have: -
+```
+[nbh23@colombo ~]$ podman image list
+REPOSITORY                            TAG      IMAGE ID       CREATED              SIZE
+localhost/whatshap-altered            latest   931b7f5302af   About a minute ago   545 MB
+localhost/whatshap                    latest   d523727fc6c2   3 days ago           545 MB
+registry.access.redhat.com/ubi8/ubi   latest   096cae65a207   5 weeks ago          239 MB
+[nbh23@colombo ~]$
+```
