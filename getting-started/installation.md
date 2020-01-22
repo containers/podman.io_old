@@ -15,6 +15,40 @@ sudo pacman -S podman
 
 If you have problems when running Podman in rootless mode follow the instructions [here](https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional))
 
+#### [Debian](https://debian.org)
+
+The libpod package is [being worked on](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=930440)
+for inclusion in the default Debian repos. Relevant status updates can also be
+found [here](https://github.com/containers/libpod/issues/1742).
+
+Alternatively, the [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
+provides packages for Debian 10, testing and unstable.
+
+```bash
+# Debian Unstable/Sid
+echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Debian_Unstable/Release.key -O Release.key
+
+# Debian Testing
+echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Debian_Testing/Release.key -O Release.key
+
+# Debian 10
+echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Debian_10/Release.key -O Release.key
+
+sudo apt-key add - < Release.key
+sudo apt-get update -qq
+sudo apt-get -qq -y install podman
+sudo mkdir -p /etc/containers
+echo -e "[registries.search]\nregistries = ['docker.io', 'quay.io']" | sudo tee /etc/containers/registries.conf
+```
+
+There are many [packages](https://packages.debian.org/search?keywords=libpod&searchon=names&suite=stable&section=all)
+with the libpod prefix available already on Debian. However, those are
+unrelated to this project.
+
+
 #### [Fedora](https://www.fedoraproject.org), [CentOS](https://www.centos.org)
 
 ```bash
@@ -49,6 +83,22 @@ sudo zypper install podman
 
 Built-in, no need to install
 
+#### [Raspbian](https://raspbian.org)
+
+The Kubic project provides packages for Raspbian 10.
+ 
+```bash
+# Raspbian 10
+echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Raspbian_10/Release.key -O Release.key
+sudo apt-key add - < Release.key
+sudo apt-get update -qq
+sudo apt-get -qq -y install podman
+sudo mkdir -p /etc/containers
+echo -e "[registries.search]\nregistries = ['docker.io', 'quay.io']" | sudo tee /etc/containers/registries.conf
+```
+
+
 #### [RHEL7](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux)
 
 Subscribe, then enable Extras channel and install Podman.
@@ -65,19 +115,56 @@ sudo yum module enable -y container-tools:1.0
 sudo yum module install -y container-tools:1.0
 ```
 
-### Installing development versions of Podman
-
 #### [Ubuntu](https://www.ubuntu.com)
 
-The latest builds are available in a PPA. Take note of the [Build and Run Dependencies](#build-and-run-dependencies) listed below if you run into any issues.
+The Kubic project provides packages for Ubuntu 18.04, 19.04 and 19.10.
 
 ```bash
-sudo apt update
-sudo apt install software-properties-common uidmap
-sudo add-apt-repository ppa:projectatomic/ppa
-sudo apt update
-sudo apt install podman
+. /etc/os-release
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/x${NAME}_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/x${NAME}_${VERSION_ID}/Release.key -O Release.key
+sudo apt-key add - < Release.key
+sudo apt-get update -qq
+sudo apt-get -qq -y install podman
+sudo mkdir -p /etc/containers
+echo -e "[registries.search]\nregistries = ['docker.io', 'quay.io']" | sudo tee /etc/containers/registries.conf
 ```
+
+There are many [packages](https://packages.ubuntu.com/search?keywords=libpod&searchon=names&suite=eoan&section=all)
+with the libpod prefix available already on Ubuntu. However, those are
+unrelated to this project.
+
+### Installing development versions of Podman
+
+#### Debian
+
+The Kubic project provides RC/testing packages for Debian 10, testing and
+unstable.
+
+```bash
+# Debian Unstable/Sid
+echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Debian_Unstable/Release.key -O Release.key
+
+# Debian Testing
+echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Debian_Testing/Release.key -O Release.key
+
+# Debian 10
+echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Debian_10/Release.key -O Release.key
+
+# Raspbian 10
+echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Raspbian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Raspbian_10/Release.key -O Release.key
+
+sudo apt-key add - < Release.key
+sudo apt-get update -qq
+sudo apt-get -qq -y install podman
+sudo mkdir -p /etc/containers
+echo -e "[registries.search]\nregistries = ['docker.io', 'quay.io']" | sudo tee /etc/containers/registries.conf
+```
+
 
 #### Fedora
 
@@ -91,6 +178,22 @@ sudo yum distro-sync --enablerepo=updates-testing podman
 If you use a newer Podman package from Fedora's `updates-testing`, we would
 appreciate your `+1` feedback in [Bodhi, Fedora's update management
 system](https://bodhi.fedoraproject.org/updates/?packages=podman).
+
+
+#### Ubuntu
+
+The Kubic project provides RC/testing packages for Ubuntu 18.04, 19.04 and 19.10.
+
+```bash
+. /etc/os-release
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/x${NAME}_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list"
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/x${NAME}_${VERSION_ID}/Release.key -O Release.key
+sudo apt-key add - < Release.key
+sudo apt-get update -qq
+sudo apt-get -qq -y install podman
+sudo mkdir -p /etc/containers
+echo -e "[registries.search]\nregistries = ['docker.io', 'quay.io']" | sudo tee /etc/containers/registries.conf
+```
 
 ## Building from scratch
 
