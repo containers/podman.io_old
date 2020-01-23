@@ -2,7 +2,7 @@
 title: New API coming for Podman 
 layout: default
 author: baude
-categories: [releases]
+categories: [blogs]
 tags: community, open source, podman, hpc, api, REST, API
 ---
 
