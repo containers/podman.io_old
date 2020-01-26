@@ -300,4 +300,6 @@ localhost/whatshap                    latest   d523727fc6c2   3 days ago        
 registry.access.redhat.com/ubi8/ubi   latest   096cae65a207   5 weeks ago          239 MB
 [nbh23@colombo ~]$
 ```
-This has covered what i initially wanted to make available from a commandline focused container and container image. now that word has got out where i work people eere wanting to see concrete examples, so I'm going to publish this and then focus on part two. this will be more of an interactive, graphical use of containers
+This has covered command line container image creation and usage, I'll be creating another blog post detailing graphical interactive containers as i'm aware that there are various interactive vidual programs to cover too.
+
+feel free to contact me with any ideas or suggestions/ questions.
