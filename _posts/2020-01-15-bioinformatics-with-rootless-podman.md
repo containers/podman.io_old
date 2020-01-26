@@ -300,6 +300,6 @@ localhost/whatshap                    latest   d523727fc6c2   3 days ago        
 registry.access.redhat.com/ubi8/ubi   latest   096cae65a207   5 weeks ago          239 MB
 [nbh23@colombo ~]$
 ```
-This has covered command line container image creation and usage, I'll be creating another blog post detailing graphical interactive containers as i'm aware that there are various interactive vidual programs to cover too.
+This has covered command line container image creation and usage, I'll be creating another blog post detailing graphical interactive containers as i'm aware that there are various interactive visual programs to cover too.
 
 feel free to contact me with any ideas or suggestions/ questions.
