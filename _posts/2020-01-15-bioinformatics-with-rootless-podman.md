@@ -297,9 +297,11 @@ Then do podman image list to see what we have: -
 REPOSITORY                            TAG      IMAGE ID       CREATED              SIZE
 localhost/whatshap-altered            latest   931b7f5302af   About a minute ago   545 MB
 localhost/whatshap                    latest   d523727fc6c2   3 days ago           545 MB
-registry.access.redhat.com/ubi8/ubi   latest   096cae65a207   5 weeks ago          239 MB
+registry.access.redhat.com/ubi8/ubi   latest   096cae65a207   5 weeks ago          239
 [nbh23@colombo ~]$
 ```
+You can make multiple changes to your original container image until you are satisfied that it's working as you'd like.
+
 This has covered command line container image creation and usage, I'll be creating another blog post detailing graphical interactive containers as i'm aware that there are various interactive visual programs to cover too.
 
-feel free to contact me with any ideas or suggestions/ questions.
+feel free to contact me with any ideas or suggestions / questions
