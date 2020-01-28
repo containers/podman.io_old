@@ -40,8 +40,6 @@ wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:st
 sudo apt-key add - < Release.key
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
-sudo mkdir -p /etc/containers
-echo -e "[registries.search]\nregistries = ['docker.io', 'quay.io']" | sudo tee /etc/containers/registries.conf
 ```
 
 There are many [packages](https://packages.debian.org/search?keywords=libpod&searchon=names&suite=stable&section=all)
@@ -94,8 +92,6 @@ wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:st
 sudo apt-key add - < Release.key
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
-sudo mkdir -p /etc/containers
-echo -e "[registries.search]\nregistries = ['docker.io', 'quay.io']" | sudo tee /etc/containers/registries.conf
 ```
 
 
@@ -126,8 +122,6 @@ wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:st
 sudo apt-key add - < Release.key
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
-sudo mkdir -p /etc/containers
-echo -e "[registries.search]\nregistries = ['docker.io', 'quay.io']" | sudo tee /etc/containers/registries.conf
 ```
 
 There are many [packages](https://packages.ubuntu.com/search?keywords=libpod&searchon=names&suite=eoan&section=all)
@@ -161,8 +155,6 @@ wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:te
 sudo apt-key add - < Release.key
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
-sudo mkdir -p /etc/containers
-echo -e "[registries.search]\nregistries = ['docker.io', 'quay.io']" | sudo tee /etc/containers/registries.conf
 ```
 
 
@@ -191,8 +183,6 @@ wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:te
 sudo apt-key add - < Release.key
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
-sudo mkdir -p /etc/containers
-echo -e "[registries.search]\nregistries = ['docker.io', 'quay.io']" | sudo tee /etc/containers/registries.conf
 ```
 
 ## Building from scratch
