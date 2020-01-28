@@ -11,8 +11,6 @@ tags: bioinformatics, rootless, podman
 # Bioinformatics with rootless podman
 ## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }}) [Twitter](https://twitter.com/{{ author.twitter }})
 
-## TL;DR
-
 Over the last 10 years I've seen machines and workflows evolve where I work. From the initial dedicated server, to hpc environments 
 and now the latest instance, containers.
 
