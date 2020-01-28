@@ -18,18 +18,16 @@ and now the latest instance, containers.
 
 From an admin point of view this is great - The initial servers had to be carefully built and maintained so that everything would work nicely together. Incompatible programs at that time were run through a VM until such time as they could be folded in to the mix.
 
-The HPC's had versioned software and environment modules and were built to load the relevant dependencies at run time..
+The HPC's had versioned software and environment modules and were built to load the relevant dependencies at run time.
 
 Now we are into a new era, containers - and not just any old containers, but containers that end users can build and run up fairly 
 quickly to perform what-if's, and move on quickly through iterations until they perform the required functions.
 
 Podman has developed very rapidly and is incredibly easy to use. You can use it in conjuction with quay.io or run it on a local machine.
 
-I should add that Adrian Reber has also created a podman article using openhpc, well worth a read.https://youtu.be/TtHSNsbU24E
+I should add that Adrian Reber gave a [talk](https://youtu.be/TtHSNsbU24E) and has also created a Podman [article](https://podman.io/blogs/2019/09/26/podman-in-hpc.html) using openhpc; well worth a watch and a read.
 
-https://podman.io/blogs/2019/09/26/podman-in-hpc.html
-
-If you don't have a RedHat Developer Subscription now is an ideal time to get one: -
+If you don't have a RedHat Developer Subscription now is an ideal time to get one:
 
 https://developers.redhat.com/articles/getting-red-hat-developer-subscription-what-rhel-users-need-know/
 
@@ -50,7 +48,7 @@ Log in with your userID and you can start creating a container
 podman pull ubi8/ubi
 podman run --interactive --tty ubi8/ubi bash
 ```
-The first command pulls down the ubi8 Universal Base Image, which is a great building block. The second command starts an interactive ubi8 image at a bash prompt. You can run any commands you like in this: -
+The first command pulls down the ubi8 Universal Base Image, which is a great building block. The second command starts an interactive ubi8 image at a bash prompt. You can run any commands you like in this:
 ```
 [nbh23@colombo ~]$ podman run --interactive --tty ubi8/ubi bash
 [root@f471459c7619 /]# cat /etc/redhat-release
@@ -60,7 +58,7 @@ Red Hat Enterprise Linux release 8.1 (Ootpa)
 ```
 Notice how the prompt changed from nbh23@colombo to root@f471459c7619 - the f471459c7619 is the part to remember, we'll interact with that later on in this post. It's a random allocation, so your instance will be different.
 
-The podman help menu's are excellent, podman -h gives you a list of subcommands, which you can then also query: -
+The Podman help menu's are excellent, podman -h gives you a list of subcommands, which you can then also query:
 ```
 [nbh23@colombo ~]$ podman -h
 manage pods and images
@@ -184,8 +182,8 @@ a1fc64bd8e47  registry.access.redhat.com/ubi8/ubi:latest  bash     2 hours ago  
 [nbh23@colombo ~]$
 ```
 So we created a container to interact with, but how about creating a new image?
-I found that podman is very easy to interact with and created a Dockerfile. This is a list of commands in a text file that controls what gets installed.
-Create a new directory - in this case whatshap, to put the Dockerfile in:-
+I found that Podman is very easy to interact with and created a Dockerfile. This is a list of commands in a text file that controls what gets installed.
+Create a new directory - in this case whatshap, to put the Dockerfile in:
 ```
 [nbh23@colombo whatshap]$ cat Dockerfile
 FROM registry.access.redhat.com/ubi8/ubi
@@ -201,19 +199,19 @@ RUN yum -y update \
 && yum clean all
 RUN pip3 install pysam && pip3 install whatshap
 ```
-Then we build the container image - from within the whatshap directory run: -
+Then we build the container image - from within the whatshap directory run:
 ```
 podman build -t whatshap .
 ```
 Notice the '.' at the end, that's important!
 
-You'll see the container image start to build, with notifications of where it's at. If all goes to plan you will then finally see notification that it's completed: -
+You'll see the container image start to build, with notifications of where it's at. If all goes to plan you will then finally see notification that it's completed:
 
 ```
 STEP 4: COMMIT whatshap
 d523727fc6c297086e84e7ec99f62e8f5e6d093d9decb1b58ee8a4205d46b3dd
 ```
-We can then check it works: -
+We can then check it works:
 ```
 [nbh23@colombo whatshap]$ podman run -it whatshap
 [root@ac05564bd51b /]# whatshap -h
@@ -240,7 +238,7 @@ Which all looks good - we now have our container image and can re-run that to do
 
 All well and good, but what happens about storage of that analysis?
 
-We can add that to our podman command, if we have a directory called data in /home we can map that as follows: -
+We can add that to our Podman command, if we have a directory called data in /home we can map that as follows:
 ```
 podman run -v /home/nbh23/data:/home/nbh23:z -it whatshap
 ```
@@ -270,13 +268,13 @@ drwx------. 17 nbh23 nbh23 4096 Jan 21 09:07 ..
 -rw-r--r--.  1 nbh23 nbh23    0 Jan 21 09:09 testfile
 [nbh23@colombo data]$
 ```
-One of the things I discovered whilst creating a more complex container image was that you can start the existing image into a bash session, doing the manipulation that you require, and then use the podman commit command to write those changes.
-For example using our whatshap container image we can run it as follows: -
+One of the things I discovered whilst creating a more complex container image was that you can start the existing image into a bash session, doing the manipulation that you require, and then use the Podman commit command to write those changes.
+For example using our whatshap container image we can run it as follows:
 ```
 [nbh23@colombo data]$ podman run -it whatshap bash
 [root@73c4742e4724 /]#
 ```
-We can then make our alterations, and from another session commit those changes: -
+We can then make our alterations, and from another session commit those changes:
 ```
 [nbh23@colombo ~]$ podman commit 73c4742e4724 whatshap-altered
 Getting image source signatures
@@ -291,7 +289,7 @@ Storing signatures
 931b7f5302af9965bff14e460c19ff9e756d74095940c6d85e63f929006c35f0
 [nbh23@colombo ~]$
 ```
-Then do podman image list to see what we have: -
+Then do podman image list to see what we have:
 ```
 [nbh23@colombo ~]$ podman image list
 REPOSITORY                            TAG      IMAGE ID       CREATED              SIZE
@@ -304,4 +302,4 @@ You can make multiple changes to your original container image until you are sat
 
 This has covered command line container image creation and usage, I'll be creating another blog post detailing graphical interactive containers as i'm aware that there are various interactive visual programs to cover too.
 
-feel free to contact me with any ideas or suggestions / questions
+Feel free to contact me with any ideas or suggestions / questions.
