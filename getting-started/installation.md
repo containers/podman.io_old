@@ -13,7 +13,7 @@ title: Podman Installation
 sudo pacman -S podman
 ```
 
-If you have problems when running Podman in rootless mode follow the instructions [here](https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional))
+If you have problems when running Podman in  [rootless](https://github.com/containers/libpod/blob/master/README.md#rootless) mode follow the instructions [here](https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional))
 
 #### [Debian](https://debian.org)
 
@@ -71,6 +71,16 @@ Using [Homebrew](https://brew.sh/):
 brew cask install podman
 ```
 
+#### [OpenEmbedded](https://www.openembedded.org)
+
+Bitbake recipes for podman and its dependencies are available in the
+[meta-virtualization layer](https://git.yoctoproject.org/cgit/cgit.cgi/meta-virtualization/).
+Add the layer to your OpenEmbedded build environment and build podman using:
+
+```bash
+bitbake podman
+```
+
 #### [openSUSE](https://www.opensuse.org)
 
 ```bash
@@ -94,7 +104,6 @@ sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
 
-
 #### [RHEL7](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux)
 
 Subscribe, then enable Extras channel and install Podman.
@@ -117,8 +126,8 @@ The Kubic project provides packages for Ubuntu 18.04, 19.04 and 19.10.
 
 ```bash
 . /etc/os-release
-sudo sh -c "echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/x${NAME}_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/x${NAME}_${VERSION_ID}/Release.key -O Release.key
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
+wget -q https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_${VERSION_ID}/Release.key -O- | sudo apt-key add -
 sudo apt-key add - < Release.key
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
@@ -171,6 +180,23 @@ If you use a newer Podman package from Fedora's `updates-testing`, we would
 appreciate your `+1` feedback in [Bodhi, Fedora's update management
 system](https://bodhi.fedoraproject.org/updates/?packages=podman).
 
+If you are running a non-rawhide Fedora distribution, you can also test the latest packages
+with our [COPR repository](https://copr.fedorainfracloud.org/coprs/baude/Upstream_CRIO_Family/).
+
+
+#### [Raspbian](https://raspbian.org)
+
+The Kubic project provides RC/testing packages for Raspbian 10.
+
+```bash
+# Raspbian 10
+echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Raspbian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Raspbian_10/Release.key -O Release.key
+sudo apt-key add - < Release.key
+sudo apt-get update -qq
+sudo apt-get -qq -y install podman
+```
+
 
 #### Ubuntu
 
@@ -191,7 +217,9 @@ sudo apt-get -qq -y install podman
 
 **Required**
 
-Fedora, CentOS, RHEL, and related distributions:
+Fedora, CentOS, RHEL, and related distributions you should try to run
+`make package-install` which will install dependencies, build the source,
+produce rpms for the current platform and install them in the end.
 
 ```bash
 sudo yum install -y \
@@ -212,7 +240,6 @@ sudo yum install -y \
   libseccomp-devel \
   libselinux-devel \
   make \
-  ostree-devel \
   pkgconfig \
   runc \
   containers-common
@@ -228,20 +255,26 @@ sudo apt-get install \
   go-md2man \
   iptables \
   libassuan-dev \
+  libbtrfs-dev \
   libc6-dev \
   libdevmapper-dev \
   libglib2.0-dev \
   libgpgme-dev \
   libgpg-error-dev \
-  libostree-dev \
   libprotobuf-dev \
-  libprotobuf-c-dev \
+  libprotobuf-c0-dev \
   libseccomp-dev \
   libselinux1-dev \
   libsystemd-dev \
   pkg-config \
   runc \
   uidmap
+```
+
+On openSUSE Leap 15.x and Tumbleweed:
+
+```bash
+sudo zypper -n in libseccomp-devel libgpgme-devel
 ```
 
 On Manjaro (and maybe other Linux distributions):
@@ -275,31 +308,6 @@ echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 If any dependencies cannot be installed or are not sufficiently current, they have to be built from source.
 This will mainly affect Debian, Ubuntu, and related distributions, or RHEL where no subscription is active (e.g. Cloud VMs).
 
-#### ostree
-
-A copy of the development libraries for `ostree` is necessary, either in the form of the `libostree-dev` package
-from the [flatpak](https://launchpad.net/~alexlarsson/+archive/ubuntu/flatpak) PPA,
-or built [from source](https://github.com/ostreedev/ostree/blob/master/docs/contributing-tutorial.md)
-(see also [here](https://ostree.readthedocs.io/en/latest/#building)). As of Ubuntu 18.04, `libostree-dev` is available in the main repositories,
-and the PPA is no longer required.
-
-To build, use the following (running `make` can take a while):
-```bash
-git clone https://github.com/ostreedev/ostree ~/ostree
-cd ~/ostree
-git submodule update --init
-# for Fedora, CentOS, RHEL
-sudo yum install -y automake bison e2fsprogs-devel fuse-devel libtool xz-devel zlib-devel
-# for Debian, Ubuntu etc.
-sudo apt-get install -y automake bison e2fsprogs e2fslibs-dev fuse libfuse-dev libgpgme-dev liblzma-dev libtool zlib1g
-
-./autogen.sh --prefix=/usr --libdir=/usr/lib64 --sysconfdir=/etc
-# remove --nonet option due to https:/github.com/ostreedev/ostree/issues/1374
-sed -i '/.*--nonet.*/d' ./Makefile-man.am
-make
-sudo make install
-```
-
 #### golang
 
 Be careful to double-check that the version of golang is new enough (i.e. `go version`), version 1.10.x or higher is required.
@@ -324,6 +332,7 @@ To build from source, use the following:
 ```bash
 git clone https://github.com/containers/conmon
 cd conmon
+export GOCACHE="$(mktemp -d)"
 make
 sudo make podman
 ```
@@ -343,25 +352,12 @@ sudo cp runc /usr/bin/runc
 
 #### CNI plugins
 
-```bash
-git clone https://github.com/containernetworking/plugins.git $GOPATH/src/github.com/containernetworking/plugins
-cd $GOPATH/src/github.com/containernetworking/plugins
-./build_linux.sh
-sudo mkdir -p /usr/libexec/cni
-sudo cp bin/* /usr/libexec/cni
-```
-
 #### Setup CNI networking
 
 A proper description of setting up CNI networking is given in the [`cni` README](https://github.com/containers/libpod/blob/master/cni/README.md).
 
-Using the CNI plugins from above, a more basic network config is achieved with:
-
-```bash
-sudo mkdir -p /etc/cni/net.d
-curl -qsSL https://raw.githubusercontent.com/containers/libpod/master/cni/87-podman-bridge.conflist | sudo tee /etc/cni/net.d/99-loopback.conf
-```
-
+A basic setup for CNI networking is done by default during the installation or make processes and
+no further configuration is needed to start using Podman.
 
 #### Add configuration
 
@@ -430,8 +426,6 @@ make BUILDTAGS='seccomp apparmor'
 | exclude_graphdriver_btrfs        | exclude btrfs                      | libbtrfs             |
 | exclude_graphdriver_devicemapper | exclude device-mapper              | libdm                |
 | libdm_no_deferred_remove         | exclude deferred removal in libdm  | libdm                |
-| ostree                           | ostree support (requires selinux)  | ostree-1, libselinux |
-| containers_image_ostree_stub     | exclude ostree                     |                      |
 | seccomp                          | syscall filtering                  | libseccomp           |
 | selinux                          | selinux process and mount labeling |                      |
 | systemd                          | journald logging                   | libsystemd           |
@@ -444,7 +438,7 @@ This project is using [go modules](https://github.com/golang/go/wiki/Modules) fo
 
 ## Configuration files
 
-### [registries.conf](https://src.fedoraproject.org/rpms/skopeo/blob/master/f/registries.conf)
+### registries.conf
 
 #### Man Page: [registries.conf.5](https://github.com/containers/image/blob/master/docs/containers-registries.conf.5.md)
 
