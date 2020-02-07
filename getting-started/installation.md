@@ -27,17 +27,16 @@ provides packages for Debian 10, testing and unstable.
 ```bash
 # Debian Unstable/Sid
 echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Debian_Unstable/Release.key -O Release.key
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Debian_Unstable/Release.key -O- | sudo apt-key add -
 
 # Debian Testing
 echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Debian_Testing/Release.key -O Release.key
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Debian_Testing/Release.key -O- | sudo apt-key add -
 
 # Debian 10
 echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Debian_10/Release.key -O Release.key
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Debian_10/Release.key -O- | sudo apt-key add -
 
-sudo apt-key add - < Release.key
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
@@ -98,8 +97,7 @@ The Kubic project provides packages for Raspbian 10.
 ```bash
 # Raspbian 10
 echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Raspbian_10/Release.key -O Release.key
-sudo apt-key add - < Release.key
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Raspbian_10/Release.key -O- | sudo apt-key add -
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
@@ -127,8 +125,7 @@ The Kubic project provides packages for Ubuntu 18.04, 19.04 and 19.10.
 ```bash
 . /etc/os-release
 sudo sh -c "echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
-wget -q https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_${VERSION_ID}/Release.key -O- | sudo apt-key add -
-sudo apt-key add - < Release.key
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_${VERSION_ID}/Release.key -O- | sudo apt-key add -
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
@@ -147,21 +144,16 @@ unstable.
 ```bash
 # Debian Unstable/Sid
 echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Debian_Unstable/Release.key -O Release.key
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Debian_Unstable/Release.key -O- | sudo apt-key add -
 
 # Debian Testing
 echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Debian_Testing/Release.key -O Release.key
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Debian_Testing/Release.key -O- | sudo apt-key add -
 
 # Debian 10
 echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Debian_10/Release.key -O Release.key
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Debian_10/Release.key -O- | sudo apt-key add -
 
-# Raspbian 10
-echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Raspbian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Raspbian_10/Release.key -O Release.key
-
-sudo apt-key add - < Release.key
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
@@ -191,8 +183,7 @@ The Kubic project provides RC/testing packages for Raspbian 10.
 ```bash
 # Raspbian 10
 echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Raspbian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Raspbian_10/Release.key -O Release.key
-sudo apt-key add - < Release.key
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Raspbian_10/Release.key -O- | sudo apt-key add -
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
@@ -204,9 +195,8 @@ The Kubic project provides RC/testing packages for Ubuntu 18.04, 19.04 and 19.10
 
 ```bash
 . /etc/os-release
-sudo sh -c "echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/x${NAME}_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list"
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/x${NAME}_${VERSION_ID}/Release.key -O Release.key
-sudo apt-key add - < Release.key
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/xUbuntu_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list"
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/xUbuntu_${VERSION_ID}/Release.key -O- | sudo apt-key add -
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
