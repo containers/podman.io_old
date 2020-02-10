@@ -7,6 +7,34 @@ title: Podman Installation
 
 ## Installing packaged versions of Podman
 
+### MacOS
+
+Podman is a tool for running Linux containers.  You can do this from a MacOS
+desktop as long as you have access to a linux box either running inside of a
+VM on the host, or available via the network.  You need to install the remote
+client and then setup ssh connection information in the podman-remote.conf
+file.
+
+#### Remote Client
+  * [Latest remote client for MacOS](https://storage.googleapis.com/libpod-master-releases/podman-remote-latest-master-darwin-amd64.zip)
+
+### Windows
+
+Podman is a tool for running Linux containers.  You can do this from a Windows
+desktop as long as you have access to a linux box either running inside of a
+VM on the host, or available via the network.  You need to install the remote
+client and then setup ssh connection information in the podman-remote.conf
+file.  Podman can also be run in the Windows Subsystem for Linux system, check
+out the link below to see a description of how this is done.
+
+#### Remote Client
+  * [Latest remote client for Windows](https://storage.googleapis.com/libpod-master-releases/podman-remote-latest-master-windows-amd64.msi)
+
+#### Windows Subsystem for Linux (WSL) 2.0
+  * [How to run Podman on Windows with WSL2](https://www.redhat.com/sysadmin/podman-windows-wsl2)
+
+### Linux Distributions
+
 #### [Arch Linux](https://www.archlinux.org) & [Manjaro Linux](https://manjaro.org)
 
 ```bash
