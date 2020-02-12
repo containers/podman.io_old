@@ -43,6 +43,19 @@ sudo pacman -S podman
 
 If you have problems when running Podman in  [rootless](https://github.com/containers/libpod/blob/master/README.md#rootless) mode follow the instructions [here](https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional))
 
+
+#### [CentOS 7](https://www.centos.org) & [Amazon Linux 2](https://aws.amazon.com/amazon-linux-2/)
+The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
+provides packages for CentOS 7 and binary compatible forks of RHEL 7 including Amazon Linux 2.
+
+```bash
+# CentOS 7, Amazon Linux 2 and RHEL 7 forks
+cd /etc/yum.repos.d/
+wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/CentOS_7/devel:kubic:libcontainers:stable.repo
+yum install podman
+```
+
+
 #### [Debian](https://debian.org)
 
 The libpod package is [being worked on](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=930440)
