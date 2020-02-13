@@ -35,6 +35,18 @@ out the link below to see a description of how this is done.
 
 ### Linux Distributions
 
+#### [Amazon Linux 2](https://aws.amazon.com/amazon-linux-2/)
+
+The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
+provides updated packages for CentOS 7 which can be used unmodified on Amazon Linux 2.
+
+```bash
+cd /etc/yum.repos.d/
+sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/CentOS_7/devel:kubic:libcontainers:stable.repo
+sudo yum -y install podman
+```
+
+
 #### [Arch Linux](https://www.archlinux.org) & [Manjaro Linux](https://manjaro.org)
 
 ```bash
@@ -44,15 +56,40 @@ sudo pacman -S podman
 If you have problems when running Podman in  [rootless](https://github.com/containers/libpod/blob/master/README.md#rootless) mode follow the instructions [here](https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional))
 
 
-#### [CentOS 7](https://www.centos.org) & [Amazon Linux 2](https://aws.amazon.com/amazon-linux-2/)
-The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
-provides packages for CentOS 7 and binary compatible forks of RHEL 7 including Amazon Linux 2.
+#### [CentOS](https://www.centos.org)
+
+Podman is available in the default Extras repos for CentOS 7 and in
+the AppStream repo for CentOS 8 and Stream, however the available version often
+lags the upstream release.
 
 ```bash
-# CentOS 7, Amazon Linux 2 and RHEL 7 forks
+sudo yum -y install podman
+```
+
+The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
+provides updated packages for CentOS 7, 8 and Stream.
+
+```bash
+# CentOS 7
 cd /etc/yum.repos.d/
-wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/CentOS_7/devel:kubic:libcontainers:stable.repo
-yum install podman
+sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/CentOS_7/devel:kubic:libcontainers:stable.repo
+sudo yum -y install podman
+
+# CentOS 8
+sudo dnf -y module disable container-tools
+sudo dnf -y install 'dnf-command(copr)'
+sudo dnf -y copr enable rhcontainerbot/container-selinux
+cd /etc/yum.repos.d
+sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/CentOS_8/devel:kubic:libcontainers:stable.repo
+sudo dnf -y install podman
+
+# CentOS Stream
+sudo dnf -y module disable container-tools
+sudo dnf -y install 'dnf-command(copr)'
+sudo dnf -y copr enable rhcontainerbot/container-selinux
+cd /etc/yum.repos.d
+sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
+sudo dnf -y install podman
 ```
 
 
@@ -177,6 +214,48 @@ unrelated to this project.
 
 ### Installing development versions of Podman
 
+#### [Amazon Linux 2](https://aws.amazon.com/amazon-linux-2/)
+
+The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:testing)
+provides updated packages for CentOS 7 which can be used unmodified on Amazon Linux 2.
+
+```bash
+cd /etc/yum.repos.d/
+sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/CentOS_7/devel:kubic:libcontainers:testing.repo
+sudo yum -y install podman
+```
+
+#### [CentOS](https://www.centos.org)
+
+Podman is available in the default Extras repos for CentOS 7 and in
+the AppStream repo for CentOS 8 and Stream, however the available version often
+lags the upstream release.
+
+The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:testing)
+provides updated packages for CentOS 7, 8 and Stream.
+
+```bash
+# CentOS 7
+cd /etc/yum.repos.d/
+sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/CentOS_7/devel:kubic:libcontainers:testing.repo
+sudo yum -y install podman
+
+# CentOS 8
+sudo dnf -y module disable container-tools
+sudo dnf -y install 'dnf-command(copr)'
+sudo dnf -y copr enable rhcontainerbot/container-selinux
+cd /etc/yum.repos.d
+sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/CentOS_8/devel:kubic:libcontainers:testing.repo
+sudo dnf -y install podman
+
+# CentOS Stream
+sudo dnf -y module disable container-tools
+sudo dnf -y install 'dnf-command(copr)'
+sudo dnf -y copr enable rhcontainerbot/container-selinux
+cd /etc/yum.repos.d
+sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/CentOS_8_Stream/devel:kubic:libcontainers:testing.repo
+sudo dnf -y install podman
+```
 #### Debian
 
 The Kubic project provides RC/testing packages for Debian 10, testing and
