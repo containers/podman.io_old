@@ -333,8 +333,8 @@ produce rpms for the current platform and install them in the end.
 
 ```bash
 sudo yum install -y \
-  atomic-registries \
   btrfs-progs-devel \
+  conmon \
   containernetworking-cni \
   device-mapper-devel \
   git \
@@ -342,7 +342,7 @@ sudo yum install -y \
   glibc-devel \
   glibc-static \
   go \
-  golang-github-cpuguy83-go-md2man \
+  golang-github-cpuguy83-md2man \
   gpgme-devel \
   iptables \
   libassuan-devel \
