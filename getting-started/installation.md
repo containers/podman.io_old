@@ -41,8 +41,7 @@ The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libconta
 provides updated packages for CentOS 7 which can be used unmodified on Amazon Linux 2.
 
 ```bash
-cd /etc/yum.repos.d/
-sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/CentOS_7/devel:kubic:libcontainers:stable.repo
+sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_7/devel:kubic:libcontainers:stable.repo
 sudo yum -y install yum-plugin-copr
 sudo yum -y copr enable lsm5/container-selinux
 sudo yum -y install podman
@@ -73,24 +72,21 @@ provides updated packages for CentOS 7, 8 and Stream.
 
 ```bash
 # CentOS 7
-cd /etc/yum.repos.d/
-sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/CentOS_7/devel:kubic:libcontainers:stable.repo
+sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_7/devel:kubic:libcontainers:stable.repo
 sudo yum -y install podman
 
 # CentOS 8
 sudo dnf -y module disable container-tools
 sudo dnf -y install 'dnf-command(copr)'
 sudo dnf -y copr enable rhcontainerbot/container-selinux
-cd /etc/yum.repos.d
-sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/CentOS_8/devel:kubic:libcontainers:stable.repo
+sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8/devel:kubic:libcontainers:stable.repo
 sudo dnf -y install podman
 
 # CentOS Stream
 sudo dnf -y module disable container-tools
 sudo dnf -y install 'dnf-command(copr)'
 sudo dnf -y copr enable rhcontainerbot/container-selinux
-cd /etc/yum.repos.d
-sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
+sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
 sudo dnf -y install podman
 ```
 
@@ -106,16 +102,16 @@ provides packages for Debian 10, testing and unstable.
 
 ```bash
 # Debian Unstable/Sid
-echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Debian_Unstable/Release.key -O- | sudo apt-key add -
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Unstable/Release.key | sudo apt-key add -
 
 # Debian Testing
-echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Debian_Testing/Release.key -O- | sudo apt-key add -
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Testing/Release.key | sudo apt-key add -
 
 # Debian 10
-echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Debian_10/Release.key -O- | sudo apt-key add -
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/Release.key | sudo apt-key add -
 
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
@@ -176,8 +172,8 @@ The Kubic project provides packages for Raspbian 10.
  
 ```bash
 # Raspbian 10
-echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/Raspbian_10/Release.key -O- | sudo apt-key add -
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/Release.key | sudo apt-key add -
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
@@ -204,8 +200,8 @@ The Kubic project provides packages for Ubuntu 18.04, 19.04 and 19.10.
 
 ```bash
 . /etc/os-release
-sudo sh -c "echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_${VERSION_ID}/Release.key -O- | sudo apt-key add -
+sudo sh -c "echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key | sudo apt-key add -
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
@@ -222,8 +218,7 @@ The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libconta
 provides updated packages for CentOS 7 which can be used unmodified on Amazon Linux 2.
 
 ```bash
-cd /etc/yum.repos.d/
-sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/CentOS_7/devel:kubic:libcontainers:testing.repo
+sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:testing.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/CentOS_7/devel:kubic:libcontainers:testing.repo
 sudo yum -y install yum-plugin-copr
 sudo yum -y copr enable lsm5/container-selinux
 sudo yum -y install podman
@@ -240,24 +235,21 @@ provides updated packages for CentOS 7, 8 and Stream.
 
 ```bash
 # CentOS 7
-cd /etc/yum.repos.d/
-sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/CentOS_7/devel:kubic:libcontainers:testing.repo
+sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:testing.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/CentOS_7/devel:kubic:libcontainers:testing.repo
 sudo yum -y install podman
 
 # CentOS 8
 sudo dnf -y module disable container-tools
 sudo dnf -y install 'dnf-command(copr)'
 sudo dnf -y copr enable rhcontainerbot/container-selinux
-cd /etc/yum.repos.d
-sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/CentOS_8/devel:kubic:libcontainers:testing.repo
+sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:testing.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/CentOS_8/devel:kubic:libcontainers:testing.repo
 sudo dnf -y install podman
 
 # CentOS Stream
 sudo dnf -y module disable container-tools
 sudo dnf -y install 'dnf-command(copr)'
 sudo dnf -y copr enable rhcontainerbot/container-selinux
-cd /etc/yum.repos.d
-sudo wget https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/CentOS_8_Stream/devel:kubic:libcontainers:testing.repo
+sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:testing.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/CentOS_8_Stream/devel:kubic:libcontainers:testing.repo
 sudo dnf -y install podman
 ```
 #### Debian
@@ -267,16 +259,16 @@ unstable.
 
 ```bash
 # Debian Unstable/Sid
-echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Debian_Unstable/Release.key -O- | sudo apt-key add -
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Unstable/Release.key | sudo apt-key add -
 
 # Debian Testing
-echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Debian_Testing/Release.key -O- | sudo apt-key add -
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Testing/Release.key | sudo apt-key add -
 
 # Debian 10
-echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Debian_10/Release.key -O- | sudo apt-key add -
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_10/Release.key | sudo apt-key add -
 
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
@@ -306,8 +298,8 @@ The Kubic project provides RC/testing packages for Raspbian 10.
 
 ```bash
 # Raspbian 10
-echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Raspbian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/Raspbian_10/Release.key -O- | sudo apt-key add -
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Raspbian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Raspbian_10/Release.key | sudo apt-key add -
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
@@ -319,8 +311,8 @@ The Kubic project provides RC/testing packages for Ubuntu 18.04, 19.04 and 19.10
 
 ```bash
 . /etc/os-release
-sudo sh -c "echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/xUbuntu_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list"
-wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:testing/xUbuntu_${VERSION_ID}/Release.key -O- | sudo apt-key add -
+sudo sh -c "echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/xUbuntu_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list"
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/xUbuntu_${VERSION_ID}/Release.key | sudo apt-key add -
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
@@ -477,8 +469,8 @@ no further configuration is needed to start using Podman.
 
 ```bash
 sudo mkdir -p /etc/containers
-sudo curl https://raw.githubusercontent.com/projectatomic/registries/master/registries.fedora -o /etc/containers/registries.conf
-sudo curl https://raw.githubusercontent.com/containers/skopeo/master/default-policy.json -o /etc/containers/policy.json
+sudo curl -L -o /etc/containers/registries.conf https://raw.githubusercontent.com/projectatomic/registries/master/registries.fedora
+sudo curl -L -o /etc/containers/policy.json https://raw.githubusercontent.com/containers/skopeo/master/default-policy.json
 ```
 
 
