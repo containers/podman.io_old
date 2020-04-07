@@ -35,6 +35,13 @@ authors:
     web: https://people.redhat.com/baude/
     twitter: bbaude
     github: baude
+  balage:
+    name: Balázs Németh
+    display_name: Balázs Németh
+    email: jobbara.artalmatlan@gmail.com
+    web: https://balagetech.com
+    twitter:
+    github: abalage
   cevich:
     name: Chris Evich
     display_name: Chris Evich
