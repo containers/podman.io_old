@@ -1,5 +1,5 @@
 ---
-title: Dockerless: Build and Run Containers with Podman and Systemd
+title: Dockerless&#58; Build and Run Containers with Podman and Systemd
 layout: default
 author: kshirinkin
 categories: [blogs]
@@ -7,7 +7,7 @@ tags: podman, containers, systemd,  video, docker
 ---
 ![podman logo](https://podman.io/images/podman.svg)
 
-## Dockerless: Build and Run Containers with Podman and Systemd
+## Dockerless&#58; Build and Run Containers with Podman and Systemd
 
 ## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }}) [Twitter](https://twitter.com/{{ author.twitter }})
 
