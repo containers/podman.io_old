@@ -19,6 +19,11 @@ and container volumes using the <a href="https://github.com/containers/libpod">l
 Podman specializes in all of the commands and functions that help you to maintain and
 modify OCI container images, such as pulling and tagging. It allows you to create, run,
 and maintain those containers created from those images in a production environment.
+<br><br>
+The Podman service runs only on Linux platforms, however a REST API and clients are currently under development which will
+allow Mac and Windows platforms to call the service.  There is currently a Varlink based <a href="https://github.com/containers/libpod/blob/master/docs/tutorials/remote_client.md">remote client</a> which
+runs on Mac or Windows platforms that allows the remote client to talk to the Podman
+server on a Linux platform.  In addition to those clients, there is also a <a href="https://github.com/containers/libpod/blob/master/docs/tutorials/mac_client.md">Mac client</a>.  <b>NOTE:</b> the Varlink remote client will be deprecated after the REST API is completed.
 
 <h3>Overview and scope</h3>
 
@@ -35,7 +40,7 @@ At a high level, the scope of libpod and Podman is the following:
 
 <h3>Roadmap</h3>
 <ul>
-<li>Allow the Podman CLI to use a Varlink backend to connect to remote Podman instances from Mac and Windows.</li>
+<li>Allow the Podman CLI to use a REST API to connect to remote Podman services on Linux from Mac and Windows.</li>
 <li>Integrate libpod into CRI-O to replace its existing container management backend.</li>
 <li>Further work on the podman pod command.</li>
 <li>Further improvements on rootless containers.</li>
