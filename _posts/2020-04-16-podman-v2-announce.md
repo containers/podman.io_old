@@ -8,7 +8,7 @@ tags: containers, docker-compose, podman, networking, pod, api, rest, rest-api, 
 ![podman logo](https://podman.io/images/podman.svg)
 
 {% assign author = site.authors[page.author] %}
-# Convert docker-compose services to pods with Podman
+# Podman v2 development update 
 ## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }})
 
 
