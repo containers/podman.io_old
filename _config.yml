@@ -10,6 +10,8 @@ plugins:
   - jekyll-mentions
   - jekyll-sitemap
 
+description: "Podman is a daemonless container engine for developing, managing, and running OCI Containers on your Linux System. Containers can either be run as root or in rootless mode."
+
 readme_index:
   enabled: true
   remove_originals: false
