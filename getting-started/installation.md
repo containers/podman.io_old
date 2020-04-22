@@ -416,7 +416,7 @@ This will mainly affect Debian, Ubuntu, and related distributions, or RHEL where
 
 #### golang
 
-Be careful to double-check that the version of golang is new enough (i.e. `go version`), version 1.10.x or higher is required.
+Be careful to double-check that the version of golang is new enough (i.e. `go version`), version 1.12.x or higher is supported.
 If needed, golang kits are available at https://golang.org/dl/. Alternatively, go can be built from source as follows
 (it's helpful to leave the system-go installed, to avoid having to [bootstrap go](https://golang.org/doc/install/source):
 
@@ -424,7 +424,7 @@ If needed, golang kits are available at https://golang.org/dl/. Alternatively, g
 export GOPATH=~/go
 git clone https://go.googlesource.com/go $GOPATH
 cd $GOPATH
-git checkout tags/go1.10.8  # optional
+git checkout tags/go1.12.17  # optional
 cd src
 ./all.bash
 export PATH=$GOPATH/bin:$PATH
@@ -500,7 +500,7 @@ GOPATH
 ```
 
 First, ensure that the go version that is found first on the $PATH (in case you built your own; see [above](#golang)) is sufficiently recent -
-`go version` must be higher than 1.10.x). Then we can finally build Podman (assuming we already have a `$GOPATH` and the corresponding folder,
+`go version` must be higher than 1.12.x). Then we can finally build Podman (assuming we already have a `$GOPATH` and the corresponding folder,
 `export GOPATH=~/go && mkdir -p $GOPATH`):
 
 ```bash
