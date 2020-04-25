@@ -60,15 +60,18 @@ If you have problems when running Podman in  [rootless](https://github.com/conta
 #### [CentOS](https://www.centos.org)
 
 Podman is available in the default Extras repos for CentOS 7 and in
-the AppStream repo for CentOS 8 and Stream, however the available version often
-lags the upstream release.
+the AppStream repo for CentOS 8 and Stream. Even though the available version often
+lags behind the latest upstream release, it's still the preferable build for
+production environments.
 
 ```bash
 sudo yum -y install podman
 ```
 
 The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
-provides updated packages for CentOS 7, 8 and Stream.
+provides updated packages for CentOS 7, 8 and Stream. These packages haven't
+been through the official Red Hat QA process and may not be preferable for
+production environments.
 
 ```bash
 # CentOS 7
