@@ -310,7 +310,7 @@ sudo apt-get -qq -y install podman
 
 #### Ubuntu
 
-The Kubic project provides RC/testing packages for Ubuntu 18.04, 19.04 and 19.10.
+The Kubic project provides RC/testing packages for Ubuntu 18.04, 19.04, 19.10 and 20.04.
 
 ```bash
 . /etc/os-release
