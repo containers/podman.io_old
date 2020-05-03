@@ -199,7 +199,7 @@ sudo yum module install -y container-tools:1.0
 
 #### [Ubuntu](https://www.ubuntu.com)
 
-The Kubic project provides packages for Ubuntu 18.04, 19.04 and 19.10.
+The Kubic project provides packages for Ubuntu 18.04, 19.04, 19.10 and 20.04.
 
 ```bash
 . /etc/os-release
