@@ -49,6 +49,13 @@ authors:
     display_name: Chris Evich
     email: cevich@redhat.com
     github: cevich
+  daniel-wtd:
+    name: Daniel Schier
+    display_name: Daniel Schier
+    email: daniel@while-true-do.io
+    web: https://while-true-do.io
+    twitter: daniel_wtd
+    github: daniel-wtd
   dwalsh:
     name: Dan Walsh
     display_name: Dan Walsh
