@@ -10,7 +10,7 @@ run the example container as root. Instead of prefixing each command with
 `sudo`, you can also switch to the root user beforehand via `sudo -i`.
 
 ```console
-$ sudo podman run -dt -p 8080:80/tcp docker.io/library/httpd:2.4
+$ sudo podman run -dt -p 8080:8080/tcp registry.fedoraproject.org/f29/httpd
 $ sudo podman ps
 ```
 
@@ -19,7 +19,8 @@ $ sudo podman ps
 Checkpointing a container stops the container while writing the state of all
 processes in the container to disk. With this a container can later be restored
 and continue running at exactly the same point in time as the checkpoint.
-This capability requires CRIU 3.11 or later installed on the system.
+This capability requires [CRIU 3.11]( https://www.criu.org/) or later installed
+on the system.
 
 To checkpoint the container use:
 
@@ -29,7 +30,7 @@ $ sudo podman container checkpoint <container_id>
 
 ## Restoring the container
 
-Restoring a container is only possible for a previously checkpointed container.
+Restoring a container is only possible from a previously checkpointed container.
 The restored container will continue to run at exactly the same point in time it
 was checkpointed.
 

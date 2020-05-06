@@ -5,13 +5,13 @@ title: Podman Network
 
 # Networking
 
-In Podman, you will see differences in networking beetween rootless and rootfull
+In Podman, you will see differences in networking between rootless and rootfull
 containers. This guide will help to understand how networking can be used in
 Podman.
 
 ## Podman pods
 
-By definiton, all containers in the same Podman pod share the same network
+By definition, all containers in the same Podman pod share the same network
 namespace. Therefore, the containers will share the IP Address, MAC Addresses and
 port mappings. You can always communicate between containers in the same pod,
 using localhost.
@@ -30,13 +30,13 @@ ports below 1024 are privileged and cannot be used for publishing.
 Instead of:
 
 ```console
-$ podman run -dt -p 80:80/tcp docker.io/library/httpd:2.4
+$ podman run -dt -p 80:8080/tcp registry.fedoraproject.org/f29/httpd
 ```
 
 you want to use:
 
 ```console
-$ podman run -dt -p 8080:80/tcp docker.io/library/httpd:2.4
+$ podman run -dt -p 8080:8080/tcp registry.fedoraproject.org/f29/httpd
 ```
 
 **Note**: You can also use `podman -P` to automatically publish and map ports.
@@ -50,7 +50,7 @@ You can check the ports published and occupied:
 
 ```console
 $ podman port -l
-80/tcp -> 0.0.0.0:8080
+8080/tcp -> 0.0.0.0:8080
 ```
 
 **Note**: The `-l` is a convenience argument for **latest container**. You can
@@ -63,7 +63,7 @@ Communicating between two rootless containers can be achieved in mutiple ways.
 The easiest and most convenient way is to communicate via published ports and
 the underlying host.
 
-Check, if a "listening" container is running
+Check, if a "listening" container is running:
 
 ```console
 $ podman ps
@@ -81,7 +81,7 @@ Check the address of your host:
 $ ip addr
 ```
 
-Start a new container to contact your host + the published port
+Start a new container to contact your host + the published port:
 
 ```console
 $ podman run -it --rm fedora curl <Host_IP_Address>:<Published_Port>
@@ -97,7 +97,7 @@ Port Publisinh works the same way as rootless containers, but you will be able
 to use privileged ports, as long as they are free.
 
 ```console
-$ sudo podman run -dt -p 80:80/tcp docker.io/library/httpd:2.4
+$ sudo podman run -dt -p 80:8080/tcp registry.fedoraproject.org/f29/httpd
 ```
 
 **Note**: You can also use `podman -P` to automatically publish and map ports.
@@ -106,12 +106,11 @@ $ sudo podman run -dt -p 80:80/tcp docker.io/library/httpd:2.4
 
 Rootfull containers are reachable via their published ports.
 
-
 You can check which ports are published:
 
 ```console
 $ sudo podman port -l
-80/tcp -> 0.0.0.0:8080
+8080/tcp -> 0.0.0.0:80
 ```
 
 And you should be able to reach the website from your local machine:
@@ -135,7 +134,7 @@ $ sudo podman run -it --rm fedora curl <Container_IP_Address>:<Container_Port>
 
 ### Configuring Networking
 
-The installation of podman provides a default network configuration commonly
+The installation of Podman provides a default network configuration commonly
 installed in `/etc/cni/net.d/` as `87-podman-bridge.conflist`. The default
 network name is defined in `/usr/share/containers/libpod.conf`. If you want to
 change the default network, you should copy the `libpod.conf` to

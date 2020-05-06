@@ -59,8 +59,8 @@ $ podman search httpd --filter=is-official
 Downloading (Pulling) an image is easy, too.
 
 ```console
-$ podman pull docker.io/library/httpd
-$ podman pull docker.io/library/httpd:2.4
+$ podman pull registry.fedoraproject.org/f29/httpd
+$ podman pull registry.fedoraproject.org/f29/httpd
 ```
 
 After pulling some images, you can list all images, present on your machine.
@@ -70,8 +70,8 @@ $ podman images
 ```
 
 **Note**: Podman searches in different registries. Therefore it is recommend
-to use the full image name (*docker.io/library/httpd* instead of *httpd*) to
-ensure, that you are using the correct image.
+to use the full image name (*registry.fedoraproject.org/f29/httpd* instead of
+ *httpd*) to ensure, that you are using the correct image.
 
 ### Running a container
 
@@ -79,14 +79,16 @@ This sample container will run a very basic httpd server that serves only its
 index page.
 
 ```console
-$ podman run -dt -p 8080:80/tcp docker.io/library/httpd:2.4
+$ podman run -dt -p 8080:8080/tcp registry.fedoraproject.org/f29/httpd
 ```
 
 **Note**: Because the container is being run in detached mode, represented by
 the `-d` in the `podman run` command, Podman will print the container ID after
-it has executed the command. Note that we use port forwarding to be able to
-access the HTTP server. For successful running at least slirp4netns v0.3.0 is
-needed.
+it has executed the command. The `-t` also adds a pseudo-tty to run arbitrary
+commands in an interactive shell.
+
+**Note**: We use port forwarding to be able to access the HTTP server. For
+successful running at least slirp4netns v0.3.0 is needed.
 
 ### Listing running containers
 
@@ -193,18 +195,21 @@ You can verify the deletion of the container by running `podman ps -a`.
 ## Network
 
 For a more detailed guide about Networking and DNS in containers, please see the
-[network guide](/getting-started/network)
+[network guide](/getting-started/network).
 
-## Checkpoint
+## "Checkpoint, Migration and Restoring containers
 
-For Checkpoint, Migration and Restoring containers please see
+Checkpointing a container stops the container while writing the state of all
+processes in the container to disk. With this, a container can later be
+migrated and restored, running at exactly the same point in time as the
+checkpoint. For more details, see the
 [checkpoint instructions](/getting-started/checkpoint).
 
 ## Integration Tests
 
 For more information on how to setup and run the integration tests in your
 environment, checkout the Integration Tests
-[README.md](https://github.com/containers/libpod/blob/master/test/README.md)
+[README.md](https://github.com/containers/libpod/blob/master/test/README.md).
 
 ## More information
 
