@@ -69,7 +69,6 @@ Maybe you are as surprised as we were when first running this very example. It s
 
 ```
 $ sudo podman run --annotation io.containers.trace-syscall=”if:/tmp/ls.json;of:/tmp/lsl.json” fedora:30 ls -l / > /dev/null
-$ sudo podman run --security-opt seccomp=/tmp/lsl.json fedora:30 ls -l / > /dev/null
 ```
 
 As mentioned above, we need root privileges for running the eBPF hook. But now, as we have generated the new seccomp profile, we can use it for running the same workload in a rootless container.
