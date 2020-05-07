@@ -5,152 +5,214 @@ title: Getting Started with Podman
 
 ![Podman logo](../images/podman.svg)
 
-# Basic Setup and Use of Podman
-Podman is a utility provided as part of the libpod library.  It can be used to create and maintain
-containers. The following tutorial will teach you how to set up Podman and perform some basic
-commands with Podman.
+# Getting Started with Podman
 
-**NOTE**: the code samples are intended to be run as a non-root user, and use `sudo` where
-root escalation is required.
+Podman is a utility provided as part of the libpod library. It can be used to
+create and maintain containers. The following tutorial will teach you how to set
+up Podman and perform some basic commands with Podman.
 
 ## Podman Documentation
 
-The documenation for Podman is located [here](https://podman.readthedocs.io/en/latest/index.html).
+The documentation for Podman is located
+[here](https://podman.readthedocs.io/en/latest/index.html).
 
 ## Installing Podman
 
-For installing or building Podman, please see the [installation instructions](/getting-started/installation).
+For installing or building Podman, please see the
+[installation instructions](/getting-started/installation).
 
 ## Familiarizing yourself with Podman
 
-### Running a sample container
-This sample container will run a very basic httpd server that serves only its index
-page.
+The code samples are intended to be run as a non-root user, and use
+`sudo` where root escalation is required.
+
+### Getting help
+
+To get some help and find out how Podman is working, you can use the *help*:
 
 ```console
-podman run -dt -p 8080:8080/tcp -e HTTPD_VAR_RUN=/var/run/httpd -e HTTPD_MAIN_CONF_D_PATH=/etc/httpd/conf.d \
-                  -e HTTPD_MAIN_CONF_PATH=/etc/httpd/conf \
-                  -e HTTPD_CONTAINER_SCRIPTS_PATH=/usr/share/container-scripts/httpd/ \
-                  registry.fedoraproject.org/f29/httpd /usr/bin/run-httpd
+$ podman --help
+$ podman <subcommand> --help
 ```
 
-Because the container is being run in detached mode, represented by the *-d* in the `podman run` command, Podman
-will print the container ID after it has run. Note that we use port forwarding to be able to
-access the HTTP server. For successful running at least slirp4netns v0.3.0 is needed.
+For more details, you can review the manpages:
+
+```console
+$ man podman
+$ man podman-<subcommand>
+```
+
+### Searching, pulling & listing images
+
+Podman can search for images on remote registries with some simple keywords.
+
+```console
+$ podman search <search_term>
+```
+
+You can also enhance your search with filters:
+
+```console
+$ podman search httpd --filter=is-official
+```
+
+Downloading (Pulling) an image is easy, too.
+
+```console
+$ podman pull registry.fedoraproject.org/f29/httpd
+$ podman pull registry.fedoraproject.org/f29/httpd
+```
+
+After pulling some images, you can list all images, present on your machine.
+
+```console
+$ podman images
+```
+
+**Note**: Podman searches in different registries. Therefore it is recommend
+to use the full image name (*registry.fedoraproject.org/f29/httpd* instead of
+ *httpd*) to ensure, that you are using the correct image.
+
+### Running a container
+
+This sample container will run a very basic httpd server that serves only its
+index page.
+
+```console
+$ podman run -dt -p 8080:8080/tcp registry.fedoraproject.org/f29/httpd
+```
+
+**Note**: Because the container is being run in detached mode, represented by
+the `-d` in the `podman run` command, Podman will print the container ID after
+it has executed the command. The `-t` also adds a pseudo-tty to run arbitrary
+commands in an interactive shell.
+
+**Note**: We use port forwarding to be able to access the HTTP server. For
+successful running at least slirp4netns v0.3.0 is needed.
 
 ### Listing running containers
-The Podman *ps* command is used to list creating and running containers.
+
+The `podman ps` command is used to list created and running containers.
+
 ```console
-podman ps
+$ podman ps
 ```
 
-Note: If you add *-a* to the *ps* command, Podman will show all containers.
-### Inspecting a running container
-You can "inspect" a running container for metadata and details about itself.  We can even use
-the inspect subcommand to see what IP address was assigned to the container. As the container is running in rootless mode, an IP address is not assigned and the value will be listed as "none" in the output from inspect.
+**Note**: If you add `-a` to the `podman ps` command, Podman will show all
+containers (created, exited, running, etc.).
+
+### Testing the httpd container
+
+As you were able to see, the container does not has an IP Address assigned. The
+container is reachable via it's published port on your local machine.
+
 ```console
-$ podman inspect -l | grep IPAddress\":
-            "SecondaryIPAddresses": null,
+$ curl http://localhost:8080
+```
+
+From another machine, you need to use the IP Address of the host, running the
+container.
+
+```console
+$ curl http://<IP_Address>:8080
+```
+
+**Note**: Instead of using curl, you can also point a browser to
+<http://localhost:8080>.
+
+### Inspecting a running container
+
+You can "inspect" a running container for metadata and details about itself.
+`podman inspect` will provide lots of useful information like environment
+variables, network settings or allocated resources.
+
+Since, the container is running in **rootless** mode, no IP Address is assigned
+to the container.
+
+```console
+$ podman inspect -l | grep IPAddress
             "IPAddress": "",
 ```
 
-Note: The -l is a convenience argument for **latest container**.  You can also use the container's ID instead
-of -l.
-
-### Testing the httpd server
-Now that we have the IP address of the container, we can test the network communication between the host
-operating system and the container using curl. The following command should display the index page of our
-containerized httpd server.
-```console
-curl http://<IP_address>:8080
-```
+**Note**: The `-l` is a convenience argument for **latest container**. You can
+also use the container's ID or name instead of `-l` or the long argument
+`--latest`.
 
 ### Viewing the container's logs
+
 You can view the container's logs with Podman as well:
+
 ```console
-$ sudo podman logs --latest
-10.88.0.1 - - [07/Feb/2018:15:22:11 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.55.1" "-"
-10.88.0.1 - - [07/Feb/2018:15:22:30 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.55.1" "-"
-10.88.0.1 - - [07/Feb/2018:15:22:30 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.55.1" "-"
-10.88.0.1 - - [07/Feb/2018:15:22:31 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.55.1" "-"
-10.88.0.1 - - [07/Feb/2018:15:22:31 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.55.1" "-"
+$ podman logs -l
+
+127.0.0.1 - - [04/May/2020:08:33:48 +0000] "GET / HTTP/1.1" 200 45
+127.0.0.1 - - [04/May/2020:08:33:50 +0000] "GET / HTTP/1.1" 200 45
+127.0.0.1 - - [04/May/2020:08:33:51 +0000] "GET / HTTP/1.1" 200 45
+127.0.0.1 - - [04/May/2020:08:33:51 +0000] "GET / HTTP/1.1" 200 45
+127.0.0.1 - - [04/May/2020:08:33:52 +0000] "GET / HTTP/1.1" 200 45
+127.0.0.1 - - [04/May/2020:08:33:52 +0000] "GET / HTTP/1.1" 200 45
 ```
 
 ### Viewing the container's pids
-And you can observe the httpd pid in the container with *top*.
-```console
-$ sudo podman top <container_id>
-  UID   PID  PPID  C STIME TTY          TIME CMD
-    0 31873 31863  0 09:21 ?        00:00:00 nginx: master process nginx -g daemon off;
-  101 31889 31873  0 09:21 ?        00:00:00 nginx: worker process
-```
 
-### Checkpointing the container
-Checkpointing a container stops the container while writing the state of all processes in the container to disk.
-With this a container can later be restored and continue running at exactly the same point in time as the
-checkpoint. This capability requires CRIU 3.11 or later installed on the system.
-To checkpoint the container use:
-```console
-sudo podman container checkpoint <container_id>
-```
+You can observe the httpd pid in the container with `podman top`.
 
-### Restoring the container
-Restoring a container is only possible for a previously checkpointed container. The restored container will
-continue to run at exactly the same point in time it was checkpointed.
-To restore the container use:
 ```console
-sudo podman container restore <container_id>
-```
+$ podman top -l
 
-After being restored, the container will answer requests again as it did before checkpointing.
-```console
-curl http://<IP_address>:8080
-```
-
-### Migrate the container
-To live migrate a container from one host to another the container is checkpointed on the source
-system of the migration, transferred to the destination system and then restored on the destination
-system. When transferring the checkpoint, it is possible to specify an output-file.
-
-On the source system:
-```console
-sudo podman container checkpoint <container_id> -e /tmp/checkpoint.tar.gz
-scp /tmp/checkpoint.tar.gz <destination_system>:/tmp
-```
-
-On the destination system:
-```console
-sudo podman container restore -i /tmp/checkpoint.tar.gz
-```
-
-After being restored, the container will answer requests again as it did before checkpointing. This
-time the container will continue to run on the destination system.
-```console
-curl http://<IP_address>:8080
+USER     PID   PPID   %CPU    ELAPSED            TTY     TIME   COMMAND
+root     1     0      0.000   22m13.33281018s    pts/0   0s     httpd -DFOREGROUND
+daemon   3     1      0.000   22m13.333132179s   pts/0   0s     httpd -DFOREGROUND
+daemon   4     1      0.000   22m13.333276305s   pts/0   0s     httpd -DFOREGROUND
+daemon   5     1      0.000   22m13.333818476s   pts/0   0s     httpd -DFOREGROUND
 ```
 
 ### Stopping the container
-To stop the httpd container:
+
+You may stop the container:
+
 ```console
-sudo podman stop --latest
+$ podman stop -l
 ```
-You can also check the status of one or more containers using the *ps* subcommand. In this case, we should
-use the *-a* argument to list all containers.
+
+You can check the status of one or more containers using the `podman ps`
+command. In this case, you should use the `-a` argument to list all containers.
+
 ```console
-sudo podman ps -a
+$ podman ps -a
 ```
 
 ### Removing the container
-To remove the httpd container:
+
+Finally, you can remove the container:
+
 ```console
-sudo podman rm --latest
+$ podman rm -l
 ```
-You can verify the deletion of the container by running *podman ps -a*.
+
+You can verify the deletion of the container by running `podman ps -a`.
+
+## Network
+
+For a more detailed guide about Networking and DNS in containers, please see the
+[network guide](/getting-started/network).
+
+## "Checkpoint, Migration and Restoring containers
+
+Checkpointing a container stops the container while writing the state of all
+processes in the container to disk. With this, a container can later be
+migrated and restored, running at exactly the same point in time as the
+checkpoint. For more details, see the
+[checkpoint instructions](/getting-started/checkpoint).
 
 ## Integration Tests
-For more information on how to setup and run the integration tests in your environment, checkout the Integration Tests [README.md](https://github.com/containers/libpod/blob/master/test/README.md)
+
+For more information on how to setup and run the integration tests in your
+environment, checkout the Integration Tests
+[README.md](https://github.com/containers/libpod/blob/master/test/README.md).
 
 ## More information
 
-For more information on Podman and its subcommands, checkout the asciiart demos on the [README.md](https://github.com/containers/libpod/blob/master/commands.md)
+For more information on Podman and its subcommands, checkout the asciiart demos
+on the [README.md](https://github.com/containers/libpod/blob/master/commands.md)
 page.
