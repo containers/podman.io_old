@@ -44,7 +44,7 @@ $ sudo dnf install -y podman
 Next, we clone the git repository of the OCI seccomp bpf hook to compile and install it. Note that we need to install a few more packages in order to compile the hook.
 
 ```
-$ sudo dnf install -y bcc-devel bcc-tools git golang libseccomp-devel make
+$ sudo dnf install -y bcc-devel bcc-tools git golang libseccomp-devel golang-github-cpuguy83-md2man make
 $ git clone https://github.com/containers/oci-seccomp-bpf-hook.git
 $ cd oci-seccomp-bpf-hook
 $ make binary
