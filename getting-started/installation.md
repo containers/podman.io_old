@@ -12,11 +12,14 @@ title: Podman Installation
 Podman is a tool for running Linux containers.  You can do this from a MacOS
 desktop as long as you have access to a linux box either running inside of a
 VM on the host, or available via the network.  You need to install the remote
-client and then setup ssh connection information in the podman-remote.conf
-file.
+client and then setup ssh connection information.
 
 #### Remote Client
-  * [Latest remote client for MacOS](https://storage.googleapis.com/libpod-master-releases/podman-remote-latest-master-darwin-amd64.zip)
+The Mac client is available through [Homebrew](https://brew.sh/):
+
+```bash
+brew cask install podman
+```
 
 ### Windows
 
@@ -28,7 +31,7 @@ file.  Podman can also be run in the Windows Subsystem for Linux system, check
 out the link below to see a description of how this is done.
 
 #### Remote Client
-  * [Latest remote client for Windows](https://storage.googleapis.com/libpod-master-releases/podman-remote-latest-master-windows-amd64.msi)
+  * [Latest remote client for Windows](https://github.com/containers/libpod/releases/latest/download/podman-remote-release-windows.zip)
 
 #### Windows Subsystem for Linux (WSL) 2.0
   * [How to run Podman on Windows with WSL2](https://www.redhat.com/sysadmin/podman-windows-wsl2)
@@ -139,14 +142,6 @@ Built-in, no need to install
 
 ```bash
 sudo emerge app-emulation/libpod
-```
-
-#### [MacOS](https://www.apple.com/macos)
-
-Using [Homebrew](https://brew.sh/):
-
-```bash
-brew cask install podman
 ```
 
 #### [OpenEmbedded](https://www.openembedded.org)
