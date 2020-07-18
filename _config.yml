@@ -18,6 +18,13 @@ readme_index:
 
 excerpt_separator: "<!--readmore-->"
 
+feed:
+  categories:
+    - blogs
+    - new
+    - releases
+    - talks
+
 authors:
   adrianr:
     name: Adrian Reber
