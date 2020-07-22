@@ -25,6 +25,6 @@ This release comes with many exciting new features. To highlight a few of our bi
 
 Numerous bugs were fixed as well, including a breaking change in rootless Podman found in 0.11.x releases.
 
-To see the full changelog, please visit our release notes on [GitHub](https://github.com/containers/libpod/blob/master/RELEASE_NOTES.md)
+To see the full changelog, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/master/RELEASE_NOTES.md)
 
-Some of this work, like the `podman volume` command, is still very early. We'd greatly appreciate feedback! If you have an enhancement request or a bug report, please file them on our [issue page](https://github.com/containers/libpod/issues).
+Some of this work, like the `podman volume` command, is still very early. We'd greatly appreciate feedback! If you have an enhancement request or a bug report, please file them on our [issue page](https://github.com/containers/podman/issues).

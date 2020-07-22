@@ -53,7 +53,7 @@ Writing manifest to image destination
 Storing signatures
 Command: /proc/self/exe run -it --rm --net=host -v /tmp/rpms:/root/rpmbuild/RPMS/x86_64/:Z quay.io/libpod/build_libpod:fedora29
 Cloning into '/go/src/github.com/containers/libpod'...
-warning: redirecting to https://github.com/containers/libpod/
+warning: redirecting to https://github.com/containers/podman/
 remote: Enumerating objects: 34, done.
 remote: Counting objects: 100% (34/34), done.
 remote: Compressing objects: 100% (31/31), done.

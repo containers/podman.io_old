@@ -38,7 +38,7 @@ Go Version:         go1.13.1
 OS/Arch:            linux/amd64
 ````
 
-Now  I’m going to follow the steps in the [Basic Setup and Use of Podman in a Rootless environments](https://github.com/containers/libpod/blob/master/docs/tutorials/rootless_tutorial.md) tutorial to do the configuration necessary to run rootless containers.  
+Now  I’m going to follow the steps in the [Basic Setup and Use of Podman in a Rootless environments](https://github.com/containers/podman/blob/master/docs/tutorials/rootless_tutorial.md) tutorial to do the configuration necessary to run rootless containers.  
 
 Podman running rootless containers does have a few software dependencies.  Most if not all of these should be installed for you on Fedora 31 by default, but just to verify I did:
 

@@ -22,9 +22,9 @@ All the details follow!
 
 ### Bugfixes
 
- * Fixed a bug where podman container restore was erroneously available as podman restore [#2191](https://github.com/containers/libpod/issues/2191)
+ * Fixed a bug where podman container restore was erroneously available as podman restore [#2191](https://github.com/containers/podman/issues/2191)
  * Fixed a bug where the volume_path option in libpod.conf was not being respected
- * Fixed a bug where Podman failed to build when the varlink tag was not present [#2459](https://github.com/containers/libpod/issues/2459)
+ * Fixed a bug where Podman failed to build when the varlink tag was not present [#2459](https://github.com/containers/podman/issues/2459)
  * Fixed a bug where the podman image load command was listed twice in help text
  * Fixed a bug where the podman image sign command was also listed as podman sign
  * Fixed a bug where the podman image list command incorrectly had an image alias
@@ -36,7 +36,7 @@ All the details follow!
  * Fixed a bug where the default stop timeout for newly-created containers was being set to 0 seconds (resulting in an immediate SIGKILL on running podman stop)
  * Fixed a bug where the output format of podman port was incorrect, printing full container ID instead of truncated ID
  * Fixed a bug where the podman container list command did not exist
- * Fixed a bug where podman build could not build a container from images tagged locally that did not exist in a registry [#2469](https://github.com/containers/libpod/issues/2469)
+ * Fixed a bug where podman build could not build a container from images tagged locally that did not exist in a registry [#2469](https://github.com/containers/podman/issues/2469)
  * Fixed a bug where some Podman commands that accept no arguments would not error when provided arguments
  * Fixed a bug where podman play kube could not handle cases where a pod and a container shared a name
 
@@ -50,6 +50,6 @@ All the details follow!
  * The podman container runlabel command will now pull images not available locally even without the --pull option. The --pull option has been deprecated
  * The podman container checkpoint and podman container restore commands are now only available on OCI runtimes where they are supported (e.g. runc)
 
-As always, please visit our release notes on [GitHub](https://github.com/containers/libpod/blob/master/RELEASE_NOTES.md) to see the full changelog.
+As always, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/master/RELEASE_NOTES.md) to see the full changelog.
 
-You can find instructions for installing Podman [here](https://github.com/containers/libpod/blob/master/install.md)
+You can find instructions for installing Podman [here](https://github.com/containers/podman/blob/master/install.md)

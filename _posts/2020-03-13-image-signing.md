@@ -12,4 +12,4 @@ security to mitigate man-in-the-middle (MITM) attacks. Read all about it
 [here][1].
 
 [0]: https://github.com/saschagrunert
-[1]: https://github.com/containers/libpod/blob/master/docs/tutorials/image_signing.md
+[1]: https://github.com/containers/podman/blob/master/docs/tutorials/image_signing.md

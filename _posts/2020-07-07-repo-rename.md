@@ -12,7 +12,6 @@ tags: podman, containers, v2, github, rename
 ## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }})
 
 The [Podman](https://podman.io/) repository on Github is moving from [github.com/containers/libpod](https://github.com/containers/libpod) to [github.com/containers/podman](https://github.com/containers/podman)! Read on to find out why, and how it will affect you.
-<!--readmore-->
 
 Three years ago, we created a new Git repository to hold our new container-management tool and the library it was based on. At the time, Podman was not named Podman, but `kpod` - a name no one on the team liked, and one we’d hoped to replace quickly. Given this, we decided to name the repository after the library we’d written to manage containers - `libpod`. Four months after that, we made the first public release of the tool, and with it came a new name - Podman (POD MANager). The rest is, as they say, history. The Podman team is incredibly grateful for the success we’ve seen since then, and the way that the community has grown.
 

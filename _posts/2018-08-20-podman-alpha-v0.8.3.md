@@ -11,7 +11,7 @@ tags: community, open source, podman
 # Podman release 0.8.3
 Our release this week was very smooth. It seems like between CI infrastructure stability, last minute pull requests, and sometimes just plain bad luck, something always gives us trouble on Friday’s. The Fedora packages are created and I see that they are getting their karma and working through the process already.
 
-By the way, we moved! Our new upstream location is [https://github.com/containers/libpod](https://github.com/containers/libpod). It seems to be a more natural fit for our project and more closely associates us with some of our sister projects.
+By the way, we moved! Our new upstream location is [https://github.com/containers/podman](https://github.com/containers/podman). It seems to be a more natural fit for our project and more closely associates us with some of our sister projects.
 
 <!--readmore-->
 Some of the more obvious changes in this release are:

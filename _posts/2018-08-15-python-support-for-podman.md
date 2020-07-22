@@ -146,5 +146,5 @@ I hope you have found the information in this blog to be useful and gives you fu
 
 Better yet if you’d like to help contribute to Podman or this Python module, please feel free to join us on GitHub!
 
-[https://github.com/containers/libpod](https://github.com/containers/libpod)
-[https://github.com/containers/libpod/tree/master/contrib/python](https://github.com/containers/libpod/tree/master/contrib/python)
+[https://github.com/containers/podman](https://github.com/containers/podman)
+[https://github.com/containers/podman/tree/master/contrib/python](https://github.com/containers/podman/tree/master/contrib/python)

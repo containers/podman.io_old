@@ -27,7 +27,7 @@ We've kept our eyes firmly on stability, fixing over 150 bugs. We’ve also work
 
 A key focus of Podman is around security.  In addition to support for rootless containers, we’ve added many other security features.  Great support for [User Namespaces](https://opensource.com/article/18/12/podman-and-user-namespaces) has resulted in better container separation. The `podman top` command will tell you what security features are enabled for processes within containers. Podman’s daemonless fork/exec model preserves audit information on containers.
 
-This is just the beginning, and we have plans for much more. For example, numerous improvements are planned for rootless Podman, pod support, the Varlink API, and automatic user namespace separation. If you find a feature missing from Podman, feel free to open an enhancement request on our [Github](https://github.com/containers/libpod/issues).  We love your feedback, and many of our best ideas come from users and contributors.
+This is just the beginning, and we have plans for much more. For example, numerous improvements are planned for rootless Podman, pod support, the Varlink API, and automatic user namespace separation. If you find a feature missing from Podman, feel free to open an enhancement request on our [Github](https://github.com/containers/podman/issues).  We love your feedback, and many of our best ideas come from users and contributors.
 
 Finally, the Podman team would like to thank all our contributors. Everyone who submitted code, improved documentation, or reported bugs has been a great help.
 
@@ -39,6 +39,6 @@ A few of the biggest changes from Podman 1.0.0 include:
   * Added the `podman image sign` command to sign container images.
   * Image pulls are now parallelized for increased speed
 
-As always, please visit our release notes on [GitHub](https://github.com/containers/libpod/blob/master/RELEASE_NOTES.md) to see the full changelog.
+As always, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/master/RELEASE_NOTES.md) to see the full changelog.
 
-You can find instructions for installing Podman [here](https://github.com/containers/libpod/blob/master/install.md)
+You can find instructions for installing Podman [here](https://github.com/containers/podman/blob/master/install.md)

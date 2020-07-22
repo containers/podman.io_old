@@ -18,7 +18,7 @@ We are seeing a proliferation of Podman usage in users' daily workflows.  As suc
 
 ### Solution
 
-After a bit of discussion with our users, recorded in [issue #1845] (https://github.com/containers/libpod/issues/1845), a plan was hatched to have a specific command that satisfies this use case.  It was implemented for both containers and images; and I suppose if users wish, we could implement it for pods as well. If the image or container exists, Podman will return an exit code of `0`. If it does not exist, Podman will return an exit code of `1`. Any other exit code can be attributed to non-verification failures like permissions or failure in reading local storage.
+After a bit of discussion with our users, recorded in [issue #1845] (https://github.com/containers/podman/issues/1845), a plan was hatched to have a specific command that satisfies this use case.  It was implemented for both containers and images; and I suppose if users wish, we could implement it for pods as well. If the image or container exists, Podman will return an exit code of `0`. If it does not exist, Podman will return an exit code of `1`. Any other exit code can be attributed to non-verification failures like permissions or failure in reading local storage.
 
 ### Check on an images
 To verify the existence of an image in your local storage, you can use the command `podman image exists <IMAGE_NAME>`. Let's clarify through the use of an example.

@@ -22,6 +22,6 @@ To sign up for the mailing list use email or the web interface:
 
 Regardless of which method you use, a confirmation email will be sent to you.  After you reply back to that confirmation email, you'll then be able to send mail directly to [podman@lists.podman.io](mailto:podman@lists.podman.io).  You can then also go to the list's web page at [lists.podman.io](https://lists.podman.io), click on the [Podman](https://lists.podman.io/archives/list/podman@lists.podman.io/) link and from there you can see all of the past conversations on the list or manage your subscription. 
 
-Please note, if you have a bug that you'd like to report, it's best to report them [here](https://github.com/containers/libpod/issues) by creating a "New issue" rather than sending an email to the list. 
+Please note, if you have a bug that you'd like to report, it's best to report them [here](https://github.com/containers/podman/issues) by creating a "New issue" rather than sending an email to the list. 
 
 We hope over time this mailing list will be a friendly and useful tool for the entire Podman community.

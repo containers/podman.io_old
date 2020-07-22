@@ -7,7 +7,7 @@
 <h2>What is Podman?  Simply put: `alias docker=podman`</h2>
 
 Podman is an open-source project that is available on most Linux platforms and resides on
-<a href="https://github.com/containers/libpod">GitHub</a>.
+<a href="https://github.com/containers/podman">GitHub</a>.
 Podman is a daemonless container engine for developing, managing,
 and running Open Container Initiative (OCI) containers and container images on your Linux System.
 Podman provides a Docker-compatible command line front end that can simply alias the Docker cli,
@@ -15,15 +15,15 @@ Podman provides a Docker-compatible command line front end that can simply alias
 <br><br>
 Containers under the control of Podman can either be run by root or by a non-privileged user.
 Podman manages the entire container ecosystem which includes pods, containers, container images,
-and container volumes using the <a href="https://github.com/containers/libpod">libpod</a> library.
+and container volumes using the <a href="https://github.com/containers/podman">libpod</a> library.
 Podman specializes in all of the commands and functions that help you to maintain and
 modify OCI container images, such as pulling and tagging. It allows you to create, run,
 and maintain those containers created from those images in a production environment.
 <br><br>
 The Podman service runs only on Linux platforms, however a REST API and clients are currently under development which will
-allow Mac and Windows platforms to call the service.  There is currently a Varlink based <a href="https://github.com/containers/libpod/blob/master/docs/tutorials/remote_client.md">remote client</a> which
+allow Mac and Windows platforms to call the service.  There is currently a Varlink based <a href="https://github.com/containers/podman/blob/master/docs/tutorials/remote_client.md">remote client</a> which
 runs on Mac or Windows platforms that allows the remote client to talk to the Podman
-server on a Linux platform.  In addition to those clients, there is also a <a href="https://github.com/containers/libpod/blob/master/docs/tutorials/mac_client.md">Mac client</a>.  <b>NOTE:</b> the Varlink remote client will be deprecated after the REST API is completed.
+server on a Linux platform.  In addition to those clients, there is also a <a href="https://github.com/containers/podman/blob/master/docs/tutorials/mac_client.md">Mac client</a>.  <b>NOTE:</b> the Varlink remote client will be deprecated after the REST API is completed.
 
 <h3>Overview and scope</h3>
 
@@ -56,9 +56,9 @@ At a high level, the scope of libpod and Podman is the following:
   standard for composing Pods and for orchestrating containers, making
   Kubernetes YAML a defacto standard file format. Hence, Podman allows the
   creation and execution of Pods from a Kubernetes YAML file (see
-  <a href="https://github.com/containers/libpod/blob/master/docs/source/markdown/podman-play-kube.1.md">podman-play-kube</a>).
+  <a href="https://github.com/containers/podman/blob/master/docs/source/markdown/podman-play-kube.1.md">podman-play-kube</a>).
   Podman can also generate Kubernetes YAML based on a container or Pod (see
-  <a href="https://github.com/containers/libpod/blob/master/docs/source/markdown/podman-generate-kube.1.md">podman-generate-kube</a>),
+  <a href="https://github.com/containers/podman/blob/master/docs/source/markdown/podman-generate-kube.1.md">podman-generate-kube</a>),
   which allows for an easy transition from a local development environment
   to a production Kubernetes cluster.</li>
 </ul>
