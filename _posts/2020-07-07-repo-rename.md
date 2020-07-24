@@ -1,5 +1,5 @@
 ---
-title: Podman REST API and Docker compatibility
+title: The Podman repository has been renamed
 layout: default
 author: mheon
 categories: [blogs]
