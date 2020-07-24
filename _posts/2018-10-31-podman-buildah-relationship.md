@@ -21,7 +21,7 @@ This is where Podman steps in.  Podman allows you to do all of the Docker comman
 <!--readmore-->
 Buildah and Podman are two complementary Open-source projects that are available on
 most Linux platforms and both projects reside at [GitHub.com](https://github.com)
-with Buildah [here](https://github.com/containers/buildah) and Podman [here](https://github.com/containers/libpod).  Both Buildah and Podman are command line tools that work on OCI images and containers.  The two projects are related, but differ in their specialization.
+with Buildah [here](https://github.com/containers/buildah) and Podman [here](https://github.com/containers/podman).  Both Buildah and Podman are command line tools that work on OCI images and containers.  The two projects are related, but differ in their specialization.
 
 Buildah specializes in building OCI images.  Buildah's commands replicate all
 of the commands that are found in a Dockerfile. Buildah’s goal is also to provide a lower level coreutils interface to build container images, allowing people to build containers without requiring a Dockerfile.  Buildah’s other goal is to allow you to use other scripting languages to build container images without requiring a daemon.

@@ -209,10 +209,10 @@ checkpoint. For more details, see the
 
 For more information on how to setup and run the integration tests in your
 environment, checkout the Integration Tests
-[README.md](https://github.com/containers/libpod/blob/master/test/README.md).
+[README.md](https://github.com/containers/podman/blob/master/test/README.md).
 
 ## More information
 
 For more information on Podman and its subcommands, checkout the asciiart demos
-on the [README.md](https://github.com/containers/libpod/blob/master/commands.md)
+on the [README.md](https://github.com/containers/podman/blob/master/commands.md)
 page.

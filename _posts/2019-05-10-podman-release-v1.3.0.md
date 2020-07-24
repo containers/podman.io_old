@@ -18,6 +18,6 @@ Podman 1.3.0 has been released! We've focused firmly on stability with 1.3.0, fi
 
 The biggest new features in Podman 1.3.0 are for managing container restart. The `--restart` flag allows Podman to restart containers when they exit, and the `podman generate systemd` command makes unit files so you can leverage systemd to manage container lifecycle. These commands seem very similar, but are very different in practice. The `--restart` flag is much simpler, but more limited - it restarts containers when they exit, but cannot deal with a system restart or dependencies between containers. If you need access to these more advanced features, `podman generate systemd` will allow you to manage your containers via Systemd, leveraging all of its service management capabilities.
 
-As always, please visit our release notes on [GitHub](https://github.com/containers/libpod/blob/master/RELEASE_NOTES.md) to see the full changelog.
+As always, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/master/RELEASE_NOTES.md) to see the full changelog.
 
-You can find instructions for installing Podman [here](https://github.com/containers/libpod/blob/master/install.md)
+You can find instructions for installing Podman [here](https://github.com/containers/podman/blob/master/install.md)

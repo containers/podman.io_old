@@ -51,7 +51,7 @@ as well as CRIU
 ([criu: add support for external net namespaces ](https://github.com/checkpoint-restore/criu/commit/a8a3eb902305f0af603afa4c95b1b632fe7bd149)).
 
 So after spending time on `runc` and CRIU I was able to return to Podman and
-implement the [necessary changes](https://github.com/containers/libpod/pull/469)
+implement the [necessary changes](https://github.com/containers/podman/pull/469)
 which have been merged into Podman at the beginning of October 2018.
 
 With all the background information out of the way, now finally some examples

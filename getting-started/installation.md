@@ -31,7 +31,7 @@ file.  Podman can also be run in the Windows Subsystem for Linux system, check
 out the link below to see a description of how this is done.
 
 #### Remote Client
-  * [Latest remote client for Windows](https://github.com/containers/libpod/releases/latest/download/podman-remote-release-windows.zip)
+  * [Latest remote client for Windows](https://github.com/containers/podman/releases/latest/download/podman-remote-release-windows.zip)
 
 #### Windows Subsystem for Linux (WSL) 2.0
   * [How to run Podman on Windows with WSL2](https://www.redhat.com/sysadmin/podman-windows-wsl2)
@@ -57,7 +57,7 @@ sudo yum -y install podman
 sudo pacman -S podman
 ```
 
-If you have problems when running Podman in  [rootless](https://github.com/containers/libpod/blob/master/README.md#rootless) mode follow the instructions [here](https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional))
+If you have problems when running Podman in  [rootless](https://github.com/containers/podman/blob/master/README.md#rootless) mode follow the instructions [here](https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional))
 
 
 #### [CentOS](https://www.centos.org)
@@ -101,7 +101,7 @@ sudo dnf -y install podman
 
 The libpod package is [being worked on](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=930440)
 for inclusion in the default Debian repos. Relevant status updates can also be
-found [here](https://github.com/containers/libpod/issues/1742).
+found [here](https://github.com/containers/podman/issues/1742).
 
 Alternatively, the [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
 provides packages for Debian 10, testing and unstable.
@@ -458,7 +458,7 @@ sudo cp runc /usr/bin/runc
 
 #### Setup CNI networking
 
-A proper description of setting up CNI networking is given in the [`cni` README](https://github.com/containers/libpod/blob/master/cni/README.md).
+A proper description of setting up CNI networking is given in the [`cni` README](https://github.com/containers/podman/blob/master/cni/README.md).
 
 A basic setup for CNI networking is done by default during the installation or make processes and
 no further configuration is needed to start using Podman.
@@ -494,7 +494,7 @@ GOPATH
 └── src
     └── github.com
         └── containers
-            └── libpod
+            └── podman
 ```
 
 First, ensure that the go version that is found first on the $PATH (in case you built your own; see [above](#golang)) is sufficiently recent -
@@ -502,8 +502,8 @@ First, ensure that the go version that is found first on the $PATH (in case you 
 `export GOPATH=~/go && mkdir -p $GOPATH`):
 
 ```bash
-git clone https://github.com/containers/libpod/ $GOPATH/src/github.com/containers/libpod
-cd $GOPATH/src/github.com/containers/libpod
+git clone https://github.com/containers/podman/ $GOPATH/src/github.com/containers/podman
+cd $GOPATH/src/github.com/containers/podman
 make BUILDTAGS="selinux seccomp"
 sudo make install PREFIX=/usr
 ```
@@ -539,6 +539,43 @@ Note that Podman does not officially support device-mapper. Thus, the `exclude_g
 ### Vendoring - Dependency Management
 
 This project is using [go modules](https://github.com/golang/go/wiki/Modules) for dependency management.  If the CI is complaining about a pull request leaving behind an unclean state, it is very likely right about it.  After changing dependencies, make sure to run `make vendor` to synchronize the code with the go module and repopulate the `./vendor` directory.
+
+### Static build
+
+It is possible to build a statically linked binary of Podman by using
+the officially provided
+[nix](https://nixos.org/nixos/packages.html?attr=podman-unwrapped&channel=nixpkgs-unstable&query=podman)
+package and the derivation of it [within this repository](nix/). The
+builds are completely reproducible and will create a x86\_64/amd64
+stripped ELF binary for [glibc](https://www.gnu.org/software/libc).
+
+#### Nix
+
+To build the binaries by locally installing the nix package manager:
+
+``` shell
+curl -L https://nixos.org/nix/install | sh
+git clone https://github.com/containers/podman.git && cd podman
+nix build -f nix/
+./result/bin/podman --version
+```
+
+#### Ansible
+
+An [Ansible Role](https://github.com/alvistack/ansible-role-podman) is
+also available to automate the installation of the above statically
+linked binary on its supported OS:
+
+``` bash
+sudo su -
+mkdir -p ~/.ansible/roles
+cd ~/.ansible/roles
+git clone https://github.com/alvistack/ansible-role-podman.git podman
+cd ~/.ansible/roles/podman
+pip3 install --upgrade --ignore-installed --requirement requirements.txt
+molecule converge
+molecule verify
+```
 
 ## Configuration files
 
