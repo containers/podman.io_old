@@ -1,16 +1,14 @@
 ---
 layout: default
-title: Podman Release Announcements
+title: Podman Talks
 ---
 
-<img src="../images/podman.svg" alt="Podman logo">
+![Podman logo](../images/podman.svg)
 
-<h1>{{ page.title }}</h1>
-
-<h3>Release Notes on <a href="https://github.com/containers/podman/blob/master/RELEASE_NOTES.md">GitHub</a></h3>
+# {{ page.title }}
 
 <section class="posts">
-  {% for post in site.categories.releases %}
+  {% for post in site.categories.talks %}
     <p><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> by {{ post.author }}</p>
     <p>{{ post.excerpt }}</p>
     <a href="{{post.url}}"> Read More </a><hr>

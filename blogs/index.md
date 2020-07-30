@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Podman Talks
+title: Podman Blogs
 ---
 
-<img src="../images/podman.svg" alt="Podman logo">
+![Podman logo](../images/podman.svg)
 
-<h1>{{ page.title }}</h1>
+# {{ page.title }}
 
 <section class="posts">
-  {% for post in site.categories.talks %}
+  {% for post in site.categories.blogs %}
     <p><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> by {{ post.author }}</p>
     <p>{{ post.excerpt }}</p>
     <a href="{{post.url}}"> Read More </a><hr>
