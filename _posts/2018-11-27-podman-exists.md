@@ -60,7 +60,7 @@ We can verify the existence of a container in much the same way as an image.  Th
 
 My system has the following container:
 ```
-$ sudo podman ps --format "{{.ID}} {{.Names}}"
+$ sudo podman ps --format {% raw %}"{{.ID}} {{.Names}}"{% endraw %}
 472fde2f48c7 foobar
 ```
 
