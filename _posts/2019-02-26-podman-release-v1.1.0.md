@@ -56,7 +56,7 @@ rootless containers and more.  All the details follow!
  * Fixed a bug where Podman run as root was ignoring some options in /etc/containers/storage.conf [#2217](https://github.com/containers/podman/issues/2217)
  * Fixed a bug where Podman cleanup processes were not being given the proper OCI runtime path if a custom one was specified
  * Fixed a bug where podman images --filter dangling=true would crash if no dangling images were present [#2246](https://github.com/containers/podman/issues/2246)
- * Fixed a bug where podman ps --format "{{.Mounts}}" would not display a container's mounts [#2238](https://github.com/containers/podman/issues/2238)
+ * Fixed a bug where podman ps --format {% raw %}"{{.Mounts}}"{% endraw %} would not display a container's mounts [#2238](https://github.com/containers/podman/issues/2238)
  * Fixed a bug where podman pod stats was ignoring Go templates specified by --format [#2258](https://github.com/containers/podman/issues/2258)
  * Fixed a bug where podman generate kube would fail on containers with --user specified [#2304](https://github.com/containers/podman/issues/2304)
  * Fixed a bug where podman images displayed incorrect output for images pulled by digest [#2175](https://github.com/containers/podman/issues/2175)
