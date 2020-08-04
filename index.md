@@ -26,7 +26,7 @@ title: Podman
 <section class="posts">
   {% for post in site.categories.new %}
     <p><span>{{ post.date | date_to_string }}</span> »
-      <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></p>
+      <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></p>
     <p>{{ post.excerpt }}</p><hr>
   {% endfor %}
 </section>

@@ -9,8 +9,8 @@ title: Podman Blogs
 
 <section class="posts">
   {% for post in site.categories.blogs %}
-    <p><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> by {{ post.author }}</p>
+    <p><span>{{ post.date | date_to_string }}</span> » <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> by {{ post.author }}</p>
     <p>{{ post.excerpt }}</p>
-    <a href="{{post.url}}"> Read More </a><hr>
+    <a href="{{ site.baseurl }}{{post.url}}"> Read More </a><hr>
   {% endfor %}
 </section>

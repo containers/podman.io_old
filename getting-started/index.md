@@ -19,7 +19,7 @@ The documentation for Podman is located
 ## Installing Podman
 
 For installing or building Podman, please see the
-[installation instructions](/getting-started/installation).
+[installation instructions]({{ site.baseurl }}/getting-started/installation).
 
 ## Familiarizing yourself with Podman
 
@@ -195,7 +195,7 @@ You can verify the deletion of the container by running `podman ps -a`.
 ## Network
 
 For a more detailed guide about Networking and DNS in containers, please see the
-[network guide](/getting-started/network).
+[network guide]({{ site.baseurl }}/getting-started/network).
 
 ## "Checkpoint, Migration and Restoring containers
 
@@ -203,7 +203,7 @@ Checkpointing a container stops the container while writing the state of all
 processes in the container to disk. With this, a container can later be
 migrated and restored, running at exactly the same point in time as the
 checkpoint. For more details, see the
-[checkpoint instructions](/getting-started/checkpoint).
+[checkpoint instructions]({{ site.baseurl }}/getting-started/checkpoint).
 
 ## Integration Tests
 
