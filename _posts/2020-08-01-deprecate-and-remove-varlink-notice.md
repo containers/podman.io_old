@@ -1,7 +1,7 @@
 ---
 title: Podman API v1.0 Deprecation and Removal Notice 
 layout: default
-author: dwalsh 
+author: tsweeney 
 categories: [blogs]
 tags: podman, containers, v2, github, varlink, rest-api
 ---
