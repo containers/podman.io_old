@@ -110,6 +110,14 @@ authors:
     web: https://mkdev.me/en
     twitter: Fodoj
     github: Fodoj
+  lsm5:
+    name: Lokesh Mandvekar
+    display_name: Lokesh Mandvekar
+    gravatar:
+    email: lsm5@fedoraproject.org
+    web: https://redhat.com
+    twitter:
+    github: lsm5
   mheon:
     name: Matthew Heon
     display_name: Matt Heon
@@ -118,6 +126,13 @@ authors:
     web: https://redhat.com
     twitter:
     github: mheon
+  pvanroy:
+    name: Parker Van Roy
+    display_name: Parker Van Roy
+    gravatar:
+    email: pvanroy@redhat.com
+    web: https://redhat.com
+    github: ParkerVR
   tristanC:
     name: Tristan de Cacqueray
     display_name: tristanC
