@@ -477,7 +477,7 @@ $ podman --log-level=debug system service -t 0
 The `--log-level=debug` echoes all the logged requests and is useful to
 trace the execution path at a finer granularity. A snippet of a sample run looks like:
 
-```bash
+```
 INFO[0000] podman filtering at log level debug          
 DEBU[0000] Called service.PersistentPreRunE(podman --log-level=debug system service -t0) 
 DEBU[0000] Ignoring libpod.conf EventsLogger setting "/home/lsm5/.config/containers/containers.conf". Use "journald" if you want to change this setting and remove libpod.conf files. 
@@ -509,14 +509,14 @@ DEBU[0000] Reading configuration file "/usr/share/containers/containers.conf"
 If the Podman system service has been started via systemd socket activation,
 you can view the logs using journalctl. The logs after a sample run look like so:
 
-```bash
+```
 $ journalctl --user --no-pager -u podman.socket
 -- Reboot --
 Jul 22 13:50:40 nagato.nanadai.me systemd[1048]: Listening on Podman API Socket.
 $
 ```
 
-```bash
+```
 $ journalctl --user --no-pager -u podman.service
 Jul 22 13:50:53 nagato.nanadai.me systemd[1048]: Starting Podman API Service...
 Jul 22 13:50:54 nagato.nanadai.me podman[1527]: time="2020-07-22T13:50:54-04:00" level=error msg="Error refreshing volume 38480630a8bdaa3e1a0ebd34c94038591b0d7ad994b37be5b4f2072bb6ef0879: error acquiring lock 0 for volume 38480630a8bdaa3e1a0ebd34c94038591b0d7ad994b37be5b4f2072bb6ef0879: file exists"
