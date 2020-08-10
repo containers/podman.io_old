@@ -40,7 +40,7 @@ bindings are available on the [v2.0 branch in the
 upstream Podman repository](https://github.com/containers/podman/tree/v2.0).
 You can fetch the bindings for your application using Go modules:
 
-```bash
+```
 $ cd $HOME
 $ mkdir example && cd example
 $ go mod init example.com
@@ -54,7 +54,7 @@ go get: github.com/containers/podman/v2@v2.0.4: parsing go.mod:
 
 This creates a new `go.mod` file in the current directory that looks as follows:
 
-```bash
+```
 module example.com
 
 go 1.14
@@ -64,7 +64,7 @@ require github.com/containers/libpod/v2 v2.0.4 // indirect
 
 You can also try a demo application with the Go modules created already:
 
-```bash
+```
 $ git clone https://github.com/containers/Demos
 $ cd Demos/podman_go_bindings
 $ ls
@@ -91,7 +91,7 @@ In this tutorial, you will learn through basic examples how to:
 The recommended way to start Podman system service in production mode
 is via systemd socket-activation:
 
-```bash
+```
 $ systemctl --user start podman.socket
 ```
 
@@ -101,7 +101,7 @@ For purposes of this demo, we will start the service using the Podman
 command itself. If you prefer the system service to timeout after, say,
 5000 seconds, you can run it like so:
 
-```bash
+```
 $ podman system service -t 5000
 ```
 
@@ -109,7 +109,7 @@ Note that the 5000 seconds uptime is refreshed after every command is received.
 If you want the service to stay up until the machine is shutdown or the process
 is terminated, use `0` (zero) instead of 5000. For this demo, we will use no timeout:
 
-```bash
+```
 # -t 0 implies no timeout, default timeout 5 seconds
 $ podman system service -t 0
 ```
@@ -117,13 +117,13 @@ $ podman system service -t 0
 
 Open another terminal window and check if the Podman socket exists:
 
-```bash
+```
 $ ls /run/user/${UID}/podman
 podman.sock
 ```
 
 If you’re running the system service as root, podman.sock will be found in /run/podman:
-```bash
+```
 $ ls /run/podman
 podman.sock
 ```
@@ -139,7 +139,7 @@ typically: `unix:/run/user/${UID}/podman/podman.sock`.
 
 
 The following Go example snippet shows how to set up a connection for a rootless user.
-```Go
+```
 package main
 
 import (
@@ -185,7 +185,7 @@ This binding takes three arguments:
 
 **Append the following lines to your function:**
 
-```Go
+```
         // Pull Busybox image (Sample 1)
         fmt.Println("Pulling Busybox image...")
         _, err = images.Pull(connText, "docker.io/busybox", entities.ImagePullOptions{})
@@ -206,7 +206,7 @@ This binding takes three arguments:
 
 **Run it:**
 
-```bash
+```
 $ go run main.go
 Welcome to the Podman Go bindings tutorial
 Pulling Busybox image...
@@ -216,7 +216,7 @@ $
 
 The system service side should echo messages like so:
 
-```bash
+```
 Trying to pull docker.io/busybox...
 Getting image source signatures
 Copying blob 61c5ed1cbdf8 [--------------------------------------] 0.0b / 0.0b
@@ -241,7 +241,7 @@ This binding takes three arguments:
 
 **Append the following lines to your function:**
 
-```Go
+```
         // List images
         imageSummary, err := images.List(connText, nil, nil)
         if err != nil {
@@ -258,7 +258,7 @@ This binding takes three arguments:
 
 **Run it:**
 
-```bash
+```
 $ go run main.go
 Welcome to the Podman Go bindings tutorial
 Pulling Busybox image...
@@ -297,7 +297,7 @@ containers.Wait() takes three arguments:
   
 **Append the following lines to your function:**
 
-```Go
+```
         // Container create
         s := specgen.NewSpecGenerator(rawImage, false)
         s.Terminal = true
@@ -325,7 +325,7 @@ containers.Wait() takes three arguments:
 
 **Run it:**
 
-```bash
+```
 $ go run main.go
 Welcome to the Podman Go bindings tutorial
 Pulling image...
@@ -335,7 +335,7 @@ $
 
 Check if the container is running:
 
-```bash
+```
 $ podman ps
 CONTAINER ID  IMAGE                                     COMMAND    CREATED                 STATUS                     PORTS   NAMES
 665831d31e90  registry.fedoraproject.org/fedora:latest  /bin/bash  Less than a second ago  Up Less than a second ago          dazzling_mclean
@@ -357,7 +357,7 @@ containers.List() takes seven arguments:
 
 **Append the following lines to your function:**  
 
-```Go
+```
         // Container list
         var latestContainers = 1
         containerLatestList, err := containers.List(connText, nil, nil, &latestContainers, nil, nil, nil)
@@ -370,7 +370,7 @@ containers.List() takes seven arguments:
 
 **Run it:**
 
-```bash
+```
 $ go run main.go
 Welcome to the Podman Go bindings tutorial
 Pulling Busybox image...
@@ -393,7 +393,7 @@ containers.Inspect() takes 3 arguments:
 
 **Append the following lines to your function:**
 
-```Go
+```
         // Container inspect
         ctrData, err := containers.Inspect(connText, r.ID, nil)
         if err != nil {
@@ -406,7 +406,7 @@ containers.Inspect() takes 3 arguments:
 
 **Run it:**
 
-```bash
+```
 $ go run main.go
 Welcome to the Podman Go bindings tutorial
 Pulling Busybox image...
@@ -431,7 +431,7 @@ containers.Stop() takes 3 arguments:
 
 **Append the following lines to your function:**
 
-```Go
+```
         // Container stop
         fmt.Println("Stopping the container...")
         err = containers.Stop(connText, r.ID, nil)
@@ -449,7 +449,7 @@ containers.Stop() takes 3 arguments:
 
 **Run it:**
 
-```bash
+```
 $ go run main.go
 Welcome to the Podman Go bindings tutorial
 Pulling Busybox image...
@@ -470,14 +470,14 @@ Container running status is now exited
 To debug in a development setup, you can start the Podman system service
 in debug mode like so:
 
-```bash
+```
 $ podman --log-level=debug system service -t 0
 ```
 
 The `--log-level=debug` echoes all the logged requests and is useful to
 trace the execution path at a finer granularity. A snippet of a sample run looks like:
 
-```bash
+```
 INFO[0000] podman filtering at log level debug          
 DEBU[0000] Called service.PersistentPreRunE(podman --log-level=debug system service -t0) 
 DEBU[0000] Ignoring libpod.conf EventsLogger setting "/home/lsm5/.config/containers/containers.conf". Use "journald" if you want to change this setting and remove libpod.conf files. 
@@ -509,14 +509,14 @@ DEBU[0000] Reading configuration file "/usr/share/containers/containers.conf"
 If the Podman system service has been started via systemd socket activation,
 you can view the logs using journalctl. The logs after a sample run look like so:
 
-```bash
+```
 $ journalctl --user --no-pager -u podman.socket
 -- Reboot --
 Jul 22 13:50:40 nagato.nanadai.me systemd[1048]: Listening on Podman API Socket.
 $
 ```
 
-```bash
+```
 $ journalctl --user --no-pager -u podman.service
 Jul 22 13:50:53 nagato.nanadai.me systemd[1048]: Starting Podman API Service...
 Jul 22 13:50:54 nagato.nanadai.me podman[1527]: time="2020-07-22T13:50:54-04:00" level=error msg="Error refreshing volume 38480630a8bdaa3e1a0ebd34c94038591b0d7ad994b37be5b4f2072bb6ef0879: error acquiring lock 0 for volume 38480630a8bdaa3e1a0ebd34c94038591b0d7ad994b37be5b4f2072bb6ef0879: file exists"
@@ -564,9 +564,6 @@ It also includes a section on the [RESTful API](https://docs.podman.io/en/latest
 
 
 ## Acknowledgments
-
-- This blog post was co-authored by Parker Van Roy, currently interning at Red
-Hat for summer 2020.
 
 - Thanks to Brent Baude for the initial blog post suggestion and reviews.
 
