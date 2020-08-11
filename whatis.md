@@ -8,9 +8,9 @@ title: What is podman?
 
 ![podman logo](/images/podman.svg)
 
-## What is Podman? Simply put: \`alias docker=podman\`
+## What is Podman? Simply put: **alias docker=podman**
 
-Podman is an open-source project that is available on most Linux platforms and resides on [GitHub](https://github.com/containers/podman). Podman is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on your Linux System. Podman provides a Docker-compatible command line front end that can simply alias the Docker cli, \`alias docker=podman\`.  
+Podman is an open-source project that is available on most Linux platforms and resides on [GitHub](https://github.com/containers/podman). Podman is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers and container images on your Linux System. Podman provides a Docker-compatible command line front end that can simply alias the Docker cli, **alias docker=podman**.  
 
 Containers under the control of Podman can either be run by root or by a non-privileged user. Podman manages the entire container ecosystem which includes pods, containers, container images, and container volumes using the [libpod](https://github.com/containers/podman) library. Podman specializes in all of the commands and functions that help you to maintain and modify OCI container images, such as pulling and tagging. It allows you to create, run, and maintain those containers created from those images in a production environment.  
 
