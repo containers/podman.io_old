@@ -93,7 +93,7 @@ This section describes how networking can be used in rootfull containers.
 
 ### Publishing Ports
 
-Port Publisinh works the same way as rootless containers, but you will be able
+Port publishing works the same way as rootless containers, but you will be able
 to use privileged ports, as long as they are free.
 
 ```console
