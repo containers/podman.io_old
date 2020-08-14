@@ -42,6 +42,9 @@ $ man podman
 $ man podman-<subcommand>
 ```
 
+Please also reference the [Podman Troubleshooting Guide](https://github.com/containers/podman/blob/master/troubleshooting.md)
+to find known issues and tips on how to solve common configuration mistakes.
+ 
 ### Searching, pulling & listing images
 
 Podman can search for images on remote registries with some simple keywords.
