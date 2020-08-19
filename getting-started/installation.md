@@ -194,14 +194,17 @@ sudo yum module install -y container-tools:1.0
 
 #### [Ubuntu](https://www.ubuntu.com)
 
-The Kubic project provides packages for Ubuntu 18.04, 19.04, 19.10 and 20.04.
+The Kubic project provides packages for Ubuntu 18.04, 19.04, 19.10 and 20.04.  **NOTE:** The `sudo apt-get -y upgrade`
+in the below example has worked in some instances and it seems to be required on those machines, but it has
+not worked on other machines and it wasn't required to install Podman.
 
 ```bash
 . /etc/os-release
 echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key | sudo apt-key add -
-sudo apt-get update -qq
-sudo apt-get -qq -y install podman
+sudo apt-get update
+sudo apt-get -y upgrade 
+sudo apt-get -y install podman
 ```
 
 There are many [packages](https://packages.ubuntu.com/search?keywords=libpod&searchon=names&suite=eoan&section=all)
