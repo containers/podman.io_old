@@ -18,7 +18,7 @@ client and then setup ssh connection information.
 The Mac client is available through [Homebrew](https://brew.sh/):
 
 ```bash
-brew cask install podman
+brew install podman
 ```
 
 ### Windows
