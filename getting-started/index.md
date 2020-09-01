@@ -63,7 +63,6 @@ Downloading (Pulling) an image is easy, too.
 
 ```console
 $ podman pull registry.fedoraproject.org/f29/httpd
-$ podman pull registry.fedoraproject.org/f29/httpd
 ```
 
 After pulling some images, you can list all images, present on your machine.
