@@ -18,7 +18,7 @@ We've received a number of requests for a mailing list for Podman and we're happ
 To sign up for the mailing list use email or the web interface:
 
   * Send an email to [podman-join@lists.podman.io](mailto:podman-join@lists.podman.io?subject=subscribe) with the word "Subscribe" in the subject.
-  * Go to this [page](https://lists.podman.io/admin/lists/podman.lists.podman.io/) on the [https://lists.podman.io](https://lists.podman.io) site, scroll down to the bottom of the page and enter your email and optionally name, then click on the "Subscribe" buton.
+  * Go to this [page](https://lists.podman.io/admin/lists/podman.lists.podman.io/) on the [https://lists.podman.io](https://lists.podman.io) site, scroll down to the bottom of the page and enter your email and optionally name, then click on the "Subscribe" button.
 
 Regardless of which method you use, a confirmation email will be sent to you.  After you reply back to that confirmation email, you'll then be able to send mail directly to [podman@lists.podman.io](mailto:podman@lists.podman.io).  You can then also go to the list's web page at [lists.podman.io](https://lists.podman.io), click on the [Podman](https://lists.podman.io/archives/list/podman@lists.podman.io/) link and from there you can see all of the past conversations on the list or manage your subscription. 
 

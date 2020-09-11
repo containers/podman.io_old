@@ -64,7 +64,7 @@ rootless containers and more.  All the details follow!
  * Fixed a bug where detaching from a container using the detach keys would cause Podman to hang until the container exited
  * Fixed a bug where podman create --rm did not work with podman start --attach
  * Fixed a bug where invalid named volumes specified in podman create and podman run could cause segfaults [#2301](https://github.com/containers/podman/issues/2301)
- * Fixed a bug where the runtime field in libpod.conf was being ignored. runtime is legacy and deprecated, but will continue to be respected for the forseeable future
+ * Fixed a bug where the runtime field in libpod.conf was being ignored. runtime is legacy and deprecated, but will continue to be respected for the foreseeable future
  * Fixed a bug where podman login would sometimes report it logged in successfully when it did not
  * Fixed a bug where podman pod create would not error on receiving unused CLI argument
  * Fixed a bug where rootless podman run with the --pod argument would fail if the pod was stopped
@@ -90,7 +90,7 @@ rootless containers and more.  All the details follow!
  * podman rm can now delete containers in containers/storage, which can be used to resolve some situations where Podman fails to remove a container
  * The podman search command now searches multiple registries in parallel for improved performance
  * The podman build command now defaults --pull-always to true
- * Containers which share a network namespace (for example, when in a pod) will now share /etc/hosts and /etc/resolv.conf between all containers in the pod, causing changes in one container to propogate to all containers sharing their networks
+ * Containers which share a network namespace (for example, when in a pod) will now share /etc/hosts and /etc/resolv.conf between all containers in the pod, causing changes in one container to propagate to all containers sharing their networks
  * The podman rm and podman rmi commands now return 1 (instead of 127) when all specified container or images are missing
 
 As always, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/master/RELEASE_NOTES.md) to see the full changelog.

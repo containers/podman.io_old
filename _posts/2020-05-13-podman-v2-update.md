@@ -17,7 +17,7 @@ Today, we are very excited to announce:
 
 **The local Podman v2 client is complete.  It is passing all of its rootfull and rootless system and integration tests.**
 
-The CI/CID tests have been reenabled upstream and are run with each pull request submission.  We are now hard at work finishing up some of the core podman-remote functions.  Once those functions are complete, we can then begin to run our podman-remote system and integration tests to catch any regressions.
+The CI/CID tests have been re-enabled upstream and are run with each pull request submission.  We are now hard at work finishing up some of the core podman-remote functions.  Once those functions are complete, we can then begin to run our podman-remote system and integration tests to catch any regressions.
 
 We have re-enabled the autobuilds for Podman v2 in Fedora rawhide.  As mentioned earlier, the Podman remote client is not complete, so that binary is temporarily being removed from the RPM.  It will be re-added when the remote client is complete. As a corollary, the Windows and OS/X clients are also not being compiled or tested.  This will occur once the remote client for Linux is complete.
 
