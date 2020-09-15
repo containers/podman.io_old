@@ -59,7 +59,7 @@ also use the container's ID or name instead of `-l` or the long argument
 
 ### Container <-> Container Communication
 
-Communicating between two rootless containers can be achieved in mutiple ways.
+Communicating between two rootless containers can be achieved in multiple ways.
 The easiest and most convenient way is to communicate via published ports and
 the underlying host.
 

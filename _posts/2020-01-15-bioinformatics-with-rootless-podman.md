@@ -21,7 +21,7 @@ The HPC's had versioned software and environment modules and were built to load 
 Now we are into a new era, containers - and not just any old containers, but containers that end users can build and run up fairly 
 quickly to perform what-if's, and move on quickly through iterations until they perform the required functions.
 
-Podman has developed very rapidly and is incredibly easy to use. You can use it in conjuction with quay.io or run it on a local machine.
+Podman has developed very rapidly and is incredibly easy to use. You can use it in conjunction with quay.io or run it on a local machine.
 
 I should add that Adrian Reber gave a [talk](https://youtu.be/TtHSNsbU24E) and has also created a Podman [article](https://podman.io/blogs/2019/09/26/podman-in-hpc.html) using openhpc; well worth a watch and a read.
 

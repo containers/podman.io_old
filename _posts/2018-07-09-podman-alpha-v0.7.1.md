@@ -18,7 +18,7 @@ Speaking of platform changes, one thing I have been working on the last few week
 
 ## Other significant changes include:
 
-    * several changes to the makefile to make it more effecient
+    * several changes to the makefile to make it more efficient
     * fix parsing of short options by vendoring in a new urfave/cli
     * tutorial fixes
     * revert back to a shared cgroup for conmon processes

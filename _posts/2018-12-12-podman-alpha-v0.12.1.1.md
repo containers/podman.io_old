@@ -10,7 +10,7 @@ tags: community, open source, podman
 
 # Podman Release 0.12.1.1
 
-We're happy to announce the availability of Podman 0.12.1.1, our latest version. We've been very busy over the last month, and it shows! We've merged over 150 new commits since our 0.11 releases, including major new functionality and several critical bugfixes. Pods, Kubernetes compatability, and container volumes all saw major improvements.
+We're happy to announce the availability of Podman 0.12.1.1, our latest version. We've been very busy over the last month, and it shows! We've merged over 150 new commits since our 0.11 releases, including major new functionality and several critical bugfixes. Pods, Kubernetes compatibility, and container volumes all saw major improvements.
 
 We hope everyone enjoys the release, and stays with us in the future as Podman gets closer to 1.0. As always, many thanks to everyone who contributed to this release!
 

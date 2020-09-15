@@ -51,7 +51,7 @@ _See:_ [https://github.com/boot2podman/boot2podman](https://github.com/boot2podm
 
 ## Remote Access
 
-It is possible to use the `pypodman` commmand-line tool, to control podman remotely:
+It is possible to use the `pypodman` command-line tool, to control podman remotely:
 
 ``` console
 $ eval $(podman-machine env box)
