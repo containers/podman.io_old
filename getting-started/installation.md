@@ -99,12 +99,13 @@ sudo dnf -y install podman
 
 #### [Debian](https://debian.org)
 
-The libpod package is [being worked on](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=930440)
-for inclusion in the default Debian repos. Relevant status updates can also be
-found [here](https://github.com/containers/podman/issues/1742).
-
-Alternatively, the [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
-provides packages for Debian 10, testing and unstable.
+The libpod package is available in
+the [Bullseye (testing) branch](https://packages.debian.org/bullseye/podman), which
+will be the next stable release (Debian 11). Alternatively, the
+[Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
+provides packages for Debian 10, testing and unstable; it will be more
+frequently updated than the one in Debian official repository, due to how Debian
+works.
 
 ```bash
 # Debian Unstable/Sid
