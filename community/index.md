@@ -13,6 +13,11 @@ We want your feedback, issues, patches, and involvement in the development of Po
 
 The Podman developers often hang out on the #CRI-O channel in [Kubernetes Slack](https://slack.k8s.io/). Note that the devs are generally around during CEST and Eastern Time business hours, so be patient if you're in another time zone. There's also Podman users and developers on [IRC.Freenode.Net](https://webchat.freenode.net/) channel #podman.
 
+## Community Meetings
+
+Community meetings are held on the first Tuesday of the month, generally at 11:00 a.m. Eastern time.  The meetings are held using using BlueJeans
+video conferencing and all are welcome.  There is no cost other than your time.  For more information, see the [Community Meeting](https://podman.io/community/meeting/) page.
+
 ## Mailing List
 
 A mailing list is now available for your questions, concerns or comments about Podman. There are two methods that can be used to subscribe to it.
