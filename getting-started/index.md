@@ -199,7 +199,7 @@ You can verify the deletion of the container by running `podman ps -a`.
 For a more detailed guide about Networking and DNS in containers, please see the
 [network guide]({{ site.baseurl }}/getting-started/network).
 
-## "Checkpoint, Migration and Restoring containers
+## Checkpoint, Migration and Restoring containers
 
 Checkpointing a container stops the container while writing the state of all
 processes in the container to disk. With this, a container can later be
