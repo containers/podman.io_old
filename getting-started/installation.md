@@ -128,13 +128,6 @@ There are many [packages](https://packages.debian.org/search?keywords=libpod&sea
 with the libpod prefix available already on Debian. However, those are
 unrelated to this project.
 
-
-#### [Fedora](https://www.fedoraproject.org), [CentOS](https://www.centos.org)
-
-```bash
-sudo yum -y install podman
-```
-
 #### [Fedora-CoreOS](https://coreos.fedoraproject.org), [Fedora SilverBlue](https://silverblue.fedoraproject.org)
 
 Built-in, no need to install
@@ -231,7 +224,13 @@ sudo yum -y install podman
 #### [CentOS](https://www.centos.org)
 
 Podman is available in the default Extras repos for CentOS 7 and in
-the AppStream repo for CentOS 8 and Stream, however the available version often
+the AppStream repo for CentOS 8 and Stream.
+
+```bash
+sudo yum -y install podman
+```
+
+However the available version often
 lags the upstream release.
 
 The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:testing)
@@ -281,8 +280,13 @@ sudo apt-get -qq -y install podman
 
 #### Fedora
 
-You can test the very latest Podman in Fedora's `updates-testing`
-repository before it goes out to all Fedora users.
+Podman is available in the `updates` repository.
+
+```bash
+sudo yum -y install podman
+```
+
+You can test the very latest Podman in Fedora's `updates-testing`.
 
 ```console
 sudo yum distro-sync --enablerepo=updates-testing podman
