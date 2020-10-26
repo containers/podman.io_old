@@ -165,7 +165,7 @@ sudo zypper install podman
 
 Built-in, no need to install
 
-#### [Raspbian](https://raspbian.org)
+#### [Raspberry Pi OS armhf (ex Raspbian)](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
 
 The Kubic project provides packages for Raspbian 10.
  
@@ -173,6 +173,36 @@ The Kubic project provides packages for Raspbian 10.
 # Raspbian 10
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/ /' | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/Release.key | sudo apt-key add -
+sudo apt-get update -qq
+sudo apt-get -qq -y install podman
+```
+
+
+#### [Raspberry Pi OS arm64 (beta)](https://downloads.raspberrypi.org/raspios_arm64/images/)
+
+Raspberry Pi OS use the standard Debian's repositories,
+so it is fully compatible with Debian's arm64 repository
+ 
+The libpod package is available in the
+[Bullseye (testing) branch](https://packages.debian.org/bullseye/podman), which
+will be the next stable release (Debian 11). Alternatively, the
+[Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
+provides more frequently updated than the one in Debian official
+repository, due to how Debian works.
+
+```bash
+# Debian Unstable/Sid
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Unstable/Release.key | sudo apt-key add -
+
+# Debian Testing
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Testing/Release.key | sudo apt-key add -
+
+# Debian 10
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/Release.key | sudo apt-key add -
+
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
@@ -296,7 +326,7 @@ If you are running a non-rawhide Fedora distribution, you can also test the late
 with our [COPR repository](https://copr.fedorainfracloud.org/coprs/baude/Upstream_CRIO_Family/).
 
 
-#### [Raspbian](https://raspbian.org)
+#### [Raspberry Pi OS armhf (ex Raspbian)](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
 
 The Kubic project provides RC/testing packages for Raspbian 10.
 
@@ -304,6 +334,35 @@ The Kubic project provides RC/testing packages for Raspbian 10.
 # Raspbian 10
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Raspbian_10/ /' | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Raspbian_10/Release.key | sudo apt-key add -
+sudo apt-get update -qq
+sudo apt-get -qq -y install podman
+```
+
+#### [Raspberry Pi OS arm64 (beta)](https://downloads.raspberrypi.org/raspios_arm64/images/)
+
+Raspberry Pi OS use the standard Debian's repositories,
+so it is fully compatible with Debian's arm64 repository
+ 
+The libpod package is available in the
+[Bullseye (testing) branch](https://packages.debian.org/bullseye/podman), which
+will be the next stable release (Debian 11). Alternatively, the
+[Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:testing)
+provides more frequently updated than the one in Debian official
+repository, due to how Debian works.
+
+```bash
+# Debian Unstable/Sid
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Unstable/Release.key | sudo apt-key add -
+
+# Debian Testing
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Testing/Release.key | sudo apt-key add -
+
+# Debian 10
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_10/Release.key | sudo apt-key add -
+
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
