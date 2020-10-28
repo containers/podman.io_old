@@ -3,7 +3,7 @@ layout: default
 title: Community Meetings
 ---
 
-![Podman logo](../images/podman.svg)
+![Podman logo](../../images/podman.svg)
 
 # {{ page.title }}
 
@@ -30,7 +30,7 @@ with the title "Podman Community Meeting Topic".  A brief summary of what you'd 
 discuss or present would be helpful.  If we can't squeeze you into the next meeting,
 we will do our best to get you into a future one as soon as possible.
 
- [Podman Community Meeting Agenda]((https://podman.io/community/meeting/agenda)
+ [Podman Community Meeting Agenda](https://podman.io/community/meeting/agenda)
 
 
 ## Notes from the Community Meetings
