@@ -129,10 +129,10 @@ with the libpod prefix available already on Debian. However, those are
 unrelated to this project.
 
 
-#### [Fedora](https://www.fedoraproject.org), [CentOS](https://www.centos.org)
+#### [Fedora](https://www.fedoraproject.org)
 
 ```bash
-sudo yum -y install podman
+sudo dnf -y install podman
 ```
 
 #### [Fedora-CoreOS](https://coreos.fedoraproject.org), [Fedora SilverBlue](https://silverblue.fedoraproject.org)
