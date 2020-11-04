@@ -16,7 +16,7 @@ Tom Sweeney, Brent Baude, Anders Björklund (afbjorklund), Greg Shomo, sshnaidm,
 #### Basically a varlink post-mortem
 ##### (1:40 in the video)
 
-Anders talked about his work in containers starting with chroot to jails, to zones, to openVZ, to LX and finally to Docker. 
+Anders talked about his work in containers starting with chroot to jails, to zones, to openVZ, to LX and finally to Docker.  Slide Deck [here](https://boot2podman.github.io/assets/Boot2PodmanProject.pdf). 
 
 Within Docker, runc, containerd and Moby project.
 
@@ -38,7 +38,7 @@ Machine lets you create Podman hosts on computer, it creates servers with Podman
 
 boot2docker was recently deprecated and move to unmaintained image.   boot2podman also deprecated due to varlink being replaced with REST API.
 
-Anders then ran a demo **(16:00 in video)**.  He does not yet have support for V2 Podman, but in the works.
+Anders then ran a [demo](https://boot2podman.github.io/2020/11/03/boot2podman-project.html) **(16:00 in video)**.  He does not yet have support for V2 Podman, but in the works.
 
 ##  What Red Hat Thinks - Design directions
 ### Brent Baude
