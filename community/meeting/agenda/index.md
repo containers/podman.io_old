@@ -18,12 +18,14 @@ title: Podman Community Meeting Agenda
 
 * 11:00 -> 11:05 - Welcome! 
 
-* 11:05 -> 11:10 - Matt Heon - Introducing Network Aliases
+* 11:05 -> 11:15 - Matt Heon - Introducing Network Aliases
  
-* 11:10 -> 11:30 - Jhon Honce - Podman Split Brain API 
+* 11:15 -> 11:35 - Jhon Honce - Podman Split Brain API 
 
-* 11:30 -> 11:50 - Open Forum/Questions and Answers Session
+* 11:35 -> 11:45 - Dan Walsh - Demo containers.conf usage
 
-* 11:50 -> 12:00 - Next Meeting, Topics for Next Meeting, and Wrap up
+* 11:45 -> 11:55 - Open Forum/Questions and Answers Session
+
+* 11:55 -> 12:00 - Next Meeting, Topics for Next Meeting, and Wrap up
 
  **Next Meeting: Tuesday, February 2, 2020, 11:00 a.m. Eastern**
