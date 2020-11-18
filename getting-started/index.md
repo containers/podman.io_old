@@ -9,7 +9,7 @@ title: Getting Started with Podman
 
 Podman is a utility provided as part of the libpod library. It can be used to
 create and maintain containers. The following tutorial will teach you how to set
-up Podman and perform some basic commands with Podman.
+up Podman and perform some basic commands.
 
 ## Podman Documentation
 
@@ -105,7 +105,7 @@ containers (created, exited, running, etc.).
 
 ### Testing the httpd container
 
-As you were able to see, the container does not has an IP Address assigned. The
+As you are able to see, the container does not have an IP Address assigned. The
 container is reachable via it's published port on your local machine.
 
 ```console
