@@ -106,7 +106,7 @@ will be the next stable release (Debian 11) as well as Debian Unstable/Sid.
 ```bash
 # Debian Testing/Bullseye or Unstable/Sid
 sudo apt-get update
-sudo apt-get -y install libpod
+sudo apt-get -y install podman
 ```
 
 The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
@@ -213,7 +213,7 @@ and newer.
 ```bash
 # Ubuntu 20.10 and newer
 sudo apt-get -y update
-sudo apt-get -y install libpod
+sudo apt-get -y install podman
 ```
 
 The Kubic project provides packages for Ubuntu 18.04, 19.04, 19.10 and 20.04.
