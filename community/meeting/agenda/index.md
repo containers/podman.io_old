@@ -6,7 +6,7 @@ title: Podman Community Meeting Agenda
 ![Podman logo](../../../images/podman.svg)
 
 # {{ page.title }}
-## December 1, 2020 11:00 a.m. Eastern
+## December 1, 2020 11:00 a.m. Eastern (UTC-5)
 
 ### The meetings will be held using a BlueJeans [video conference room](https://bluejeans.com/796412039).
 
@@ -28,4 +28,4 @@ title: Podman Community Meeting Agenda
 
 * 11:55 -> 12:00 - Next Meeting, Topics for Next Meeting, and Wrap up
 
- **Next Meeting: Tuesday, February 2, 2020, 11:00 a.m. Eastern**
+ **Next Meeting: Tuesday, February 2, 2020, 11:00 a.m. Eastern (UTC-5)**
