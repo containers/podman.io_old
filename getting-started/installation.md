@@ -87,6 +87,7 @@ sudo dnf -y install 'dnf-command(copr)'
 sudo dnf -y copr enable rhcontainerbot/container-selinux
 sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8/devel:kubic:libcontainers:stable.repo
 sudo dnf -y install podman
+sudo dnf -y update
 
 # CentOS Stream
 sudo dnf -y module disable container-tools
@@ -94,6 +95,7 @@ sudo dnf -y install 'dnf-command(copr)'
 sudo dnf -y copr enable rhcontainerbot/container-selinux
 sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
 sudo dnf -y install podman
+sudo dnf -y update
 ```
 
 
@@ -116,7 +118,7 @@ have been discontinued to avoid
 
 Caution: If you upgrade from Debian 10 to Testing/Bullseye or
 Unstable/Sid you would likely end up downgrading podman because the version in
-OBS is more frequently updated than the one in Debian's official repositories, 
+OBS is more frequently updated than the one in Debian's official repositories,
 due to how Debian works.
 
 ```bash
@@ -172,7 +174,7 @@ Built-in, no need to install
 #### [Raspberry Pi OS armhf (ex Raspbian)](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
 
 The Kubic project provides packages for Raspbian 10.
- 
+
 ```bash
 # Raspbian 10
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/ /' | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
@@ -187,7 +189,7 @@ sudo apt-get -qq -y install podman
 Raspberry Pi OS use the standard Debian's repositories,
 so it is fully compatible with Debian's arm64 repository.
 You can simply follow the [steps for Debian](#debian) to install podman.
- 
+
 
 #### [RHEL7](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux)
 
@@ -227,7 +229,7 @@ maybe required in some cases if Podman cannot be installed without it.
 echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key | sudo apt-key add -
 sudo apt-get update
-sudo apt-get -y upgrade 
+sudo apt-get -y upgrade
 sudo apt-get -y install podman
 ```
 
@@ -287,7 +289,7 @@ with the official packages.
 
 Caution: If you upgrade from Debian 10 to Testing/Bullseye or
 Unstable/Sid you would likely end up downgrading podman because the version in
-OBS is more frequently updated than the one in Debian's official repositories, 
+OBS is more frequently updated than the one in Debian's official repositories,
 due to how Debian works.
 
 ```bash
@@ -334,7 +336,7 @@ sudo apt-get -qq -y install podman
 Raspberry Pi OS use the standard Debian's repositories,
 so it is fully compatible with Debian's arm64 repository
 You can simply follow the [steps for Debian](#debian-1) to install podman.
- 
+
 
 #### Ubuntu
 
@@ -695,16 +697,16 @@ The link above takes you to the seccomp.json
 cat /etc/containers/policy.json
 {
     "default": [
-	{
-	    "type": "insecureAcceptAnything"
-	}
+        {
+            "type": "insecureAcceptAnything"
+        }
     ],
     "transports":
-	{
-	    "docker-daemon":
-		{
-		    "": [{"type":"insecureAcceptAnything"}]
-		}
-	}
+        {
+            "docker-daemon":
+                {
+                    "": [{"type":"insecureAcceptAnything"}]
+                }
+        }
 }
 ```
