@@ -35,6 +35,7 @@ we will do our best to get you into a future one as soon as possible.
 
 ## Notes from the Community Meetings
 
+ * [Tuesday December 1, 2020](https://podman.io/community/meeting/notes/2020-12-01)
  * [Tuesday November 3, 2020](https://podman.io/community/meeting/notes/2020-11-03)
  * [Tuesday October 6, 2020](https://podman.io/community/meeting/notes/2020-10-06)
 
