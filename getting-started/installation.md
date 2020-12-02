@@ -270,14 +270,14 @@ sudo dnf -y module disable container-tools
 sudo dnf -y install 'dnf-command(copr)'
 sudo dnf -y copr enable rhcontainerbot/container-selinux
 sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:testing.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/CentOS_8/devel:kubic:libcontainers:testing.repo
-sudo dnf -y install podman
+sudo dnf -y --refresh install podman
 
 # CentOS Stream
 sudo dnf -y module disable container-tools
 sudo dnf -y install 'dnf-command(copr)'
 sudo dnf -y copr enable rhcontainerbot/container-selinux
 sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:testing.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/CentOS_8_Stream/devel:kubic:libcontainers:testing.repo
-sudo dnf -y install podman
+sudo dnf -y --refresh install podman
 ```
 #### Debian
 
@@ -308,7 +308,7 @@ You can test the very latest Podman in Fedora's `updates-testing`
 repository before it goes out to all Fedora users.
 
 ```console
-sudo yum distro-sync --enablerepo=updates-testing podman
+sudo dnf update --refresh --enablerepo=updates-testing podman
 ```
 
 If you use a newer Podman package from Fedora's `updates-testing`, we would
