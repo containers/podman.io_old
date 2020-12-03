@@ -526,23 +526,11 @@ apt-get install -y \
 
 ### Get Source Code
 
-As with other Go projects, Podman must be cloned into a directory structure like:
-
-```
-GOPATH
-└── src
-    └── github.com
-        └── containers
-            └── podman
-```
-
-First, ensure that the go version that is found first on the $PATH (in case you built your own; see [above](#golang)) is sufficiently recent -
-`go version` must be higher than 1.12.x). Then we can finally build Podman (assuming we already have a `$GOPATH` and the corresponding folder,
-`export GOPATH=~/go && mkdir -p $GOPATH`):
+First, ensure that the `go version` that is found first on the $PATH is higher than 1.12.x.  Instruction [above](#golang) will help you compile newer version of Go if needed.  Then we can build Podman:
 
 ```bash
-git clone https://github.com/containers/podman/ $GOPATH/src/github.com/containers/podman
-cd $GOPATH/src/github.com/containers/podman
+git clone https://github.com/containers/podman/
+cd podman
 make BUILDTAGS="selinux seccomp"
 sudo make install PREFIX=/usr
 ```
