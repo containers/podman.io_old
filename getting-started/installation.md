@@ -117,7 +117,7 @@ provides packages for Debian 10 and newer. The packages in Kubic project repos a
 updated than the one in Debian's official repositories, due to how Debian works.
 The build sources for the Kubic packages can be found [here](https://gitlab.com/rhcontainerbot/podman/-/tree/debian/debian).
 
-CAUTION: On Debian 11 and newer, including Debian Testing and Sid, we highly recommend you use podman, skopeo and buildah ONLY from EITHER the Kubic repo
+CAUTION: On Debian 11 and newer, including Debian Testing and Sid, we highly recommend you use Buildah, Podman and Skopeo ONLY from EITHER the Kubic repo
 OR the official Debian repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
 
 ```bash
@@ -160,9 +160,9 @@ sudo emerge app-emulation/libpod
 
 #### [OpenEmbedded](https://www.openembedded.org)
 
-Bitbake recipes for podman and its dependencies are available in the
+Bitbake recipes for Podman and its dependencies are available in the
 [meta-virtualization layer](https://git.yoctoproject.org/cgit/cgit.cgi/meta-virtualization/).
-Add the layer to your OpenEmbedded build environment and build podman using:
+Add the layer to your OpenEmbedded build environment and build Podman using:
 
 ```bash
 bitbake podman
@@ -198,7 +198,7 @@ sudo apt-get -qq -y install podman
 
 Raspberry Pi OS use the standard Debian's repositories,
 so it is fully compatible with Debian's arm64 repository.
-You can simply follow the [steps for Debian](#debian) to install podman.
+You can simply follow the [steps for Debian](#debian) to install Podman.
 
 
 #### [RHEL7](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux)
@@ -237,7 +237,7 @@ architecture combinations. **NOTE:** The command `sudo apt-get -y upgrade`
 maybe required in some cases if Podman cannot be installed without it.
 The build sources for the Kubic packages can be found [here](https://gitlab.com/rhcontainerbot/buildah/-/tree/debian/debian).
 
-CAUTION: On Ubuntu 20.10 and newer, we highly recommend you use podman, skopeo and buildah ONLY from EITHER the Kubic repo
+CAUTION: On Ubuntu 20.10 and newer, we highly recommend you use Buildah, Podman and Skopeo ONLY from EITHER the Kubic repo
 OR the official Ubuntu repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
 
 ```bash
@@ -355,7 +355,7 @@ sudo apt-get -qq -y install podman
 
 Raspberry Pi OS use the standard Debian's repositories,
 so it is fully compatible with Debian's arm64 repository
-You can simply follow the [steps for Debian](#debian-1) to install podman.
+You can simply follow the [steps for Debian](#debian-1) to install Podman.
 
 
 #### Ubuntu
@@ -366,7 +366,7 @@ for a list of supported Ubuntu version and
 architecture combinations. **NOTE:** The `sudo apt-get -y upgrade`
 maybe required in some cases if Podman cannot be installed without it.
 
-NOTE: On Ubuntu 20.10 and newer, we highly recommend you use podman, skopeo and buildah ONLY from EITHER the Kubic repo
+NOTE: On Ubuntu 20.10 and newer, we highly recommend you use Buildah, Podman and Skopeo ONLY from EITHER the Kubic repo
 OR the official Ubuntu repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
 
 ```bash
