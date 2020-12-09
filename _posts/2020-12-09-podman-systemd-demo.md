@@ -44,4 +44,4 @@ Once you are done experimenting with it you can run the cleanup script to stop t
 
 ./cleanup.sh
 
-Hope you enjoyed this demo and any comments or suggestions please make them in the github repository.
+Hope you enjoyed this demo and any comments or suggestions please make them in the [GitHub](https://github.com/edhaynes/podman_systemd_usermode_demo.git) repository.
