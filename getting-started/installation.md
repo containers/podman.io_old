@@ -101,7 +101,7 @@ sudo dnf -y update
 
 #### [Debian](https://debian.org)
 
-The libpod package is available in
+The podman package is available in
 the [Bullseye (testing) branch](https://packages.debian.org/bullseye/podman), which
 will be the next stable release (Debian 11) as well as Debian Unstable/Sid.
 
@@ -111,29 +111,36 @@ sudo apt-get update
 sudo apt-get -y install podman
 ```
 
-The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
-provides packages for Debian 10. The Kubic packages for Debian Testing/Bullseye and Debian Unstable/Sid
-have been discontinued to avoid
-[conflicts](https://github.com/containers/buildah/issues/2797) with the official packages.
+If you would prefer newer (though not as well-tested) packages,
+the [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman)
+provides packages for Debian 10 and newer. The packages in Kubic project repos are more frequently
+updated than the one in Debian's official repositories, due to how Debian works.
+The build sources for the Kubic packages can be found [here](https://gitlab.com/rhcontainerbot/podman/-/tree/debian/debian).
 
-Caution: If you upgrade from Debian 10 to Testing/Bullseye or
-Unstable/Sid you would likely end up downgrading podman because the version in
-OBS is more frequently updated than the one in Debian's official repositories,
-due to how Debian works.
+CAUTION: On Debian 11 and newer, including Debian Testing and Sid, we highly recommend you use podman, skopeo and buildah ONLY from EITHER the Kubic repo
+OR the official Debian repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
 
 ```bash
 # Debian 10
+# Use buster-backports on Debian 10 for a newer libseccomp2
+echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/Release.key | sudo apt-key add -
+sudo apt-get update
+sudo apt-get -y install podman
 
+# Debian Testing
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Testing/Release.key | sudo apt-key add -
+sudo apt-get update
+sudo apt-get -y install podman
+
+# Debian Sid/Unstable
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Unstable/Release.key | sudo apt-key add -
 sudo apt-get update
 sudo apt-get -y install podman
 ```
-
-There are many [packages](https://packages.debian.org/search?keywords=libpod&searchon=names&suite=stable&section=all)
-with the libpod prefix available already on Debian. However, those are
-unrelated to this project.
-
 
 #### [Fedora](https://www.fedoraproject.org)
 
@@ -173,10 +180,13 @@ Built-in, no need to install
 
 #### [Raspberry Pi OS armhf (ex Raspbian)](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
 
-The Kubic project provides packages for Raspbian 10.
+The [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman) provides packages for Raspbian 10.
+The build sources for the Kubic packages can be found [here](https://gitlab.com/rhcontainerbot/podman/-/tree/debian/debian).
 
 ```bash
 # Raspbian 10
+# Use buster-backports on Rasbian 10 for a newer libseccomp2
+echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/ /' | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/Release.key | sudo apt-key add -
 sudo apt-get update -qq
@@ -209,7 +219,7 @@ sudo yum module install -y container-tools:1.0
 
 #### [Ubuntu](https://www.ubuntu.com)
 
-The libpod package is available in the official repositories for Ubuntu 20.10
+The podman package is available in the official repositories for Ubuntu 20.10
 and newer.
 
 ```bash
@@ -218,11 +228,17 @@ sudo apt-get -y update
 sudo apt-get -y install podman
 ```
 
-The Kubic project provides packages for Ubuntu 18.04, 19.04, 19.10 and 20.04.
+If you would prefer newer (though not as well-tested) packages,
+the [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman)
+provides packages for active Ubuntu releases 18.04 and newer (it should also work with direct derivatives like Pop!\_OS).
 Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman)
 for a list of supported Ubuntu version and
 architecture combinations. **NOTE:** The command `sudo apt-get -y upgrade`
 maybe required in some cases if Podman cannot be installed without it.
+The build sources for the Kubic packages can be found [here](https://gitlab.com/rhcontainerbot/buildah/-/tree/debian/debian).
+
+CAUTION: On Ubuntu 20.10 and newer, we highly recommend you use podman, skopeo and buildah ONLY from EITHER the Kubic repo
+OR the official Ubuntu repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
 
 ```bash
 . /etc/os-release
@@ -232,10 +248,6 @@ sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get -y install podman
 ```
-
-There are many [packages](https://packages.ubuntu.com/search?keywords=libpod&searchon=names&suite=eoan&section=all)
-with the libpod prefix available already on Ubuntu. However, those are
-unrelated to this project.
 
 ### Installing development versions of Podman
 
@@ -282,23 +294,31 @@ sudo dnf -y --refresh install podman
 #### Debian
 
 The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:testing)
-provides RC/testing packages for Debian 10. The Kubic packages
-for Debian Testing/Bullseye and Debian Unstable/Sid have been discontinued
-to avoid [conflicts](https://github.com/containers/buildah/issues/2797)
-with the official packages.
+provides RC/testing packages for Debian 10 and newer.
 
-Caution: If you upgrade from Debian 10 to Testing/Bullseye or
-Unstable/Sid you would likely end up downgrading podman because the version in
-OBS is more frequently updated than the one in Debian's official repositories,
-due to how Debian works.
+CAUTION: On Debian 11 and newer, including Testing and Sid, we highly recommend you use podman, skopeo and buildah ONLY from EITHER the Kubic repo
+OR the official Debian repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
 
 ```bash
 # Debian 10
+# Use buster-backports on Debian 10 for a newer libseccomp2
+echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_10/Release.key | sudo apt-key add -
-
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
+
+# Debian Testing
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Testing/Release.key | sudo apt-key add -
+sudo apt-get update
+sudo apt-get -y install podman
+
+# Debian Sid/Unstable
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Unstable/Release.key | sudo apt-key add -
+sudo apt-get update
+sudo apt-get -y install podman
 ```
 
 
@@ -345,6 +365,9 @@ Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:
 for a list of supported Ubuntu version and
 architecture combinations. **NOTE:** The `sudo apt-get -y upgrade`
 maybe required in some cases if Podman cannot be installed without it.
+
+NOTE: On Ubuntu 20.10 and newer, we highly recommend you use podman, skopeo and buildah ONLY from EITHER the Kubic repo
+OR the official Ubuntu repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
 
 ```bash
 . /etc/os-release
