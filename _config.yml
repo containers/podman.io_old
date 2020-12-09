@@ -71,6 +71,14 @@ authors:
     web: https://people.redhat.com/dwalsh/
     twitter: rhatdan
     github: rhatdan
+  ehaynes:
+    name: Ed Haynes
+    display_name: Ed Haynes
+    gravatar: 
+    email: ehaynes@redhat.com
+    web: https://redhat.com
+    twitter: 
+    github: edhaynes
   emacchi:
     name: Emilien Macchi
     display_name: Emilien Macchi
