@@ -25,23 +25,30 @@ Also remember this is all done as a standard user - no root!
 
 git clone https://github.com/edhaynes/podman_systemd_usermode_demo.git
 
+```console
 cd podman_systemd_usermode_demo
 
 ./launch_redis_container.sh
+```
 
 "launch_redis_container.sh" launches redis container, adds usermode systemd entry, enables and starts it. You will need to hit "q" to get out of the shown status.
 
 You should see something like:
-
+```console
 redis_server.service - Podman container-redis_ Loaded: loaded
 
  Active: active (running) since Wed 2020-12-09 09:22:40 EST; 1h 58min ago
+ ```
 Now that redis is running you can run the test script that sets a key value, retrieves it, and then kills the redis container. Systemd will then restart the container and you can see all is working again. Do this with:
 
+```console
 ./test_redis_container.sh
+```
 
 Once you are done experimenting with it you can run the cleanup script to stop the systemd service, remove it and stop / remove the container.
 
+```console
 ./cleanup.sh
+```
 
 Hope you enjoyed this demo and any comments or suggestions please make them in the [GitHub](https://github.com/edhaynes/podman_systemd_usermode_demo.git) repository.
