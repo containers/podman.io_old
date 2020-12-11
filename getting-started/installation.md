@@ -235,7 +235,7 @@ Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:
 for a list of supported Ubuntu version and
 architecture combinations. **NOTE:** The command `sudo apt-get -y upgrade`
 maybe required in some cases if Podman cannot be installed without it.
-The build sources for the Kubic packages can be found [here](https://gitlab.com/rhcontainerbot/buildah/-/tree/debian/debian).
+The build sources for the Kubic packages can be found [here](https://gitlab.com/rhcontainerbot/podman/-/tree/debian/debian).
 
 CAUTION: On Ubuntu 20.10 and newer, we highly recommend you use Buildah, Podman and Skopeo ONLY from EITHER the Kubic repo
 OR the official Ubuntu repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
@@ -296,7 +296,7 @@ sudo dnf -y --refresh install podman
 The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:testing)
 provides RC/testing packages for Debian 10 and newer.
 
-CAUTION: On Debian 11 and newer, including Testing and Sid, we highly recommend you use podman, skopeo and buildah ONLY from EITHER the Kubic repo
+CAUTION: On Debian 11 and newer, including Testing and Sid, we highly recommend you use Buildah, Podman, and Skopeo ONLY from EITHER the Kubic repo
 OR the official Debian repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
 
 ```bash
