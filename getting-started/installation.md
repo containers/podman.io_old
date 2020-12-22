@@ -127,6 +127,7 @@ echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/source
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/Release.key | sudo apt-key add -
 sudo apt-get update
+sudo apt-get -y -t buster-backports install libseccomp2
 sudo apt-get -y install podman
 
 # Debian Testing
