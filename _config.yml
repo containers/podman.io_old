@@ -26,6 +26,14 @@ feed:
     - talks
 
 authors:
+  sumantro:
+    name: Sumantro
+    display_name: sumantrom
+    gravatar:
+    email: sumantro@redhat.com
+    web: 
+    twitter: BytesOfBinary
+    github: sumantro93
   adrianr:
     name: Adrian Reber
     display_name: Adrian Reber
