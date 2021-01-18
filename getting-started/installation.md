@@ -190,8 +190,9 @@ The build sources for the Kubic packages can be found [here](https://gitlab.com/
 echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/ /' | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/Release.key | sudo apt-key add -
-sudo apt-get update -qq
-sudo apt-get -qq -y install podman
+sudo apt-get update
+sudo apt-get -y -t buster-backports install libseccomp2
+sudo apt-get -y install podman
 ```
 
 
