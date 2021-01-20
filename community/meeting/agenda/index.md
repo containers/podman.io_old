@@ -18,7 +18,11 @@ title: Podman Community Meeting Agenda
 
 * 11:00 -> 11:05 - Welcome! 
 
-* 11:05 -> 11:40 - TBD
+* 11:05 -> 11:20 - Podman v3.0 Overview - Matt Heon
+ 
+* 11:20 -> 11:30 - Podman Compose Demo - Brent Baude
+
+* 11:30 -> 11:40 - Demo's TBD - Tom Sweeney and more?
  
 * 11:40 -> 11:55 - Open Forum/Questions and Answers Session
 
