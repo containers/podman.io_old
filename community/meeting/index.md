@@ -23,7 +23,7 @@ be posted [below](https://podman.io/community/meeting/#next-podman-community-mee
 
 ## Next Podman Community Meeting Agenda
 
-The agenda for prior Podman Community Meetings are included at the top of the meeting notes.
+The agenda for prior Podman Community Meetings are included within the meeting notes.
 Topics for the next or any other future meeting will be gratefully accepted.  Please send
 a topic request to the [podman@lists.podman.io](mailto:podman@lists.podman.io) email list
 with the title "Podman Community Meeting Topic".  A brief summary of what you'd like to
@@ -35,6 +35,7 @@ we will do our best to get you into a future one as soon as possible.
 
 ## Notes from the Community Meetings
 
+ * [Tuesday February 2, 2021](https://podman.io/community/meeting/notes/2021-02-02)
  * [Tuesday December 1, 2020](https://podman.io/community/meeting/notes/2020-12-01)
  * [Tuesday November 3, 2020](https://podman.io/community/meeting/notes/2020-11-03)
  * [Tuesday October 6, 2020](https://podman.io/community/meeting/notes/2020-10-06)
