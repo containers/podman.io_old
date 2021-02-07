@@ -1,7 +1,7 @@
 ---
 title: Easy Development Dependency Management With Podman and Tent
 layout: default
-author: <author id, from the example above 'jsmith'>
+author: fhsinchy
 categories: [blogs]
 tags: <your tags here>
 ---
