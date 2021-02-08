@@ -1,9 +1,9 @@
 ---
 title: Easy Development Dependency Management With Podman and Tent
 layout: default
-author: <author id, from the example above 'jsmith'>
+author: fhsinchy
 categories: [blogs]
-tags: <your tags here>
+tags: tent, hpc, podman, containers, dependency-management, linux
 ---
 ![podman logo](https://podman.io/images/podman.svg)
 
@@ -14,6 +14,8 @@ tags: <your tags here>
 Installing and managing development dependencies for various project is a chore and one thing that can improve your everyday workflow is the usage of containers.
 
 [Tent](https://github.com/fhsinchy/tent/) is a CLI tool for running development dependencies such as MySQL, Mongo, ElasticSearch etc inside pre-configured containers using simple one-liners.
+
+<!--readmore-->
 
 Running containers can be accessed via their exposed ports and can be paired with any other application on your system.
 
@@ -173,3 +175,7 @@ Now, if you run `tent list`, you'll see both services running at the same time.
 ## Container Management
 
 Containers started by `tent` are regular containers with some pre-set configurations. So you can use regular `podman` commands such as `ls`, `inspect`, `logs` etc on them. Although `tent` comes with a `list` command, using the `podman` commands will result in more informative results. The target of `tent` is to provide plug and play containers, not to become a full-fledged `podman` cli.
+
+## Contribution
+
+Tent is an open-source project and contributions are more than welcomed. If you're a Go programmer do take some time to go through the source-code, see if you can improve any part of the program, the maintainer will be more than happy to co-operate. And if you like the project, don't forget to leave a star and share with other fellow developers to show your appreciation.
