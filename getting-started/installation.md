@@ -122,6 +122,9 @@ OR the official Debian repos. Mixing and matching may lead to unpredictable situ
 
 ```bash
 # Debian 10
+# First enable user namespaces as root user
+echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/00-local-userns.conf
+systemctl restart procps
 # Use buster-backports on Debian 10 for a newer libseccomp2
 echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
@@ -129,18 +132,24 @@ curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/
 sudo apt-get update
 sudo apt-get -y -t buster-backports install libseccomp2
 sudo apt-get -y install podman
+# Restart dbus for rootless podman
+systemctl --user restart dbus
 
 # Debian Testing
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Testing/Release.key | sudo apt-key add -
 sudo apt-get update
 sudo apt-get -y install podman
+# Restart dbus for rootless podman
+systemctl --user restart dbus
 
 # Debian Sid/Unstable
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Unstable/Release.key | sudo apt-key add -
 sudo apt-get update
 sudo apt-get -y install podman
+# Restart dbus for rootless podman
+systemctl --user restart dbus
 ```
 
 #### [Fedora](https://www.fedoraproject.org)
@@ -186,6 +195,9 @@ The build sources for the Kubic packages can be found [here](https://gitlab.com/
 
 ```bash
 # Raspbian 10
+# First enable user namespaces as root user
+echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/00-local-userns.conf
+systemctl restart procps
 # Use buster-backports on Rasbian 10 for a newer libseccomp2
 echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/ /' | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
@@ -193,6 +205,8 @@ curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/
 sudo apt-get update
 sudo apt-get -y -t buster-backports install libseccomp2
 sudo apt-get -y install podman
+# Restart dbus for rootless podman
+systemctl --user restart dbus
 ```
 
 
@@ -249,6 +263,9 @@ curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get -y install podman
+# (Ubuntu 18.04) Restart dbus for rootless podman
+systemctl --user restart dbus
+
 ```
 
 ### Installing development versions of Podman
