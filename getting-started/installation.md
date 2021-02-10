@@ -156,7 +156,7 @@ Built-in, no need to install
 #### [Gentoo](https://www.gentoo.org)
 
 ```bash
-sudo emerge app-emulation/libpod
+sudo emerge app-emulation/podman
 ```
 
 #### [OpenEmbedded](https://www.openembedded.org)
