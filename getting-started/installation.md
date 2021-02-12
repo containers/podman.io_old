@@ -434,7 +434,7 @@ Debian, Ubuntu, and related distributions:
 
 ```bash
 sudo apt-get install \
-  btrfs-tools \
+  btrfs-progs \
   git \
   golang-go \
   go-md2man \
@@ -447,7 +447,7 @@ sudo apt-get install \
   libgpgme-dev \
   libgpg-error-dev \
   libprotobuf-dev \
-  libprotobuf-c0-dev \
+  libprotobuf-c-dev \
   libseccomp-dev \
   libselinux1-dev \
   libsystemd-dev \
