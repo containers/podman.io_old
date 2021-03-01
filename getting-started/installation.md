@@ -204,13 +204,17 @@ echo 'deb http://deb.debian.org/debian buster-backports main' | sudo tee -a /etc
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/ /' | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/Release.key | sudo apt-key add -
 
-# Add missing keys manually
+# Add missing keys for buster-backports manually
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
 
 sudo apt-get update
 sudo apt-get -y -t buster-backports install libseccomp2
 sudo apt-get -y install podman
+# Restart dbus for rootless podman. Do this for every user using containers.
+# This command only works without root. One way to do this is to login as the
+# user via SSH, so DBUS_SESSION_BUS_ADDRESS will be set correctly.
+systemctl --user restart dbus
 ```
 
 
