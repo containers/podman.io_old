@@ -25,7 +25,7 @@ select 11:00 a.m. for Eastern, and it should show your local time in relation to
  
 * 11:20 -> 11:25 - podman-py Update - Jhon Honce
 
-* 11:25 -> 11:30 - Podman Packages on Kubic - Community Volunteers Wanted - Lokesh Mandvekar
+* 11:25 -> 11:30 - Podman Packages on Kubic - Lokesh Mandvekar
  
 * 11:30 -> 11:40 - [krunvm](https://github.com/slp/krunvm/) demonstration - Sergio Lopez
 
