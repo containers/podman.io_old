@@ -1,5 +1,5 @@
 ---
-title: Announcement: Support for Older Distros on Kubic Project/OBS
+title: Announcement&#58; Support for Older Distros on Kubic Project/OBS
 layout: default
 author: lsm5
 categories: [blogs]
@@ -7,7 +7,7 @@ tags: containers, podman, distro, linux, centos, ubuntu, debian
 ---
 ![podman logo](https://podman.io/images/podman.svg)
 
-# Announcement: Support for Older Distros on Kubic Project/OBS
+# Announcement&#58; Support for Older Distros on Kubic Project/OBS
 {% assign author = site.authors[page.author] %}
 ## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }})
 
