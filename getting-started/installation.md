@@ -344,7 +344,9 @@ produce rpms for the current platform and install them in the end.
 sudo yum install -y \
   btrfs-progs-devel \
   conmon \
-  containernetworking-cni \
+  containernetworking-plugins \
+  containers-common \
+  crun \
   device-mapper-devel \
   git \
   glib2-devel \
@@ -359,9 +361,7 @@ sudo yum install -y \
   libseccomp-devel \
   libselinux-devel \
   make \
-  pkgconfig \
-  runc \
-  containers-common
+  pkgconfig
 ```
 
 Debian, Ubuntu, and related distributions:
