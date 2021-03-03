@@ -104,8 +104,8 @@ sudo dnf -y update
 
 NOTE:
 1. CentOS 7 Kubic repo will receive no further updates after Podman v3.0.
-2. CentOS 8 Kubic repo will continue to exist for the lifetime of CentOS 8 itself.
-3. Users are recommended to switch to newer versions of CentOS once these deadlines have passed.
+2. CentOS 8 Kubic repo will continue to receive updates for Podman v3.0+ for the lifetime of CentOS 8 itself.
+3. Users are recommended to switch to newer versions of CentOS to receive the most up to date versions of Podman.
 4. CentOS Stream users are highly recommended to prefer packages from the
    default CentOS repos as they are often fairly current and are known to have
    passed RHEL's gating tests.
@@ -271,7 +271,9 @@ systemctl --user restart dbus
 
 #### [CentOS](https://www.centos.org)
 
-Podman is available in the AppStream repo for CentOS 8 and Stream and are also the preferable choice
+Podman is available in the AppStream repo for CentOS 8 and Stream, and these are also the preferred choice for use in production environments. However, the available version may be older than the upstream release.
+
+
 for use in production environments, however the available version may
 be older than the upstream release.
 
