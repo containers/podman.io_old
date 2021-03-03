@@ -50,6 +50,10 @@ sudo yum -y copr enable lsm5/container-selinux
 sudo yum -y install podman
 ```
 
+NOTE: Podman v3.0 will be the last supported release on the Kubic
+project repositories for CentOS 7 and hence, Amazon Linux 2. We will update
+this doc once we hear from Amazon about their future support plans.
+
 
 #### [Arch Linux](https://www.archlinux.org) & [Manjaro Linux](https://manjaro.org)
 
@@ -98,6 +102,14 @@ sudo dnf -y install podman
 sudo dnf -y update
 ```
 
+NOTE:
+1. CentOS 7 Kubic repo will receive no further updates after Podman v3.0.
+2. CentOS 8 Kubic repo will continue to exist for the lifetime of CentOS 8 itself.
+3. Users are recommended to switch to newer versions of CentOS once these deadlines have passed.
+4. CentOS Stream users are highly recommended to prefer packages from the
+   default CentOS repos as they are often fairly current and are known to have
+   passed RHEL's gating tests.
+
 
 #### [Debian](https://debian.org)
 
@@ -111,20 +123,15 @@ sudo apt-get update
 sudo apt-get -y install podman
 ```
 
-If you would prefer newer (though not as well-tested) packages,
-the [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman)
-provides packages for Debian 10 and newer. The packages in Kubic project repos are more frequently
-updated than the one in Debian's official repositories, due to how Debian works.
-The build sources for the Kubic packages can be found [here](https://gitlab.com/rhcontainerbot/podman/-/tree/debian/debian).
-
-CAUTION: On Debian 11 and newer, including Debian Testing and Sid, we highly recommend you use Buildah, Podman and Skopeo ONLY from EITHER the Kubic repo
-OR the official Debian repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
+The [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman)
+provides packages for Debian 10. The build sources for the Kubic packages can be found [here](https://gitlab.com/rhcontainerbot/podman/-/tree/debian/debian).
 
 ```bash
 # Debian 10
 # First enable user namespaces as root user
 echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/00-local-userns.conf
 systemctl restart procps
+
 # Use buster-backports on Debian 10 for a newer libseccomp2
 echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
 echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
@@ -132,22 +139,7 @@ curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/
 sudo apt-get update
 sudo apt-get -y -t buster-backports install libseccomp2
 sudo apt-get -y install podman
-# Restart dbus for rootless podman
-systemctl --user restart dbus
 
-# Debian Testing
-echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Testing/Release.key | sudo apt-key add -
-sudo apt-get update
-sudo apt-get -y install podman
-# Restart dbus for rootless podman
-systemctl --user restart dbus
-
-# Debian Sid/Unstable
-echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_Unstable/Release.key | sudo apt-key add -
-sudo apt-get update
-sudo apt-get -y install podman
 # Restart dbus for rootless podman
 systemctl --user restart dbus
 ```
@@ -250,7 +242,7 @@ sudo apt-get -y install podman
 
 If you would prefer newer (though not as well-tested) packages,
 the [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman)
-provides packages for active Ubuntu releases 18.04 and newer (it should also work with direct derivatives like Pop!\_OS).
+provides packages for active Ubuntu releases 20.04 and newer (it should also work with direct derivatives like Pop!\_OS).
 Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman)
 for a list of supported Ubuntu version and
 architecture combinations. **NOTE:** The command `sudo apt-get -y upgrade`
@@ -269,37 +261,21 @@ sudo apt-get -y upgrade
 sudo apt-get -y install podman
 # (Ubuntu 18.04) Restart dbus for rootless podman
 systemctl --user restart dbus
-
 ```
 
 ### Installing development versions of Podman
 
-#### [Amazon Linux 2](https://aws.amazon.com/amazon-linux-2/)
-
-The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:testing)
-provides updated packages for CentOS 7 which can be used unmodified on Amazon Linux 2.
-
-```bash
-sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:testing.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/CentOS_7/devel:kubic:libcontainers:testing.repo
-sudo yum -y install yum-plugin-copr
-sudo yum -y copr enable lsm5/container-selinux
-sudo yum -y install podman
-```
-
 #### [CentOS](https://www.centos.org)
 
-Podman is available in the default Extras repos for CentOS 7 and in
-the AppStream repo for CentOS 8 and Stream, however the available version often
-lags the upstream release.
+Podman is available in the AppStream repo for CentOS 8 and Stream and are also the preferable choice
+for use in production environments, however the available version may
+be older than the upstream release.
 
 The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:testing)
-provides updated packages for CentOS 7, 8 and Stream.
+provides updated packages for CentOS 8 and Stream. These are not as
+well-tested as the official CentOS packages, so tread with caution.
 
 ```bash
-# CentOS 7
-sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:testing.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/CentOS_7/devel:kubic:libcontainers:testing.repo
-sudo yum -y install podman
-
 # CentOS 8
 sudo dnf -y module disable container-tools
 sudo dnf -y install 'dnf-command(copr)'
@@ -314,38 +290,8 @@ sudo dnf -y copr enable rhcontainerbot/container-selinux
 sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:testing.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/CentOS_8_Stream/devel:kubic:libcontainers:testing.repo
 sudo dnf -y --refresh install podman
 ```
-#### Debian
 
-The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:testing)
-provides RC/testing packages for Debian 10 and newer.
-
-CAUTION: On Debian 11 and newer, including Testing and Sid, we highly recommend you use Buildah, Podman, and Skopeo ONLY from EITHER the Kubic repo
-OR the official Debian repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
-
-```bash
-# Debian 10
-# Use buster-backports on Debian 10 for a newer libseccomp2
-echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
-echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_10/Release.key | sudo apt-key add -
-sudo apt-get update -qq
-sudo apt-get -qq -y install podman
-
-# Debian Testing
-echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Testing/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Testing/Release.key | sudo apt-key add -
-sudo apt-get update
-sudo apt-get -y install podman
-
-# Debian Sid/Unstable
-echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Unstable/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Debian_Unstable/Release.key | sudo apt-key add -
-sudo apt-get update
-sudo apt-get -y install podman
-```
-
-
-#### Fedora
+#### [Fedora](https://getfedora.org)
 
 You can test the very latest Podman in Fedora's `updates-testing`
 repository before it goes out to all Fedora users.
@@ -358,33 +304,11 @@ If you use a newer Podman package from Fedora's `updates-testing`, we would
 appreciate your `+1` feedback in [Bodhi, Fedora's update management
 system](https://bodhi.fedoraproject.org/updates/?packages=podman).
 
-If you are running a non-rawhide Fedora distribution, you can also test the latest packages
-with our [COPR repository](https://copr.fedorainfracloud.org/coprs/baude/Upstream_CRIO_Family/).
-
-
-#### [Raspberry Pi OS armhf (ex Raspbian)](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
-
-The Kubic project provides RC/testing packages for Raspbian 10.
-
-```bash
-# Raspbian 10
-echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Raspbian_10/ /' | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/Raspbian_10/Release.key | sudo apt-key add -
-sudo apt-get update -qq
-sudo apt-get -qq -y install podman
-```
-
-#### [Raspberry Pi OS arm64 (beta)](https://downloads.raspberrypi.org/raspios_arm64/images/)
-
-Raspberry Pi OS use the standard Debian's repositories,
-so it is fully compatible with Debian's arm64 repository
-You can simply follow the [steps for Debian](#debian-1) to install Podman.
-
 
 #### Ubuntu
 
-The Kubic project provides RC/testing packages for Ubuntu 18.04, 19.04, 19.10 and 20.04.
-Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman)
+The Kubic project provides RC/testing packages for Ubuntu 20.04 and 20.10.
+Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:kubic:libcontainers:testing/podman)
 for a list of supported Ubuntu version and
 architecture combinations. **NOTE:** The `sudo apt-get -y upgrade`
 maybe required in some cases if Podman cannot be installed without it.
