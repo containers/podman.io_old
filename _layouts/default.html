@@ -1,6 +1,16 @@
 <!doctype html>
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132755160-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-132755160-1');
+    </script>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ page.title }}</title>
@@ -8,17 +18,23 @@
     <link rel="shortcut icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body>
     <div class="wrapper">
-      <header>
-        <h1 class="header"><a href="{{ site.baseurl }}/">Podman</a></h1>
-        <p class="header">Manage pods, containers, and container images.</p>
-
+      <header id="js-header">
+        <div class="top">
+          <a href="{{ site.baseurl }}">
+            <img class="logo" src="/images/podman.svg" alt="podman logo">
+          </a>
+          <div class="burger" id="js-burger">
+            <div class="burger-bar burger-bar--top"></div>
+            <div class="burger-bar burger-bar--bottom"></div>
+          </div>
+        </div>
         <ul>
           <li><a class="buttons" href="{{ site.baseurl }}/getting-started">Get Started</a>
           <li><a class="buttons" href="{{ site.baseurl }}/community">Join Community</a>
@@ -58,5 +74,6 @@
         ga('send', 'pageview');
       </script>
     {% endif %}
+    <script type="text/javascript" src="{{ '/assets/js/menu.toggle.js' | relative_url }}"></script>
   </body>
 </html>

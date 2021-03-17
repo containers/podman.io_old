@@ -2,19 +2,6 @@
 layout: default
 title: Podman
 ---
-<head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-132755160-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-132755160-1');
-</script>
-<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
-</head>
-
 ![podman logo](/images/podman.svg)
 
 ### Welcome to the website for the Pod Manager tool ([podman](https://github.com/containers/podman)). This site features announcements and news around Podman, and occasionally other [container tooling](https://github.com/containers/) news.
