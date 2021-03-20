@@ -8,6 +8,12 @@ Welcome to the website for the Pod Manager tool [podman](https://github.com/cont
 
 The website runs on GitHub Pages via [Jekyll](https://jekyllrb.com/) to make it as convenient as possible for you to contribute. 
 
+### Testing locally
+
+You can test locally by first running `bundle install` and then start the server by doing: `bundle exec jekyll s`.
+
+Then browse to http://127.0.0.1:4000 to view your changes.
+
 Before you start, please verify that you've an entry for yourself in the top level _config.yml file in the 
 `authors` section.  Your entry should look like the following example.  Please note if you do not have a gravatar, a twitter account or simply don't want to share a particular field, just leave the field blank or completely remove the particular line.
 
