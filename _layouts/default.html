@@ -35,6 +35,9 @@
             <div class="burger-bar burger-bar--bottom"></div>
           </div>
         </div>
+
+        <p>Manage pods, containers, and container images.</p>
+
         <ul>
           <li><a class="buttons" href="{{ site.baseurl }}/getting-started">Get Started</a>
           <li><a class="buttons" href="{{ site.baseurl }}/community">Join Community</a>
@@ -46,17 +49,10 @@
           <li><a class="buttons github" href="{{ site.github.repository_url }}">Edit Website</a>
         </ul>
 
-        {% if site.github.is_project_page %}
-          <p class="header">This project is maintained by the <a class="header name" href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a> organization.</p>
-
-        <p class="header">Subscribe to the <a href="https://podman.io/feed.xml">blog feed</a>.</p>
-        {% endif %}
-
-        {% if site.github.is_user_page %}
-          <ul>
-            <li><a class="buttons github" href="{{ site.github.owner_url }}">GitHub Profile</a></li>
-          </ul>
-        {% endif %}
+        <div class="bottom">
+          <p>This project is maintained by the <a href="https://github.com/containers">containers</a> organization.</p>
+          <p>Subscribe to the <a href="https://podman.io/feed.xml">blog feed</a>.</p>
+        </div>
       </header>
 
       <section>

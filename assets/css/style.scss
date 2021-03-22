@@ -111,6 +111,7 @@ header {
     margin-right: auto;
     height: 100vh;
     margin: 0;
+    min-height: 744px;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -137,7 +138,9 @@ header {
     border-radius: 0;
     box-shadow: none;
     display: block;
-    height: 55px;
+    height: auto;
+    min-height: 55px;
+    line-height: 1.8em;
     margin-bottom: 0;
     padding: 0;
     width: 100%;
@@ -146,22 +149,20 @@ header {
       background: transparent;
     }
 
-    &:last-of-type {
-      border-bottom: none;
-    }
-
     @include mq("desktop") {
       border: none;
-      padding-left: 20px;
+      padding: 0 20px;
     }
   }
 
-  & li a.buttons {
+  & li a.buttons,
+  & p a {
     color: #88309f;
     font-weight: normal;
     display: block;
-    height: 55px;
-    padding: 20px 0;
+    height: auto;
+    min-height: 55px;
+    padding: 15px 0;
     text-decoration: none;
     width: 100%;
 
@@ -176,6 +177,20 @@ header {
       &:hover {
         color: #f5d2f7;
       }
+    }
+  }
+
+  & p a {
+    display: inline;
+  }
+
+  & p {
+    color: #60605b;
+    margin: 0 0 20px;
+
+    @include mq("desktop") {
+      color: #d9d9d9;
+      padding: 0 20px;
     }
   }
 
@@ -229,6 +244,15 @@ header {
   &.active .burger-bar--bottom {
     top: 24px;
     transform: rotateZ(45deg);
+  }
+
+  & .bottom {
+    margin-top: 20px;
+
+    @include mq("desktop") {
+      bottom: 0;
+      position: absolute;
+    }
   }
 }
 
