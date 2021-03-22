@@ -107,7 +107,7 @@ header {
   width: 100%;
 
   @include mq("desktop") {
-    background-color: #421746;
+    background-color: #1a051c;
     margin-right: auto;
     height: 100vh;
     margin: 0;
@@ -170,11 +170,11 @@ header {
     }
 
     @include mq("desktop") {
-      color: #d5aedf;
+      color: #e688ff;
       font-size: 16px;
 
       &:hover {
-        color: #a875db;
+        color: #f5d2f7;
       }
     }
   }
