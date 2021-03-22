@@ -1,34 +1,49 @@
 ---
+full_width: true
 layout: default
 title: Podman
 ---
-<head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-132755160-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-132755160-1');
-</script>
-<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
-</head>
-
-![podman logo](/images/podman.svg)
-
-### Welcome to the website for the Pod Manager tool ([podman](https://github.com/containers/podman)). This site features announcements and news around Podman, and occasionally other [container tooling](https://github.com/containers/) news.
-
-### What is Podman? Podman is a daemonless container engine for developing, managing, and running OCI Containers on your Linux System. Containers can either be run as root or in rootless mode. Simply put: **alias docker=podman**. More details [here](whatis.html).
-
-# What's New!
-
-<section class="posts">
-  {% for post in site.categories.new %}
-    <p><span>{{ post.date | date_to_string }}</span> »
-      <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></p>
-    <p>{{ post.excerpt }}</p><hr>
-  {% endfor %}
+<section class="homepage-hero">
+  <div class="homepage-hero-inner">
+    <div class="homepage-hero-logo-container">
+      <img class="homepage-hero-logo" alt="Podman logo"
+        src="{{ 'assets/images/logo.svg' | relative_url }}" />
+    </div>
+    <div>
+      <img class="homepage-hero-podman" alt="Podman"
+        src="{{ 'assets/images/podman.svg' | relative_url }}" />
+      <p>
+        Podman is a daemonless container engine for developing, managing, and running
+        OCI Containers on your Linux System. Containers can either be run as root or
+        in rootless mode.
+      </p>
+      <p>Simply put: <strong>alias docker=podman</strong></p>
+      <p>More details <a href="{{ 'whatis.html' | relative_url }}">here</a>.</p>
+    </div>
+  </div>
 </section>
 
-#### Now where is that Container Commandos [Coloring Book](https://github.com/mairin/coloringbook-container-commandos/blob/master/Web.pdf)?
+<section class="homepage-news">
+  <h1>What's New!</h1>
+
+  <div class="homepage-news-inner">
+    {% for post in site.categories.new %}
+      <div class="homepage-news-post">
+        <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">
+          <h2 class="post-title">{{ post.title }}</h2>
+        </a>
+        <div class="post-meta">
+          <span class="post-date">{{ post.date | date_to_string }}</span>
+        </div>
+        <p>{{ post.excerpt }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="coloring-book">
+  <aside>
+    Now where is that Container Commandos
+    <a href="https://github.com/mairin/coloringbook-container-commandos/blob/master/Web.pdf">Coloring Book</a>?
+  </aside>
+</section>

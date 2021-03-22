@@ -1,0 +1,8 @@
+/.dockerignore
+/.git/
+/.gitignore
+/.jekyll-cache/
+/.sass-cache/
+/LICENSE
+/README.md
+/_site

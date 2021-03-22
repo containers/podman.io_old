@@ -1,0 +1,58 @@
+<header>
+  <nav>
+    <div class="nav-inner">
+      <a href="{{ '/' | relative_url }}">
+        <img
+          class="nav-logo"
+          src="{{ 'assets/images/logo-podman.svg' | relative_url }}"
+          alt="Podman logo"
+        />
+      </a>
+
+      <div class="nav-mobile-menu js-nav-mobile-menu">
+        <ul class="nav-links-list">
+          {% for item in site.data.nav %}
+          <li class="nav-links-item js-nav-links-item">
+            <a
+              class="{% include nav_class item=item %}"
+              href="{% include nav_url item=item %}"
+            >
+              {{ item.title }}
+            </a>
+            {% if item.children %}
+            <ul
+              class="nav-links-sublist js-nav-links-sublist"
+              style="display: none;"
+            >
+              {% for subitem in item.children %}
+              <li class="nav-links-subitem">
+                <a
+                  class="{% include nav_class item=subitem %}"
+                  href="{% include nav_url item=subitem %}"
+                >
+                  {{ subitem.title }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+
+        <a class="call-to-action" href="{{ 'getting-started' | relative_url }}">
+          Get Started
+        </a>
+      </div>
+
+      <a class="nav-hamburguer-button js-nav-hamburguer-button" href="#">
+        <span class="nav-hamburguer-line"></span>
+        <span class="nav-hamburguer-line"></span>
+        <span class="nav-hamburguer-line"></span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Dummy element to compensate for the fixed navbar -->
+  <div class="nav-dummy">&nbsp;</div>
+</header>

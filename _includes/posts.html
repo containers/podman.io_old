@@ -1,0 +1,15 @@
+<section class="posts">
+  {% for post in include.posts %}
+  <div class="post">
+    <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">
+      <h2 class="post-title">{{ post.title }}</h2>
+    </a>
+    <div class="post-meta">
+      <span class="post-date">{{ post.date | date_to_string }}</span>
+      <span class="post-author">{{ post.author }}</span>
+    </div>
+    <p>{{ post.excerpt }}</p>
+    <a href="{{ site.baseurl }}{{post.url}}">Read More</a>
+  </div>
+  {% endfor %}
+</section>

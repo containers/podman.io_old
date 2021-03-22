@@ -1,100 +1,368 @@
 ---
 ---
 
-@import "{{ site.theme }}";
+@import url("https://fonts.googleapis.com/css?family=Lato");
+@import "highlight-github.css";
 
-a.buttons {
-	-webkit-font-smoothing: antialiased;
-	background: none;
-	font-weight: bold;
-	text-shadow: none;
-	padding: 2px 2px 2px 12px;
-	height: 2em;
+// COLORS
+$light-purple: #df62ff;
+$purple: #a837c3;
+$dark-purple: #892ca0;
+
+$light-gray: #60605b;
+$gray: #3e3e3e;
+$dark-gray: #282828;
+$navbar-bg-color: $dark-gray;
+
+$navbar-height: 4rem;
+$desktop-breakpoint: 53rem;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: $dark-gray;
+  font-family: Lato, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-	color: #333333;
-	font-weight: bold;
-	text-decoration: underline;
-}
-
-a:hover {
-	text-decoration: none;
-}
-
-.header {
-	font-weight: normal;
-}
-
-header li {
-	background: #88309f;
-	-webkit-box-shadow: inset 0px 1px 1px 0 #88309f;
-  box-shadow: inset 0px 1px 1px 0 #88309f;
-}
-
-header li:hover {
-	background: #77107d;
-}
-
-header li a {
-	color: #ffffff;
-	text-decoration: none;
-	display: block;
-}
-
-a.buttons:hover {
-	color: #ffffff;
-	text-decoration: none;
+  color: $dark-purple;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 img {
   max-width: 100%;
   height: auto;
-  width: auto\9;
+  width: auto;
 }
 
-/* anchor headings */
-h1 {
-	margin-left: -20px;
-	padding-left: 10px; 
+p + h1,
+p + h2,
+p + h3 {
+  margin-top: 3rem;
+}
+
+footer {
+  background-color: $navbar-bg-color;
+  color: $light-gray;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+nav {
+  background-color: $navbar-bg-color;
+  position: fixed;
+  width: 100%;
+}
+
+.nav-inner {
+  align-items: center;
+  display: flex;
+  height: $navbar-height;
+  justify-content: space-between;
+  margin: 0 1rem;
+  max-width: 100rem;
+  position: relative;
+
+  @media (min-width: $desktop-breakpoint) {
+    justify-content: space-around;
+    margin: auto;
   }
-  
-  h2 {
-	margin-left: -18px;
-	padding-left: 10px; 
+}
+
+.nav-dummy {
+  height: $navbar-height;
+}
+
+.nav-logo {
+  display: block;
+  max-width: 12rem;
+}
+
+.nav-mobile-menu {
+  background-color: $navbar-bg-color;
+  display: none;
+  margin-top: $navbar-height;
+  max-height: calc(100vh - #{$navbar-height});
+  overflow-y: scroll;
+  position: absolute;
+  right: -1rem;
+  top: 0;
+  width: 20rem;
+
+  @media (min-width: $desktop-breakpoint) {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    position: static;
+    margin-left: 2rem;
+    max-height: none;
+    overflow-y: visible;
+    width: auto;
   }
-  
-  h3 {
-	margin-left: -16px;
-	padding-left: 10px; 
+}
+
+.nav-hamburguer-button {
+  @media (min-width: $desktop-breakpoint) {
+    display: none;
   }
-  
-  h4 {
-	margin-left: -14px;
-	padding-left: 10px; 
+}
+
+.nav-hamburguer-line {
+  background-color: white;
+  display: block;
+  height: 0.25rem;
+  margin: 0.5rem 0;
+  width: 2rem;
+}
+
+.nav-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.nav-links-sublist {
+  background-color: #303030;
+  list-style: none;
+  padding-left: 0.75rem;
+  margin: 0;
+
+  @media (min-width: $desktop-breakpoint) {
+    position: absolute;
+    padding: 0;
   }
-  
-  h5 {
-	margin-left: -12px;
-	padding-left: 10px; 
+}
+
+.nav-links-item {
+  & > .nav-link {
+    align-items: center;
+    display: inline-flex;
+    height: $navbar-height;
+    padding-bottom: 0;
+    padding-top: 0;
   }
-  
-  h6 {
-	margin-left: -10px;
-	padding-left: 10px; 
+
+  @media (min-width: $desktop-breakpoint) {
+    display: inline-block;
+    position: relative;
   }
-  
-  h1 .octicon, h2 .octicon, h3 .octicon, h4 .octicon, h5 .octicon, h6 .octicon  {
-	visibility: hidden;
+}
+
+.nav-links-subitem {
+  display: block;
+  font-size: 0.85rem;
+  min-width: 11rem;
+  padding-top: 0.75rem;
+
+  &:last-child {
+    padding-bottom: 0.75rem;
   }
-  
-  h1:hover .octicon, h2:hover .octicon, h3:hover .octicon, h4:hover .octicon, h5:hover .octicon, h6:hover .octicon {
-	visibility: visible;
+}
+
+.nav-link {
+  color: $purple;
+  display: inline-block;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  width: 100%;
+
+  &.active,
+  &:hover {
+    color: $light-purple;
   }
-  
-  .octicon {
-	fill: currentColor;
-	padding: 0;
-	margin-left: -16px;
-	vertical-align: middle;
+
+  @media (min-width: $desktop-breakpoint) {
+    padding: 0.5rem 1.5rem;
   }
+}
+
+.call-to-action {
+  background-color: $dark-purple;
+  border-radius: 0.125rem;
+  color: white;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  width: calc(100% - 3rem);
+
+  &:hover {
+    background-color: $purple;
+    color: white;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    margin: 0;
+    margin-left: 2rem;
+    width: auto;
+  }
+}
+
+main {
+  background-color: #eeeeee;
+  border: 0.0625rem solid transparent;
+  min-height: calc(100vh - 10rem);
+}
+
+.main-content {
+  max-width: 60rem;
+  margin: 1.5rem auto;
+  padding: 0 1.5rem;
+
+  @media (min-width: $desktop-breakpoint) {
+    margin: 3rem auto;
+    margin-bottom: 6rem;
+  }
+}
+
+.homepage-hero {
+  background-color: #e7d6ec;
+  font-size: 1.25rem;
+}
+
+.homepage-hero-inner {
+  display: flex;
+  flex-direction: column;
+  max-width: 60rem;
+  margin: 0rem auto;
+  padding: 2.5rem 1.5rem;
+
+  & > * {
+    flex: 1;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    flex-direction: row;
+    padding: 4rem 1.5rem;
+  }
+}
+
+.homepage-hero-logo-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.homepage-hero-logo {
+  width: 18rem;
+}
+
+.homepage-hero-podman {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5rem;
+  max-width: 20rem;
+  width: 100%;
+
+  @media (min-width: $desktop-breakpoint) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.homepage-news {
+  padding: 1rem 1rem;
+
+  h1 {
+    color: $dark-gray;
+    text-align: center;
+  }
+}
+
+.homepage-news-inner {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin: 0rem auto;
+  max-width: 60rem;
+  padding: 0 0.5rem;
+
+  @media (min-width: $desktop-breakpoint) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.homepage-news-post {
+  margin-bottom: 1.5rem;
+  @media (min-width: $desktop-breakpoint) {
+    width: 46%;
+  }
+}
+
+.post {
+  margin-bottom: 5rem;
+}
+
+.post-title {
+  color: $gray;
+  font-size: 1.125rem;
+  margin-bottom: 0.125rem;
+}
+
+.post-meta {
+  margin-top: 0.25rem;
+}
+
+.post-author {
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+
+.post-date {
+  color: $light-gray;
+  font-size: 0.85rem;
+}
+
+.coloring-book {
+  font-style: italic;
+  margin: auto;
+  padding-bottom: 5rem;
+  padding-top: 3rem;
+  text-align: center;
+}
+
+pre.highlight {
+  background: #f9f5f9;
+  border-radius: 0.125rem;
+  border: 0.0625rem solid #cdbcd2;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding: 1rem;
+}
+
+h1 .octicon,
+h2 .octicon,
+h3 .octicon,
+h4 .octicon,
+h5 .octicon,
+h6 .octicon {
+  visibility: hidden;
+}
+
+h1:hover .octicon,
+h2:hover .octicon,
+h3:hover .octicon,
+h4:hover .octicon,
+h5:hover .octicon,
+h6:hover .octicon {
+  visibility: visible;
+}
+
+.octicon {
+  fill: currentColor;
+  padding: 0;
+  margin-left: -16px;
+  vertical-align: middle;
+}

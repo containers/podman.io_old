@@ -1,0 +1,23 @@
+- title: Blog
+  url: /blogs/
+
+- title: Releases
+  url: /releases/
+
+- title: Learn
+  url: '#'
+  children:
+    - title: Documentation
+      url: https://podman.readthedocs.io
+    - title: Talks
+      url: /talks/
+
+- title: Contribute
+  url: '#'
+  children:
+    - title: Join community
+      url: /community/
+    - title: View code
+      url: https://github.com/containers/podman
+    - title: Edit website
+      url: repository_url
