@@ -204,9 +204,13 @@ header {
     height: 50px;
     border: 0;
     display: inline-block;
-    padding: 0;
     margin: 0;
+    padding: 0;
     width: auto;
+
+    @include mq("desktop") {
+      padding-left: 10px;
+    }
   }
 
   & .burger {
