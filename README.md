@@ -63,3 +63,34 @@ Finally if your blog is more than a paragraph or two long, please add this tag a
 ```
 This will provide a preview on the blogs index page and the reader can read that first bit and then decide if they want to go in for a deeper dive.
 
+### Testing locally
+
+#### Configuration steps:
+
+```
+dnf install ruby ruby-devel g++
+gem install jekyll bundler
+gem install github-pages
+```
+#### VM network setup
+If you are running on a VM, you may need to open up port 4000 on your firewall
+
+```
+firewall-cmd --permanent --add-port=4000/tcp
+firewall-cmd --reload
+```
+#### Making changes
+First `cd` into your podman.io directory after having done a `git clone` of this project.  Change or add the files that yow want to.
+
+You can now test your changes locally, especially useful if you are making look/feel changes, by first running `bundle install` and then start the server by doing: `bundle exec jekyll s`.  If you make follow up changes, you can use the `bundle exec jekyll build` in place of the `bundle install` command.
+
+Then browse to http://127.0.0.1:4000 to view your changes.
+
+If you run this on a VM, then use this command: 
+```
+bundle exec jekyll serve --host 192.###.###.###   - IP Address of VM
+```
+
+And then you can attach to the server using your web brower, `http://{IP.address}:4000`.  Note, you must use `http` and not `https`.
+
+
