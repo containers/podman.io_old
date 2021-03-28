@@ -273,10 +273,6 @@ systemctl --user restart dbus
 
 Podman is available in the AppStream repo for CentOS 8 and Stream, and these are also the preferred choice for use in production environments. However, the available version may be older than the upstream release.
 
-
-for use in production environments, however the available version may
-be older than the upstream release.
-
 The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:testing)
 provides updated packages for CentOS 8 and Stream. These are not as
 well-tested as the official CentOS packages, so tread with caution.
