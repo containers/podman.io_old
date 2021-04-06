@@ -15,4 +15,4 @@ tags: podman, containers, openstack
 I wrote a blog post about how we manage Podman containers with SystemD in
 OpenStack TripleO.
 
-[Read More](http://my1.fr/blog/openstack-containerization-with-podman-part-2-operations/)
+[Read More](https://my1.fr/blog/openstack-containerization-with-podman-part-2-operations/)

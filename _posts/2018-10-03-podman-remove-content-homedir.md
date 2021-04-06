@@ -100,7 +100,7 @@ Because of this, if I wanted to clean it all up, I could become root to remove t
 
 ### `Buildah unshare` or `rootlesskit  bash`
 
-Well currently [Buildah](http://buildah.io) or [rootlesskit](https://github.com/rootless-containers/rootlesskit) can put you into the user namespace without launching a container and then you can remove the images.
+Well currently [Buildah](https://buildah.io) or [rootlesskit](https://github.com/rootless-containers/rootlesskit) can put you into the user namespace without launching a container and then you can remove the images.
 
 ```
 $ buildah unshare

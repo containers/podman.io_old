@@ -12,7 +12,7 @@ tags: containers, images, docker, buildah, podman, oci
 # Buildah and Podman Relationship
 ## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }}) [Twitter](https://twitter.com/{{ author.twitter }})
 
-Kubernetes installations can be complex with multiple runtime dependencies and runtime engines.  [CRI-O](http://cri-o.io/) was created to provide a lightweight runtime for Kubernetes which adds an abstraction layer between the cluster and the runtime that allows for various OCI runtime technologies.  However you still have the problem of daemon dependencies in your cluster for builds - I.e. if you are using the cluster for builds you still need a Docker daemon.
+Kubernetes installations can be complex with multiple runtime dependencies and runtime engines.  [CRI-O](https://cri-o.io/) was created to provide a lightweight runtime for Kubernetes which adds an abstraction layer between the cluster and the runtime that allows for various OCI runtime technologies.  However you still have the problem of daemon dependencies in your cluster for builds - I.e. if you are using the cluster for builds you still need a Docker daemon.
 
 Enter Buildah.  Buildah allows you to have a Kubernetes cluster without any Docker daemon for both runtime and builds.  Excellent. But what if things go wrong? What if you want to do troubleshooting or debugging of containers in your cluster?  Buildah isn’t really built for that, what you need is a client tool for working with containers and the one that comes to mind is Docker CLI - but then you’re back to using the daemon.  
 

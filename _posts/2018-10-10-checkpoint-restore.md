@@ -56,7 +56,7 @@ which have been merged into Podman at the beginning of October 2018.
 
 With all the background information out of the way, now finally some examples
 how checkpoint/restore can be used in Podman. In my example I am using a
-container running [Apache Tomcat](http://tomcat.apache.org/) with a slightly
+container running [Apache Tomcat](https://tomcat.apache.org/) with a slightly
 modified HelloWorldExample.  The HelloWorldExample has been modified to return
 a single integer which is is incremented after each request.
 
