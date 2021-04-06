@@ -8,7 +8,7 @@ title: Podman Community Meeting Agenda
 # {{ page.title }}
 ## April 6, 2021 8:00 p.m. Eastern (UTC-4)
 
-Try out [WorldTimeBuddy](https://www.worldtimebuddy.com/?pl=1&lid=5,0&h=5&date=3/2/2021%7C3&hf=1), add your location in the top left corner of the table,
+Try out [WorldTimeBuddy](https://www.worldtimebuddy.com/?pl=1&lid=5,0&h=5&date=4/6/2021%7C3&hf=1), add your location in the top left corner of the table,
 select 8:00 p.m. for Eastern, and it should show your local time in relation to Eastern.
 
 ### The meetings will be held using a BlueJeans [video conference room](https://bluejeans.com/796412039).
