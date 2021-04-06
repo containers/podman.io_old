@@ -41,7 +41,7 @@ as mentioned in my [previous article](https://podman.io/blogs/2019/09/26/podman-
 During system setup I am also configuring Podman to be ready to run on a NFS
 based home directory because, as far as I know, it is not possible for Podman
 to correctly setup the necessary [user
-namespaces](http://man7.org/linux/man-pages/man7/user_namespaces.7.html) when
+namespaces](https://man7.org/linux/man-pages/man7/user_namespaces.7.html) when
 the storage backend is running on NFS.
 
 The following commands are necessary on my system to tell Podman to use

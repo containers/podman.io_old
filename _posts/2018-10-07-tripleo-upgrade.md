@@ -16,4 +16,4 @@ tags: podman, containers, openstack
 I wrote a blog post about how we could upgrade OpenStack TripleO Undercloud
 from Docker to Podman containers.
 
-[Read More](http://my1.fr/blog/openstack-containerization-with-podman-part-3-upgrades/)
+[Read More](https://my1.fr/blog/openstack-containerization-with-podman-part-3-upgrades/)

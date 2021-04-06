@@ -75,7 +75,7 @@ The SSH keys and other configuration is automatically created with the machine.
 
 ## Tiny Core
 
-The regular `boot2podman.iso` is based on [Tiny Core Linux](http://tinycorelinux.net/):
+The regular `boot2podman.iso` is based on [Tiny Core Linux](http://tinycorelinux.net):
 
 [https://github.com/boot2podman/boot2podman/releases](https://github.com/boot2podman/boot2podman/releases)
 
