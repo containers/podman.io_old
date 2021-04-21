@@ -38,23 +38,6 @@ out the link below to see a description of how this is done.
 
 ### Linux Distributions
 
-#### [Amazon Linux 2](https://aws.amazon.com/amazon-linux-2/)
-
-The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
-provides updated packages for CentOS 7 which can be used unmodified on Amazon Linux 2.
-
-```bash
-sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_7/devel:kubic:libcontainers:stable.repo
-sudo yum -y install yum-plugin-copr
-sudo yum -y copr enable lsm5/container-selinux
-sudo yum -y install podman
-```
-
-NOTE: Podman v3.0 will be the last supported release on the Kubic
-project repositories for CentOS 7 and hence, Amazon Linux 2. We will update
-this doc once we hear from Amazon about their future support plans.
-
-
 #### [Arch Linux](https://www.archlinux.org) & [Manjaro Linux](https://manjaro.org)
 
 ```bash
@@ -76,15 +59,11 @@ sudo yum -y install podman
 ```
 
 The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
-provides updated packages for CentOS 7, 8 and Stream. These packages haven't
+provides updated packages for CentOS 8 and Stream. These packages haven't
 been through the official Red Hat QA process and may not be preferable for
 production environments.
 
 ```bash
-# CentOS 7
-sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_7/devel:kubic:libcontainers:stable.repo
-sudo yum -y install podman
-
 # CentOS 8
 sudo dnf -y module disable container-tools
 sudo dnf -y install 'dnf-command(copr)'
@@ -103,10 +82,9 @@ sudo dnf -y update
 ```
 
 NOTE:
-1. CentOS 7 Kubic repo will receive no further updates after Podman v3.0.
-2. CentOS 8 Kubic repo will continue to receive updates for Podman v3.0+ for the lifetime of CentOS 8 itself.
-3. Users are recommended to switch to newer versions of CentOS to receive the most up to date versions of Podman.
-4. CentOS Stream users are highly recommended to prefer packages from the
+1. CentOS 8 Kubic repo will continue to receive updates for Podman v3.0+ for the lifetime of CentOS 8 itself.
+2. Users are recommended to switch to newer versions of CentOS to receive the most up to date versions of Podman.
+3. CentOS Stream users are highly recommended to prefer packages from the
    default CentOS repos as they are often fairly current and are known to have
    passed RHEL's gating tests.
 
@@ -121,27 +99,6 @@ will be the next stable release (Debian 11) as well as Debian Unstable/Sid.
 # Debian Testing/Bullseye or Unstable/Sid
 sudo apt-get update
 sudo apt-get -y install podman
-```
-
-The [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman)
-provides packages for Debian 10. The build sources for the Kubic packages can be found [here](https://gitlab.com/rhcontainerbot/podman/-/tree/debian/debian).
-
-```bash
-# Debian 10
-# First enable user namespaces as root user
-echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/00-local-userns.conf
-systemctl restart procps
-
-# Use buster-backports on Debian 10 for a newer libseccomp2
-echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
-echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/Release.key | sudo apt-key add -
-sudo apt-get update
-sudo apt-get -y -t buster-backports install libseccomp2
-sudo apt-get -y install podman
-
-# Restart dbus for rootless podman
-systemctl --user restart dbus
 ```
 
 #### [Fedora](https://www.fedoraproject.org)
@@ -179,36 +136,6 @@ sudo zypper install podman
 #### [openSUSE Kubic](https://kubic.opensuse.org)
 
 Built-in, no need to install
-
-#### [Raspberry Pi OS armhf (ex Raspbian)](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
-
-The [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman) provides packages for Raspbian 10.
-The build sources for the Kubic packages can be found [here](https://gitlab.com/rhcontainerbot/podman/-/tree/debian/debian).
-
-```bash
-# Raspbian 10
-# First enable user namespaces as root user
-echo 'kernel.unprivileged_userns_clone=1' | sudo tee -a /etc/sysctl.d/00-local-userns.conf
-sudo systemctl restart procps
-
-# Use buster-backports on Rasbian 10 for a newer libseccomp2
-echo 'deb http://deb.debian.org/debian buster-backports main' | sudo tee -a /etc/apt/sources.list
-echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/ /' | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Raspbian_10/Release.key | sudo apt-key add -
-
-# Add missing keys for buster-backports manually
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
-
-sudo apt-get update
-sudo apt-get -y -t buster-backports install libseccomp2
-sudo apt-get -y install podman
-# Restart dbus for rootless podman. Do this for every user using containers.
-# This command only works without root. One way to do this is to login as the
-# user via SSH, so DBUS_SESSION_BUS_ADDRESS will be set correctly.
-systemctl --user restart dbus
-```
-
 
 #### [Raspberry Pi OS arm64 (beta)](https://downloads.raspberrypi.org/raspios_arm64/images/)
 
