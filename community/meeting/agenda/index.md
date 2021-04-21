@@ -23,7 +23,7 @@ select 11:00 a.m. for Eastern, and it should show your local time in relation to
 
 * 11:05 -> 11:10 - Podman and IPV6 Status - Matt Heon
 
-* 11:10 -> 11:30 - Running Docker, Podman, and even K11 inside rootless Podman containers - Cesar Talledo
+* 11:10 -> 11:30 - Running Docker, Podman, and even Kubernetes inside rootless Podman containers - Cesar Talledo
  
 * 11:30 -> 11:45 - Podman Python Client Demo - Jhon Honce
  
