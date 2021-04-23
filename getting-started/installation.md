@@ -69,16 +69,20 @@ sudo dnf -y module disable container-tools
 sudo dnf -y install 'dnf-command(copr)'
 sudo dnf -y copr enable rhcontainerbot/container-selinux
 sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8/devel:kubic:libcontainers:stable.repo
-sudo dnf -y install podman
-sudo dnf -y update
+# OPTIONAL FOR RUNC USERS: crun will be installed by default. Install runc first if you prefer runc
+sudo dnf -y --refresh install runc
+# Install Podman
+sudo dnf -y --refresh install podman
 
 # CentOS Stream
 sudo dnf -y module disable container-tools
 sudo dnf -y install 'dnf-command(copr)'
 sudo dnf -y copr enable rhcontainerbot/container-selinux
 sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
-sudo dnf -y install podman
-sudo dnf -y update
+# OPTIONAL FOR RUNC USERS: crun will be installed by default. Install runc first if you prefer runc
+sudo dnf -y --refresh install runc
+# Install Podman
+sudo dnf -y --refresh install podman
 ```
 
 NOTE:
@@ -190,8 +194,6 @@ curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get -y install podman
-# (Ubuntu 18.04) Restart dbus for rootless podman
-systemctl --user restart dbus
 ```
 
 ### Installing development versions of Podman
@@ -210,6 +212,9 @@ sudo dnf -y module disable container-tools
 sudo dnf -y install 'dnf-command(copr)'
 sudo dnf -y copr enable rhcontainerbot/container-selinux
 sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:testing.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/CentOS_8/devel:kubic:libcontainers:testing.repo
+# OPTIONAL FOR RUNC USERS: crun will be installed by default. Install runc first if you prefer runc
+sudo dnf -y --refresh install runc
+# Install Podman
 sudo dnf -y --refresh install podman
 
 # CentOS Stream
@@ -217,6 +222,9 @@ sudo dnf -y module disable container-tools
 sudo dnf -y install 'dnf-command(copr)'
 sudo dnf -y copr enable rhcontainerbot/container-selinux
 sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:testing.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/CentOS_8_Stream/devel:kubic:libcontainers:testing.repo
+# OPTIONAL FOR RUNC USERS: crun will be installed by default. Install runc first if you prefer runc
+sudo dnf -y --refresh install runc
+# Install Podman
 sudo dnf -y --refresh install podman
 ```
 
