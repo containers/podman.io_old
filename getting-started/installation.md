@@ -413,8 +413,8 @@ no further configuration is needed to start using Podman.
 
 ```bash
 sudo mkdir -p /etc/containers
-sudo curl -L -o /etc/containers/registries.conf https://raw.githubusercontent.com/projectatomic/registries/master/registries.fedora
-sudo curl -L -o /etc/containers/policy.json https://raw.githubusercontent.com/containers/skopeo/master/default-policy.json
+sudo curl -L -o /etc/containers/registries.conf https://src.fedoraproject.org/rpms/containers-common/blob/master/f/registries.conf
+sudo curl -L -o /etc/containers/policy.json https://src.fedoraproject.org/rpms/containers-common/blob/master/f/default-policy.json
 ```
 
 
@@ -513,7 +513,7 @@ molecule verify
 
 ## Configuration files
 
-### registries.conf
+### [registries.conf](https://src.fedoraproject.org/rpms/containers-common/blob/master/f/registries.conf)
 
 #### Man Page: [registries.conf.5](https://github.com/containers/image/blob/master/docs/containers-registries.conf.5.md)
 
@@ -524,34 +524,86 @@ registries.conf is the configuration file which specifies which container regist
 #### Example from the Fedora `containers-common` package
 
 ```
-cat /etc/containers/registries.conf
-# This is a system-wide configuration file used to
-# keep track of registries for various container backends.
-# It adheres to TOML format and does not support recursive
-# lists of registries.
-
-# The default location for this configuration file is /etc/containers/registries.conf.
-
-# The only valid categories are: 'registries.search', 'registries.insecure',
-# and 'registries.block'.
-
-[registries.search]
-registries = ['docker.io', 'registry.fedoraproject.org', 'quay.io', 'registry.access.redhat.com', 'registry.centos.org']
-
-# If you need to access insecure registries, add the registry's fully-qualified name.
-# An insecure registry is one that does not have a valid SSL certificate or only does HTTP.
-[registries.insecure]
-registries = []
-
-
-# If you need to block pull access from a registry, uncomment the section below
-# and add the registries fully-qualified name.
+$ cat /etc/containers/registries.conf
+# For more information on this configuration file, see containers-registries.conf(5).
 #
-[registries.block]
-registries = []
+# NOTE: RISK OF USING UNQUALIFIED IMAGE NAMES
+# We recommend always using fully qualified image names including the registry
+# server (full dns name), namespace, image name, and tag
+# (e.g., registry.redhat.io/ubi8/ubi:latest). Pulling by digest (i.e.,
+# quay.io/repository/name@digest) further eliminates the ambiguity of tags.
+# When using short names, there is always an inherent risk that the image being
+# pulled could be spoofed. For example, a user wants to pull an image named
+# `foobar` from a registry and expects it to come from myregistry.com. If
+# myregistry.com is not first in the search list, an attacker could place a
+# different `foobar` image at a registry earlier in the search list. The user
+# would accidentally pull and run the attacker's image and code rather than the
+# intended content. We recommend only adding registries which are completely
+# trusted (i.e., registries which don't allow unknown or anonymous users to
+# create accounts with arbitrary names). This will prevent an image from being
+# spoofed, squatted or otherwise made insecure.  If it is necessary to use one
+# of these registries, it should be added at the end of the list.
+#
+# # An array of host[:port] registries to try when pulling an unqualified image, in order.
+unqualified-search-registries = ["registry.fedoraproject.org", "registry.access.redhat.com", "docker.io"]
+#
+# [[registry]]
+# # The "prefix" field is used to choose the relevant [[registry]] TOML table;
+# # (only) the TOML table with the longest match for the input image name
+# # (taking into account namespace/repo/tag/digest separators) is used.
+# #
+# # If the prefix field is missing, it defaults to be the same as the "location" field.
+# prefix = "example.com/foo"
+#
+# # If true, unencrypted HTTP as well as TLS connections with untrusted
+# # certificates are allowed.
+# insecure = false
+#
+# # If true, pulling images with matching names is forbidden.
+# blocked = false
+#
+# # The physical location of the "prefix"-rooted namespace.
+# #
+# # By default, this equal to "prefix" (in which case "prefix" can be omitted
+# # and the [[registry]] TOML table can only specify "location").
+# #
+# # Example: Given
+# #   prefix = "example.com/foo"
+# #   location = "internal-registry-for-example.net/bar"
+# # requests for the image example.com/foo/myimage:latest will actually work with the
+# # internal-registry-for-example.net/bar/myimage:latest image.
+# location = internal-registry-for-example.com/bar"
+#
+# # (Possibly-partial) mirrors for the "prefix"-rooted namespace.
+# #
+# # The mirrors are attempted in the specified order; the first one that can be
+# # contacted and contains the image will be used (and if none of the mirrors contains the image,
+# # the primary location specified by the "registry.location" field, or using the unmodified
+# # user-specified reference, is tried last).
+# #
+# # Each TOML table in the "mirror" array can contain the following fields, with the same semantics
+# # as if specified in the [[registry]] TOML table directly:
+# # - location
+# # - insecure
+# [[registry.mirror]]
+# location = "example-mirror-0.local/mirror-for-foo"
+# [[registry.mirror]]
+# location = "example-mirror-1.local/mirrors/foo"
+# insecure = true
+# # Given the above, a pull of example.com/foo/image:latest will try:
+# # 1. example-mirror-0.local/mirror-for-foo/image:latest
+# # 2. example-mirror-1.local/mirrors/foo/image:latest
+# # 3. internal-registry-for-example.net/bar/image:latest
+# # in order, and use the first one that exists.
+#
+# short-name-mode="enforcing"
+
+[[registry]]
+location="localhost:5000"
+insecure=true
 ```
 
-### [mounts.conf](https://src.fedoraproject.org/rpms/skopeo/blob/master/f/mounts.conf)
+### [mounts.conf](https://src.fedoraproject.org/rpms/containers-common/blob/master/f/mounts.conf)
 
 `/usr/share/containers/mounts.conf` and optionally `/etc/containers/mounts.conf`
 
@@ -570,7 +622,7 @@ cat /usr/share/containers/mounts.conf
 /usr/share/rhel/secrets:/run/secrets
 ```
 
-### [seccomp.json](https://src.fedoraproject.org/rpms/skopeo/blob/master/f/seccomp.json)
+### [seccomp.json](https://src.fedoraproject.org/rpms/containers-common/blob/master/f/seccomp.json)
 
 `/usr/share/containers/seccomp.json`
 
@@ -579,7 +631,7 @@ containers.  This file is usually provided by the containers-common package.
 
 The link above takes you to the seccomp.json
 
-### [policy.json](https://github.com/containers/skopeo/blob/master/default-policy.json)
+### [policy.json](https://src.fedoraproject.org/rpms/containers-common/blob/master/f/default-policy.json)
 
 `/etc/containers/policy.json`
 
