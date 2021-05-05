@@ -157,12 +157,16 @@ sudo subscription-manager repos --enable=rhel-7-server-extras-rpms
 sudo yum -y install podman
 ```
 
-#### [RHEL8 Beta](https://www.redhat.com/en/blog/powering-its-future-while-preserving-present-introducing-red-hat-enterprise-linux-8-beta?intcmp=701f2000001Cz6OAAS)
+#### [RHEL8](https://developers.redhat.com/rhel8)
+
+Podman is included in the `container-tools` module, along with Buildah and Skopeo. 
 
 ```bash
-sudo yum module enable -y container-tools:1.0
-sudo yum module install -y container-tools:1.0
+sudo yum module enable -y container-tools:rhel8
+sudo yum module install -y container-tools:rhel8
 ```
+
+The `container-tools:rhel8` is the fast application stream, containing most recent rolling versions of the tools. Use the `container-tools:2.0` stream for stable versions of Podman 1.6. The command `yum module list container-tools` shows the available streams.
 
 #### [Ubuntu](https://www.ubuntu.com)
 
