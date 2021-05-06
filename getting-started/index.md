@@ -81,7 +81,7 @@ This sample container will run a very basic httpd server that serves only its
 index page.
 
 ```console
-$ podman run -dt -p 8080:80/tcp registry.fedoraproject.org/f29/httpd
+$ podman run -dt -p 8080:8080/tcp registry.fedoraproject.org/f29/httpd
 ```
 
 **Note**: Because the container is being run in detached mode, represented by
