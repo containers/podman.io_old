@@ -62,7 +62,7 @@ $ podman search httpd --filter=is-official
 Downloading (Pulling) an image is easy, too.
 
 ```console
-$ podman pull registry.fedoraproject.org/f29/httpd
+$ podman pull docker.io/library/httpd
 ```
 
 After pulling some images, you can list all images, present on your machine.
@@ -72,7 +72,7 @@ $ podman images
 ```
 
 **Note**: Podman searches in different registries. Therefore it is recommend
-to use the full image name (*registry.fedoraproject.org/f29/httpd* instead of
+to use the full image name (*docker.io/library/httpd* instead of
  *httpd*) to ensure, that you are using the correct image.
 
 ### Running a container
@@ -81,7 +81,7 @@ This sample container will run a very basic httpd server that serves only its
 index page.
 
 ```console
-$ podman run -dt -p 8080:8080/tcp registry.fedoraproject.org/f29/httpd
+$ podman run -dt -p 8080:80/tcp docker.io/library/httpd
 ```
 
 **Note**: Because the container is being run in detached mode, represented by

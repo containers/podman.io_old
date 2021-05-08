@@ -30,13 +30,13 @@ ports below 1024 are privileged and cannot be used for publishing.
 Instead of:
 
 ```console
-$ podman run -dt -p 80:8080/tcp registry.fedoraproject.org/f29/httpd
+$ podman run -dt -p 80:80/tcp docker.io/library/httpd
 ```
 
 you want to use:
 
 ```console
-$ podman run -dt -p 8080:8080/tcp registry.fedoraproject.org/f29/httpd
+$ podman run -dt -p 8080:80/tcp docker.io/library/httpd
 ```
 
 **Note**: You can also use `podman -P` to automatically publish and map ports.
@@ -50,7 +50,7 @@ You can check the ports published and occupied:
 
 ```console
 $ podman port -l
-8080/tcp -> 0.0.0.0:8080
+80/tcp -> 0.0.0.0:8080
 ```
 
 **Note**: The `-l` is a convenience argument for **latest container**. You can
@@ -97,7 +97,7 @@ Port publishing works the same way as rootless containers, but you will be able
 to use privileged ports, as long as they are free.
 
 ```console
-$ sudo podman run -dt -p 80:8080/tcp registry.fedoraproject.org/f29/httpd
+$ sudo podman run -dt -p 80:80/tcp docker.io/library/httpd
 ```
 
 **Note**: You can also use `podman -P` to automatically publish and map ports.
@@ -110,7 +110,7 @@ You can check which ports are published:
 
 ```console
 $ sudo podman port -l
-8080/tcp -> 0.0.0.0:80
+80/tcp -> 0.0.0.0:80
 ```
 
 And you should be able to reach the website from your local machine:

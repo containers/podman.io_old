@@ -10,7 +10,7 @@ run the example container as root. Instead of prefixing each command with
 `sudo`, you can also switch to the root user beforehand via `sudo -i`.
 
 ```console
-$ sudo podman run -dt -p 8080:8080/tcp registry.fedoraproject.org/f29/httpd
+$ sudo podman run -dt -p 8080:80/tcp docker.io/library/httpd
 $ sudo podman ps
 ```
 
