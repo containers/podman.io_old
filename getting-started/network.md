@@ -88,7 +88,7 @@ $ podman run -it --rm fedora curl <Host_IP_Address>:<Published_Port>
 ```
 **Note**: Host_IP_Address here is the IP address of your host machine(laptop, VM)
 
-To allow connections to the host machine from within your container.
+To allow connections to slirp4netns virtual router(10.0.2.2) the from within your container.
 ```console
 $ podman run -it --rm  --net slirp4netns:allow_host_loopback=true bash
 ```
