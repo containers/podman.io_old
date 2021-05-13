@@ -2,7 +2,7 @@
 
 Welcome to the website for the Pod Manager tool [podman](https://github.com/containers/podman). This site features announcements and news around Podman, and occasionally other [container tooling](https://github.com/containers/) news.
 
-![podman logo](https://github.com/containers/podman.io/blob/master/images/podman.svg)
+![podman logo](https://github.com/containers/podman.io/blob/main/images/podman.svg)
 
 ## Website Contributors
 
@@ -92,3 +92,14 @@ bundle exec jekyll serve --host 192.###.###.###   - IP Address of VM
 ```
 
 And then you can attach to the server using your web brower, `http://{IP.address}:4000`.  Note, you must use `http` and not `https`.
+
+# New 'main' branch
+
+To be more inclusive, the `master` branch for this repository has been renamed to `main`.  If you have a local clone, you can update it by running:
+
+```
+git branch -m master main
+git fetch origin
+git branch -u origin/main main
+git remote set-head origin -a
+```

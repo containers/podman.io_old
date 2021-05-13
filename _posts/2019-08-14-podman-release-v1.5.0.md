@@ -20,6 +20,6 @@ With this new release, Podman has picked up a number of improvements to core con
 
 Rootless containers have also been improved, featuring improved handling for privileged containers and the ability to use container health checks. Podman now has experimental support for running rootless containers with a single UID and GID using the new `ignore_chown_errors` storage option. This allows Podman to be run without the `newuidmap` and `newgidmap` binaries, and removes the need for any elevated privileges to start rootless containers. This approach is more limited (but more secure) than normal rootless containers.
 
-As always, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/master/RELEASE_NOTES.md) to see the full changelog.
+As always, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/main/RELEASE_NOTES.md) to see the full changelog.
 
-You can find instructions for installing Podman [here](https://github.com/containers/podman/blob/master/install.md).
+You can find instructions for installing Podman [here](https://github.com/containers/podman/blob/main/install.md).

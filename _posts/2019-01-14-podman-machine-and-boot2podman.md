@@ -5,7 +5,7 @@ author: afbjorklund
 categories: [blogs]
 tags: boot2podman
 ---
-![boot2podman logo](https://raw.githubusercontent.com/boot2podman/boot2podman/master/logo.png)
+![boot2podman logo](https://raw.githubusercontent.com/boot2podman/boot2podman/main/logo.png)
 
 {% assign author = site.authors[page.author] %}
 #  Podman Machine and Boot2podman

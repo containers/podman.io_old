@@ -12,7 +12,7 @@ Tom Sweeney, Brent Baude, Jhon Honce, Dan Walsh, Chris Evich, Lokesh Mandvekar, 
 ### Matt Heon
 #### (1:50 in the video)
 
-Podman 3.0 will be the largest ever.  Expecting an RC3 later this week, 3.0 final by Wednesday of next week.  Docker Compose support is a large one, along with podman rename.  Copy support for remote clieantadded for copying in and out of containers using the http API.  A number of network changes added by Paul Holzinger such as network reload, network ls, network create, and more.  Networks now have ID's and labels.  Podman checkpoint now supports with previous and checkpoint. Full details [here](https://github.com/containers/podman/blob/master/RELEASE_NOTES.md).
+Podman 3.0 will be the largest ever.  Expecting an RC3 later this week, 3.0 final by Wednesday of next week.  Docker Compose support is a large one, along with podman rename.  Copy support for remote clieantadded for copying in and out of containers using the http API.  A number of network changes added by Paul Holzinger such as network reload, network ls, network create, and more.  Networks now have ID's and labels.  Podman checkpoint now supports with previous and checkpoint. Full details [here](https://github.com/containers/podman/blob/main/RELEASE_NOTES.md).
 
 #### Breaking changes.  
 
@@ -27,7 +27,7 @@ Matt started the demo (8:00 in the video):
 
 Showed how to rename a container.  The functionality works on rootful and rootless.
     
-Release notes for v3.0:[here](https://github.com/containers/podman/blob/master/RELEASE_NOTES.md)
+Release notes for v3.0:[here](https://github.com/containers/podman/blob/main/RELEASE_NOTES.md)
 
 
 ##  Podman with Docker Compose Demo
@@ -120,7 +120,7 @@ Christian Felder11:12 AM
 does podman rename work with rootless as well?
 thanks
 Matt Heon11:13 AM
-FYI, release notes for 3.0 live at https://github.com/containers/podman/blob/master/RELEASE_NOTES.md
+FYI, release notes for 3.0 live at https://github.com/containers/podman/blob/main/RELEASE_NOTES.md
 Expect a few more bugfixes to trickle in before final release
 Edward Haynes11:13 AM
 is it called Podman Compose?

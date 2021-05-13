@@ -19,7 +19,7 @@ but in this article I want to focus on running *Message Passing Interface*
 
 <!--readmore-->
 
-The following is a simple MPI based example taken from Open MPI: [ring.c](https://raw.githubusercontent.com/open-mpi/ompi/master/orte/test/mpi/ring.c)
+The following is a simple MPI based example taken from Open MPI: [ring.c](https://raw.githubusercontent.com/open-mpi/ompi/main/orte/test/mpi/ring.c)
 
 To use it on a Fedora 30 system I first installed Open MPI and then I compiled
 the example:
@@ -136,7 +136,7 @@ specified that `mpirun` should start; `podman` in this case.
 
    Options passed from the user to `mpirun` are also communicated through
    environment variables. Now that the MPI process in the container has all the
-   environment variables it can communicate with the master process (*Head Node
+   environment variables it can communicate with the main process (*Head Node
    Process* (**HNP**)) and all the other involved processes.
 
 * `-v /tmp/podman-mpirun:/tmp/podman-mpirun`

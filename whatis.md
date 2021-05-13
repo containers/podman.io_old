@@ -39,7 +39,7 @@ At a high level, the scope of libpod and Podman is the following:
 ### Out of scope
 
 *   Container runtimes daemons for working with the Kubernetes CRI interface. [CRI-O](https://github.com/kubernetes-sigs/cri-o) specializes in that.
-*   Supporting `docker swarm`. We believe that Kubernetes is the defacto standard for composing Pods and for orchestrating containers, making Kubernetes YAML a defacto standard file format. Hence, Podman allows the creation and execution of Pods from a Kubernetes YAML file (see [podman-play-kube](https://github.com/containers/podman/blob/master/docs/source/markdown/podman-play-kube.1.md)). Podman can also generate Kubernetes YAML based on a container or Pod (see [podman-generate-kube](https://github.com/containers/podman/blob/master/docs/source/markdown/podman-generate-kube.1.md)), which allows for an easy transition from a local development environment to a production Kubernetes cluster.
+*   Supporting `docker swarm`. We believe that Kubernetes is the defacto standard for composing Pods and for orchestrating containers, making Kubernetes YAML a defacto standard file format. Hence, Podman allows the creation and execution of Pods from a Kubernetes YAML file (see [podman-play-kube](https://github.com/containers/podman/blob/main/docs/source/markdown/podman-play-kube.1.md)). Podman can also generate Kubernetes YAML based on a container or Pod (see [podman-generate-kube](https://github.com/containers/podman/blob/main/docs/source/markdown/podman-generate-kube.1.md)), which allows for an easy transition from a local development environment to a production Kubernetes cluster.
 
 ### Builds
 

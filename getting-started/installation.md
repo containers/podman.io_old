@@ -44,7 +44,7 @@ out the link below to see a description of how this is done.
 sudo pacman -S podman
 ```
 
-If you have problems when running Podman in  [rootless](https://github.com/containers/podman/blob/master/README.md#rootless) mode follow the instructions [here](https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional))
+If you have problems when running Podman in  [rootless](https://github.com/containers/podman/blob/main/README.md#rootless) mode follow the instructions [here](https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional))
 
 
 #### [CentOS](https://www.centos.org)
@@ -408,7 +408,7 @@ sudo cp runc /usr/bin/runc
 
 #### Setup CNI networking
 
-A proper description of setting up CNI networking is given in the [`cni` README](https://github.com/containers/podman/blob/master/cni/README.md).
+A proper description of setting up CNI networking is given in the [`cni` README](https://github.com/containers/podman/blob/main/cni/README.md).
 
 A basic setup for CNI networking is done by default during the installation or make processes and
 no further configuration is needed to start using Podman.
@@ -417,8 +417,8 @@ no further configuration is needed to start using Podman.
 
 ```bash
 sudo mkdir -p /etc/containers
-sudo curl -L -o /etc/containers/registries.conf https://src.fedoraproject.org/rpms/containers-common/blob/master/f/registries.conf
-sudo curl -L -o /etc/containers/policy.json https://src.fedoraproject.org/rpms/containers-common/blob/master/f/default-policy.json
+sudo curl -L -o /etc/containers/registries.conf https://src.fedoraproject.org/rpms/containers-common/blob/main/f/registries.conf
+sudo curl -L -o /etc/containers/policy.json https://src.fedoraproject.org/rpms/containers-common/blob/main/f/default-policy.json
 ```
 
 
@@ -517,9 +517,9 @@ molecule verify
 
 ## Configuration files
 
-### [registries.conf](https://src.fedoraproject.org/rpms/containers-common/blob/master/f/registries.conf)
+### [registries.conf](https://src.fedoraproject.org/rpms/containers-common/blob/main/f/registries.conf)
 
-#### Man Page: [registries.conf.5](https://github.com/containers/image/blob/master/docs/containers-registries.conf.5.md)
+#### Man Page: [registries.conf.5](https://github.com/containers/image/blob/main/docs/containers-registries.conf.5.md)
 
 `/etc/containers/registries.conf`
 
@@ -607,7 +607,7 @@ location="localhost:5000"
 insecure=true
 ```
 
-### [mounts.conf](https://src.fedoraproject.org/rpms/containers-common/blob/master/f/mounts.conf)
+### [mounts.conf](https://src.fedoraproject.org/rpms/containers-common/blob/main/f/mounts.conf)
 
 `/usr/share/containers/mounts.conf` and optionally `/etc/containers/mounts.conf`
 
@@ -626,7 +626,7 @@ cat /usr/share/containers/mounts.conf
 /usr/share/rhel/secrets:/run/secrets
 ```
 
-### [seccomp.json](https://src.fedoraproject.org/rpms/containers-common/blob/master/f/seccomp.json)
+### [seccomp.json](https://src.fedoraproject.org/rpms/containers-common/blob/main/f/seccomp.json)
 
 `/usr/share/containers/seccomp.json`
 
@@ -635,11 +635,11 @@ containers.  This file is usually provided by the containers-common package.
 
 The link above takes you to the seccomp.json
 
-### [policy.json](https://src.fedoraproject.org/rpms/containers-common/blob/master/f/default-policy.json)
+### [policy.json](https://src.fedoraproject.org/rpms/containers-common/blob/main/f/default-policy.json)
 
 `/etc/containers/policy.json`
 
-#### Man Page: [policy.json.5](https://github.com/containers/image/blob/master/docs/containers-policy.json.5.md)
+#### Man Page: [policy.json.5](https://github.com/containers/image/blob/main/docs/containers-policy.json.5.md)
 
 
 #### Example from the Fedora `containers-common` package:
