@@ -2,7 +2,7 @@
 
 Welcome to the website for the Pod Manager tool [podman](https://github.com/containers/podman). This site features announcements and news around Podman, and occasionally other [container tooling](https://github.com/containers/) news.
 
-![podman logo](https://github.com/containers/podman.io/blob/master/images/podman.svg)
+![podman logo](https://github.com/containers/podman.io/blob/main/images/podman.svg)
 
 ## Website Contributors
 
