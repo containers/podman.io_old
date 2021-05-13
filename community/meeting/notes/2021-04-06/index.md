@@ -33,7 +33,7 @@ More significant work in the next release coming up in
 ### Eduardo Vega
 #### (6:58 in the video)
 
-[slides](https://github.com/containers/podman.io/blob/master/community/meeting/notes/2021-04-06/Podman-U-Volume-Opt-06_04_2021.pptx)
+[slides](https://github.com/containers/podman.io/blob/main/community/meeting/notes/2021-04-06/Podman-U-Volume-Opt-06_04_2021.pptx)
 
 New Volume option.   
  * Podman create and Podman run with --volume.
