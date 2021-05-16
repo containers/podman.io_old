@@ -21,12 +21,16 @@ select 11:00 a.m. for Eastern, and it should show your local time in relation to
 
 * 11:00 -> 11:05 - Welcome! 
 
-* 11:05 -> 11:25 - Podman and TYE - Tom Deseyn
+* 11:05 -> 11:20 - Podman and TYE - Tom Deseyn
 
-* 11:25 -> 11:45 - TBD
+* 11:20 -> 11:25 - Podman v3.2.0 updates - Matt Heon
+
+* 11:25 -> 11:35 - Podman in Kubernetes - Urvashi Mohnani
+
+* 11:35 -> 11:50 - Podman Machine updates - Brent Baude
  
-* 11:45 -> 11:55 - Open Forum/Questions and Answers Session
+* 11:50 -> 11:55 - Open Forum/Questions and Answers Session
 
 * 11:55 -> 12:00 - Next Meeting, Topics for Next Meeting, and Wrap up
 
-**Next Meeting: Tuesday, July 6, 2021, 11:00 a.m. Eastern Daylight (UTC-4)**
+**Next Meeting: Tuesday, Aug 3, 2021, 11:00 a.m. Eastern Daylight (UTC-4)**
