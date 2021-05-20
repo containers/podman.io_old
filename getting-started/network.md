@@ -99,6 +99,17 @@ $ podman run -it --rm  --net slirp4netns:allow_host_loopback=true bash
 
 This section describes how networking can be used in rootfull containers.
 
+Podman provides a bridged network by default.
+```console
+$ sudo podman network ls
+NETWORK ID    NAME    VERSION  PLUGINS
+2f259bab93aa  podman  0.4.0    bridge,portmap,firewall,tuning
+```
+You can pass different network types using `--network=string` (bridge by default) to pass different network types.
+
+If `--network=string` isn't specified podman will use the bridge mode for networking.
+See [Podman Run command](https://docs.podman.io/en/latest/markdown/podman-run.1.html#network-mode-net) for more options.
+
 ### Publishing Ports
 
 Port publishing works the same way as rootless containers, but you will be able
