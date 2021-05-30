@@ -86,10 +86,29 @@ Start a new container to contact your host + the published port:
 ```console
 $ podman run -it --rm fedora curl <Host_IP_Address>:<Published_Port>
 ```
+**Note**: Host_IP_Address here is the IP address of your host machine(laptop, VM)
+
+To allow connections to slirp4netns virtual router(10.0.2.2) the from within your container.
+```console
+$ podman run -it --rm  --net slirp4netns:allow_host_loopback=true bash
+```
+**Note**: This is set to false by default for security. 
+
 
 ## Rootfull Networking
 
 This section describes how networking can be used in rootfull containers.
+
+Podman provides a bridged network by default.
+```console
+$ sudo podman network ls
+NETWORK ID    NAME    VERSION  PLUGINS
+2f259bab93aa  podman  0.4.0    bridge,portmap,firewall,tuning
+```
+You can pass different network types using `--network=string` (bridge by default) to pass different network types.
+
+If `--network=string` isn't specified podman will use the bridge mode for networking.
+See [Podman Run command](https://docs.podman.io/en/latest/markdown/podman-run.1.html#network-mode-net) for more options.
 
 ### Publishing Ports
 
