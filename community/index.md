@@ -11,7 +11,7 @@ We want your feedback, issues, patches, and involvement in the development of Po
 
 ## Slack and IRC
 
-The Podman developers often hang out on the #CRI-O channel in [Kubernetes Slack](https://slack.k8s.io/). Note that the devs are generally around during CEST and Eastern Time business hours, so be patient if you're in another time zone. There's also Podman users and developers on [IRC.Freenode.Net](https://webchat.freenode.net/) channel #podman.
+The Podman developers often hang out on the #CRI-O channel in [Kubernetes Slack](https://slack.k8s.io/). Note that the devs are generally around during CEST and Eastern Time business hours, so be patient if you're in another time zone. There's also Podman users and developers on IRC on the `#podman` channel on `libera.chat`.
 
 ## Community Meetings
 

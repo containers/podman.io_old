@@ -12,7 +12,7 @@ tags: community, open source, podman, hpc, api, REST, API
 
 ## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }}) [Twitter](https://twitter.com/{{ author.twitter }})
 
-If you follow the traffic on IRC (#podman on freenode) or GitHub from the developers of [libpod](https://github.com/containers/podman/), you might have seen us referencing a new API.  We often referred to it as *apiv2* and for about a month, there has been an 'apiv2' branch for libpod on GitHub.  This week, we have begun to merge that branch but have yet to “wire it up.”
+If you follow the traffic on IRC (#podman on libera.chat) or GitHub from the developers of [libpod](https://github.com/containers/podman/), you might have seen us referencing a new API.  We often referred to it as *apiv2* and for about a month, there has been an 'apiv2' branch for libpod on GitHub.  This week, we have begun to merge that branch but have yet to “wire it up.”
 
 First and foremost, the Golang libpod API remains largely unchanged.  What is changing is the API we expose for automation and remote usage.  Our previous API was based on the [varlink](https://varlink.org/) protocol.  But we heard from users that varlink was a hurdle for libpod adoption especially for those who were using the Docker API and its bindings.  They simply could not or did not want to rewrite their custom applications for libpod’s new, varlink-based API.
 
