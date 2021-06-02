@@ -7,9 +7,7 @@ title: IRC communications
 
 # {{ page.title }}
 
-The Podman and many other container projects have recently moved to Libera.Chat
-for IRC communications.  The #podman channel on the freenode network is no longer being used
-Podman developers.
+The Podman and many other container projects have recently moved to Libera.Chat for IRC communications.  The #podman channel on the freenode network is no longer being used by Podman developers.
 
 If you are a current IRC user, please go and register your nick(s) on
 Libera.Chat ( https://libera.chat/guides/registration#registering ) and
