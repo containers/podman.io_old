@@ -7,6 +7,19 @@ title: Community Meetings
 
 # {{ page.title }}
 
+## Podman Community Cabal meeting
+
+The Podman Community Cabal meetings will happen on the third Thursday of each month, starting at 10:00 a.m. Eastern.
+The "Cabal" meeting is used to discuss any design question, issue, or other related topics with the maintainers of
+the Podman project.  We will also try to leave at least the last 20 minutes of the hour long meeting as an "Open Forum".
+
+If you have a topic that you know about in advance for an upcoming Cabal meeting, please send a note to the
+[Podman Mailing List](https://podman.io/community/#mailing-list) or add a topic to the [discussion](https://github.com/containers/podman/discussions/10670) on GitHub.
+
+Video Conference for the Meeting: https://github.com/containers/podman/discussions/10670
+
+## Podman Community Meeting
+
 Community meetings are held on the first Tuesday of each month.  They are scheduled for one hour in 
 duration, and generally start at 11:00 a.m. Eastern.  The start time may change occassionally to make
 the meeting more convenient for the Podman community members from India, China, Australia and other countries
@@ -21,7 +34,7 @@ and later saved to this site with a link added [below](https://podman.io/communi
 The agenda for the upcoming meeting will be sent at least two weeks prior to the [podman@lists.podman.io](mailto:podman@lists.podman.io) email list and it will 
 be posted [below](https://podman.io/community/meeting/#next-podman-community-meeting-agenda)
 
-## Next Podman Community Meeting Agenda
+### Next Podman Community Meeting Agenda
 
 The agenda for prior Podman Community Meetings are included within the meeting notes.
 Topics for the next or any other future meeting will be gratefully accepted.  Please send
@@ -33,7 +46,7 @@ we will do our best to get you into a future one as soon as possible.
  [Podman Community Meeting Agenda](https://podman.io/community/meeting/agenda)
 
 
-## Notes from the Community Meetings
+### Notes from the Community Meetings
 
  * [Tuesday June 1, 2021](https://podman.io/community/meeting/notes/2021-06-01)
  * [Tuesday May 4, 2021](https://podman.io/community/meeting/notes/2021-05-04)
