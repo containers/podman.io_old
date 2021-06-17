@@ -5,7 +5,7 @@
 Tom Sweeney, Brent Baude, Jhon Honce, Dan Walsh, Chris Evich, Urvashi Mohnani, Nalin Dahyabhai, Eduardo Santiago, Matt Heon, Ashley Cui, Paul Holzinger, Greg Shomo, Tom Deseyn, Andrew Slice, Anders Björklund, Shion Tanaka, Alex Litvak, Juanje Ojeda, Deepak Bhole, Eduardo Vega, Falsal Rzzzak, Juanje Ojeda, Omair Majid, Peter Hunt, Preethi Thomas, Uwe Reh
 
 ## Meeting Start: 11:03 a.m.
-### BlueJeans [Recording](https://bluejeans.com/playback/guid/Nzk2NDEyMDM5OjQ4MDM0OC1jY2ZmNDg2ZS03ZTlkLTRkMWQtYWExOC0zNzZiZDBjMTljNDU=?s=vl)
+### BlueJeans [Recording](https://bluejeans.com/s/3fO@uV5g9KF)
 
 ## General Announcements
 ### Tom Sweeney
