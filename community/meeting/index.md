@@ -25,7 +25,7 @@ duration, and generally start at 11:00 a.m. Eastern.  The start time may change 
 the meeting more convenient for the Podman community members from India, China, Australia and other countries
 in those time zones.
 
-The meetings will be held using a BlueJeans video conference room.  That room is located [here](https://bluejeans.com/796412039)
+The meetings will be held using a BlueJeans video conference room.  That room is located [here](https://bluejeans.com/880216278/2568)
 and there is no charge to attend.
 
 While the meeting is ongoing, the meeting notes will be compiled using [HackMD](https://hackmd.io) on this [page](https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w)
@@ -33,6 +33,8 @@ and later saved to this site with a link added [below](https://podman.io/communi
 
 The agenda for the upcoming meeting will be sent at least two weeks prior to the [podman@lists.podman.io](mailto:podman@lists.podman.io) email list and it will 
 be posted [below](https://podman.io/community/meeting/#next-podman-community-meeting-agenda)
+
+Click [here](https://calendar.google.com/event?action=TEMPLATE&tmeid=NzM4aTkwY2syZ2F2dnIyN2M1dmh0NmQ0NmpfMjAyMTA4MDNUMTUwMDAwWiB0c3dlZW5leUByZWRoYXQuY29t&tmsrc=tsweeney%40redhat.com&scp=ALL) for a calendar event from Google Calendar.
 
 ### Next Podman Community Meeting Agenda
 
