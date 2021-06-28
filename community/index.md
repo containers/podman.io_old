@@ -11,7 +11,7 @@ We want your feedback, issues, patches, and involvement in the development of Po
 
 ## Slack, IRC and Matrix
 
-The Podman developers often hang out on the #CRI-O channel in [Kubernetes Slack](https://slack.k8s.io/). Note that the devs are generally around during CEST and Eastern Time business hours, so be patient if you're in another time zone. There's also Podman users and developers on IRC on the `#podman` channel on `libera.chat` as well as `[#podman:matrix.org](https://matrix.to/#/#podman:matrix.org)` on `matrix`. The `matrix` room and `libera.chat` channel have been bridged so joining either one should be sufficient.
+The Podman developers often hang out on the #CRI-O channel in [Kubernetes Slack](https://slack.k8s.io/). Note that the devs are generally around during CEST and Eastern Time business hours, so be patient if you're in another time zone. There's also Podman users and developers on IRC on the `#podman` channel on `libera.chat` as well as [#podman:matrix.org](https://matrix.to/#/#podman:matrix.org) on `matrix`. The `matrix` room and `libera.chat` channel have been bridged so joining either one should be sufficient.
 
 Click [here](./irc.md) for more information on the #podman IRC channel.
 
