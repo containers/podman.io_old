@@ -417,8 +417,8 @@ no further configuration is needed to start using Podman.
 
 ```bash
 sudo mkdir -p /etc/containers
-sudo curl -L -o /etc/containers/registries.conf https://src.fedoraproject.org/rpms/containers-common/blob/main/f/registries.conf
-sudo curl -L -o /etc/containers/policy.json https://src.fedoraproject.org/rpms/containers-common/blob/main/f/default-policy.json
+sudo curl -L -o /etc/containers/registries.conf https://src.fedoraproject.org/rpms/containers-common/raw/main/f/registries.conf
+sudo curl -L -o /etc/containers/policy.json https://src.fedoraproject.org/rpms/containers-common/raw/main/f/default-policy.json
 ```
 
 
