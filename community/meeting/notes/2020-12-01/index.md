@@ -35,7 +35,7 @@ Moving to Podman and API v3.X for both in the near future.  We needed improvemen
 
 Brent also talked about slimming down other areas of Podman as well in v3.0.  Dan pointed out the help that the community has provided in tuning the API.
 
-See [API tests using python requests library](https://github.com/containers/podman/tree/master/test/apiv2/rest_api) for examples.
+See [API tests using python requests library](https://github.com/containers/podman/tree/main/test/apiv2/rest_api) for examples.
 
 ## Demo containers.conf usage
 ### Dan Walsh

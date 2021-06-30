@@ -200,8 +200,8 @@ with varlink.Client.new_with_bridge(["ssh", "<podman-machine>"]) as client:
             print(e.as_dict())
 ~~~
 
-To find out more about the Podman varlink interface read the [io.podman.varlink](https://github.com/containers/podman/blob/master/cmd/podman/varlink/io.podman.varlink) file or
-the rendered [API.md](https://github.com/containers/podman/blob/master/API.md).
+To find out more about the Podman varlink interface read the [io.podman.varlink](https://github.com/containers/podman/blob/main/cmd/podman/varlink/io.podman.varlink) file or
+the rendered [API.md](https://github.com/containers/podman/blob/main/API.md).
 
 Or you can inspect, what methods your Podman version on `<podman-machine>` provides:
 
@@ -248,8 +248,8 @@ Error: Call failed with error: io.podman.ErrorOccurred
 }
 ~~~
 
-To find out more about the Podman varlink interface read the [io.podman.varlink](https://github.com/containers/podman/blob/master/cmd/podman/varlink/io.podman.varlink) file or
-the rendered [API.md](https://github.com/containers/podman/blob/master/API.md).
+To find out more about the Podman varlink interface read the [io.podman.varlink](https://github.com/containers/podman/blob/main/cmd/podman/varlink/io.podman.varlink) file or
+the rendered [API.md](https://github.com/containers/podman/blob/main/API.md).
 
 Or you can inspect, what methods your Podman version on `<podman-machine>` provides:
 
@@ -455,8 +455,8 @@ Error: Call failed with error: io.podman.ErrorOccurred
 }
 ~~~
 
-To find out more about the Podman varlink interface read the [io.podman.varlink](https://github.com/containers/podman/blob/master/cmd/podman/varlink/io.podman.varlink) file or
-the rendered [API.md](https://github.com/containers/podman/blob/master/API.md).
+To find out more about the Podman varlink interface read the [io.podman.varlink](https://github.com/containers/podman/blob/main/cmd/podman/varlink/io.podman.varlink) file or
+the rendered [API.md](https://github.com/containers/podman/blob/main/API.md).
 
 Or you can inspect, what methods your Podman version on `<podman-machine>` provides:
 

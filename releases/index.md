@@ -7,7 +7,7 @@ title: Podman Release Announcements
 
 # {{ page.title }}
 
-### Release Notes on [GitHub](https://github.com/containers/podman/blob/master/RELEASE_NOTES.md)
+### Release Notes on [GitHub](https://github.com/containers/podman/blob/main/RELEASE_NOTES.md)
 
 <section class="posts">
   {% for post in site.categories.releases %}

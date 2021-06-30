@@ -39,6 +39,6 @@ A few of the biggest changes from Podman 1.0.0 include:
   * Added the `podman image sign` command to sign container images.
   * Image pulls are now parallelized for increased speed
 
-As always, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/master/RELEASE_NOTES.md) to see the full changelog.
+As always, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/main/RELEASE_NOTES.md) to see the full changelog.
 
-You can find instructions for installing Podman [here](https://github.com/containers/podman/blob/master/install.md)
+You can find instructions for installing Podman [here](https://github.com/containers/podman/blob/main/install.md)

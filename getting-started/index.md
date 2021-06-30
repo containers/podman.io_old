@@ -42,7 +42,7 @@ $ man podman
 $ man podman-<subcommand>
 ```
 
-Please also reference the [Podman Troubleshooting Guide](https://github.com/containers/podman/blob/master/troubleshooting.md)
+Please also reference the [Podman Troubleshooting Guide](https://github.com/containers/podman/blob/main/troubleshooting.md)
 to find known issues and tips on how to solve common configuration mistakes.
  
 ### Searching, pulling & listing images
@@ -211,10 +211,10 @@ checkpoint. For more details, see the
 
 For more information on how to setup and run the integration tests in your
 environment, checkout the Integration Tests
-[README.md](https://github.com/containers/podman/blob/master/test/README.md).
+[README.md](https://github.com/containers/podman/blob/main/test/README.md).
 
 ## More information
 
 For more information on Podman and its subcommands, checkout the asciiart demos
-on the [README.md](https://github.com/containers/podman/blob/master/commands.md)
+on the [README.md](https://github.com/containers/podman/blob/main/commands.md)
 page.

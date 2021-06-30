@@ -50,6 +50,6 @@ All the details follow!
  * The podman container runlabel command will now pull images not available locally even without the --pull option. The --pull option has been deprecated
  * The podman container checkpoint and podman container restore commands are now only available on OCI runtimes where they are supported (e.g. runc)
 
-As always, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/master/RELEASE_NOTES.md) to see the full changelog.
+As always, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/main/RELEASE_NOTES.md) to see the full changelog.
 
-You can find instructions for installing Podman [here](https://github.com/containers/podman/blob/master/install.md)
+You can find instructions for installing Podman [here](https://github.com/containers/podman/blob/main/install.md)

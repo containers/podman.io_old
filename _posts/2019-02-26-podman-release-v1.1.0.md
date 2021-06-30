@@ -93,6 +93,6 @@ rootless containers and more.  All the details follow!
  * Containers which share a network namespace (for example, when in a pod) will now share /etc/hosts and /etc/resolv.conf between all containers in the pod, causing changes in one container to propagate to all containers sharing their networks
  * The podman rm and podman rmi commands now return 1 (instead of 127) when all specified container or images are missing
 
-As always, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/master/RELEASE_NOTES.md) to see the full changelog.
+As always, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/main/RELEASE_NOTES.md) to see the full changelog.
 
-You can find instructions for installing Podman [here](https://github.com/containers/podman/blob/master/install.md)
+You can find instructions for installing Podman [here](https://github.com/containers/podman/blob/main/install.md)
