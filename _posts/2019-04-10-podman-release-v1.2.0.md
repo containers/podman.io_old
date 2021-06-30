@@ -37,6 +37,6 @@ Image Layers
 └──  ID: 610298fe2990 Size: 1.024kB Top Layer of: [localhost/buildah-ctr:latest localhost/myimage:latest]
 ```
 
-As always, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/master/RELEASE_NOTES.md) to see the full changelog.
+As always, please visit our release notes on [GitHub](https://github.com/containers/podman/blob/main/RELEASE_NOTES.md) to see the full changelog.
 
-You can find instructions for installing Podman [here](https://github.com/containers/podman/blob/master/install.md)
+You can find instructions for installing Podman [here](https://github.com/containers/podman/blob/main/install.md)

@@ -14,7 +14,7 @@ Podman is an open-source project that is available on most Linux platforms and r
 
 Containers under the control of Podman can either be run by root or by a non-privileged user. Podman manages the entire container ecosystem which includes pods, containers, container images, and container volumes using the [libpod](https://github.com/containers/podman) library. Podman specializes in all of the commands and functions that help you to maintain and modify OCI container images, such as pulling and tagging. It allows you to create, run, and maintain those containers created from those images in a production environment.  
 
-The Podman service runs only on Linux platforms, however the podman remote REST API client exists on Mac and Windows platforms and can communicate with the Podman service running on a Linux machine or VM via ssh. [Mac client](https://github.com/containers/podman/blob/master/docs/tutorials/mac_client.md).
+The Podman service runs only on Linux platforms, however the podman remote REST API client exists on Mac and Windows platforms and can communicate with the Podman service running on a Linux machine or VM via ssh. [Mac client](https://github.com/containers/podman/blob/main/docs/tutorials/mac_client.md).
 
 ### Overview and scope
 
@@ -39,7 +39,7 @@ At a high level, the scope of libpod and Podman is the following:
 ### Out of scope
 
 *   Container runtimes daemons for working with the Kubernetes CRI interface. [CRI-O](https://github.com/kubernetes-sigs/cri-o) specializes in that.
-*   Supporting `docker swarm`. We believe that Kubernetes is the defacto standard for composing Pods and for orchestrating containers, making Kubernetes YAML a defacto standard file format. Hence, Podman allows the creation and execution of Pods from a Kubernetes YAML file (see [podman-play-kube](https://github.com/containers/podman/blob/master/docs/source/markdown/podman-play-kube.1.md)). Podman can also generate Kubernetes YAML based on a container or Pod (see [podman-generate-kube](https://github.com/containers/podman/blob/master/docs/source/markdown/podman-generate-kube.1.md)), which allows for an easy transition from a local development environment to a production Kubernetes cluster.
+*   Supporting `docker swarm`. We believe that Kubernetes is the defacto standard for composing Pods and for orchestrating containers, making Kubernetes YAML a defacto standard file format. Hence, Podman allows the creation and execution of Pods from a Kubernetes YAML file (see [podman-play-kube](https://github.com/containers/podman/blob/main/docs/source/markdown/podman-play-kube.1.md)). Podman can also generate Kubernetes YAML based on a container or Pod (see [podman-generate-kube](https://github.com/containers/podman/blob/main/docs/source/markdown/podman-generate-kube.1.md)), which allows for an easy transition from a local development environment to a production Kubernetes cluster.
 
 ### Builds
 

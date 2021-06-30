@@ -136,7 +136,7 @@ specified that `mpirun` should start; `podman` in this case.
 
    Options passed from the user to `mpirun` are also communicated through
    environment variables. Now that the MPI process in the container has all the
-   environment variables it can communicate with the master process (*Head Node
+   environment variables it can communicate with the main process (*Head Node
    Process* (**HNP**)) and all the other involved processes.
 
 * `-v /tmp/podman-mpirun:/tmp/podman-mpirun`

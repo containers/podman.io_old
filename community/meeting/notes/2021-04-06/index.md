@@ -19,7 +19,7 @@ If you're fixing a bug or an issue, please include a link to the commit message 
 ### Matt Heon
 #### (3:00 in the video)
 
-Matt pulled up the release notes (https://github.com/containers/podman/blob/master/RELEASE_NOTES.md).  Matt likes to get rleases out every 6 to 8 weeks
+Matt pulled up the release notes (https://github.com/containers/podman/blob/main/RELEASE_NOTES.md).  Matt likes to get rleases out every 6 to 8 weeks
 
 Added secrets, although not with crypto, manifest commands and prune have been added.  The Podman copy command has been reworked heavily by Valentin Rothberg.  Now you can copy to directories too now.  You should now be able to copy anywhere in a container.
 

@@ -44,7 +44,7 @@ out the link below to see a description of how this is done.
 sudo pacman -S podman
 ```
 
-If you have problems when running Podman in  [rootless](https://github.com/containers/podman/blob/master/README.md#rootless) mode follow the instructions [here](https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional))
+If you have problems when running Podman in  [rootless](https://github.com/containers/podman/blob/main/README.md#rootless) mode follow the instructions [here](https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional))
 
 
 #### [CentOS](https://www.centos.org)
@@ -408,7 +408,7 @@ sudo cp runc /usr/bin/runc
 
 #### Setup CNI networking
 
-A proper description of setting up CNI networking is given in the [`cni` README](https://github.com/containers/podman/blob/master/cni/README.md).
+A proper description of setting up CNI networking is given in the [`cni` README](https://github.com/containers/podman/blob/main/cni/README.md).
 
 A basic setup for CNI networking is done by default during the installation or make processes and
 no further configuration is needed to start using Podman.
