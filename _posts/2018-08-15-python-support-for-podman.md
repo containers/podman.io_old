@@ -80,7 +80,7 @@ ID: d7337530c6d1
  createdAt: 2018–08–10T09:18:09.728858–07:00
 ```
 
-You can watch the whole process [here](https://asciinema.org/a/mu8Knm5dj8mII19evrF9heNCF].
+You can watch the whole process [here](https://asciinema.org/a/mu8Knm5dj8mII19evrF9heNCF).
 
 The container object above supports the Namespace and dict protocols. This is our most used data structure providing you the ability to use the returned object in your code as you wish.
 
