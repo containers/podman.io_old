@@ -17,8 +17,13 @@ Click [here](./irc.md) for more information on the #podman IRC channel.
 
 ## Community Meetings
 
-Community meetings are held on the first Tuesday of the month, generally at 11:00 a.m. Eastern time.  The meetings are held using using BlueJeans
-video conferencing and all are welcome.  There is no cost other than your time.  For more information, see the [Community Meeting](https://podman.io/community/meeting/) page.
+Community meetings are held on the first Tuesday of the month, generally at 11:00 a.m. Eastern time.  This meeting is used to show demos for or to have general discussions about Podman or other related container technologies.  It is also used to make announcements about Podman and the other projects in the [Containers repository](https://github.com/containers/) on GitHub.
+
+Podman Community Cabal meetings are held on the third Thursday of the month at 10:00 a.m. Eastern time.  The focus of the cabal meeting is the planning and discussion of possible future changes to Podman or the related Containers projects and discussing any outstanding issues that might need solving.
+
+Many of the maintainers for the Podman project attend both of these meetings, so it's a great chance for the community to ask them questions or address concerns directly.  If you have a topic that you'd like to propose for either meeting, please send a note to the Mailing List.
+
+For more information, including links to the Agenda, Video Conference Room, and more, see the [Community Meeting](https://podman.io/community/meeting/) page.  All are welcome to attend either meeting, and there is no cost other than your time.
 
 ## Mailing List
 
