@@ -26,7 +26,7 @@ The Agenda is [here](https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both).
  * [Thursday July 15, 2021](https://podman.io/community/meeting/notes/2021-07-15)
 
 ## Podman Community Meeting
-### Next Meeting: Tuesday August 5, 2021 11:00 a.m. EDT (UTC-4)
+### Next Meeting: Tuesday August 3, 2021 11:00 a.m. EDT (UTC-4)
 
 Community meetings are held on the first Tuesday of each month.  They are scheduled for one hour in 
 duration, and generally start at 11:00 a.m. Eastern.  The start time may change occassionally to make
