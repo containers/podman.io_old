@@ -29,11 +29,11 @@ select 11:00 a.m. for Eastern, and it should show your local time in relation to
 
 * 11:25 -> 11:30 - `podman secrets --env` Demo - Ashley Cui
 
-* 11:30 -> 11:35 - Rootles podman with rootles overlay Demo - Dan Walsh
+* 11:30 -> 11:35 - Rootless Podman with rootless overlay Demo - Dan Walsh
 
 * 11:35 -> 11:40 - `podman run --group-add` - Dan Walsh
 
-* 11:40 -> 11:45 - podman |/etc/hosts|, |host.containers.internal support| - Dan Walsh
+* 11:40 -> 11:45 - podman /etc/hosts, host.containers.internal support - Dan Walsh
  
 * 11:45 -> 11:55 - Open Forum/Questions and Answers Session
 
