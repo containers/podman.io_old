@@ -5,7 +5,7 @@
 Tom Sweeney, Brent Baude, Jhon Honce, Dan Walsh, Chris Evich, Lokesh Mandvekar, Urvashi Mohnani, Nalin Dahyabhai, Eduardo Santiago, Matt Heon, Ashley Cui, Sumantro Mukherjee, Scott McCarty, Shion Tanaka, Juanje Ojeda, Edward Shen, Reinhard Tartler
 
 ## Meeting Start: 8:00 p.m.
-### BlueJeans [Recording](https://bluejeans.com/playback/guid/Nzk2NDEyMDM5OjQ3MjMzNy04MzM3NzJhNS1kYWFlLTRmNmYtYTg2MC01ZmMwNWFkNjM3Nzk=?s=vl)
+### BlueJeans [Recording](https://bluejeans.com/s/@f3vA2PsK7a)
 
 
 ## Podman Commit Topic Standards
