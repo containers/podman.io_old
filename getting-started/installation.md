@@ -95,17 +95,13 @@ NOTE:
 
 #### [Debian](https://debian.org)
 
-The podman package is available in
-the [Bullseye (testing) branch](https://packages.debian.org/bullseye/podman), which
-will be the next stable release (Debian 11) as well as Debian Unstable/Sid.
+The podman is available in the Debian 11 (Bullseye) repositories and later
 
 ```bash
-# Debian Testing/Bullseye or Unstable/Sid
-sudo apt-get update
 sudo apt-get -y install podman
 ```
 
-#### [Fedora](https://www.fedoraproject.org)
+#### [Fedora](https://getfedora.org)
 
 ```bash
 sudo dnf -y install podman
