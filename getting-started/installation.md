@@ -95,7 +95,7 @@ NOTE:
 
 #### [Debian](https://debian.org)
 
-The podman is available in the Debian 11 (Bullseye) repositories and later
+The podman package is available in the Debian 11 (Bullseye) repositories and later.
 
 ```bash
 sudo apt-get -y install podman
