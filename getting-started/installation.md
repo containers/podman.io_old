@@ -50,48 +50,11 @@ If you have problems when running Podman in  [rootless](https://github.com/conta
 #### [CentOS](https://www.centos.org)
 
 Podman is available in the default Extras repos for CentOS 7 and in
-the AppStream repo for CentOS 8 and Stream. Even though the available version often
-lags behind the latest upstream release, it's still the preferable build for
-production environments.
+the AppStream repo for CentOS 8 and Stream.
 
 ```bash
 sudo yum -y install podman
 ```
-
-The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
-provides updated packages for CentOS 8 and Stream. These packages haven't
-been through the official Red Hat QA process and may not be preferable for
-production environments.
-
-```bash
-# CentOS 8
-sudo dnf -y module disable container-tools
-sudo dnf -y install 'dnf-command(copr)'
-sudo dnf -y copr enable rhcontainerbot/container-selinux
-sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8/devel:kubic:libcontainers:stable.repo
-# OPTIONAL FOR RUNC USERS: crun will be installed by default. Install runc first if you prefer runc
-sudo dnf -y --refresh install runc
-# Install Podman
-sudo dnf -y --refresh install podman
-
-# CentOS Stream
-sudo dnf -y module disable container-tools
-sudo dnf -y install 'dnf-command(copr)'
-sudo dnf -y copr enable rhcontainerbot/container-selinux
-sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
-# OPTIONAL FOR RUNC USERS: crun will be installed by default. Install runc first if you prefer runc
-sudo dnf -y --refresh install runc
-# Install Podman
-sudo dnf -y --refresh install podman
-```
-
-NOTE:
-1. CentOS 8 Kubic repo will continue to receive updates for Podman v3.0+ for the lifetime of CentOS 8 itself.
-2. Users are recommended to switch to newer versions of CentOS to receive the most up to date versions of Podman.
-3. CentOS Stream users are highly recommended to prefer packages from the
-   default CentOS repos as they are often fairly current and are known to have
-   passed RHEL's gating tests.
-
 
 #### [Debian](https://debian.org)
 
@@ -197,36 +160,6 @@ sudo apt-get -y install podman
 ```
 
 ### Installing development versions of Podman
-
-#### [CentOS](https://www.centos.org)
-
-Podman is available in the AppStream repo for CentOS 8 and Stream, and these are also the preferred choice for use in production environments. However, the available version may be older than the upstream release.
-
-The [Kubic project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:testing)
-provides updated packages for CentOS 8 and Stream. These are not as
-well-tested as the official CentOS packages, so tread with caution.
-
-```bash
-# CentOS 8
-sudo dnf -y module disable container-tools
-sudo dnf -y install 'dnf-command(copr)'
-sudo dnf -y copr enable rhcontainerbot/container-selinux
-sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:testing.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/CentOS_8/devel:kubic:libcontainers:testing.repo
-# OPTIONAL FOR RUNC USERS: crun will be installed by default. Install runc first if you prefer runc
-sudo dnf -y --refresh install runc
-# Install Podman
-sudo dnf -y --refresh install podman
-
-# CentOS Stream
-sudo dnf -y module disable container-tools
-sudo dnf -y install 'dnf-command(copr)'
-sudo dnf -y copr enable rhcontainerbot/container-selinux
-sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:testing.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/CentOS_8_Stream/devel:kubic:libcontainers:testing.repo
-# OPTIONAL FOR RUNC USERS: crun will be installed by default. Install runc first if you prefer runc
-sudo dnf -y --refresh install runc
-# Install Podman
-sudo dnf -y --refresh install podman
-```
 
 #### [Fedora](https://getfedora.org)
 
