@@ -1,7 +1,4 @@
-# Podman Community Cabal Agenda
-
-One hour meeting on the third Thursday of every month at 10am ET to deep dive into topics on the agenda. Please add your name at the end of the topic so we know who the topic owner is.
-Meeting ID: https://meet.google.com/ieq-pxhy-jbh
+# Podman Community Cabal Meeting Notes 
 
 Attendees (22): Tom Sweeney, Nalin Dahyabhai, Paul Holzinger, Dan WAlsh, Preethi Thomas, Valentin Rothberg, Matt Heon, Pavel Sosin, Chris Evich, Ashley Cui, Anders Bjorklund, Peter Hutn, Urvashi Mohnani, Brent Baude, Erik Bernoth, Giuseppe Scrivano, Ed Santiago, Guillaume Rose, Mehul Arora, Miloslav Trmac, Scott McCarty
 

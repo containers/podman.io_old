@@ -21,13 +21,17 @@ select 11:00 a.m. for Eastern, and it should show your local time in relation to
 
 * 11:00 -> 11:05 - Welcome! 
 
-* Probable topics for next time
-    * DIY networking in rootles containers demo
-    * Understanding `podman kube play` and systemd interatction.
+* 11:05 -> 11:10 - Official Debian/Ubuntu Packages Updates - Reindhard Tartier/Lokesh Mandvedkar
+
+* 11:10 -> 11:20 - DIY Networking in rootless containers - Paul Holzinger
+
+* 11:20 -> 11:35 - Containerized DNS Analysis - Erik Bernoth
  
+* 11:35 -> 11:45 - Using Podman in an IDE - Chris Short
+
 * 11:40 -> 11:55 - Open Forum/Questions and Answers Session
 
 * 11:55 -> 12:00 - Next Meeting, Topics for Next Meeting, and Wrap up
 
-**Next Meeting: Tuesday, Sep 7, 2021, 11:00 a.m. Eastern Daylight (UTC-4)**
+**Next Meeting: Tuesday, October 5, 2021, 11:00 a.m. Eastern Daylight (UTC-4)**
 
