@@ -21,7 +21,7 @@ select 11:00 a.m. for Eastern, and it should show your local time in relation to
 
 * 11:00 -> 11:05 - Welcome! 
 
-* 11:05 -> 11:10 - Official Debian/Ubuntu Packages Updates - Reindhard Tartier/Lokesh Mandvedkar
+* 11:05 -> 11:10 - Official Debian/Ubuntu Packages Updates - Reinhard Tartler/Lokesh Mandvekar
 
 * 11:10 -> 11:20 - DIY Networking in rootless containers - Paul Holzinger
 
