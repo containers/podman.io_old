@@ -11,7 +11,7 @@ tags: containers, podman, networking, pod, api, kubernetes, kube, v2, hpc, windo
 {% assign author = site.authors[page.author] %}
 ## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }})
 
-The Podman team values the local development experience, and we think containers are a crucial part of that. We’ve been brainstorming, discussing, and testing solutions to bring a great Podman experience to Mac and Window. We are constantly looking for ways to improve it. In particular, the latest release of Podman has support for Intel Macs. We have been hearing good feedback for a few weeks now, but up until this point, we haven’t published a lot of documentation.
+The Podman team values the local development experience, and we think containers are a crucial part of that. We’ve been brainstorming, discussing, and testing solutions to bring a great Podman experience to Mac and Windows. We are constantly looking for ways to improve it. In particular, the latest release of Podman has support for Intel Macs. We have been hearing good feedback for a few weeks now, but up until this point, we haven’t published a lot of documentation.
 
 <!--readmore-->
 
