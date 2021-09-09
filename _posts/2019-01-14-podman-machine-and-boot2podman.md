@@ -3,13 +3,24 @@ title: Podman Machine and Boot2podman
 layout: default
 author: afbjorklund
 categories: [blogs]
-tags: boot2podman
+tags: boot2podman, podman+machine
 ---
 ![boot2podman logo](https://raw.githubusercontent.com/boot2podman/boot2podman/master/logo.png)
 
 {% assign author = site.authors[page.author] %}
 #  Podman Machine and Boot2podman
 ## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }})
+
+### Update: September 9, 2021 - Tom Sweeney
+This post initially discussed the boot2podman/machine project, which Anders has since deprecated.  Starting with Podman v3.3, the `podman machine` command now does that same function and is part of the Podman project.  Please see Brent Baude's [update](https://podman.io/blogs/2021/09/06/podman-on-macs.html) or the [podman machine](https://docs.podman.io/en/latest/machine.html) man page on [docs.podman.io](https://docs.podman.io/) for more information on how to run Podman machine.  The `podman-machine` command has been deprecated.
+
+In addition, the Podman team is investigating the possibility of creating `Podman Desktop`. Please see the issue on [GitHub](https://github.com/containers/podman/issues/11494), and please add your comments or thoughts to that issue.
+
+More updates are coming, and please keep your eye on the [Podman Mailing List](https://podman.io/community/#mailing-list) and [podman.io](https://podman.io) for further information and developments.
+
+Finally, a very big thank you to Anders for his many contributions to Podman, particularly for his work in getting Podman to work smoothly on macOS.
+
+## Original Post
 
 By using `podman-machine` and indirectly `boot2podman`, it is easy to get started with podman even if your local host does not support it...
 
@@ -106,3 +117,4 @@ The Podman Machine can set up virtual machines for either, by using the "url" pa
 ---
 
 For more posts about boot2podman, see: [https://boot2podman.github.io/](https://boot2podman.github.io/)
+
