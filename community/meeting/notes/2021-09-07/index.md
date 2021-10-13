@@ -76,7 +76,7 @@ He then showed the website on his Mac that he had run via Podman.
 Jhon Honce noted that we have people using the Docker plugin in VSCode to use Podman.  It would be nice to get a Podman plugin at some point for VSCode.
 
 ## Open Forum/Questions?
-#### (32:52) in the video) 33
+#### (32:52 in the video)
 
 Dan is trying to get Docker Security Bench translated into Podman Security Bench.  A long-term project and community involvement would be great.
 
