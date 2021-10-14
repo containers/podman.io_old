@@ -36,14 +36,14 @@ Two things will likely catch you off-guard:
 Due to the way image-name references are internally processed, you should
 **not** use the usual `podman push` and `podman rmi` subcommands.
 **THEY WILL NOT DO WHAT YOU EXPECT!**  Instead, you'll want to use
-[`podman manifest push --all`](https://docs.podman.io/en/latest/markdown/podman-manifest-push.1.html) and
-[`podman manifest rm`](https://docs.podman.io/en/latest/markdown/podman-manifest-rm.1.html)
+[`podman manifest push --all <src> <dest>`](https://docs.podman.io/en/latest/markdown/podman-manifest-push.1.html) and
+[`podman manifest rm <name>`](https://docs.podman.io/en/latest/markdown/podman-manifest-rm.1.html)
 (similarly for `buildah`).  These will push/remove the manifest list
 itself instead of the contents.
 
 Great, so manifest lists sound awesome; I can pull, tag, and run them.
 I can delete them with `podman manifest rm`, push with
-`podman manifest push --all`, but how can I create them?
+`podman manifest push --all <src> <dest>`, but how can I create them?
 
 ## Easy Mode
 
@@ -100,19 +100,22 @@ way doesn't require pulling down all the data, so it's quite fast.
 Lastly and as mentioned at the beginning, pushing and removing manifest
 lists is special.  You **must** use `manifest push` or `manifest rm` sub-commands.
 Otherwise, Podman will act on the contents rather than the manifest list
-itself.  A somewhat contrived example might be:
+itself.  Then for push, you must specify both the source and destination.
+A somewhat contrived example might be:
 
 ```bash
 $ podman tag localhost/shazam quay.io/example/shazam
 $ podman manifest rm localhost/shazam
-$ podman manifest push --all quay.io/example/shazam
+$ podman manifest push --all quay.io/example/shazam docker://quay.io/example/shazam
 ```
 
-In case you're wondering, the `--all` argument is required.  This
-tells Podman to push the manifest list AND the contents, which is nearly
-always what you want to do. If you don’t use the `--all` option, only
-the native architecture will be sent without any warning or other
-indications.
+If you don't specify both the source and push destination, you'll
+get an error message.  In case you're wondering, the `--all` argument is
+required.  This tells Podman to push the manifest list AND the contents,
+which is nearly always what you want to do. If you don’t use the `--all`
+option, only the native architecture will be sent without any warning or
+other indications.
+
 
 ## Cheat Mode
 
@@ -153,7 +156,7 @@ $ podman manifest create $REPO:latest
 $ for IMGTAG in amd64 s390x ppc64le arm64; do \
           podman manifest add $REPO:latest docker://$REPO:IMGTAG; \
       done
-$ podman manifest push --all $REPO:latest
+$ podman manifest push --all $REPO:latest docker://$REPO:latest
 ```
 
 *Note:* For the
