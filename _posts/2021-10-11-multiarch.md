@@ -28,10 +28,12 @@ images.  Otherwise, manifest lists mostly look and feel like regular container
 images.  You can pull, tag, and run them as you'd expect, with only a few
 exceptions.
 
-Two things will likely catch you off-guard:
+Two and a half things will likely catch you off-guard:
 
 * Pushing manifest lists to registries
 * Removing manifest lists from local storage.
+* The `podman tag` command is broken for manifest lists in `v3.4`, but
+  works in Buildah `v1.23.1`.
 
 Due to the way image-name references are internally processed, you should
 **not** use the usual `podman push` and `podman rmi` subcommands.
@@ -39,11 +41,13 @@ Due to the way image-name references are internally processed, you should
 [`podman manifest push --all <src> <dest>`](https://docs.podman.io/en/latest/markdown/podman-manifest-push.1.html) and
 [`podman manifest rm <name>`](https://docs.podman.io/en/latest/markdown/podman-manifest-rm.1.html)
 (similarly for `buildah`).  These will push/remove the manifest list
-itself instead of the contents.
+itself instead of the contents.  Similarly for tagging if you're on Podman `v3.4`,
+use the `buildah tag` command instead.
 
-Great, so manifest lists sound awesome; I can pull, tag, and run them.
+Great, so manifest lists sound awesome; I can pull, and run them.
 I can delete them with `podman manifest rm`, push with
-`podman manifest push --all <src> <dest>`, but how can I create them?
+`podman manifest push --all <src> <dest>`, and `tag` with Buildah,
+but how can I create them?
 
 ## Easy Mode
 
@@ -104,7 +108,7 @@ itself.  Then for push, you must specify both the source and destination.
 A somewhat contrived example might be:
 
 ```bash
-$ podman tag localhost/shazam quay.io/example/shazam
+$ buildah tag localhost/shazam quay.io/example/shazam
 $ podman manifest rm localhost/shazam
 $ podman manifest push --all quay.io/example/shazam docker://quay.io/example/shazam
 ```
@@ -115,7 +119,6 @@ required.  This tells Podman to push the manifest list AND the contents,
 which is nearly always what you want to do. If you don’t use the `--all`
 option, only the native architecture will be sent without any warning or
 other indications.
-
 
 ## Cheat Mode
 
