@@ -1,5 +1,5 @@
 ---
-title: Podman Alpha version 0.6.4 Release Announcement
+title: Podman Alpha version 0.6.4 Release Announcement.
 layout: default
 author: bbaude
 categories: [releases]
