@@ -8,7 +8,7 @@ tags: community, open source, podman
 
 <img src="https://podman.io/images/podman.svg" alt="podman logo">
 
-# Podman release 0.6.4.
+# Podman release 0.6.4
 This afternoon we were able to overcome some last minute bugs and release a new Podman. The packages are building in Fedora and will work their way through Fedora’s bodhi system. For giggles, I looked at the number of individual contributors this week and was glad to see the number at 10.
 
 Mainly bugfixes this week, one big one was that we do a better job cleaning up containers that run in the back ground.
