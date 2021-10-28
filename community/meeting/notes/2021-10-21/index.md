@@ -78,7 +78,7 @@ Signing might not be required for docs.  Brent thought there was a way to avoid 
   
 2) Would like to add a ZFS driver without having to rebuild Podman.  Something that is pluggable.  Docker has something like this now.  
  
-### Next Meeting: Thursday November 18, 2021 10:00 a.m. EDT (UTC-5)
+### Next Meeting: Thursday November 18, 2021 11:00 a.m. EDT (UTC-5)
 
 ### Possible Topics:
 1. Podman.io redesign - Mairin
