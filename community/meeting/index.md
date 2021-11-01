@@ -42,7 +42,7 @@ and there is no charge to attend.
 While the meeting is ongoing, the meeting notes will be compiled using [HackMD](https://hackmd.io) on this [page](https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w)
 and later saved to this site with a link added [below](https://podman.io/community/meeting/#notes-from-the-community-meetings).
 
-The agenda for the upcoming meeting will be sent at least two weeks prior to the [podman@lists.podman.io](mailto:podman@lists.podman.io) email list and it will 
+The agenda for the upcoming meeting will be sent prior to the [podman@lists.podman.io](mailto:podman@lists.podman.io) email list and it will 
 be posted [below](https://podman.io/community/meeting/#next-podman-community-meeting-agenda)
 
 Click [here](https://calendar.google.com/event?action=TEMPLATE&tmeid=NzM4aTkwY2syZ2F2dnIyN2M1dmh0NmQ0NmpfMjAyMTA4MDNUMTUwMDAwWiB0c3dlZW5leUByZWRoYXQuY29t&tmsrc=tsweeney%40redhat.com&scp=ALL) for a calendar event from Google Calendar.
