@@ -23,7 +23,7 @@ The Agenda is [here](https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both).
 
 ### Notes from the Community Cabal Meetings
 
- * [Thursday October 21, 2021](https://podman.io/community/meeting/notes/2021-21-16)
+ * [Thursday October 21, 2021](https://podman.io/community/meeting/notes/2021-10-21)
  * [Thursday September 16, 2021](https://podman.io/community/meeting/notes/2021-09-16)
  * [Thursday August 19, 2021](https://podman.io/community/meeting/notes/2021-08-19)
  * [Thursday July 15, 2021](https://podman.io/community/meeting/notes/2021-07-15)
