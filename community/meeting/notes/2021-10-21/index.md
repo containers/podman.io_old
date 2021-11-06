@@ -1,4 +1,4 @@
-# Podman Community Cabal Agenda
+# Podman Community Cabal Notes 
 
 Attendees: Tom Sweeney, Matt Heon, Brent Baude, Ashley Cui, Alex Larsson, Preethi Thomas, Urvashi Mohnani, Marcin Skarbek, Eduardo Santiago, Giuseppe Scrivano, Nalin Dahyabhai, Paul Holzinger, Anders Björklund, Dan Mack, Dan Walsh, Holger Gantikow, Leon N, Marcin Skarbek, Mehul Arora, Max, Paul Holzinger.
 
