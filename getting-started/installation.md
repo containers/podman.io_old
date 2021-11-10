@@ -520,7 +520,7 @@ unqualified-search-registries = ["registry.fedoraproject.org", "registry.access.
 # #   location = "internal-registry-for-example.net/bar"
 # # requests for the image example.com/foo/myimage:latest will actually work with the
 # # internal-registry-for-example.net/bar/myimage:latest image.
-# location = internal-registry-for-example.com/bar"
+# location = "internal-registry-for-example.com/bar"
 #
 # # (Possibly-partial) mirrors for the "prefix"-rooted namespace.
 # #
