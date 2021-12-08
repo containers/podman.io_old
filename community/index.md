@@ -17,7 +17,7 @@ Click [here](./irc.md) for more information on the #podman IRC channel.
 
 ## Community Meetings
 
-Community meetings are held on the first Tuesday of the month, generally at 11:00 a.m. Eastern time.  This meeting is used to show demos for or to have general discussions about Podman or other related container technologies.  It is also used to make announcements about Podman and the other projects in the [Containers repository](https://github.com/containers/) on GitHub.
+Community meetings are held on the first Tuesday of even numbered months, generally at 11:00 a.m. Eastern time.  This meeting is used to show demos for or to have general discussions about Podman or other related container technologies.  It is also used to make announcements about Podman and the other projects in the [Containers repository](https://github.com/containers/) on GitHub.
 
 Podman Community Cabal meetings are held on the third Thursday of the month at 11:00 a.m. Eastern time.  The focus of the cabal meeting is the planning and discussion of possible future changes to Podman or the related Containers projects and discussing any outstanding issues that might need solving.
 
