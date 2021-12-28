@@ -71,6 +71,9 @@ the AppStream repo for CentOS 8 and Stream.
 sudo yum -y install podman
 ```
 
+*Newer versions of Podman may be available in the [Kubic
+Project](#newer-packages-via-the-kubic-project).*
+
 #### [Debian](https://debian.org)
 
 The podman package is available in the Debian 11 (Bullseye) repositories and later.
@@ -79,11 +82,17 @@ The podman package is available in the Debian 11 (Bullseye) repositories and lat
 sudo apt-get -y install podman
 ```
 
+*Newer versions of Podman may be available in the [Kubic
+Project](#newer-packages-via-the-kubic-project).*
+
 #### [Fedora](https://getfedora.org)
 
 ```bash
 sudo dnf -y install podman
 ```
+
+*Newer versions of Podman may be available in the [Kubic
+Project](#newer-packages-via-the-kubic-project).*
 
 #### [Fedora-CoreOS](https://coreos.fedoraproject.org), [Fedora SilverBlue](https://silverblue.fedoraproject.org)
 
@@ -153,26 +162,32 @@ sudo apt-get -y update
 sudo apt-get -y install podman
 ```
 
-If you would prefer newer (though not as well-tested) packages,
-the [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman)
-provides packages for active Ubuntu releases 20.04 and newer (it should also work with direct derivatives like Pop!\_OS).
-Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman)
-for a list of supported Ubuntu version and
-architecture combinations. **NOTE:** The command `sudo apt-get -y upgrade`
-maybe required in some cases if Podman cannot be installed without it.
-The build sources for the Kubic packages can be found [here](https://gitlab.com/rhcontainerbot/podman/-/tree/debian/debian).
+*Newer versions of Podman may be available in the [Kubic
+Project](#newer-packages-via-the-kubic-project).*
 
-CAUTION: On Ubuntu 20.10 and newer, we highly recommend you use Buildah, Podman and Skopeo ONLY from EITHER the Kubic repo
-OR the official Ubuntu repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
+#### Newer Packages via the Kubic Project
 
-```bash
-. /etc/os-release
-echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
-sudo apt-get update
-sudo apt-get -y upgrade
-sudo apt-get -y install podman
-```
+If you would prefer newer (though not as well-tested) packages, the [Kubic
+project](https://build.opensuse.org/project/show/devel:kubic:libcontainers:stable)
+provides packages for Debian, Ubuntu, CentOS 8 Stream and Fedora. These
+packages *may* also be functional on direct derivatives such as Pop!\_OS.
+
+See the [install
+instructions](https://software.opensuse.org//download.html?project=devel%3Akubic%3Alibcontainers%3Astable&package=podman)
+for your OS, or visit [the Kubic Project
+page](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman)
+for more information on supported operating systems.
+
+**CAUTION**: We highly recommend you install Buildah, Podman and Skopeo only
+from either the Kubic repo *OR* the official repos. Mixing and matching
+components may lead to unpredictable situations including installation
+conflicts.
+
+**NOTE:** The command `sudo apt-get -y upgrade` or equivalent maybe required in
+some cases if Podman cannot be installed without it.
+
+The build sources for the Kubic packages can be found
+[here](https://gitlab.com/rhcontainerbot/podman/-/tree/debian/debian).
 
 ### Installing development versions of Podman
 
