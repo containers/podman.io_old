@@ -438,7 +438,7 @@ To build the binaries by locally installing the nix package manager:
 ``` shell
 curl -L https://nixos.org/nix/install | sh
 git clone https://github.com/containers/podman.git && cd podman
-nix build -f nix/
+nix --experimental-features nix-command build -f nix/
 ./result/bin/podman --version
 ```
 
