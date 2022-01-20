@@ -133,7 +133,7 @@ sudo yum -y install podman
 
 #### [RHEL8](https://developers.redhat.com/rhel8)
 
-Podman is included in the `container-tools` module, along with Buildah and Skopeo. 
+Podman is included in the `container-tools` module, along with Buildah and Skopeo.
 
 ```bash
 sudo yum module enable -y container-tools:rhel8
@@ -318,7 +318,8 @@ This will mainly affect Debian, Ubuntu, and related distributions, or RHEL where
 
 #### golang
 
-Be careful to double-check that the version of golang is new enough (i.e. `go version`), version 1.12.x or higher is supported.
+Be careful to double-check that the version of golang is new enough (i.e. `go version`), as of January 2022 version 1.16.x or higher is required.
+The current minimum required version can always be found in the [go.mod](https://github.com/containers/podman/blob/main/go.mod) file.
 If needed, golang kits are available at https://golang.org/dl/. Alternatively, go can be built from source as follows
 (it's helpful to leave the system-go installed, to avoid having to [bootstrap go](https://golang.org/doc/install/source):
 
@@ -326,7 +327,6 @@ If needed, golang kits are available at https://golang.org/dl/. Alternatively, g
 export GOPATH=~/go
 git clone https://go.googlesource.com/go $GOPATH
 cd $GOPATH
-git checkout tags/go1.12.17  # optional
 cd src
 ./all.bash
 export PATH=$GOPATH/bin:$PATH
