@@ -30,9 +30,9 @@ Have to make sure the volume provided is not outside of the home dir.
 We need to chase this down further, and the thought is to support mounting from homedir only.
 
 
-Some previous discussions in https://github.com/containers/podman/issues/8016
+Some previous discussions in [https://github.com/containers/podman/issues/8016](https://github.com/containers/podman/issues/8016)
 
-The virtfs implementation was in https://github.com/containers/podman/pull/11454
+The virtfs implementation was in [https://github.com/containers/podman/pull/11454](https://github.com/containers/podman/pull/11454)
 
 
 ###  New Network Rollout (13:01 in video) - Paul/Matt
@@ -61,7 +61,7 @@ Database changes and network changes.  A number of API changes that will break t
 
 THe API has been migrated.  The more interesting things is doing things on a Mac.  Podman v3.0 will not work with Podman v4.0 and vice versa.  Podman v4.0 is sloted for Fedora 36, due in May (Dan thinks).  We don't have forward/backward compatibility.
 
-RHCOS will have Fedora 35, but with Podman v4.0 not included We are working with the RHCOS team to smooth this out.  
+RHCOS will have Fedora 35, but with Podman v4.0 not included. We are working with the RHCOS team to smooth this out.  
 
 There have been 459 commits into Podman v4.0, about twice as many as Podman v3.4.  Lots of changes, we'd love to get people trying it earlier before final release.
 
