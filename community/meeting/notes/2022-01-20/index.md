@@ -11,7 +11,7 @@ Attendees: Tom Sweeney, Aditya Rajan, Matt Heon, Brent Baude, Ashley Cui, Chris 
 ### Meeting Notes
 Video [Recording](https://www.youtube.com/watch?v=bwhDnwYyiJY&t=2729s)
 
-Meeting start 11: a.m. Thursday January 20, 2022
+Meeting start 11:02 a.m. Thursday January 20, 2022
 
 ### Volume Storage on a Mac (1:15 in video) - Brent/Ashley
 
