@@ -21,9 +21,15 @@ select 11:00 a.m. for Eastern, and it should show your local time in relation to
 
 * 11:00 -> 11:05 - Welcome! 
 
-* 11:05 -> 11:40 - TBD
+* 11:05 -> 11:15 - Windows/WSL Podman Machine Demo - Jason Greene
 
-* 11:40 -> 11:55 - Open Forum/Questions and Answers Session
+* 11:15 -> 11:30 - Podman Desktop Companion Demo - Ionut Stoica
+
+* 11:30 -> 11:40 - Podman sparsefile handling - Giuseppe Scrivano
+
+* 11:40 -> 11:50 - Podman v4.0 Network Update - Matt Heon
+
+* 11:50 -> 11:55 - Open Forum/Questions and Answers Session
 
 * 11:55 -> 12:00 - Next Meeting, Topics for Next Meeting, and Wrap up
 
