@@ -22,7 +22,7 @@ Podman 4.0 will implement a new network stack instead of CNI plugins.  There are
 
 If you have run Podman 3.x before upgrading to Podman 4, Podman will continue to use CNI plugins as it had before.  There is a marker in Podman's local storage that indicates this.  In order to begin using Podman 4, you need to destroy that marker with podman system reset.  This will destroy the marker, all of the images, all of the networks, and all of the containers.
 
-##Setting up Podman 4 with netavark and aardvark-dns on Fedora
+## Setting up Podman 4 with netavark and aardvark-dns on Fedora
 
 If this is an upgrade to a current Podman install, destroy all current images, containers, and defined networks.
 >$  podman system reset –force
