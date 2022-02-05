@@ -25,7 +25,7 @@ If you have run Podman 3.x before upgrading to Podman 4, Podman will continue to
 ## Setting up Podman 4 with netavark and aardvark-dns on Fedora
 
 If this is an upgrade to a current Podman install, destroy all current images, containers, and defined networks.
->$  podman system reset –force
+>$  podman system reset --force
 
 Ensure you have the DNF copr extension.
 >$ sudo dnf install 'dnf-command(copr)'
