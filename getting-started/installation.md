@@ -46,7 +46,7 @@ file.  Podman can also be run in the Windows Subsystem for Linux system, check
 out the link below to see a description of how this is done.
 
 #### Remote Client
-  * [Latest remote client for Windows](https://github.com/containers/podman/releases/latest/download/podman-remote-release-windows.zip)
+  * [Latest remote client for Windows](https://github.com/containers/podman/releases/latest/download/podman-remote-release-windows_amd64.zip).
 
 #### Windows Subsystem for Linux (WSL) 2.0
   * [How to run Podman on Windows with WSL2](https://www.redhat.com/sysadmin/podman-windows-wsl2)
