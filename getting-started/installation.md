@@ -153,27 +153,6 @@ sudo apt-get -y update
 sudo apt-get -y install podman
 ```
 
-If you would prefer newer (though not as well-tested) packages,
-the [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman)
-provides packages for active Ubuntu releases 20.04 and newer (it should also work with direct derivatives like Pop!\_OS).
-Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:kubic:libcontainers:stable/podman)
-for a list of supported Ubuntu version and
-architecture combinations. **NOTE:** The command `sudo apt-get -y upgrade`
-maybe required in some cases if Podman cannot be installed without it.
-The build sources for the Kubic packages can be found [here](https://gitlab.com/rhcontainerbot/podman/-/tree/debian/debian).
-
-CAUTION: On Ubuntu 20.10 and newer, we highly recommend you use Buildah, Podman and Skopeo ONLY from EITHER the Kubic repo
-OR the official Ubuntu repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
-
-```bash
-. /etc/os-release
-echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
-sudo apt-get update
-sudo apt-get -y upgrade
-sudo apt-get -y install podman
-```
-
 ### Linuxmint 20.x
 
 ```bash
@@ -199,25 +178,6 @@ If you use a newer Podman package from Fedora's `updates-testing`, we would
 appreciate your `+1` feedback in [Bodhi, Fedora's update management
 system](https://bodhi.fedoraproject.org/updates/?packages=podman).
 
-
-#### Ubuntu
-
-The Kubic project provides RC/testing packages for Ubuntu 20.04 and 20.10.
-Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:kubic:libcontainers:testing/podman)
-for a list of supported Ubuntu version and
-architecture combinations. **NOTE:** The `sudo apt-get -y upgrade`
-maybe required in some cases if Podman cannot be installed without it.
-
-NOTE: On Ubuntu 20.10 and newer, we highly recommend you use Buildah, Podman and Skopeo ONLY from EITHER the Kubic repo
-OR the official Ubuntu repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
-
-```bash
-. /etc/os-release
-echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
-sudo apt-get update -qq
-sudo apt-get -qq -y install podman
-```
 
 ## Building from scratch
 
