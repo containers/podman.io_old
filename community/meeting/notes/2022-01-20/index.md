@@ -1,4 +1,4 @@
-# Podman Community Cabal Agenda
+# Podman Community Cabal Meeting Notes 
 
 Attendees: Tom Sweeney, Aditya Rajan, Matt Heon, Brent Baude, Ashley Cui, Chris Evich, Christian Felder, Urvashi Mohnani, Eduardo Santiago, Giuseppe Scrivano, Nalin Dahyabhai, Paul Holzinger, Anders Björklund, Dan Walsh, Valentin Rothberg, Jhon Honce, Chris Evich, Miloslav Trmac, Reinhard Tarter, Eric Van Norman, Castedo Ellerman, Charlie Doern, Urvashi Mohnani, Lokesh Mandvekar, Navid Yaghoobi, Marcin Skarbek
 
