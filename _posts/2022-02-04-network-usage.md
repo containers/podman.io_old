@@ -36,5 +36,7 @@ Add the podman4 test COPR to your system
 If you have never installed Podman, replace `upgrade` with `install` in the following command.
 > $ sudo dnf upgrade podman
 
-If you find bugs, please report them to our [github issues page](https://github.com/containers/podman/issues).
+If Podman was upgraded, you may have to install netavark explicitly. Otherwise, the Podman package will continue to use  CNI.
+> $ sudo dnf install netavark aardvark-dns
 
+If you find bugs, please report them to our [github issues page](https://github.com/containers/podman/issues).
