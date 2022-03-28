@@ -392,26 +392,6 @@ Note that Podman does not officially support device-mapper. Thus, the `exclude_g
 
 This project is using [go modules](https://github.com/golang/go/wiki/Modules) for dependency management.  If the CI is complaining about a pull request leaving behind an unclean state, it is very likely right about it.  After changing dependencies, make sure to run `make vendor` to synchronize the code with the go module and repopulate the `./vendor` directory.
 
-### Static build
-
-It is possible to build a statically linked binary of Podman by using
-the officially provided
-[nix](https://nixos.org/nixos/packages.html?attr=podman-unwrapped&channel=nixpkgs-unstable&query=podman)
-package and the derivation of it [within this repository](nix/). The
-builds are completely reproducible and will create a x86\_64/amd64
-stripped ELF binary for [glibc](https://www.gnu.org/software/libc).
-
-#### Nix
-
-To build the binaries by locally installing the nix package manager:
-
-``` shell
-curl -L https://nixos.org/nix/install | sh
-git clone https://github.com/containers/podman.git && cd podman
-nix --experimental-features nix-command build -f nix/
-./result/bin/podman --version
-```
-
 #### Ansible
 
 An [Ansible Role](https://github.com/alvistack/ansible-role-podman) is
