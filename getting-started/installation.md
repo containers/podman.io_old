@@ -153,6 +153,10 @@ sudo apt-get -y update
 sudo apt-get -y install podman
 ```
 
+NOTE: Kubic packages have been discontinued for Ubuntu 22.04 LTS.
+Current users of the Kubic repos for Ubuntu are highly recommended to uninstall
+the packages from the Kubic repos before upgrading to Ubuntu 22.04 LTS.
+
 ### Linuxmint 20.x
 
 ```bash
