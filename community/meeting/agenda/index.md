@@ -6,7 +6,7 @@ title: Podman Community Meeting Agenda
 ![Podman logo](../../../images/podman.svg)
 
 # {{ page.title }}
-## April 5, 2022 11:00 a.m. Eastern Standard (UTC-4)
+## April 5, 2022 11:00 a.m. Eastern Standard (UTC-5)
 
 Try out [WorldTimeBuddy](https://www.worldtimebuddy.com/?pl=1&lid=5,0&h=5&date=4/5/2022%7C3&hf=1), add your location in the top left corner of the table,
 select 11:00 a.m. for Eastern, and it should show your local time in relation to Eastern.
@@ -21,9 +21,13 @@ select 11:00 a.m. for Eastern, and it should show your local time in relation to
 
 * 11:00 -> 11:05 - Welcome! 
 
-* 11:05 -> 11:15 - Sparsefile handling with Podman - Giuseppe Scrivano
+* 11:05 -> 11:15 - Docker Compose v2 and Podman v4.0.2 update - Matt Heon
 
-* 11:15 -> 11:40 - TBD
+* 11:15 -> 11:20 - Ubuntu 22.04 LTS and Stopping Kubic support - Lokesh Mandvekar
+
+* 11:20 -> 11:30 - Podman Volume Mounts on Mac Demo - Brent Baude
+
+* 11:30 -> 11:40 - Podman Desktop Update - Ashley Cui
 
 * 11:40 -> 11:55 - Open Forum/Questions and Answers Session
 
