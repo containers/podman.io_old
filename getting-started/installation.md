@@ -85,6 +85,24 @@ sudo apt-get -y install podman
 sudo dnf -y install podman
 ```
 
+**Podman v4** will [not be
+shipped](https://podman.io/blogs/2022/03/06/why_no_podman4_f35.html) officially on Fedora 35.
+However, you can still fetch Podman v4 through our [COPR
+repo](https://copr.fedorainfracloud.org/coprs/rhcontainerbot/podman4/).
+
+```bash
+sudo dnf -y copr enable rhcontainerbot/podman4
+sudo dnf -y install podman
+```
+
+This COPR repo should not cause any issues while upgrading from Fedora 35 to
+Fedora 36. You can simply disable and delete the COPR repo before starting or after completing the upgrade.
+
+```bash
+sudo dnf -y copr disable rhcontainerbot/podman4
+sudo rm /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:rhcontainerbot:podman4.repo
+```
+
 #### [Fedora-CoreOS](https://coreos.fedoraproject.org), [Fedora SilverBlue](https://silverblue.fedoraproject.org)
 
 Built-in, no need to install
