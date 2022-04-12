@@ -13,7 +13,7 @@ tags: containers, podman, buildah, skopeo, ubuntu, kubic
 
 [Ubuntu 22.04 LTS Beta](https://releases.ubuntu.com/jammy/) is available for testing as of March 31st.
 This is the first LTS release with [Podman](https://packages.ubuntu.com/jammy/podman),
-[Buildah](https://packages.ubuntu.com/jammy/buildah) and [Skopeo](https://packages.ubuntu.com/jammy/buildah) in
+[Buildah](https://packages.ubuntu.com/jammy/buildah) and [Skopeo](https://packages.ubuntu.com/jammy/skopeo) in
 the default repos, thanks to the amazing work of Reinhard Tartler and team.
 
 The package versions available currently are: Podman 3.4, Buildah 1.23 and Skopeo 1.4.
