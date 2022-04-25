@@ -30,7 +30,7 @@ Furthermore, the results of each call will differ.  The compatibility result wil
 
 Our preference is that people writing new code to interact with Podman should use the libpod layer only.  This is a more sound long term strategy.  But for people that need to migrate to Podman, the compatibility layer allows for a quick on-boarding.  There are of course Docker endpoints we cannot or choose not to emulate due to incompatibities between Docker and Podman. Nevertheless, we have already seen some field success in migration of applications.
 
-In keeping with Podman’s history the restful API will work in both rootless and rootfull mode.  If you run in rootfull mode, the podman service will listen on `/run/podman/podman.sock` and rootless is `$XDG_RUNTIME_DIR/podman/podman.sock` (for example: `/run/user/1000/podman/podman.sock`).  If you install the podman-docker package, the package will set up a link between `run/docker/docker.sock` and `/run/podman/podman.sock`.
+In keeping with Podman’s history the restful API will work in both rootless and rootful mode.  If you run in rootful mode, the podman service will listen on `/run/podman/podman.sock` and rootless is `$XDG_RUNTIME_DIR/podman/podman.sock` (for example: `/run/user/1000/podman/podman.sock`).  If you install the podman-docker package, the package will set up a link between `run/docker/docker.sock` and `/run/podman/podman.sock`.
 
 ## Remote clients
 One of the consequences of our re-plumbing work is that our remote clients for Windows, Mac, and Linux are significantly smaller in size.  The interface for the remote client connection has also changed to more of a URI format.  As a matter of process, we attach a binary version of the remote clients to each release.

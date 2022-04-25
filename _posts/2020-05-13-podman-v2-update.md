@@ -15,7 +15,7 @@ A few weeks ago, we made an announcement about the development of Podman V2.  In
 
 Today, we are very excited to announce:
 
-**The local Podman v2 client is complete.  It is passing all of its rootfull and rootless system and integration tests.**
+**The local Podman v2 client is complete.  It is passing all of its rootful and rootless system and integration tests.**
 
 The CI/CID tests have been re-enabled upstream and are run with each pull request submission.  We are now hard at work finishing up some of the core podman-remote functions.  Once those functions are complete, we can then begin to run our podman-remote system and integration tests to catch any regressions.
 
