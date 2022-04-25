@@ -5,7 +5,7 @@ title: Podman Network
 
 # Networking
 
-In Podman, you will see differences in networking between rootless and rootfull
+In Podman, you will see differences in networking between rootless and rootful
 containers. This guide will help to understand how networking can be used in
 Podman.
 
@@ -95,9 +95,9 @@ $ podman run -it --rm  --net slirp4netns:allow_host_loopback=true bash
 **Note**: This is set to false by default for security. 
 
 
-## Rootfull Networking
+## Rootful Networking
 
-This section describes how networking can be used in rootfull containers.
+This section describes how networking can be used in rootful containers.
 
 Podman provides a bridged network by default.
 ```console
@@ -123,7 +123,7 @@ $ sudo podman run -dt -p 80:80/tcp docker.io/library/httpd
 
 ### Container <-> Host Communication
 
-Rootfull containers are reachable via their published ports.
+Rootful containers are reachable via their published ports.
 
 You can check which ports are published:
 
@@ -140,7 +140,7 @@ $ curl localhost
 
 ### Container <-> Container Communication
 
-Rootfull containers can communicate via their IP Address in the same network.
+Rootful containers can communicate via their IP Address in the same network.
 
 ```console
 $ sudo podman inspect <container_id> | grep IPAddress
