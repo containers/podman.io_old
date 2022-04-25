@@ -8,7 +8,7 @@ title: Community Meetings
 # {{ page.title }}
 
 ## Podman Community Cabal meeting
-### Next Meeting: Thursday April 21, 2022 11:00 a.m. EDT (UTC-4)
+### Next Meeting: Thursday May 16, 2022 11:00 a.m. EDT (UTC-5)
 
 The Podman Community Cabal meetings will happen on the third Thursday of each month, starting at 11:00 a.m. Eastern.
 The "Cabal" meeting is used to discuss any design question, issue, or other related topics with the maintainers of
@@ -18,11 +18,12 @@ There is no charge to attend this meeting.
 If you have a topic that you know about in advance for an upcoming Cabal meeting, please send a note to the
 [Podman Mailing List](https://podman.io/community/#mailing-list) or add a topic to the [discussion](https://github.com/containers/podman/discussions/10670) on GitHub.
 
-Video Conference for the Meeting is [here](https://github.com/containers/podman/discussions/10670).
+Video Conference for the Meeting is [here](https://meet.google.com/ieq-pxhy-jbh).
 The Agenda is [here](https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both).
 
 ### Notes from the Community Cabal Meetings
 
+ * [Thursday April 21, 2022](https://podman.io/community/meeting/notes/2022-04-21)
  * [Thursday March 17, 2022](https://podman.io/community/meeting/notes/2022-03-17)
  * [Thursday February 17, 2022](https://podman.io/community/meeting/notes/2022-02-17)
  * [Thursday January 20, 2022](https://podman.io/community/meeting/notes/2022-01-20)
