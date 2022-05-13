@@ -140,6 +140,9 @@ $ podman inspect -l | grep IPAddress
 also use the container's ID or name instead of `-l` or the long argument
 `--latest`.
 
+**Note**: If you are running remote Podman client, including Mac and Windows 
+(excluding WSL2) machines, `-l` option is not available.
+
 ### Viewing the container's logs
 
 You can view the container's logs with Podman as well:
