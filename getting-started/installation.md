@@ -37,19 +37,12 @@ podman info
 More advanced information can be found [here](https://github.com/containers/podman/blob/main/docs/tutorials/mac_experimental.md).
 
 ### Windows
+While "containers are Linux," Podman also runs on Mac and Windows, where it provides a native CLI and embeds
+a guest Linux system to launch your containers. This guest is referred to as a Podman machine and is managed
+with the podman machine command. On Windows, each Podman machine is backed by a virtualized Windows System for 
+Linux (WSLv2) distribution.
 
-Podman is a tool for running Linux containers.  You can do this from a Windows
-desktop as long as you have access to a linux box either running inside of a
-VM on the host, or available via the network.  You need to install the remote
-client and then setup ssh connection information in the podman-remote.conf
-file.  Podman can also be run in the Windows Subsystem for Linux system, check
-out the link below to see a description of how this is done.
-
-#### Remote Client
-  * [Latest remote client for Windows](https://github.com/containers/podman/releases/download/v4.1.0/podman-remote-release-windows_amd64.zip).
-
-#### Windows Subsystem for Linux (WSL) 2.0
-  * [How to run Podman on Windows with WSL2](https://www.redhat.com/sysadmin/podman-windows-wsl2)
+To get started, refer our [setup instructions](https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md).
 
 ### Linux Distributions
 
