@@ -5,23 +5,30 @@ title: Podman Installation
 
 # Podman Installation Instructions
 
-## Installing packaged versions of Podman
+## Installing on Mac & Windows 
+
+While "containers are Linux," Podman also runs on Mac and Windows, where it
+provides a native podman CLI and embeds a guest Linux system to launch your
+containers. This guest is referred to as a Podman machine and is managed with
+the `podman machine` command. Podman on Mac and Windows also listens for
+Docker API clients, supporting direct usage of Docker-based tools and
+programmatic access from your language of choice.
 
 ### MacOS
 
-Podman is a tool for running Linux containers.  You can do this from a MacOS
-desktop as long as you have access to a linux box either running inside of a
-VM on the host, or available via the network.  Podman includes a command,
-`podman machine` that automatically manages VM's.
+On Mac, each Podman machine is backed by a [QEMU](https://www.qemu.org) based
+virtual machine.  Once installed, the podman command can be run directly from
+the Unix shell in `Terminal`, where it remotely communicates with the podman
+service running in the Machine VM.
 
-#### Remote Client
-The Mac client is available through [Homebrew](https://brew.sh/):
+For Mac, Podman is provided through [Homebrew](https://brew.sh/). Once you
+have set up brew, you can use the `brew install` command to install Podman:
 
 ```bash
 brew install podman
 ```
 
-To start the Podman-managed VM:
+Next, create and start your first Podman machine:
 
 ```bash
 podman machine init
@@ -37,12 +44,17 @@ podman info
 More advanced information can be found [here](https://github.com/containers/podman/blob/main/docs/tutorials/mac_experimental.md).
 
 ### Windows
-While "containers are Linux," Podman also runs on Mac and Windows, where it provides a native CLI and embeds
-a guest Linux system to launch your containers. This guest is referred to as a Podman machine and is managed
-with the podman machine command. On Windows, each Podman machine is backed by a virtualized Windows System for 
-Linux (WSLv2) distribution.
 
-To get started, refer our [setup instructions](https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md).
+On Windows, each Podman machine is backed by a virtualized Windows System for
+Linux (WSLv2) distribution. Once installed, the podman command can be run 
+directly from your Windows PowerShell (or CMD) prompt, where it remotely
+communicates with the podman service running in the WSL environment.
+Alternatively, you can access Podman directly from the WSL instance if you
+prefer a Linux prompt and Linux tooling.
+
+See the [Podman for Windows guide](https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md) for setup and usage instructions.
+
+## Installing on Linux
 
 ### Linux Distributions
 
