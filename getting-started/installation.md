@@ -67,6 +67,14 @@ sudo pacman -S podman
 If you have problems when running Podman in  [rootless](https://github.com/containers/podman/blob/main/README.md#rootless) mode follow the instructions [here](https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional))
 
 
+#### [Alpine Linux](https://alpinelinux.org)
+
+```bash
+sudo apk add podman
+```
+
+For further details, please refer to the instructions on the [Alpine Linux wiki](https://wiki.alpinelinux.org/wiki/Podman).
+
 #### [CentOS](https://www.centos.org)
 
 Podman is available in the default Extras repos for CentOS 7 and in
