@@ -44,7 +44,7 @@ $ man podman-<subcommand>
 
 Please also reference the [Podman Troubleshooting Guide](https://github.com/containers/podman/blob/main/troubleshooting.md)
 to find known issues and tips on how to solve common configuration mistakes.
- 
+
 ### Searching, pulling & listing images
 
 Podman can search for images on remote registries with some simple keywords.
@@ -140,7 +140,7 @@ $ podman inspect -l | grep IPAddress
 also use the container's ID or name instead of `-l` or the long argument
 `--latest`.
 
-**Note**: If you are running remote Podman client, including Mac and Windows 
+**Note**: If you are running remote Podman client, including Mac and Windows
 (excluding WSL2) machines, `-l` option is not available.
 
 ### Viewing the container's logs
@@ -200,7 +200,7 @@ You can verify the deletion of the container by running `podman ps -a`.
 ## Network
 
 For a more detailed guide about Networking and DNS in containers, please see the
-[network guide]({{ site.baseurl }}/getting-started/network).
+[network guide](https://github.com/containers/podman/blob/main/docs/tutorials/basic_networking.md).
 
 ## Checkpoint, Migration and Restoring containers
 
