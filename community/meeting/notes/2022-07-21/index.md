@@ -47,7 +47,7 @@ Latest crun [release](https://github.com/containers/crun/releases/tag/1.5), has 
 
 
 ### Next Meeting: Thursday August 18, 2022 11:00 a.m. EDT (UTC-5)
-## June 16, 2022 Topics
+## August 18, 2022 Topics
 1. None Discussed
 
 ### Next Community Meeting: Tuesday August 2, 2022 11:00 a.m. EDT (UTC-5)
