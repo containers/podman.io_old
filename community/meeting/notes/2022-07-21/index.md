@@ -1,9 +1,4 @@
-# Podman Community Cabal Agenda
-
-One hour meeting on the third Thursday of every month at 11:00 a.m. US/Eastern (UTC-5) to deep dive into topics on the agenda. Please add your name at the end of the topic so we know who the topic owner is.
-Meeting ID: https://meet.google.com/ieq-pxhy-jbh
-
-Try out [WorldTimeBuddy](https://www.worldtimebuddy.com/?pl=1&amp;lid=5,0&amp;h=5&amp;date=7/21/2022%7C3&amp;hf=1)
+# Podman Community Cabal Meeting Notes 
 
 Attendees: Matt Heon, Nalin Dahyabhai, Paul Holzinger, Karthik Elango, Charlie Doern, Lokesh Mandvekar, Niall Crowe, Dan Walsh, Valentin Rothberg, Miloslav Trmac, Mohan Bodu, Florent Benoit, Stevan Le Meur, Eduardo Santiago, Giuseppe Scrivano, Aditya Rajan, Urvashi Mohnani, Preethi Thomas, Jake Correnti, Ashley Cui
 
