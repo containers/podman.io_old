@@ -386,7 +386,7 @@ apt-get install -y \
 
 ### Get Source Code
 
-First, ensure that the `go version` that is found first on the $PATH is higher than 1.12.x.  Instruction [above](#golang) will help you compile newer version of Go if needed.  Then we can build Podman:
+First, ensure that the `go version` that is found first on the $PATH is or 1.16.x higher.  Instruction [above](#golang) will help you compile newer version of Go if needed.  Then we can build Podman:
 
 ```bash
 git clone https://github.com/containers/podman/

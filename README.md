@@ -1,5 +1,6 @@
 # Container Tools
 
+
 Welcome to the website for the Pod Manager tool [podman](https://github.com/containers/podman). This site features announcements and news around Podman, and occasionally other [container tooling](https://github.com/containers/) news.
 
 ![podman logo](https://github.com/containers/podman.io/blob/main/images/podman.svg)
@@ -82,13 +83,13 @@ firewall-cmd --reload
 #### Making changes
 First `cd` into your podman.io directory after having done a `git clone` of this project.  Change or add the files that yow want to.
 
-You can now test your changes locally, especially useful if you are making look/feel changes, by first running `bundle install` and then start the server by doing: `bundle exec jekyll s`.  If you make follow up changes, you can use the `bundle exec jekyll build` in place of the `bundle install` command.
+You can now test your changes locally, especially useful if you are making look/feel changes, by first running `jekyll build` and then start the server by doing: `jekyll serve`.
 
 Then browse to http://127.0.0.1:4000 to view your changes.
 
 If you run this on a VM, then use this command:
 ```
-bundle exec jekyll serve --host 192.###.###.###   - IP Address of VM
+jekyll serve --host 192.###.###.###   - IP Address of VM
 ```
 
 And then you can attach to the server using your web brower, `http://{IP.address}:4000`.  Note, you must use `http` and not `https`.
