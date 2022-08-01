@@ -21,11 +21,9 @@ select 11:00 a.m. for Eastern, and it should show your local time in relation to
 
 * 11:00 -> 11:05 - Welcome! 
 
-* 11:05 -> 11:15 - Podman on Windows Update - Jason Greene
+* 11:05 -> 11:20 - Fetchit - Sally O'Malley
 
-* 11:15 -> 11:25 - Podman on macOS Update - Gerard Baard 
-
-* 11:25 -> 11:45 - TBD 
+* 11:20 -> 11:45 - TBD 
 
 * 11:45 -> 11:55 - Open Forum/Questions and Answers Session
 
