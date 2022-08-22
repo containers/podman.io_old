@@ -14,7 +14,7 @@ Podman is an open-source project that is available on most Linux platforms and r
 
 Containers under the control of Podman can either be run by root or by a non-privileged user. Podman manages the entire container ecosystem which includes pods, containers, container images, and container volumes using the [libpod](https://github.com/containers/podman) library. Podman specializes in all of the commands and functions that help you to maintain and modify OCI container images, such as pulling and tagging. It allows you to create, run, and maintain those containers created from those images in a production environment.  
 
-The Podman service runs only on Linux platforms, however the podman remote REST API client exists on Mac and Windows platforms and can communicate with the Podman service running on a Linux machine or VM via ssh. [Mac client](https://github.com/containers/podman/blob/main/docs/tutorials/mac_client.md).
+The Podman service runs only on Linux platforms, however the podman remote REST API client exists on Mac and Windows platforms and can communicate with the Podman service running on a Linux machine or VM via ssh. [Mac/Windows client](https://github.com/containers/podman/blob/main/docs/tutorials/mac_win_client.md).
 
 ### Overview and scope
 
