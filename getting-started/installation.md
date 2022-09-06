@@ -92,6 +92,34 @@ The podman package is available in the Debian 11 (Bullseye) repositories and lat
 sudo apt-get -y install podman
 ```
 
+If you would prefer newer (though not as well-tested) packages including RC
+versions, the [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:unstable/podman)
+provides packages for Debian Testing and Unstable.
+Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:kubic:libcontainers:unstable/podman)
+for a list of supported Debian versions and
+architecture combinations. **NOTE:** The command `sudo apt-get -y upgrade`
+maybe required in some cases if Podman cannot be installed without it.
+The Kubic packages are built using [Fedora's packaging
+sources](https://src.fedoraproject.org/rpms/podman/blob/rawhide/f/podman.spec).
+
+CAUTION: The Kubic repo is NOT recommended for production use. Furthermore, we also highly recommend you use Buildah, Podman, and Skopeo ONLY from EITHER the Kubic repo
+OR the official Debian repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
+
+```bash
+# Debian Testing/Bookworm
+echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/Debian_Testing/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list
+curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/Debian_Testing/Release.key" | sudo apt-key add -
+
+# Debian Unstable/Sid
+echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/Debian_Unstable/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list
+curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/Debian_Unstable/Release.key" | sudo apt-key add -
+
+# Install Podman
+sudo apt-get update
+sudo apt-get -y upgrade
+sudo apt-get -y install podman
+```
+
 #### [Fedora](https://getfedora.org)
 
 ```bash
@@ -184,19 +212,30 @@ sudo apt-get -y update
 sudo apt-get -y install podman
 ```
 
-NOTE: Kubic packages have been discontinued for Ubuntu 22.04 LTS.
-Current users of the Kubic repos for Ubuntu are highly recommended to uninstall
-the packages from the Kubic repos before upgrading to Ubuntu 22.04 LTS.
+If you would prefer newer (though not as well-tested) packages including RC
+versions, the [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:unstable/podman)
+provides packages for the latest Ubuntu versions.
+Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:kubic:libcontainers:unstable/podman)
+for a list of supported Ubuntu versions and
+architecture combinations. **NOTE:** The command `sudo apt-get -y upgrade`
+maybe required in some cases if Podman cannot be installed without it.
+The Kubic packages are built using [Fedora's packaging
+sources](https://src.fedoraproject.org/rpms/podman/blob/rawhide/f/podman.spec).
 
-### Linuxmint 20.x
+CAUTION: The Kubic repo is NOT recommended for production use. Furthermore, we highly recommend you use Buildah, Podman, and Skopeo ONLY from EITHER the Kubic repo
+OR the official Ubuntu repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
 
 ```bash
-echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/Release.key" | sudo apt-key add -
-sudo apt-get update
-sudo apt-get -y upgrade
-sudo apt-get -y install podman
+. /etc/os-release
+echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
+sudo apt-get update -qq
+sudo apt-get -qq -y install podman
 ```
+
+### Linuxmint
+
+Follow the steps for Ubuntu (or Debian if you use LMDE).
 
 ### Installing development versions of Podman
 
