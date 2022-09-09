@@ -253,6 +253,29 @@ appreciate your `+1` feedback in [Bodhi, Fedora's update management
 system](https://bodhi.fedoraproject.org/updates/?packages=podman).
 
 
+### Installing bleeding-edge versions of Podman
+
+If you like danger and are interested in testing the latest
+unreleased bits of Podman on Fedora, CentOS and RHEL, we have a [Copr repository](https://copr.fedorainfracloud.org/coprs/rhcontainerbot/podman-next/).
+
+CAUTION: This repository contains rpm builds generated using the `main` branch
+of upstream container tools repositories, and simply CANNOT be recommended for
+any production use.
+
+RHEL8 / CentOS 8 Stream users would first need to disable the container-tools
+module. All other users can skip this step.
+
+```bash
+sudo dnf module disable container-tools -y
+```
+
+Enable the Copr and install podman.
+
+```bash
+sudo dnf copr enable rhcontainerbot/podman-next -y
+sudo dnf install podman
+```
+
 ## Building from scratch
 
 ### Build and Run Dependencies
