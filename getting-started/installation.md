@@ -432,6 +432,17 @@ sudo curl -L -o /etc/containers/registries.conf https://src.fedoraproject.org/rp
 sudo curl -L -o /etc/containers/policy.json https://src.fedoraproject.org/rpms/containers-common/raw/main/f/default-policy.json
 ```
 
+##### Installing `dnsname`
+
+To enable containers to be able to resolve each others' hostnames when included on
+the same user-defined bridge network, you may need to install the 
+[`dnsname`](https://github.com/containers/dnsname/) plugin. 
+
+This is relevant when using the `links:` directive with podman-compose.
+
+You can ensure this plugin is enabled for a given network by checking the `dns_enabled`
+key in the output of `podman network inspect <your-network>`.
+
 
 #### Optional packages
 
