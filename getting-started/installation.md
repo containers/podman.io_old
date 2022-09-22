@@ -106,13 +106,25 @@ CAUTION: The Kubic repo is NOT recommended for production use. Furthermore, we a
 OR the official Debian repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
 
 ```bash
+sudo mkdir -p /etc/apt/keyrings
+
 # Debian Testing/Bookworm
-echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/Debian_Testing/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list
-curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/Debian_Testing/Release.key" | sudo apt-key add -
+curl -fsSL https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/Debian_Testing/Release.key \
+  | gpg --dearmor \
+  | sudo tee /etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg > /dev/null
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg]\
+    https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/Debian_Testing/ /" \
+  | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list > /dev/null
 
 # Debian Unstable/Sid
-echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/Debian_Unstable/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list
-curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/Debian_Unstable/Release.key" | sudo apt-key add -
+curl -fsSL https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/Debian_Unstable/Release.key \
+  | gpg --dearmor \
+  | sudo tee /etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg > /dev/null
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg]\
+    https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/Debian_Unstable/ /" \
+  | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list > /dev/null
 
 # Install Podman
 sudo apt-get update
@@ -226,9 +238,14 @@ CAUTION: The Kubic repo is NOT recommended for production use. Furthermore, we h
 OR the official Ubuntu repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
 
 ```bash
-. /etc/os-release
-echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/xUbuntu_$(lsb_release -rs)/Release.key \
+  | gpg --dearmor \
+  | sudo tee /etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg > /dev/null
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg]\
+    https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/xUbuntu_$(lsb_release -rs)/ /" \
+  | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list > /dev/null
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
