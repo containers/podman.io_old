@@ -332,6 +332,7 @@ Debian, Ubuntu, and related distributions:
 ```bash
 sudo apt-get install \
   btrfs-progs \
+  crun \
   git \
   golang-go \
   go-md2man \
@@ -349,7 +350,6 @@ sudo apt-get install \
   libselinux1-dev \
   libsystemd-dev \
   pkg-config \
-  runc \
   uidmap
 ```
 
@@ -419,10 +419,12 @@ make
 sudo make podman
 ```
 
-#### runc
+#### crun / runc
 
-The latest version of `runc` is expected to be installed on the system. It is picked up as the default runtime by Podman.
-Version 1.0.0-rc4 is the minimal requirement, which is available in Ubuntu 18.04 already.
+The latest version of at least one container runtime is expected to be installed on the system. `crun` or `runc` are some of the possibilities, and one is picked up as the default runtime by Podman (crun has priority over runc).
+Supported versions of `crun` or `runc` are available for example on Ubuntu 22.04.
+`runc` version 1.0.0-rc4 is the minimal requirement, which is available since Ubuntu 18.04.
+
 To double-check, `runc --version` should produce at least `spec: 1.0.1`, otherwise build your own:
 
 ```bash
