@@ -21,11 +21,13 @@ select 11:00 a.m. for Eastern, and it should show your local time in relation to
 
 * 11:00 -> 11:05 - Welcome! 
 
-* 11:05 -> 11:20 - Podman on Mac Installer 
+* 11:05 -> 11:25 - Distrobox Demo - Luca Di Maio 
 
-* 11:20 -> 11:45 - TBD 
+* 11:25 -> 11:45 - Vault Test Suite - Alex Scheel - HashiCorp
+ 
+* 11:45 -> 11:50 - Podman on Mac Installer 
 
-* 11:45 -> 11:55 - Open Forum/Questions and Answers Session
+* 11:50 -> 11:55 - Open Forum/Questions and Answers Session
 
 * 11:55 -> 12:00 - Next Meeting, Topics for Next Meeting, and Wrap up
 
