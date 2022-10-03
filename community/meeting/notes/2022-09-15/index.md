@@ -1,4 +1,4 @@
-# Podman Community Cabal Agenda
+# Podman Community Cabal Meeting Notes 
 
 Attendees: Matt Heon, Nalin Dahyabhai, Paul Holzinger, Charlie Doern, Lokesh Mandvekar, Niall Crowe, Dan Walsh, Valentin Rothberg, Miloslav Trmac, Mohan Bodu, Eduardo Santiago, Giuseppe Scrivano, Chris Evich, Aditya Rajan, Urvashi Mohnani, Preethi Thomas, Ashley Cui, Joseph Gooch, Reinhard Tartler, Sally O'Malley, Stevan Le Meur, Anders Björklund
 
