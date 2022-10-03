@@ -6,7 +6,7 @@ title: Podman Community Meeting Agenda
 ![Podman logo](../../../images/podman.svg)
 
 # {{ page.title }}
-## October 2, 2022 11:00 a.m. Eastern Standard (UTC-4)
+## October 2, 2022 11:00 a.m. Eastern Standard (UTC-5)
 
 Try out [WorldTimeBuddy](https://www.worldtimebuddy.com/?pl=1&lid=5,0&h=5&date=10/5/2022%7C3&hf=1), add your location in the top left corner of the table,
 select 11:00 a.m. for Eastern, and it should show your local time in relation to Eastern.
