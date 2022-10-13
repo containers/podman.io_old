@@ -11,6 +11,7 @@ Tom Sweeney, Alex Scheel, Luca Di Maio Chris Evich, Ashley Cui, Paul Holzinger, 
 ### Luca Di Maio
 #### (1:37 in the video)
 
+[Slides](https://podman.io/community/meeting/notes/2022-10-04/distrobox-presentation.pdf)
 Distrobox is a simple Posix Shell that wrap around Docker and Podman.  It helps to remove the complexity of container runtimes.  It is your entire userspace unbound and integrated with the base operating system
 
 Why not chroot over Podman?
