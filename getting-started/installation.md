@@ -163,7 +163,7 @@ Built-in, no need to install
 #### [Gentoo](https://www.gentoo.org)
 
 ```bash
-sudo emerge app-emulation/podman
+sudo emerge app-containers/podman
 ```
 
 #### [OpenEmbedded](https://www.openembedded.org)
