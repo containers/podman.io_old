@@ -66,6 +66,8 @@ sudo pacman -S podman
 
 If you have problems when running Podman in  [rootless](https://github.com/containers/podman/blob/main/README.md#rootless) mode follow the instructions [here](https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional))
 
+For more information on Podman on ArchLinux [click here](https://wiki.archlinux.org/title/Podman)
+
 
 #### [Alpine Linux](https://alpinelinux.org)
 
