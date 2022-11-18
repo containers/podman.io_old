@@ -6,7 +6,7 @@ title: Podman Community Meeting Agenda
 ![Podman logo](../../../images/podman.svg)
 
 # {{ page.title }}
-## December 6, 2022 11:00 a.m. Eastern Standard (UTC-4)
+## December 6, 2022 11:00 a.m. Eastern Standard (UTC-5)
 
 Try out [WorldTimeBuddy](https://www.worldtimebuddy.com/?pl=1&lid=5,0&h=5&date=12/6/2022%7C3&hf=1), add your location in the top left corner of the table,
 select 11:00 a.m. for Eastern, and it should show your local time in relation to Eastern.
@@ -21,7 +21,9 @@ select 11:00 a.m. for Eastern, and it should show your local time in relation to
 
 * 11:00 -> 11:05 - Welcome! 
 
-* 11:05 -> 11:45 - TBD
+* 11:05 -> 11:25 - MinIO Demo -Will Dinyes
+
+* 11:25 -> 11:45 - TBD
 
 * 11:45 -> 11:55 - Open Forum/Questions and Answers Session
 
