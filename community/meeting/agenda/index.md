@@ -23,7 +23,7 @@ select 11:00 a.m. for Eastern, and it should show your local time in relation to
 
 * 11:05 -> 11:25 - MinIO Demo -Will Dinyes
 
-* 11:25 -> 11:45 - TBD
+* 11:25 -> 11:45 - Embedding inside an AutoSD Image - Ygal Blum 
 
 * 11:45 -> 11:55 - Open Forum/Questions and Answers Session
 
