@@ -5,7 +5,7 @@
 Tom Sweeney, Will Dinyes, Ygal Blum, Chris Evich, Ashley Cui, Paul Holzinger, Nalin Dahyabhai, Giuseppe Scrivano, Preethi Thomas, Matt Heon, Miloslav Trmac, Urvashi Mohnani, Mohan Bodu, Ed Santiago, Martin Jackson, Lance L, Florent Benoit, Brent Baude
 
 ## Meeting Start: 11:02 a.m. EST
-### BlueJeans [Recording]()
+### BlueJeans [Recording](https://www.youtube.com/watch?v=GZNazm39wEo)
 
 ## MinIO Demo
 ### Will Dinyes - MinIO
