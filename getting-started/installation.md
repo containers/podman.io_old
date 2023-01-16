@@ -41,8 +41,6 @@ You can then verify the installation information using:
 podman info
 ```
 
-More advanced information can be found [here](https://github.com/containers/podman/blob/main/docs/tutorials/mac_experimental.md).
-
 ### Windows
 
 On Windows, each Podman machine is backed by a virtualized Windows System for
