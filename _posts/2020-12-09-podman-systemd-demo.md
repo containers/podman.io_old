@@ -1,5 +1,5 @@
 ---
-title: Using Podman and Systemd to manage container lifecycle
+title: Using Podman and systemd to manage container lifecycle
 layout: default
 author: ehaynes
 categories: [blogs]
@@ -8,7 +8,7 @@ tags: containers, podman, api, kubernetes, linux
 ![podman logo](https://podman.io/images/podman.svg)
 
 {% assign author = site.authors[page.author] %}
-# Using Podman and Systemd to manage container lifecycle
+# Using Podman and systemd to manage container lifecycle
 ## By {{ author.display_name }} [GitHub](https://github.com/{{ author.github }}) [Twitter](https://twitter.com/{{ author.twitter }})
 
 My background is in industrial automation, and in most cases, the edge devices in the factory are too underpowered to run Kubernetes as a method to manage the lifecycle of containers. The workloads have a very long lifecycle, and generally are "tied" to the edge device. There is a lot of value in containerizing applications on these edge devices, however, as it decouples the application dependencies from the OS and provides a level of isolation between applications. This demo will show how using Podman in conjunction with systemd provides an elegant solution for this sort of use case. In addition, this will be done as a "rootless" user - a key benefit of Podman that helps keep the device secure.
@@ -40,7 +40,7 @@ redis_server.service - Podman container-redis_ Loaded: loaded
 
  Active: active (running) since Wed 2020-12-09 09:22:40 EST; 1h 58min ago
  ```
-Now that redis is running you can run the test script that sets a key value, retrieves it, and then kills the redis container. Systemd will then restart the container and you can see all is working again. Do this with:
+Now that redis is running you can run the test script that sets a key value, retrieves it, and then kills the redis container. systemd will then restart the container and you can see all is working again. Do this with:
 
 ```console
 ./test_redis_container.sh

@@ -21,7 +21,7 @@ Our new release now supports being used with the GitLab Runner as part of GitLab
 
 As part of the 4.2.0 release, we have made many changes to both Podman pods and the `podman play kube` command. Pods now have early support for resource limits, allowing CPU and memory use for a pod to be limited. All containers in the pod will share this limit but can still set their own limits. Pods can also be cloned now via the new `podman pod clone` command. Support for YAML in `play kube` has also been improved, with additional support for security context settings and the ability to use `BlockDevice` and `CharDevice` volumes.
 
-Systemd integration with `podman play kube` has been introduced. Pods launched by `podman play kube` can be managed by systemd, using the new `podman-kube@.service` service - e.g. `systemctl --user start podman-play-kube@$(systemd-escape my.yaml).service` will run the `my.yaml` file managed by systemd.
+systemd integration with `podman play kube` has been introduced. Pods launched by `podman play kube` can be managed by systemd, using the new `podman-kube@.service` service - e.g. `systemctl --user start podman-play-kube@$(systemd-escape my.yaml).service` will run the `my.yaml` file managed by systemd.
 
 Several other features and changes also landed in Podman v4.2.0. Early support for Sigstore signatures is now available in `podman push` and `podman manifest push` - expect more in this area in the future as we further integrate Sigstore and Podman. Podman networks can now be isolated (preventing traffic from being sent to other Podman-managed networks) with the `--opt isolate=` option to `podman network create`.
 

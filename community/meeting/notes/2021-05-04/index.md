@@ -34,7 +34,7 @@ Developers of the Sysbox runtime, founders of Nestybox.
 
 Enhance containers to run most workloads that run in VMs, seamlessly and with strong isolation.
 
-Systemd, Docker, Podman and K8s, etc are the system workloads they're looking to run, seamlessly and with strong isolation.
+systemd, Docker, Podman and K8s, etc are the system workloads they're looking to run, seamlessly and with strong isolation.
 
 A command like `podman run --userns=auto:size=65536 -it any-image` could run a container running any system, easy, powerful and secure.
 
