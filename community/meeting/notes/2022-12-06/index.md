@@ -67,7 +67,7 @@ The instructions format may vary:
     
 Using `podman kube play`, users can reuse K8S YAML file
 
-Podman is daemonless, who will monitor the container when it stops?  Systemd is use.  Tools like `podman generate systemd`, soon "Quadlet" to facilitate this.
+Podman is daemonless, who will monitor the container when it stops?  systemd is use.  Tools like `podman generate systemd`, soon "Quadlet" to facilitate this.
 
 OSBuild is a tool for composing O/S images, it allows embedding files and enabling of services in the image.  You can compose an image for an edge device using it.
 

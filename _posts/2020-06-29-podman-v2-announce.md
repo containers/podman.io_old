@@ -38,9 +38,9 @@ One of the consequences of our re-plumbing work is that our remote clients for W
 It is also worth noting that a ‘--remote’ flag has been added to the Podman binary to allow it to act as a remote client.
 
 ## Auto-update
-The `podman auto-update` command allows for updating Systemd-managed running containers when their images have been updated on the container registry. While it is still a tech preview in Podman v2.0, we added a number of improvements to better support authentication and to select the correct images on ARM. If you’re interested in auto updates, please check them out and let us know what you think.
+The `podman auto-update` command allows for updating systemd-managed running containers when their images have been updated on the container registry. While it is still a tech preview in Podman v2.0, we added a number of improvements to better support authentication and to select the correct images on ARM. If you’re interested in auto updates, please check them out and let us know what you think.
 
-## Systemd Integration Improvements
+## systemd Integration Improvements
 A major improvement for Podman’s systemd support is that `podman generate systemd` now supports using the `--new` flag on pods. This allows for creating shareable systemd units not only for containers but also for pods. Additionally, we added a number of changes to make the systemd units more robust and reliable, such as cleanly starting after a system crash and clean shutdowns even when conmon has been killed. The names of generated files can further be altered with the new `--container-prefix` and `--pod-prefix` flags.
 
 ## Conclusion

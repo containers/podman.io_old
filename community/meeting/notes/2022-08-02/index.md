@@ -47,7 +47,7 @@ Dan noted that sigstore functionality will be baked into Podman v4.2 and Fetchit
 Demos (12:40 in the video)
   * Scale up
   * Podman Kube + Clean up
-  * Podman Systemd
+  * Podman systemd
 
 Showed the Fetchit config file, launched an RHEL 8 instance on Amazon, and kept it tiny.  Added Podman install instructions and launched 10 instances at once.  All systems up, and no touching necessary from Ryan.  This runs the commands on each node, and they go to the git location to get their instructions.
 
