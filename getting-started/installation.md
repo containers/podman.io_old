@@ -86,11 +86,29 @@ sudo yum -y install podman
 
 #### [Debian](https://debian.org)
 
-The podman package is available in the Debian 11 (Bullseye) repositories and later.
+The podman package is available in official Debian 11 (Bullseye) repositories and later.
 
 ```bash
 sudo apt-get -y install podman
 ```
+##### Debian 10 (Buster)
+
+```bash
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.opensuse.org/repositories/devel:kubic:libcontainers:/stable/Debian_$(lsb_release -rs)/Release.key \
+  | gpg --dearmor \
+  | sudo tee /etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg > /dev/null
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg]\
+    https://download.opensuse.org/repositories/devel:kubic:libcontainers:/stable/Debian_$(lsb_release -rs)/ /" \
+  | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list > /dev/null
+echo \
+  "deb http://deb.debian.org/debian buster-backports main" \
+  | sudo tee /etc/apt/sources.list.d/buster-backports.list > /dev/null
+sudo apt update
+sudo apt install -t buster-backports podman
+```
+
 
 If you would prefer newer (though not as well-tested) packages including RC
 versions, the [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:unstable/podman)
@@ -239,12 +257,12 @@ OR the official Ubuntu repos. Mixing and matching may lead to unpredictable situ
 
 ```bash
 sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/xUbuntu_$(lsb_release -rs)/Release.key \
+curl -fsSL https://download.opensuse.org/repositories/devel:kubic:libcontainers:/stable/xUbuntu_$(lsb_release -rs)/Release.key \
   | gpg --dearmor \
   | sudo tee /etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg > /dev/null
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg]\
-    https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/xUbuntu_$(lsb_release -rs)/ /" \
+    https://download.opensuse.org/repositories/devel:kubic:libcontainers:/stable/xUbuntu_$(lsb_release -rs)/ /" \
   | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list > /dev/null
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
