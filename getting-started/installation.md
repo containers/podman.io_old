@@ -156,9 +156,9 @@ sudo dnf -y copr disable rhcontainerbot/podman4
 sudo rm /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:rhcontainerbot:podman4.repo
 ```
 
-#### [Fedora-CoreOS](https://coreos.fedoraproject.org), [Fedora SilverBlue](https://silverblue.fedoraproject.org)
+#### [Fedora CoreOS](https://coreos.fedoraproject.org), [Fedora SilverBlue](https://silverblue.fedoraproject.org), [Fedora Kinoite](https://kinoite.fedoraproject.org/), [Fedora IoT](https://getfedora.org/en/iot/)
 
-Built-in, no need to install
+Built-in, no need to install.
 
 #### [Gentoo](https://www.gentoo.org)
 
