@@ -8,7 +8,7 @@ title: Community Meetings
 # {{ page.title }}
 
 ## Podman Community Cabal meeting
-### Next Meeting: Thursday December 15, 2022 11:00 a.m. EDT (UTC-5)
+### Next Meeting: Thursday, February 15, 2022 11:00 a.m. EDT (UTC-5)
 
 The Podman Community Cabal meetings will happen on the third Thursday of each month, starting at 11:00 a.m. Eastern.
 The "Cabal" meeting is used to discuss any design question, issue, or other related topics with the maintainers of
@@ -23,23 +23,24 @@ The Agenda is [here](https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both).
 
 ### Notes from the Community Cabal Meetings
 
- * [Thursday November 17, 2022](https://podman.io/community/meeting/notes/2022-11-17)
- * [Thursday September 15, 2022](https://podman.io/community/meeting/notes/2022-09-15)
- * [Thursday July 21, 2022](https://podman.io/community/meeting/notes/2022-07-21)
- * [Thursday May 19, 2022](https://podman.io/community/meeting/notes/2022-05-19)
- * [Thursday April 21, 2022](https://podman.io/community/meeting/notes/2022-04-21)
- * [Thursday March 17, 2022](https://podman.io/community/meeting/notes/2022-03-17)
- * [Thursday February 17, 2022](https://podman.io/community/meeting/notes/2022-02-17)
- * [Thursday January 20, 2022](https://podman.io/community/meeting/notes/2022-01-20)
- * [Thursday December 16, 2021](https://podman.io/community/meeting/notes/2021-12-16)
- * [Thursday November 18, 2021](https://podman.io/community/meeting/notes/2021-11-18)
- * [Thursday October 21, 2021](https://podman.io/community/meeting/notes/2021-10-21)
- * [Thursday September 16, 2021](https://podman.io/community/meeting/notes/2021-09-16)
- * [Thursday August 19, 2021](https://podman.io/community/meeting/notes/2021-08-19)
- * [Thursday July 15, 2021](https://podman.io/community/meeting/notes/2021-07-15)
+ * [Thursday, January 19, 2022](https://podman.io/community/meeting/notes/2023-01-19)
+ * [Thursday, November 17, 2022](https://podman.io/community/meeting/notes/2022-11-17)
+ * [Thursday, September 15, 2022](https://podman.io/community/meeting/notes/2022-09-15)
+ * [Thursday, July 21, 2022](https://podman.io/community/meeting/notes/2022-07-21)
+ * [Thursday, May 19, 2022](https://podman.io/community/meeting/notes/2022-05-19)
+ * [Thursday, April 21, 2022](https://podman.io/community/meeting/notes/2022-04-21)
+ * [Thursday, March 17, 2022](https://podman.io/community/meeting/notes/2022-03-17)
+ * [Thursday, February 17, 2022](https://podman.io/community/meeting/notes/2022-02-17)
+ * [Thursday, January 20, 2022](https://podman.io/community/meeting/notes/2022-01-20)
+ * [Thursday, December 16, 2021](https://podman.io/community/meeting/notes/2021-12-16)
+ * [Thursday, November 18, 2021](https://podman.io/community/meeting/notes/2021-11-18)
+ * [Thursday, October 21, 2021](https://podman.io/community/meeting/notes/2021-10-21)
+ * [Thursday, September 16, 2021](https://podman.io/community/meeting/notes/2021-09-16)
+ * [Thursday, August 19, 2021](https://podman.io/community/meeting/notes/2021-08-19)
+ * [Thursday, July 15, 2021](https://podman.io/community/meeting/notes/2021-07-15)
 
 ## Podman Community Meeting
-### Next Meeting: Tuesday February 7, 2022 11:00 a.m. EDT (UTC-5)
+### Next Meeting: Tuesday, February 7, 2022 11:00 a.m. EDT (UTC-5)
 
 Community meetings are held on the first Tuesday of each even numbered month (Feb, Apr, Jun, Aug, Oct, & Dec).  They are scheduled for one hour in 
 duration, and generally start at 11:00 a.m. Eastern.  The start time may change occassionally to make
@@ -71,23 +72,23 @@ we will do our best to get you into a future one as soon as possible.
 
 ### Notes from the Community Meetings
 
- * [Tuesday December 6, 2022](https://podman.io/community/meeting/notes/2022-12-06)
- * [Tuesday October 4, 2022](https://podman.io/community/meeting/notes/2022-10-04)
- * [Tuesday August 2, 2022](https://podman.io/community/meeting/notes/2022-08-02)
- * [Tuesday June 7, 2022](https://podman.io/community/meeting/notes/2022-06-07)
- * [Tuesday April 5, 2022](https://podman.io/community/meeting/notes/2022-04-05)
- * [Tuesday February 2, 2022](https://podman.io/community/meeting/notes/2022-02-01)
- * [Tuesday December 7, 2021](https://podman.io/community/meeting/notes/2021-12-07)
- * [Tuesday November 2, 2021](https://podman.io/community/meeting/notes/2021-11-02)
- * [Tuesday October 5, 2021](https://podman.io/community/meeting/notes/2021-10-05)
- * [Tuesday September 7, 2021](https://podman.io/community/meeting/notes/2021-09-07)
- * [Tuesday August 3, 2021](https://podman.io/community/meeting/notes/2021-08-03)
- * [Tuesday June 1, 2021](https://podman.io/community/meeting/notes/2021-06-01)
- * [Tuesday May 4, 2021](https://podman.io/community/meeting/notes/2021-05-04)
- * [Tuesday April 6, 2021](https://podman.io/community/meeting/notes/2021-04-06)
- * [Tuesday March 2, 2021](https://podman.io/community/meeting/notes/2021-03-02)
- * [Tuesday February 2, 2021](https://podman.io/community/meeting/notes/2021-02-02)
- * [Tuesday December 1, 2020](https://podman.io/community/meeting/notes/2020-12-01)
- * [Tuesday November 3, 2020](https://podman.io/community/meeting/notes/2020-11-03)
- * [Tuesday October 6, 2020](https://podman.io/community/meeting/notes/2020-10-06)
+ * [Tuesday, December 6, 2022](https://podman.io/community/meeting/notes/2022-12-06)
+ * [Tuesday, October 4, 2022](https://podman.io/community/meeting/notes/2022-10-04)
+ * [Tuesday, August 2, 2022](https://podman.io/community/meeting/notes/2022-08-02)
+ * [Tuesday, June 7, 2022](https://podman.io/community/meeting/notes/2022-06-07)
+ * [Tuesday, April 5, 2022](https://podman.io/community/meeting/notes/2022-04-05)
+ * [Tuesday, February 2, 2022](https://podman.io/community/meeting/notes/2022-02-01)
+ * [Tuesday, December 7, 2021](https://podman.io/community/meeting/notes/2021-12-07)
+ * [Tuesday, November 2, 2021](https://podman.io/community/meeting/notes/2021-11-02)
+ * [Tuesday, October 5, 2021](https://podman.io/community/meeting/notes/2021-10-05)
+ * [Tuesday, September 7, 2021](https://podman.io/community/meeting/notes/2021-09-07)
+ * [Tuesday, August 3, 2021](https://podman.io/community/meeting/notes/2021-08-03)
+ * [Tuesday, June 1, 2021](https://podman.io/community/meeting/notes/2021-06-01)
+ * [Tuesday, May 4, 2021](https://podman.io/community/meeting/notes/2021-05-04)
+ * [Tuesday, April 6, 2021](https://podman.io/community/meeting/notes/2021-04-06)
+ * [Tuesday, March 2, 2021](https://podman.io/community/meeting/notes/2021-03-02)
+ * [Tuesday, February 2, 2021](https://podman.io/community/meeting/notes/2021-02-02)
+ * [Tuesday, December 1, 2020](https://podman.io/community/meeting/notes/2020-12-01)
+ * [Tuesday, November 3, 2020](https://podman.io/community/meeting/notes/2020-11-03)
+ * [Tuesday, October 6, 2020](https://podman.io/community/meeting/notes/2020-10-06)
 

@@ -7,7 +7,7 @@ title: Getting Started with Podman
 
 # Getting Started with Podman
 
-Podman is a utility provided as part of the libpod library. It can be used to
+[What is Podman?](https://docs.podman.io) Podman is a utility provided as part of the libpod library. It can be used to
 create and maintain containers. The following tutorial will teach you how to set
 up Podman and perform some basic commands.
 
