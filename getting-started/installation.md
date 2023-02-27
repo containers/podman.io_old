@@ -5,7 +5,7 @@ title: Podman Installation
 
 # Podman Installation Instructions
 
-## Installing on Mac & Windows 
+## Installing on Mac & Windows
 
 While "containers are Linux," Podman also runs on Mac and Windows, where it
 provides a native podman CLI and embeds a guest Linux system to launch your
@@ -44,7 +44,7 @@ podman info
 ### Windows
 
 On Windows, each Podman machine is backed by a virtualized Windows System for
-Linux (WSLv2) distribution. Once installed, the podman command can be run 
+Linux (WSLv2) distribution. Once installed, the podman command can be run
 directly from your Windows PowerShell (or CMD) prompt, where it remotely
 communicates with the podman service running in the WSL environment.
 Alternatively, you can access Podman directly from the WSL instance if you
