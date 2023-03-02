@@ -224,31 +224,8 @@ sudo apt-get -y update
 sudo apt-get -y install podman
 ```
 
-If you would prefer newer (though not as well-tested) packages including RC
-versions, the [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:unstable/podman)
-provides packages for the latest Ubuntu versions.
-Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:kubic:libcontainers:unstable/podman)
-for a list of supported Ubuntu versions and
-architecture combinations. **NOTE:** The command `sudo apt-get -y upgrade`
-maybe required in some cases if Podman cannot be installed without it.
-The Kubic packages are built using [Fedora's packaging
-sources](https://src.fedoraproject.org/rpms/podman/blob/rawhide/f/podman.spec).
-
-CAUTION: The Kubic repo is NOT recommended for production use. Furthermore, we highly recommend you use Buildah, Podman, and Skopeo ONLY from EITHER the Kubic repo
-OR the official Ubuntu repos. Mixing and matching may lead to unpredictable situations including installation conflicts.
-
-```bash
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/xUbuntu_$(lsb_release -rs)/Release.key \
-  | gpg --dearmor \
-  | sudo tee /etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg > /dev/null
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg]\
-    https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/xUbuntu_$(lsb_release -rs)/ /" \
-  | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list > /dev/null
-sudo apt-get update -qq
-sudo apt-get -qq -y install podman
-```
+The [Kubic project](https://build.opensuse.org/package/show/devel:kubic:libcontainers:unstable/podman) used to provide builds for older
+Ubuntu versions but no longer does so.
 
 ### Linuxmint
 
