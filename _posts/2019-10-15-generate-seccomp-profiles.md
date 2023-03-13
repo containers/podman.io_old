@@ -48,7 +48,7 @@ $ sudo dnf install -y bcc-devel bcc-tools git golang libseccomp-devel golang-git
 $ git clone https://github.com/containers/oci-seccomp-bpf-hook.git
 $ cd oci-seccomp-bpf-hook
 $ make binary
-$ sudo make install
+$ PREFIX=/usr sudo make install
 ```
 
 Now, with the hook being installed we can use Podman to run a container and use the hook for tracing syscalls. eBPF requires root privileges so we cannot make use of Podman’s rootless support while tracing. However, we can use the generated seccomp profiles for running the workloads in a rootless container.
