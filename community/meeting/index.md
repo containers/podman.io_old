@@ -48,7 +48,7 @@ duration, and generally start at 11:00 a.m. Eastern.  The start time may change 
 the meeting more convenient for the Podman community members from India, China, Australia and other countries
 in those time zones.
 
-The meetings will be held using a BlueJeans video conference room.  That room is located [here](https://bluejeans.com/880216278/2568)
+The meetings will be held using a Google Meet video conference room.  That room is located [here](https://meet.google.com/ieq-pxhy-jbh)
 and there is no charge to attend.
 
 While the meeting is ongoing, the meeting notes will be compiled using [HackMD](https://hackmd.io) on this [page](https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w)
