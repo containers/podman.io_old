@@ -58,7 +58,7 @@ and later saved to this site with a link added [below](https://podman.io/communi
 The agenda for the upcoming meeting will be sent prior to the [podman@lists.podman.io](mailto:podman@lists.podman.io) email list and it will 
 be posted [below](https://podman.io/community/meeting/#next-podman-community-meeting-agenda).
 
-Click [here](https://calendar.google.com/event?action=TEMPLATE&tmeid=NzM4aTkwY2syZ2F2dnIyN2M1dmh0NmQ0NmpfMjAyMTA4MDNUMTUwMDAwWiB0c3dlZW5leUByZWRoYXQuY29t&tmsrc=tsweeney%40redhat.com&scp=ALL) for a calendar event from Google Calendar.
+Click [here](https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=djhobDZtZzlyN2E3OHVjc3NmbjF2OTg1N3VfMjAyMzA0MDRUMTUwMDAwWiB0c3dlZW5leUByZWRoYXQuY29t&tmsrc=tsweeney%40redhat.com&scp=ALL) for a calendar event from Google Calendar.
 
 ### Next Podman Community Meeting Agenda
 
