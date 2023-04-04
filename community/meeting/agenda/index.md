@@ -31,4 +31,4 @@ select 11:00 a.m. for Eastern, and it should show your local time in relation to
 
 * 11:55 -> 12:00 - Next Meeting, Topics for Next Meeting, and Wrap up
 
-**Next Meeting: Tuesday,  June 6, 2023, 11:00 a.m. Eastern Daylight (UTC-4)**
+**Next Meeting: Tuesday, June 6, 2023, 11:00 a.m. Eastern Daylight (UTC-4)**
