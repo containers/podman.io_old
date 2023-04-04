@@ -11,7 +11,7 @@ title: Podman Community Meeting Agenda
 Try out [WorldTimeBuddy](https://www.worldtimebuddy.com/?pl=1&lid=5,0&h=5&date=4/4/2023%7C3&hf=1), add your location in the top left corner of the table,
 select 11:00 a.m. for Eastern, and it should show your local time in relation to Eastern.
 
-### The meetings will be held using a Google Meet [video conference room](meet.google.com/ieq-pxhy-jbh).
+### The meetings will be held using a Google Meet [video conference room](https://meet.google.com/ieq-pxhy-jbh).
 
 ### Meeting notes on [HackMD](https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w)
 
