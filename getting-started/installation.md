@@ -54,6 +54,20 @@ See the [Podman for Windows guide](https://github.com/containers/podman/blob/mai
 
 ## Installing on Linux
 
+### 4.0 Networking Upgrade Notes
+
+New installations of Podman v4.0+ default to using the new netavark networking backend, however, when upgrading from an existing 
+pre 4.0 installation to v4.0+ Podman will continue to use the previous CNI backend. In order for the CNI backend to continue working it may
+be necessary to manually install the CNI networking package to prevent it from being automatically removed by your package manager.
+
+On Debian based distributions this will typically be `containernetworking-plugins`.
+
+```bash
+sudo apt-get -y install containernetworking-plugins
+```
+
+For more information about netavark see this blog post about [Podman 4.0's new network stack](https://www.redhat.com/sysadmin/podman-new-network-stack).
+
 ### Linux Distributions
 
 #### [Arch Linux](https://www.archlinux.org) & [Manjaro Linux](https://manjaro.org)
