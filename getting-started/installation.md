@@ -166,6 +166,14 @@ Built-in, no need to install.
 sudo emerge app-containers/podman
 ```
 
+#### [NixOS](https://nixos.org/)
+
+```nix
+virtualisation.podman.enable = true;
+```
+
+More info on the [NixOS community wiki](https://nixos.wiki/wiki/podman)
+
 #### [OpenEmbedded](https://www.openembedded.org)
 
 Bitbake recipes for Podman and its dependencies are available in the
